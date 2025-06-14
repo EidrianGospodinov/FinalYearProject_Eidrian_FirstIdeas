@@ -20,13 +20,15 @@ public class OnHit : MonoBehaviour
     
     [Inject]IEventBus<IEvent> eventBus;
 
-    private EventBinding<TestEvent> eventBinding;
+    private EventBinding<OnAttack> OnAttack;
     private EventBinding<PlayerEvent> playerEventBinding;
+
+    private bool _isAttacking = false;
 
     private void OnEnable()
     {
-        eventBinding = new EventBinding<TestEvent>(HandleTestEvent);
-        EventBus<TestEvent>.Register(eventBinding);
+        OnAttack = new EventBinding<OnAttack>(OnAttackEvent);
+        EventBus<OnAttack>.Register(OnAttack);
 
         playerEventBinding = new EventBinding<PlayerEvent>(HandlePlayerEvent);
         EventBus<PlayerEvent>.Register(playerEventBinding);
@@ -36,7 +38,7 @@ public class OnHit : MonoBehaviour
 
     private void OnDisable()
     {
-        EventBus<TestEvent>.Unregister(eventBinding);
+        EventBus<OnAttack>.Unregister(OnAttack);
         EventBus<PlayerEvent>.Unregister(playerEventBinding);
     }
 
@@ -47,9 +49,18 @@ public class OnHit : MonoBehaviour
         print(obj.PlayerID);
     }
 
-    private void HandleTestEvent(TestEvent obj)
+    private void OnAttackEvent(OnAttack evt)
     {
-        print("success");
+        switch (evt.AttackType)
+        {
+            case AttackType.NONE:
+                _isAttacking = false;
+                break;
+            case AttackType.Sword:
+                _isAttacking = evt.IsAttacking;
+                break;
+        }
+        
     }
 
     private void Start()
@@ -58,7 +69,7 @@ public class OnHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-          if(playerState != PlayerState.Attacking) return;
+        if(!_isAttacking) return;
         Debug.Log("before hit");
         if (other.gameObject.layer == LayerMask.NameToLayer(layerName))
         {
@@ -68,6 +79,7 @@ public class OnHit : MonoBehaviour
 
             GameObject GO = Instantiate(hitEffect, other.ClosestPoint(transform.position), Quaternion.identity);
             Destroy(GO, 20);
+            _isAttacking = false;
         }
     }
 }

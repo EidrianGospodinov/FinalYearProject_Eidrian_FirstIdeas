@@ -198,6 +198,7 @@ public class PlayerController : MonoBehaviour
         readyToAttack = false;
         attacking = true;
         playerState = PlayerState.Attacking;
+        EventBus<OnAttack>.Trigger(new OnAttack(attacking, AttackType.Sword));
 
         Invoke(nameof(ResetAttack), attackSpeed);
         //Invoke(nameof(AttackRaycast), attackDelay);
@@ -221,6 +222,7 @@ public class PlayerController : MonoBehaviour
     {
         playerState = PlayerState.IDLE;
         attacking = false;
+        EventBus<OnAttack>.Trigger(new OnAttack(attacking));
         readyToAttack = true;
     }
 

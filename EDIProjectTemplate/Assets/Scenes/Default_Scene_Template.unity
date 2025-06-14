@@ -917,6 +917,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e88c98d2d626cc4ea44d08262751840, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1138581233}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8e88c98d2d626cc4ea44d08262751840, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1138581236}
   m_SourcePrefab: {fileID: 100100000, guid: 8e88c98d2d626cc4ea44d08262751840, type: 3}
 --- !u!1 &1138581225 stripped
 GameObject:
@@ -940,7 +943,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
@@ -961,7 +964,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   layerName: Hittable
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1138581233}
   hitSound: {fileID: 8300000, guid: 11245d3945c564b45a1bafad5ecb70e5, type: 3}
   hitEffect: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
 --- !u!54 &1138581230
@@ -1012,7 +1015,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 4301.875
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1087,6 +1090,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1138581236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138581225}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02342127, y: 0.98782516, z: 0.015413243}
+  m_Center: {x: 0.008393313, y: 0.40822917, z: -0.010000613}
 --- !u!1001 &1234840452
 PrefabInstance:
   m_ObjectHideFlags: 0
