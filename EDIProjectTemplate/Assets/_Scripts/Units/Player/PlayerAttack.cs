@@ -1,11 +1,12 @@
-/*
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
-    Camera playerCamera;
+    [Header("Dependencies")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private Camera cam;
+
     [Header("Attacking")]
     public float attackDistance = 3f;
     public float attackDelay = 0.4f;
@@ -13,59 +14,67 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask attackLayer;
 
+    [Header("VFX/SFX")]
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
 
-    bool attacking = false;
-    bool readyToAttack = true;
-    int attackCount;
-    // Start is called before the first frame update
-    void Start()
+    // State
+    private bool attacking = false;
+    private bool readyToAttack = true;
+    private int attackCount;
+
+    // Public property for other components to check state
+    public bool IsAttacking => attacking;
+    private int attackSequenceID = 0;
+
+    void Awake()
     {
-        playerCamera = Camera.main;
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (cam == null) cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void Attack()
     {
         if(!readyToAttack || attacking) return;
 
         readyToAttack = false;
         attacking = true;
+        
+        // If current ID is 0, next is 1. If current ID is 1, next is 0 (toggling).
+        int nextAttackID = 1 - attackSequenceID;
+        // playerState = PlayerState.Attacking; // Handled by PlayerController via state/event
+        EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, attackSequenceID));
+        attackSequenceID = nextAttackID;
+
+        // Start animation/swing cycle
+        // PlayerAnimation.ChangeAnimationState will be called by PlayerController
+        // based on the 'attacking' state flag
 
         Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRaycast), attackDelay);
+        Invoke(nameof(AttackRaycast), attackDelay); // Raycast after a slight delay (swing peak)
 
-        /*audioSource.pitch = Random.Range(0.9f, 1.1f);
-        audioSource.PlayOneShot(swordSwing);#1#
+        // SFX
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(swordSwing);
 
-        if(attackCount == 0)
-        {
-            ChangeAnimationState(ATTACK1);
-            attackCount++;
-        }
-        else
-        {
-            ChangeAnimationState(ATTACK2);
-            attackCount = 0;
-        }
+        // Attack animation cycle logic
+        attackCount = (attackCount == 0) ? 1 : 0;
     }
+
     void ResetAttack()
     {
+        // playerState = PlayerState.IDLE; // Handled by PlayerController
         attacking = false;
+        EventBus<OnAttack>.Trigger(new OnAttack(AttackType.NONE));//todo replace this with attackStart/end event
         readyToAttack = true;
     }
 
     void AttackRaycast()
     {
-        //todo
-        //raycast is not the best way to deal with hits- change to on collision isntead
-        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        // IMPORTANT: The original note suggests changing to OnCollision. 
+        // For simple swings, a Raycast/SphereCast is often easier than collision on a fast weapon.
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         { 
             HitTarget(hit.point);
 
@@ -76,11 +85,10 @@ public class PlayerAttack : MonoBehaviour
 
     void HitTarget(Vector3 pos)
     {
-        /*audioSource.pitch = 1;
-        audioSource.PlayOneShot(hitSound);#1#
+        audioSource.pitch = 1;
+        audioSource.PlayOneShot(hitSound);
 
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
     }
 }
-*/

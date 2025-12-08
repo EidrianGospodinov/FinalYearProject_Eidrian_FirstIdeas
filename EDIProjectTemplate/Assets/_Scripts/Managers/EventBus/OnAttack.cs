@@ -1,12 +1,12 @@
 public class OnAttack : IEvent
 {
-    public OnAttack(bool isAttacking, AttackType attackType = AttackType.NONE)
+    public OnAttack(AttackType attackType, int sequenceID = -1)
     {
         this.AttackType = attackType;
-        this.IsAttacking = isAttacking;
+        SequenceID = sequenceID;
     }
-    public AttackType AttackType;
-    public bool IsAttacking;
+    public readonly AttackType AttackType;
+    public int SequenceID { get; set; }
 }
 
 public enum AttackType

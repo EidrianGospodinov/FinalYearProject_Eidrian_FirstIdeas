@@ -57,7 +57,7 @@ public class OnHit : MonoBehaviour
                 _isAttacking = false;
                 break;
             case AttackType.Sword:
-                _isAttacking = evt.IsAttacking;
+                _isAttacking = true;
                 break;
         }
         
