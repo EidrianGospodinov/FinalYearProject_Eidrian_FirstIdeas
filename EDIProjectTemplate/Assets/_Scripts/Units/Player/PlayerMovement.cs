@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private Vector2 currentMovementInput;
 
-    // Public property for other components to check state
+   
     public bool IsMoving => controller.velocity.magnitude > 0.1f;
     
     void Awake()
@@ -33,15 +33,16 @@ public class PlayerMovement : MonoBehaviour
     { 
         isGrounded = controller.isGrounded;
 
-        // --- Movement ---
+        //movement
         Vector3 moveDirection = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
         controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
         
-        // --- Gravity ---
         _PlayerVelocity.y += gravity * Time.deltaTime;
         
         if(isGrounded && _PlayerVelocity.y < 0)
+        {
             _PlayerVelocity.y = -2f;
+        }
         
         controller.Move(_PlayerVelocity * Time.deltaTime);
     }
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         if (isGrounded)
+        {
             _PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
+        }
     }
 }

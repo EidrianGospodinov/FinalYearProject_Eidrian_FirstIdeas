@@ -19,17 +19,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        // 1. Get references to the components on this GameObject
         playerMovement = GetComponent<PlayerMovement>();
         playerCameraLook = GetComponent<PlayerCameraLook>();
         playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
         
-        // 2. Setup Input System
         playerInput = new PlayerInput();
         input = playerInput.Main;
 
-        // 3. Setup Input Bindings (The Coordinator's Job)
         AssignInputs();
     }
 
@@ -41,7 +38,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // Example: EventBus testing (can be moved to a dedicated Debug/Event component later)
         if (Input.GetKeyDown(KeyCode.Alpha1))
         { EventBus<TestEvent>.Trigger(new TestEvent()); }
         

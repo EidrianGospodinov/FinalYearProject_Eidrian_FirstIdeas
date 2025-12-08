@@ -24,7 +24,6 @@ public class PlayerAttack : MonoBehaviour
     private bool readyToAttack = true;
     private int attackCount;
 
-    // Public property for other components to check state
     public bool IsAttacking => attacking;
     private int attackSequenceID = 0;
 
@@ -43,13 +42,11 @@ public class PlayerAttack : MonoBehaviour
         
         // If current ID is 0, next is 1. If current ID is 1, next is 0 (toggling).
         int nextAttackID = 1 - attackSequenceID;
-        // playerState = PlayerState.Attacking; // Handled by PlayerController via state/event
+
+        // trigger attack anim based on sequence id
         EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, attackSequenceID));
         attackSequenceID = nextAttackID;
-
-        // Start animation/swing cycle
-        // PlayerAnimation.ChangeAnimationState will be called by PlayerController
-        // based on the 'attacking' state flag
+        
 
         Invoke(nameof(ResetAttack), attackSpeed);
         Invoke(nameof(AttackRaycast), attackDelay); // Raycast after a slight delay (swing peak)
@@ -64,7 +61,6 @@ public class PlayerAttack : MonoBehaviour
 
     void ResetAttack()
     {
-        // playerState = PlayerState.IDLE; // Handled by PlayerController
         attacking = false;
         EventBus<OnAttack>.Trigger(new OnAttack(AttackType.NONE));//todo replace this with attackStart/end event
         readyToAttack = true;
@@ -72,14 +68,16 @@ public class PlayerAttack : MonoBehaviour
 
     void AttackRaycast()
     {
-        // IMPORTANT: The original note suggests changing to OnCollision. 
+       
         // For simple swings, a Raycast/SphereCast is often easier than collision on a fast weapon.
         if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
         { 
             HitTarget(hit.point);
 
-            if(hit.transform.TryGetComponent<Actor>(out Actor T))
-            { T.TakeDamage(attackDamage); }
+            if (hit.transform.TryGetComponent<Actor>(out Actor T))
+            {
+                T.TakeDamage(attackDamage);
+            }
         } 
     }
 

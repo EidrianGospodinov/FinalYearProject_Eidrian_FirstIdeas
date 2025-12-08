@@ -13,7 +13,6 @@ namespace _Scripts.Units.Player
     
         void Awake()
         {
-            // Ensures we target the primary camera
             if (cam == null) cam = Camera.main;
 
             // Initial setup for first-person control
