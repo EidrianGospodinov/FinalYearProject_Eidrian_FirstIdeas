@@ -27,11 +27,9 @@ public class OnHit : MonoBehaviour
 
     private void OnEnable()
     {
-        OnAttack = new EventBinding<OnAttack>(OnAttackEvent);
-        EventBus<OnAttack>.Register(OnAttack);
+        OnAttack = EventBus<OnAttack>.Register(OnAttackEvent);
 
-        playerEventBinding = new EventBinding<PlayerEvent>(HandlePlayerEvent);
-        EventBus<PlayerEvent>.Register(playerEventBinding);
+        playerEventBinding = EventBus<PlayerEvent>.Register(HandlePlayerEvent);
 
 
     }

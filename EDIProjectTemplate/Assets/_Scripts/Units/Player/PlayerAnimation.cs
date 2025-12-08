@@ -1,3 +1,5 @@
+using Unity.VisualScripting;
+
 namespace _Scripts.Units.Player
 {
     using UnityEngine;
@@ -22,8 +24,7 @@ namespace _Scripts.Units.Player
         }
         void OnEnable()
         {
-            OnAttack = new EventBinding<OnAttack>(OnAttackEvent);
-            EventBus<OnAttack>.Register(OnAttack);
+            OnAttack = EventBus<OnAttack>.Register(OnAttackEvent);
         }
 
         private void OnAttackEvent(OnAttack evt)

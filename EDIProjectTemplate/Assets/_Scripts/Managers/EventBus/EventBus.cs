@@ -23,6 +23,12 @@ public static class EventBus<T> where T : IEvent
     /// </summary>
     /// <param name="binding">The event binding to register.</param>
     public static void Register(IEventBinding<T> binding) => bindings.Add(binding);
+    public static EventBinding<T> Register(Action<T> onEvent)
+    {
+        var binding = new EventBinding<T>(onEvent);
+        bindings.Add(binding);
+        return binding; // Return the binding in case the caller needs to unregister later
+    }
 
     /// <summary>
     /// Unregisters an event binding from the event bus.

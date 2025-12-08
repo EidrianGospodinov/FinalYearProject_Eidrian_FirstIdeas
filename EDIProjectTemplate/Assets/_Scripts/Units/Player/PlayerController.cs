@@ -39,8 +39,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-        { EventBus<TestEvent>.Trigger(new TestEvent()); }
-        
+        {
+            EventBus<TestEvent>.Trigger(new TestEvent());
+        }
+
         // Pass input values to the relevant components
         playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
         playerCameraLook.SetLookInput(input.Look.ReadValue<Vector2>());
