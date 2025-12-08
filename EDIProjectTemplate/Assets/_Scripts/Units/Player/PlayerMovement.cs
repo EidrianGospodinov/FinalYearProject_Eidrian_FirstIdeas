@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 currentMovementInput;
 
    
-    public bool IsMoving => controller.velocity.magnitude > 0.1f;
+    public bool IsMoving => currentMovementInput.magnitude > 0.1f;
     
     void Awake()
     {
