@@ -1,3 +1,4 @@
+using _Scripts.StateMachine.PlayerActionStateMachine;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -44,12 +45,12 @@ public class PlayerAttack : MonoBehaviour
         int nextAttackID = 1 - attackSequenceID;
 
         // trigger attack anim based on sequence id
-        EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, attackSequenceID));
+        EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.BasicAttack));
         attackSequenceID = nextAttackID;
         
 
         Invoke(nameof(ResetAttack), attackSpeed);
-        Invoke(nameof(AttackRaycast), attackDelay); // Raycast after a slight delay (swing peak)
+        //Invoke(nameof(AttackRaycast), attackDelay); // Raycast after a slight delay (swing peak)
 
         // SFX
         audioSource.pitch = Random.Range(0.9f, 1.1f);

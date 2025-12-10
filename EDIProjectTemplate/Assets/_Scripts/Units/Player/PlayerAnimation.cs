@@ -1,3 +1,4 @@
+using _Scripts.StateMachine.PlayerActionStateMachine;
 using Unity.VisualScripting;
 
 namespace _Scripts.Units.Player
@@ -29,8 +30,7 @@ namespace _Scripts.Units.Player
 
         private void OnAttackEvent(OnAttack evt)
         {
-            if (evt.SequenceID == -1) return;
-            string animState = (evt.SequenceID == 1) ? ATTACK2 : ATTACK1;   
+            string animState = (evt.ComboStateId == ComboStateId.BasicAttack) ? ATTACK1 : IDLE;   
             ChangeAnimationState(animState);
         }
 

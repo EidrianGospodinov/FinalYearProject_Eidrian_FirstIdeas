@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ed24552cf0d04684295be1f2c8308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
 --- !u!82 &125528977
 AudioSource:
   m_ObjectHideFlags: 0
@@ -306,7 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1208bc4ece0647a0b01dfb4fb5270539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 125528982}
 --- !u!114 &125528979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1683,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ed24552cf0d04684295be1f2c8308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackData: {fileID: 0}
 --- !u!1 &1037833777462852651
 GameObject:
   m_ObjectHideFlags: 0
@@ -3768,6 +3769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sword_Hit_Decal
       objectReference: {fileID: 0}
+    - target: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5962404333086054068, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3806,6 +3811,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5962404333086054068, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020867754221303081, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

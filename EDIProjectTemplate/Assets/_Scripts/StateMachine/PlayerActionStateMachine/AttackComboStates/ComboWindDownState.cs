@@ -13,6 +13,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public void Enter(PlayerController agent)
         {
+            agent.IsAttacking = false;
             windDownTimer = 0.5f;
         }
 
@@ -27,7 +28,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public void Exit(PlayerController agent)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
