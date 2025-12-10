@@ -1,4 +1,8 @@
+using System;
+using _Scripts.StateMachine;
+using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -17,8 +21,27 @@ public class PlayerController : MonoBehaviour
     // Injected Dependency (PlayerState)
     [Inject] private PlayerState playerState;
 
+    private StateMachine<PlayerController, ActionStateId> actionStateMachine;
+
+    public StateMachine<PlayerController, ActionStateId> ActionStateMachine
+    {
+        get
+        {
+            if (actionStateMachine != null)
+            {
+                return actionStateMachine;
+            }
+            throw new InvalidOperationException($"State machine is null");
+        }
+    }
+
     void Awake()
     {
+        actionStateMachine = new StateMachine<PlayerController, ActionStateId>(this);
+        actionStateMachine.RegisterState(new AttackingState());
+        
+        
+        
         playerMovement = GetComponent<PlayerMovement>();
         playerCameraLook = GetComponent<PlayerCameraLook>();
         playerCombat = GetComponent<PlayerAttack>();
@@ -33,11 +56,13 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         // Set initial state
+        actionStateMachine.Initialize(ActionStateId.Attacking);
         playerState = PlayerState.IDLE;
     }
 
     void Update()
     {
+        actionStateMachine.Update();
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             EventBus<TestEvent>.Trigger(new TestEvent());
