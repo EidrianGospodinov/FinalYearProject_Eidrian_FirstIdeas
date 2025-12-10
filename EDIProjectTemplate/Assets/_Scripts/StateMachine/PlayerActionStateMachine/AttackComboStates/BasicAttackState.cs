@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 {
     public class BasicAttackState : IState<PlayerController,ComboStateId>
@@ -9,17 +11,17 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public void Enter(PlayerController agent)
         {
-            throw new System.NotImplementedException();
+            Debug.Log("basic attack enter");
         }
 
         public void Update(PlayerController agent)
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void Exit(PlayerController agent)
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }
