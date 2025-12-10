@@ -30,7 +30,17 @@ namespace _Scripts.Units.Player
 
         private void OnAttackEvent(OnAttack evt)
         {
-            string animState = (evt.ComboStateId == ComboStateId.BasicAttack) ? ATTACK1 : IDLE;   
+            var comboId = evt.ComboStateId;
+            string animState = IDLE;
+            switch (comboId)
+            {
+                case ComboStateId.BasicAttack:
+                    animState = ATTACK1;
+                    break;
+                case ComboStateId.SecondaryBasicAttack:
+                    animState = ATTACK2;
+                    break;
+            }
             ChangeAnimationState(animState);
         }
 

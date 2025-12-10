@@ -9,6 +9,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
     public class AttackingState :  IState<PlayerController, ActionStateId>
     {
         private StateMachine<PlayerController, ComboStateId> comboStateMachine;
+        public StateMachine<PlayerController, ComboStateId> GetComboStateMachine => comboStateMachine;
 
         // State
         private int attackCount;
@@ -28,6 +29,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             
             comboStateMachine.RegisterState(new BasicAttackState());
             comboStateMachine.RegisterState(new ComboWindDownState());
+            comboStateMachine.RegisterState(new SecondBasicAttack());
             
             comboStateMachine.Initialize(ComboStateId.BasicAttack);
             Attack(agent);
@@ -39,11 +41,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             {
                 ComboWindowTimer -= Time.deltaTime;
             }
-            else
-            {
-                comboStateMachine.ChangeState(ComboStateId.WindDown);
-            }
+
             comboStateMachine.Update();
+            
             if (comboStateMachine.CurrentStateId == ComboStateId.WindDown)
             {
                 var windDownState = comboStateMachine.GetState(ComboStateId.WindDown);
@@ -72,11 +72,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             
 
             // SFX
-            agent.AudioSource.pitch = Random.Range(0.9f, 1.1f);
-            agent.AudioSource.PlayOneShot(attackData.swordSwing);
+            /*agent.AudioSource.pitch = Random.Range(0.9f, 1.1f);
+            agent.AudioSource.PlayOneShot(attackData.swordSwing);*/
 
-            // Attack animation cycle logic
-            attackCount = (attackCount == 0) ? 1 : 0;
         }
         public void ResetComboTimer(float duration)
         {

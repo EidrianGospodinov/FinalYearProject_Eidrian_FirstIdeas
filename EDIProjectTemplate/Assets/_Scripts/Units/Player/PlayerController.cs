@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public Camera Camera;
     public PlayerAnimation playerAnimation;
     public bool IsAttacking;
+    public Animator Animator;
     
     // References to the sub-components
     private PlayerMovement playerMovement;
@@ -67,6 +68,8 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.Initialize(ActionStateId.Ready);
         playerState = PlayerState.IDLE;
         AudioSource = GetComponent<AudioSource>();
+        Animator = GetComponent<Animator>();
+        
         
     }
 

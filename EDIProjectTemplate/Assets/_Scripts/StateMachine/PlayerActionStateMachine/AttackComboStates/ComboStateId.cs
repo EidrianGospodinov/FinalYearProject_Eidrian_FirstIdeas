@@ -2,7 +2,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 {
     public enum ComboStateId
     {
+        WindDown,
         BasicAttack,
-        WindDown
+        SecondaryBasicAttack
     }
 }

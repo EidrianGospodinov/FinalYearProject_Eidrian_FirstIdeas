@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 {
-    public class BasicAttackState : BaseCombatAttackState
+    public class SecondBasicAttack : BaseCombatAttackState
     {
         protected override bool TryTransitionToNextState(PlayerController agent)
         {
             if (agent.HasLeftClickInput && GetParentState(agent).ComboWindowTimer <= 0)
             {
                 agent.HasLeftClickInput = false; 
-                GetComboSM(agent).ChangeState(ComboStateId.SecondaryBasicAttack); 
+                //GetComboSM.ChangeState(ComboStateId.); 
                 return true; // Success! We transitioned.
             }
 
@@ -19,29 +19,23 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public override ComboStateId GetId()
         {
-            return ComboStateId.BasicAttack;
+            return ComboStateId.SecondaryBasicAttack;
         }
 
         public override void Enter(PlayerController agent)
         {
-            Debug.Log("basic attack enter");
+            Debug.Log("secondary attack enter");
             AttackData data = agent.AttackData;
-            var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.BasicAttack));
+            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.SecondaryBasicAttack));
             
+            var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
             parentState.ResetComboTimer(data.attackDelay);
         }
+
         
 
         public override void Exit(PlayerController agent)
         {
-            
-        }
-        
-        private AttackingState GetParentState(PlayerController agent)
-        {
-            // We retrieve the AttackingState instance from the top-level machine
-            return (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
         }
     }
 }

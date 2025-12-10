@@ -13,6 +13,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public void Enter(PlayerController agent)
         {
+            agent.HasLeftClickInput = false;
+            agent.HasRightClickInput = false;
             agent.IsAttacking = false;
             windDownTimer = 0.5f;
         }

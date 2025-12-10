@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
   attackDistance: 3
-  attackDelay: 0.4
+  attackDelay: 0.5
   attackSpeed: 1
   attackDamage: 1
   attackLayer:
