@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput.MainActions input;
     public bool HasLeftClickInput { get; set; } 
     public bool HasRightClickInput { get; set; }
-    public bool HasDodgeInput { get; set; }
+    public bool HasDashInput { get; set; }
 
     // Injected Dependency (PlayerState)
     [Inject] private PlayerState playerState;
@@ -146,7 +146,13 @@ public class PlayerController : MonoBehaviour
         input.Jump.performed += ctx => playerMovement.Jump();
         input.Attack.started += ctx => HasLeftClickInput = true;
         input.SecondaryAttack.started += ctx => HasRightClickInput = true;
-        input.Dodge.started += ctx => HasDodgeInput = true;
+        input.Dash.started += ctx =>
+        {
+            if (!IsAttacking) //prevent dodge happening right after an attack even with the button pressed during that attack
+            {
+                HasDashInput = true;
+            }
+        };
     }
 
     void OnEnable() 

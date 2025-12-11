@@ -57,9 +57,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         }
         private bool HasDodgeInput(PlayerController agent)
         {
-            if (agent.HasDodgeInput)
+            if (agent.HasDashInput)
             {
-                agent.HasDodgeInput = false;
+                agent.HasDashInput = false;
                 agent.ActionStateMachine.ChangeState(ActionStateId.Dodging);
                 return true;
             }

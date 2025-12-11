@@ -282,7 +282,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Main_Look;
         public InputAction @Attack => m_Wrapper.m_Main_Attack;
         public InputAction @SecondaryAttack => m_Wrapper.m_Main_SecondaryAttack;
-        public InputAction @Dodge => m_Wrapper.m_Main_Dodge;
+        public InputAction Dash => m_Wrapper.m_Main_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,9 +307,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryAttack.started += instance.OnSecondaryAttack;
             @SecondaryAttack.performed += instance.OnSecondaryAttack;
             @SecondaryAttack.canceled += instance.OnSecondaryAttack;
-            @Dodge.started += instance.OnDodge;
-            @Dodge.performed += instance.OnDodge;
-            @Dodge.canceled += instance.OnDodge;
+            Dash.started += instance.OnDash;
+            Dash.performed += instance.OnDash;
+            Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -329,9 +329,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryAttack.started -= instance.OnSecondaryAttack;
             @SecondaryAttack.performed -= instance.OnSecondaryAttack;
             @SecondaryAttack.canceled -= instance.OnSecondaryAttack;
-            @Dodge.started -= instance.OnDodge;
-            @Dodge.performed -= instance.OnDodge;
-            @Dodge.canceled -= instance.OnDodge;
+            Dash.started -= instance.OnDash;
+            Dash.performed -= instance.OnDash;
+            Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -356,6 +356,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
-        void OnDodge(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }
