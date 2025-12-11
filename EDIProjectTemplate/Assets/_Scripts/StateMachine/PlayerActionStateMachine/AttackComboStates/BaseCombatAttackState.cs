@@ -18,7 +18,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public virtual void Enter(PlayerController agent)
         {
-            
+            Debug.Log("set is attacking to true");
+            agent.IsAttacking = true;
         }
 
         public virtual void Update(PlayerController agent)
@@ -36,6 +37,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public virtual void Exit(PlayerController agent)
         {
+            Debug.Log("set is attacking to false");
+            agent.IsAttacking = true;
         }
     }
 }

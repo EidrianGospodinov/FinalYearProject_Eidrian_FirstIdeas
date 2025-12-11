@@ -16,6 +16,25 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Update(PlayerController agent)
         {
+            if (HasAttackingInput(agent))
+            {
+                return;
+            }
+
+            if (HasDodgeInput(agent))
+            {
+                return;
+            }
+        }
+        
+
+        public void Exit(PlayerController agent)
+        {
+            
+        }
+
+        private bool HasAttackingInput(PlayerController agent)
+        {
             if (agent.HasLeftClickInput)
             {
                 // Consume the input FIRST
@@ -23,7 +42,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         
                 // Set context and transition
                 agent.ActionStateMachine.ChangeState(ActionStateId.Attacking);
-                return;
+                return true;
             }
             if (agent.HasRightClickInput)
             {
@@ -31,13 +50,21 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
                 agent.HasRightClickInput = false; 
         
                 //do logic right click attack                
-                return;
+                return true;
             }
-        }
 
-        public void Exit(PlayerController agent)
+            return false;
+        }
+        private bool HasDodgeInput(PlayerController agent)
         {
-            
+            if (agent.HasDodgeInput)
+            {
+                agent.HasDodgeInput = false;
+                agent.ActionStateMachine.ChangeState(ActionStateId.Dodging);
+                return true;
+            }
+
+            return false;
         }
     }
 }

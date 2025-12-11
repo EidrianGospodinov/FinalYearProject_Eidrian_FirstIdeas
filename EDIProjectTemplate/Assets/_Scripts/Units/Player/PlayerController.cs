@@ -4,6 +4,7 @@ using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class PlayerController : MonoBehaviour
@@ -19,11 +20,21 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerCameraLook playerCameraLook;
     private PlayerAttack playerCombat;
+    
+    
+    //dodge 
+    [FormerlySerializedAs("characterController")] public CharacterController CharacterController;
+    [SerializeField] private float dodgeSpeed = 15f; 
+    private Vector3 dodgeVelocity;
+
+
+    public Vector3 CurrentMoveDirection => playerMovement.GetWorldMoveDirection();
     // Input System
     private PlayerInput playerInput;
     private PlayerInput.MainActions input;
     public bool HasLeftClickInput { get; set; } 
-    public bool HasRightClickInput { get; set; } 
+    public bool HasRightClickInput { get; set; }
+    public bool HasDodgeInput { get; set; }
 
     // Injected Dependency (PlayerState)
     [Inject] private PlayerState playerState;
@@ -47,6 +58,7 @@ public class PlayerController : MonoBehaviour
         actionStateMachine = new StateMachine<PlayerController, ActionStateId>(this);
         actionStateMachine.RegisterState(new AttackingState());
         actionStateMachine.RegisterState(new ReadyState());
+        actionStateMachine.RegisterState(new DodgingState());
         
 
 
@@ -55,7 +67,7 @@ public class PlayerController : MonoBehaviour
         playerCameraLook = GetComponent<PlayerCameraLook>();
         playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
-        
+        CharacterController = GetComponent<CharacterController>();
         playerInput = new PlayerInput();
         input = playerInput.Main;
 
@@ -91,6 +103,31 @@ public class PlayerController : MonoBehaviour
         playerAnimation.SetAnimations(isMoving, IsAttacking);
     }
 
+    public void PlayAnimation(string animationName)
+    {
+        playerAnimation.ChangeAnimationState(animationName);
+    }
+    public void PerformDodgeMovement(float duration)
+    {
+        Vector3 dodgeDirection;
+        
+        if (CurrentMoveDirection.sqrMagnitude > 0.01f)
+        {
+            dodgeDirection = CurrentMoveDirection.normalized;
+        }
+        else
+        {
+            dodgeDirection = transform.forward;
+        }
+
+        
+        dodgeVelocity = dodgeDirection * dodgeSpeed;
+        
+        
+        
+    }
+    public Vector3 DodgeVelocity => dodgeVelocity;
+
     void FixedUpdate() 
     { 
         playerMovement.HandlePhysics();
@@ -109,6 +146,7 @@ public class PlayerController : MonoBehaviour
         input.Jump.performed += ctx => playerMovement.Jump();
         input.Attack.started += ctx => HasLeftClickInput = true;
         input.SecondaryAttack.started += ctx => HasRightClickInput = true;
+        input.Dodge.started += ctx => HasDodgeInput = true;
     }
 
     void OnEnable() 

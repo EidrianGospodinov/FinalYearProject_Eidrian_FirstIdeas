@@ -24,6 +24,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public override void Enter(PlayerController agent)
         {
+            base.Enter(agent);
             Debug.Log("basic attack enter");
             AttackData data = agent.AttackData;
             var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
@@ -35,7 +36,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public override void Exit(PlayerController agent)
         {
-            
+            base.Exit(agent);
         }
         
         private AttackingState GetParentState(PlayerController agent)

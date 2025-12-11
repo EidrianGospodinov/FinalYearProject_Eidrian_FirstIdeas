@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _PlayerVelocity;
     private bool isGrounded;
     private Vector2 currentMovementInput;
+    
+    private Vector3 currentWorldMoveDirection;
 
    
     public bool IsMoving => currentMovementInput.magnitude > 0.1f;
@@ -27,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
     {
         currentMovementInput = input;
     }
+    public Vector3 GetWorldMoveDirection()
+    {
+        // Return the normalized direction vector.
+        return currentWorldMoveDirection.normalized;
+    }
 
     // Called by PlayerController in FixedUpdate()
     public void HandlePhysics() 
@@ -35,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
         //movement
         Vector3 moveDirection = new Vector3(currentMovementInput.x, 0, currentMovementInput.y);
-        controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+        
+        currentWorldMoveDirection = transform.TransformDirection(moveDirection);
+        
+        controller.Move(currentWorldMoveDirection * moveSpeed * Time.deltaTime);
         
         _PlayerVelocity.y += gravity * Time.deltaTime;
         

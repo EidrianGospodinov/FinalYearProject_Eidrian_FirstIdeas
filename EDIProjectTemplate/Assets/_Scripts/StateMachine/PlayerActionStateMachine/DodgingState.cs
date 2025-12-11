@@ -1,0 +1,36 @@
+using UnityEngine;
+
+namespace _Scripts.StateMachine.PlayerActionStateMachine
+{
+    public class DodgingState : IState<PlayerController, ActionStateId>
+    {
+        private float dodgeEndTime;
+        private const float DODGE_DURATION = 0.5f;
+        public ActionStateId GetId()
+        {
+            return ActionStateId.Dodging;
+        }
+
+        public void Enter(PlayerController agent)
+        {
+            Debug.Log("Entered dodging state");
+            dodgeEndTime = Time.time + DODGE_DURATION;
+            agent.PerformDodgeMovement(DODGE_DURATION);
+            //agent.PlayAnimation("Dodge");
+        }
+
+        public void Update(PlayerController agent)
+        {
+            agent.CharacterController.Move(agent.DodgeVelocity * Time.deltaTime);
+            if (Time.time >= dodgeEndTime)
+            {
+                agent.ActionStateMachine.ChangeState(ActionStateId.Ready);
+            }
+        }
+
+        public void Exit(PlayerController agent)
+        {
+            
+        }
+    }
+}
