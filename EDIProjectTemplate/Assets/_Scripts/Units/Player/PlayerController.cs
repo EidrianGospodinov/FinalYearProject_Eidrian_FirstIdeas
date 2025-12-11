@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
         input.Jump.performed += ctx => playerMovement.Jump();
         input.Attack.started += ctx => HasLeftClickInput = true;
         input.SecondaryAttack.started += ctx => HasRightClickInput = true;
-        input.Dodge.started += ctx =>
+        input.Dash.started += ctx =>
         {
             if (!IsAttacking) //prevent dodge happening right after an attack even with the button pressed during that attack
             {
