@@ -24,9 +24,13 @@ public class PlayerController : MonoBehaviour
     
     //dodge 
     [FormerlySerializedAs("characterController")] public CharacterController CharacterController;
-    [SerializeField] private float dodgeSpeed = 15f; 
+    [Header("Dodge Settings")]
+    [SerializeField] private float dodgeCooldownDuration = 1f;
+    [SerializeField] private float dodgeSpeed = 7f; 
     private Vector3 dodgeVelocity;
-
+    
+    public float DodgeCooldownEndTime { get; private set; } = 0f;
+    public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
 
     public Vector3 CurrentMoveDirection => playerMovement.GetWorldMoveDirection();
     // Input System
@@ -107,7 +111,11 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimation.ChangeAnimationState(animationName);
     }
-    public void PerformDodgeMovement(float duration)
+    public void SetDodgeCooldown()
+    {
+        DodgeCooldownEndTime = Time.time + dodgeCooldownDuration;
+    }
+    public void PerformDashMovement(float duration)
     {
         Vector3 dodgeDirection;
         
@@ -148,10 +156,13 @@ public class PlayerController : MonoBehaviour
         input.SecondaryAttack.started += ctx => HasRightClickInput = true;
         input.Dash.started += ctx =>
         {
-            if (!IsAttacking) //prevent dodge happening right after an attack even with the button pressed during that attack
+            if (IsAttacking || IsDodgeOnCooldown) 
+                //prevent dodge happening right after an attack even with the button pressed during that attack
             {
-                HasDashInput = true;
+                return;
             }
+
+            HasDashInput = true;
         };
     }
 

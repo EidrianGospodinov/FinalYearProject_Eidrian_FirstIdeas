@@ -15,7 +15,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         {
             Debug.Log("Entered dodging state");
             dodgeEndTime = Time.time + DODGE_DURATION;
-            agent.PerformDodgeMovement(DODGE_DURATION);
+            agent.SetDodgeCooldown();
+            agent.PerformDashMovement(DODGE_DURATION);
             //agent.PlayAnimation("Dodge");
         }
 
