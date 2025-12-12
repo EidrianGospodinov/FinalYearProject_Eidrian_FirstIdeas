@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "playerInput",
     "maps": [
         {
@@ -51,10 +52,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Dodge",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "cfc7ea22-53dc-4b1e-96b2-1faffef69d88",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -167,7 +168,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dodge",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

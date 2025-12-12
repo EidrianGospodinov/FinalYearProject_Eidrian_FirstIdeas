@@ -138,10 +138,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Dodge"",
+                    ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""cfc7ea22-53dc-4b1e-96b2-1faffef69d88"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -254,7 +254,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Dodge"",
+                    ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -270,7 +270,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Main_Look = m_Main.FindAction("Look", throwIfNotFound: true);
         m_Main_Attack = m_Main.FindAction("Attack", throwIfNotFound: true);
         m_Main_SecondaryAttack = m_Main.FindAction("SecondaryAttack", throwIfNotFound: true);
-        m_Main_Dodge = m_Main.FindAction("Dodge", throwIfNotFound: true);
+        m_Main_Dash = m_Main.FindAction("Dash", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -356,7 +356,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Look;
     private readonly InputAction m_Main_Attack;
     private readonly InputAction m_Main_SecondaryAttack;
-    private readonly InputAction m_Main_Dodge;
+    private readonly InputAction m_Main_Dash;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -389,9 +389,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @SecondaryAttack => m_Wrapper.m_Main_SecondaryAttack;
         /// <summary>
-        /// Provides access to the underlying input action "Main/Dodge".
+        /// Provides access to the underlying input action "Main/Dash".
         /// </summary>
-        public InputAction Dash => m_Wrapper.m_Main_Dodge;
+        public InputAction @Dash => m_Wrapper.m_Main_Dash;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -433,9 +433,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryAttack.started += instance.OnSecondaryAttack;
             @SecondaryAttack.performed += instance.OnSecondaryAttack;
             @SecondaryAttack.canceled += instance.OnSecondaryAttack;
-            Dash.started += instance.OnDash;
-            Dash.performed += instance.OnDash;
-            Dash.canceled += instance.OnDash;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         /// <summary>
@@ -462,9 +462,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SecondaryAttack.started -= instance.OnSecondaryAttack;
             @SecondaryAttack.performed -= instance.OnSecondaryAttack;
             @SecondaryAttack.canceled -= instance.OnSecondaryAttack;
-            Dash.started -= instance.OnDash;
-            Dash.performed -= instance.OnDash;
-            Dash.canceled -= instance.OnDash;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         /// <summary>
@@ -541,7 +541,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSecondaryAttack(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Dodge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
