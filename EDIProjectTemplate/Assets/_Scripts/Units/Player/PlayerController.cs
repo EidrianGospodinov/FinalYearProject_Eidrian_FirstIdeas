@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         // Pass input values to the relevant components
         playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
-        playerCameraLook.SetLookInput(input.Look.ReadValue<Vector2>());
+        //playerCameraLook.SetLookInput(input.Look.ReadValue<Vector2>());
 
         // Determine animation state based on component data
         bool isMoving = playerMovement.IsMoving;

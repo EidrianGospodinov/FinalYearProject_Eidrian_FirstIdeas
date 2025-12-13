@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         //movement
         Vector3 moveDirection = right * currentMovementInput.x + forward * currentMovementInput.y;
         
-        currentWorldMoveDirection = transform.TransformDirection(moveDirection);
+        currentWorldMoveDirection = moveDirection;
         
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
         if (faceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
