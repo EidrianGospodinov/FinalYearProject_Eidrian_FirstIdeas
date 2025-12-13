@@ -16,7 +16,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Update(PlayerController agent)
         {
-            if (HasAttackingInput(agent))
+            if (agent.IsWeaponEquipped && HasAttackingInput(agent))
             {
                 return;
             }
