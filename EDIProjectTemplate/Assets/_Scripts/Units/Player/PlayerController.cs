@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // References to the sub-components
     private PlayerMovement playerMovement;
     private PlayerCameraLook playerCameraLook;
-    private PlayerAttack playerCombat;
+    //private PlayerAttack playerCombat;
     
     
     //dodge 
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         Camera = Camera.main; 
         playerMovement = GetComponent<PlayerMovement>();
         playerCameraLook = GetComponent<PlayerCameraLook>();
-        playerCombat = GetComponent<PlayerAttack>();
+        //playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
         CharacterController = GetComponent<CharacterController>();
         playerInput = new PlayerInput();
