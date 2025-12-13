@@ -8,6 +8,8 @@ namespace _Scripts.Units.Player
     public class PlayerAnimation : MonoBehaviour
     {
         private Animator animator;
+        private MeshSockets sockets;
+        [SerializeField] private Transform WeaponTransform;
 
         // Animation Constants
         public const string IDLE = "Idle";
@@ -22,6 +24,7 @@ namespace _Scripts.Units.Player
         void Awake()
         {
             animator = GetComponent<Animator>();
+            sockets = GetComponent<MeshSockets>();
         }
         void OnEnable()
         {
@@ -78,6 +81,13 @@ namespace _Scripts.Units.Player
 
             currentAnimationState = newState;
             animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+        }
+
+        public void ActivateWeapon(bool shouldEquip)
+        {
+            WeaponTransform.transform.position = new Vector3();
+            sockets.Attach(WeaponTransform, MeshSockets.SocketId.Spine);
+            animator.SetBool("Equip", shouldEquip);
         }
     }
 }

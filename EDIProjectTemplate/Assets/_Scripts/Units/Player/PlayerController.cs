@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     
     // References to the sub-components
     private PlayerMovement playerMovement;
-    private PlayerCameraLook playerCameraLook;
+    //private PlayerCameraLook playerCameraLook;
     //private PlayerAttack playerCombat;
     
     
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
         Camera = Camera.main; 
         playerMovement = GetComponent<PlayerMovement>();
-        playerCameraLook = GetComponent<PlayerCameraLook>();
+        //playerCameraLook = GetComponent<PlayerCameraLook>();
         //playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
         CharacterController = GetComponent<CharacterController>();
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.Update();
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            playerAnimation.ActivateWeapon(true);
             EventBus<TestEvent>.Trigger(new TestEvent());
         }
 
@@ -143,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     void LateUpdate() 
     { 
-        playerCameraLook.HandleCameraRotation();
+       // playerCameraLook.HandleCameraRotation();
     }
     
     // --- Input Management ---
