@@ -10,11 +10,11 @@ using Zenject;
 public class PlayerController : MonoBehaviour
 {
     public AttackData AttackData;
-    public AudioSource AudioSource;
-    public Camera Camera;
-    public PlayerAnimation playerAnimation;
-    public bool IsAttacking;
-    public Animator Animator;
+    [HideInInspector] public AudioSource AudioSource;
+    [HideInInspector]public Camera Camera;
+    [HideInInspector]public PlayerAnimation playerAnimation;
+    [HideInInspector]public bool IsAttacking;
+    [HideInInspector]public Animator Animator;
     
     // References to the sub-components
     private PlayerMovement playerMovement;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     
     
     //dodge 
-    [FormerlySerializedAs("characterController")] public CharacterController CharacterController;
+    [HideInInspector]public CharacterController CharacterController;
     [Header("Dodge Settings")]
     [SerializeField] private float dodgeCooldownDuration = 1f;
     [SerializeField] private float dodgeSpeed = 7f; 
