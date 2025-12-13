@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     //private PlayerCameraLook playerCameraLook;
     //private PlayerAttack playerCombat;
-    
+    private MeshSockets sockets;
+    [SerializeField] private Transform WeaponTransform;
     
     //dodge 
     [HideInInspector]public CharacterController CharacterController;
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
 
     public Vector3 CurrentMoveDirection => playerMovement.GetWorldMoveDirection();
+    public bool IsWeaponEquipped { get; private set; }
     // Input System
     private PlayerInput playerInput;
     private PlayerInput.MainActions input;
@@ -85,6 +87,7 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.IDLE;
         AudioSource = GetComponent<AudioSource>();
         Animator = GetComponent<Animator>();
+        sockets = GetComponent<MeshSockets>();
         
         
     }
@@ -92,9 +95,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         actionStateMachine.Update();
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            playerAnimation.ActivateWeapon(true);
+            IsWeaponEquipped = !IsWeaponEquipped; 
+            playerAnimation.ActivateWeapon(WeaponTransform, IsWeaponEquipped!);
             EventBus<TestEvent>.Trigger(new TestEvent());
         }
 
@@ -166,7 +170,22 @@ public class PlayerController : MonoBehaviour
             HasDashInput = true;
         };
     }
+    public void OnFirstHalfOfEquipEventFinish(string eventName)
+    {
+        if (eventName == "equipWeapon")
+        {
 
+            WeaponTransform.transform.localPosition = Vector3.zero;
+            if (IsWeaponEquipped)
+            {
+                sockets.Attach(WeaponTransform.transform, MeshSockets.SocketId.RightHand);
+            }
+            else
+            {
+                sockets.Attach(WeaponTransform.transform, MeshSockets.SocketId.Spine);
+            }
+        }
+    }
     void OnEnable() 
     { input.Enable(); }
 

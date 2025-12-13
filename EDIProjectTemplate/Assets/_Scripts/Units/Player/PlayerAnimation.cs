@@ -9,7 +9,6 @@ namespace _Scripts.Units.Player
     {
         private Animator animator;
         private MeshSockets sockets;
-        [SerializeField] private Transform WeaponTransform;
 
         // Animation Constants
         public const string IDLE = "Idle";
@@ -83,11 +82,21 @@ namespace _Scripts.Units.Player
             animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
         }
 
-        public void ActivateWeapon(bool shouldEquip)
+        public void ActivateWeapon(Transform WeaponTransform,bool shouldEquip)
         {
-            WeaponTransform.transform.position = new Vector3();
-            sockets.Attach(WeaponTransform, MeshSockets.SocketId.Spine);
+            WeaponTransform.localPosition = Vector3.zero;
+            if (shouldEquip)
+            {
+                sockets.Attach(WeaponTransform, MeshSockets.SocketId.Spine);
+                
+            }
+            else
+            {
+                sockets.Attach(WeaponTransform, MeshSockets.SocketId.RightHand);
+            }
             animator.SetBool("Equip", shouldEquip);
         }
+
+        
     }
 }
