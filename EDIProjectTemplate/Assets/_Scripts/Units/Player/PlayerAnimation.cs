@@ -17,6 +17,7 @@ namespace _Scripts.Units.Player
         public const string ATTACK1 = "BasicAttack";
         public const string ATTACK2 = "SecondaryAttack"; 
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
+        private const string BaseWeapon_LAYER_NAME = "Base Layer Sword";
 
         private string currentAnimationState;
         
@@ -92,13 +93,18 @@ namespace _Scripts.Units.Player
         public void ActivateWeapon(Transform WeaponTransform,bool shouldEquip)
         {
             WeaponTransform.localPosition = Vector3.zero;
+            
+            //change the synced based layer based on weapon
+            var baseWeaponLayerIndex = animator.GetLayerIndex(BaseWeapon_LAYER_NAME);
             if (shouldEquip)
             {
+                animator.SetLayerWeight(baseWeaponLayerIndex, 1);
                 sockets.Attach(WeaponTransform, MeshSockets.SocketId.Spine);
                 
             }
             else
             {
+                animator.SetLayerWeight(baseWeaponLayerIndex, 0);
                 sockets.Attach(WeaponTransform, MeshSockets.SocketId.RightHand);
             }
             animator.SetBool("isEquip", shouldEquip);
