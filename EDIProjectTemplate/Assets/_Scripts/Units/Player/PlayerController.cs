@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
         // Determine animation state based on component data
         bool isMoving = playerMovement.IsMoving;
+        playerAnimation.SetBoolParam("isJumping", playerMovement.IsJumping);
         
         playerAnimation.SetAnimationIsWalking(isMoving, IsAttacking);
     }

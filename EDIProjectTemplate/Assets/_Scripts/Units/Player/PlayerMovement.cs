@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
    
     public bool IsMoving => currentMovementInput.magnitude > 0.1f;
+    public bool IsJumping => !isGrounded;
     
     void Awake()
     {

@@ -90,6 +90,11 @@ namespace _Scripts.Units.Player
             }
         }
 
+        public void SetBoolParam(string name, bool isDoing)
+        {
+            animator.SetBool(name, isDoing);
+        }
+
         public void ActivateWeapon(Transform WeaponTransform,bool shouldEquip)
         {
             WeaponTransform.localPosition = Vector3.zero;
