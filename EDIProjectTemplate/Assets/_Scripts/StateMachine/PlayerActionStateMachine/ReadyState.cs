@@ -60,7 +60,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             if (agent.HasDashInput)
             {
                 agent.HasDashInput = false;
-                agent.ActionStateMachine.ChangeState(ActionStateId.Dodging);
+                agent.ActionStateMachine.ChangeState(ActionStateId.Dashing);
                 return true;
             }
 

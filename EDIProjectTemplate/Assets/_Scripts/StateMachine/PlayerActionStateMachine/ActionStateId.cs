@@ -4,6 +4,6 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
     {
         Attacking,
         Ready,
-        Dodging
+        Dashing
     }
 }

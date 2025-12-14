@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace _Scripts.StateMachine.PlayerActionStateMachine
 {
-    public class DodgingState : IState<PlayerController, ActionStateId>
+    public class DashingState : IState<PlayerController, ActionStateId>
     {
         private float dodgeEndTime;
         private const float DODGE_DURATION = 0.5f;
         public ActionStateId GetId()
         {
-            return ActionStateId.Dodging;
+            return ActionStateId.Dashing;
         }
 
         public void Enter(PlayerController agent)

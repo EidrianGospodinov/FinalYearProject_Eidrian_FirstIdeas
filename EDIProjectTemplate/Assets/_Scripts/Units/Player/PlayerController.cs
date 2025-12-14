@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         actionStateMachine = new StateMachine<PlayerController, ActionStateId>(this);
         actionStateMachine.RegisterState(new AttackingState());
         actionStateMachine.RegisterState(new ReadyState());
-        actionStateMachine.RegisterState(new DodgingState());
+        actionStateMachine.RegisterState(new DashingState());
         
 
 
