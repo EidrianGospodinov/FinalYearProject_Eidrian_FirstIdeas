@@ -641,11 +641,6 @@ MonoBehaviour:
       z: 1
     m_MaintainPositionOffset: 0
     m_MaintainRotationOffset: 0
---- !u!82 &268273366 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 509970918473837205, guid: 0630ddb66c43ce74b926a6ec5e0b0b3e, type: 3}
-  m_PrefabInstance: {fileID: 8106640031082526474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &400376478
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 6597668333315666456, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 268273366}
+      objectReference: {fileID: 1841736488}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
