@@ -24,6 +24,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public override void Enter(PlayerController agent)
         {
+            base.Enter(agent);
             Debug.Log("secondary attack enter");
             AttackData data = agent.AttackData;
             EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.SecondaryBasicAttack));

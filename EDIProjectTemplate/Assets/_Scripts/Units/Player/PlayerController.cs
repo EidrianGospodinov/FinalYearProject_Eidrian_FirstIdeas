@@ -6,11 +6,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
     public AttackData AttackData;
-    [HideInInspector] public AudioSource AudioSource;
+    [HideInInspector] private AudioSource AudioSource;
     [HideInInspector]public Camera Camera;
     [HideInInspector]public PlayerAnimation playerAnimation;
     [HideInInspector]public bool IsAttacking;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     //private PlayerAttack playerCombat;
     private MeshSockets sockets;
     [SerializeField] private Transform WeaponTransform;
+    [SerializeField] private AudioClip SwordSwing;
     
     //dodge 
     [HideInInspector]public CharacterController CharacterController;
@@ -119,6 +121,12 @@ public class PlayerController : MonoBehaviour
     public void SetDodgeCooldown()
     {
         DodgeCooldownEndTime = Time.time + dodgeCooldownDuration;
+    }
+
+    public void PlayAudioSource(AudioClip audioClip)
+    {
+        AudioSource.pitch = Random.Range(0.9f, 1.1f);
+        AudioSource.PlayOneShot(audioClip);
     }
     public void PerformDashMovement(float duration)
     {

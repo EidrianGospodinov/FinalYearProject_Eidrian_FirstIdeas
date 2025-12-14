@@ -20,6 +20,8 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
         {
             Debug.Log("set is attacking to true");
             agent.IsAttacking = true;
+            agent.PlayAudioSource(agent.AttackData.swordSwing);
+            
         }
 
         public virtual void Update(PlayerController agent)
