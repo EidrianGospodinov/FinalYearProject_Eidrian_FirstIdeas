@@ -22,7 +22,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Update(PlayerController agent)
         {
-            agent.CharacterController.Move(agent.DodgeVelocity * Time.deltaTime);
+            agent.CharacterController.Move(agent.DashVelocity * Time.deltaTime);
             if (Time.time >= dodgeEndTime)
             {
                 agent.ActionStateMachine.ChangeState(ActionStateId.Ready);

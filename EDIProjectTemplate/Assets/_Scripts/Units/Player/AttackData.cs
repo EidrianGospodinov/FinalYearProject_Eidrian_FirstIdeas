@@ -12,9 +12,14 @@ namespace _Scripts.Units.Player
         public int attackDamage = 1;
         public LayerMask attackLayer;
 
+        [Header("Dash")]
+        public float dashCooldownDuration = 1f;
+        public float dashSpeed = 7f;
         [Header("Visual and sound effects")]
         public GameObject hitVfxPrefab;
         public AudioClip swordSwing;
         public AudioClip impactSound;
+        
+        public GameObject WeaponPrefab;
     }
 }

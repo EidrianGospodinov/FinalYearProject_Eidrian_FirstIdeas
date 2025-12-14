@@ -12,25 +12,18 @@ public class PlayerController : MonoBehaviour
 {
     public AttackData AttackData;
     [HideInInspector] private AudioSource AudioSource;
-    [HideInInspector]public Camera Camera;
     [HideInInspector]public PlayerAnimation playerAnimation;
     [HideInInspector]public bool IsAttacking;
-    [HideInInspector]public Animator Animator;
     
     // References to the sub-components
     private PlayerMovement playerMovement;
-    //private PlayerCameraLook playerCameraLook;
-    //private PlayerAttack playerCombat;
+   
     private MeshSockets sockets;
-    [SerializeField] private Transform WeaponTransform;
-    [SerializeField] private AudioClip SwordSwing;
+    private Transform weaponTransform;
     
-    //dodge 
     [HideInInspector]public CharacterController CharacterController;
-    [Header("Dodge Settings")]
-    [SerializeField] private float dodgeCooldownDuration = 1f;
-    [SerializeField] private float dodgeSpeed = 7f; 
-    private Vector3 dodgeVelocity;
+    
+    private Vector3 dashVelocity;
     
     public float DodgeCooldownEndTime { get; private set; } = 0f;
     public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
@@ -70,7 +63,6 @@ public class PlayerController : MonoBehaviour
         
 
 
-        Camera = Camera.main; 
         playerMovement = GetComponent<PlayerMovement>();
         //playerCameraLook = GetComponent<PlayerCameraLook>();
         //playerCombat = GetComponent<PlayerAttack>();
@@ -88,7 +80,6 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.Initialize(ActionStateId.Ready);
         playerState = PlayerState.IDLE;
         AudioSource = GetComponent<AudioSource>();
-        Animator = GetComponent<Animator>();
         sockets = GetComponent<MeshSockets>();
         
         
@@ -99,19 +90,36 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.Update();
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            IsWeaponEquipped = !IsWeaponEquipped; 
-            playerAnimation.ActivateWeapon(WeaponTransform, IsWeaponEquipped!);
+            EquipWeapon();
+
             EventBus<TestEvent>.Trigger(new TestEvent());
         }
 
         // Pass input values to the relevant components
         playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
-        //playerCameraLook.SetLookInput(input.Look.ReadValue<Vector2>());
 
         // Determine animation state based on component data
         bool isMoving = playerMovement.IsMoving;
         
         playerAnimation.SetAnimationIsWalking(isMoving, IsAttacking);
+    }
+
+    public void FirstTimeEquipWeapon()
+    {
+        if (weaponTransform == null)
+        {
+            var weaponInstance = Instantiate(AttackData.WeaponPrefab);
+            weaponTransform = weaponInstance.transform;
+            EquipWeapon();
+        }
+    }
+    public void EquipWeapon()
+    {
+        if (weaponTransform != null)
+        {
+            IsWeaponEquipped = !IsWeaponEquipped;
+            playerAnimation.ActivateWeapon(weaponTransform, IsWeaponEquipped!);
+        }
     }
 
     public void PlayAnimation(string animationName)
@@ -120,7 +128,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SetDodgeCooldown()
     {
-        DodgeCooldownEndTime = Time.time + dodgeCooldownDuration;
+        DodgeCooldownEndTime = Time.time + AttackData.dashCooldownDuration;
     }
 
     public void PlayAudioSource(AudioClip audioClip)
@@ -142,12 +150,12 @@ public class PlayerController : MonoBehaviour
         }
 
         
-        dodgeVelocity = dodgeDirection * dodgeSpeed;
+        dashVelocity = dodgeDirection * AttackData.dashSpeed;
         
         
         
     }
-    public Vector3 DodgeVelocity => dodgeVelocity;
+    public Vector3 DashVelocity => dashVelocity;
 
     void FixedUpdate() 
     { 
@@ -194,15 +202,19 @@ public class PlayerController : MonoBehaviour
     {
         if (eventName == "equipWeapon")
         {
+            if (weaponTransform == null)
+            {
+                return;
+            }
 
-            WeaponTransform.transform.localPosition = Vector3.zero;
+            weaponTransform.transform.localPosition = Vector3.zero;
             if (IsWeaponEquipped)
             {
-                sockets.Attach(WeaponTransform.transform, MeshSockets.SocketId.RightHand);
+                sockets.Attach(weaponTransform.transform, MeshSockets.SocketId.RightHand);
             }
             else
             {
-                sockets.Attach(WeaponTransform.transform, MeshSockets.SocketId.Spine);
+                sockets.Attach(weaponTransform.transform, MeshSockets.SocketId.Spine);
             }
         }
     }
