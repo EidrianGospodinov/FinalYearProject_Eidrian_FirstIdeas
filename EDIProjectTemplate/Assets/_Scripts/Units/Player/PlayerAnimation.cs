@@ -1,3 +1,4 @@
+using System;
 using _Scripts.StateMachine.PlayerActionStateMachine;
 using Unity.VisualScripting;
 
@@ -16,6 +17,8 @@ namespace _Scripts.Units.Player
         public const string COOLDOWN = "Cooldown";
         public const string ATTACK1 = "BasicAttack";
         public const string ATTACK2 = "SecondaryAttack"; 
+        public const string ATTACK3 = "SpecialAttackHighSpin";
+        
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
         private const string BaseWeapon_LAYER_NAME = "Base Layer Sword";
 
@@ -48,6 +51,9 @@ namespace _Scripts.Units.Player
                 case ComboStateId.SecondaryBasicAttack:
                     animState = ATTACK2;
                     break;
+                case ComboStateId.SpecialAttack:
+                    animState = ATTACK3;
+                    break;
             }
 
             if (animState != "")
@@ -59,6 +65,12 @@ namespace _Scripts.Units.Player
         void OnDisable()
         {
             EventBus<OnAttack>.Unregister(OnAttack);
+        }
+
+        public void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.P))
+                ChangeAnimationState("SpecialAttackHighSpin", WEAPON_LAYER_NAME);
         }
 
         // Called by PlayerController in Update()

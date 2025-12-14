@@ -30,6 +30,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             comboStateMachine.RegisterState(new BasicAttackState());
             comboStateMachine.RegisterState(new ComboWindDownState());
             comboStateMachine.RegisterState(new SecondBasicAttack());
+            comboStateMachine.RegisterState(new SpecialAttackComboState());
             
             comboStateMachine.Initialize(ComboStateId.BasicAttack);
             Attack(agent);

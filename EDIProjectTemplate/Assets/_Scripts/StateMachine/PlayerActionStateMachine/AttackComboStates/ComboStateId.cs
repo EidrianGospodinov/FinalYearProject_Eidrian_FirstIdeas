@@ -4,6 +4,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
     {
         WindDown,
         BasicAttack,
-        SecondaryBasicAttack
+        SecondaryBasicAttack,
+        SpecialAttack
     }
 }

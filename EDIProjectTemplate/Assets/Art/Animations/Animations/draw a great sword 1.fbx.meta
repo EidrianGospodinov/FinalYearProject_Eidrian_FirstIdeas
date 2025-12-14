@@ -17,7 +17,8 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event OnFirstHalfOfEquipEventFinish has a time (0.498084)
+      outside the clip's valid range (0.000000..0.466667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -31,7 +32,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: EquipSword0
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
