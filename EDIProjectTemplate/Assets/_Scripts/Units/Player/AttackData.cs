@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Scripts.Units.Player
@@ -6,7 +7,7 @@ namespace _Scripts.Units.Player
     public class AttackData : ScriptableObject
     {
         [Header("Attacking")]
-        public float attackDistance = 3f;
+        //public float attackDistance = 3f;
         public float attackDelay = 0.4f;
         public float thirdAttackDelay = 1.3f;
         public float attackSpeed = 1f;
@@ -22,5 +23,23 @@ namespace _Scripts.Units.Player
         public AudioClip impactSound;
         
         public GameObject WeaponPrefab;
+        public List<AttackComboData> attackComboList;
+    }
+    [CreateAssetMenu(fileName = "NewAttackTypeData", menuName = "Game/Attack Type Data")]
+    public class AttackComboData : ScriptableObject
+    {
+        public string attackName = "Basic Attack";
+        public float attackDelay = 0.4f;
+        public int attackDamage = 1;
+        public string animationName;
+        
+        public AudioClip swordSwing;
+    }
+    [CreateAssetMenu(fileName = "NewAttackTypeData", menuName = "Game/Attack Hero Data")]
+    public class HeroData : ScriptableObject
+    {
+        public string heroName;
+        
+        public GameObject weaponPrefab;
     }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402ef88860f14bdcad4a4507aeb0a292, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
-  attackDistance: 3
   attackDelay: 1
+  thirdAttackDelay: 1.3
   attackSpeed: 1
   attackDamage: 1
   attackLayer:
@@ -25,3 +25,8 @@ MonoBehaviour:
   swordSwing: {fileID: 8300000, guid: 7923190c5e80b4d4d9396acc5d0b48cf, type: 3}
   impactSound: {fileID: 8300000, guid: 11245d3945c564b45a1bafad5ecb70e5, type: 3}
   WeaponPrefab: {fileID: 4977683145203562325, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
+  heroDataList:
+  - {fileID: 0}
+  - {fileID: 0}
+  attackComboList:
+  - {fileID: 11400000, guid: 46533a7319f11224fbb8da75b1afaa53, type: 2}
