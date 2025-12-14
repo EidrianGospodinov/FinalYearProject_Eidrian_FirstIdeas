@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         // Determine animation state based on component data
         bool isMoving = playerMovement.IsMoving;
         
-        playerAnimation.SetAnimations(isMoving, IsAttacking);
+        playerAnimation.SetAnimationIsWalking(isMoving, IsAttacking);
     }
 
     public void PlayAnimation(string animationName)
@@ -157,8 +157,20 @@ public class PlayerController : MonoBehaviour
     {
         // Call the specific component's method when input is performed
         input.Jump.performed += ctx => playerMovement.Jump();
-        input.Attack.started += ctx => HasLeftClickInput = true;
-        input.SecondaryAttack.started += ctx => HasRightClickInput = true;
+        input.Attack.started += ctx =>
+        {
+            if (IsWeaponEquipped)
+            {
+                HasLeftClickInput = true;
+            }
+        };
+        input.SecondaryAttack.started += ctx => 
+        {
+            if (IsWeaponEquipped)
+            {
+                HasRightClickInput = true;
+            }
+        };
         input.Dash.started += ctx =>
         {
             if (IsAttacking || IsDodgeOnCooldown) 

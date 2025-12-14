@@ -13,8 +13,10 @@ namespace _Scripts.Units.Player
         // Animation Constants
         public const string IDLE = "Idle";
         public const string WALK = "Walk";
+        public const string COOLDOWN = "Cooldown";
         public const string ATTACK1 = "BasicAttack";
         public const string ATTACK2 = "SecondaryAttack"; 
+        private const string WEAPON_LAYER_NAME = "Weapon Layer";
 
         private string currentAnimationState;
         
@@ -33,9 +35,12 @@ namespace _Scripts.Units.Player
         private void OnAttackEvent(OnAttack evt)
         {
             var comboId = evt.ComboStateId;
-            string animState = IDLE;
+            string animState = "";
             switch (comboId)
             {
+                case ComboStateId.WindDown:
+                    animState = COOLDOWN;
+                    break;
                 case ComboStateId.BasicAttack:
                     animState = ATTACK1;
                     break;
@@ -43,7 +48,11 @@ namespace _Scripts.Units.Player
                     animState = ATTACK2;
                     break;
             }
-            ChangeAnimationState(animState);
+
+            if (animState != "")
+            {
+                ChangeAnimationState(animState, WEAPON_LAYER_NAME);
+            }
         }
 
         void OnDisable()
@@ -52,7 +61,7 @@ namespace _Scripts.Units.Player
         }
 
         // Called by PlayerController in Update()
-        public void SetAnimations(bool isMoving, bool isAttacking)
+        public void SetAnimationIsWalking(bool isMoving, bool isAttacking)
         {
             // if the player is attacking, don't set any animations
             if (isAttacking)
@@ -61,17 +70,12 @@ namespace _Scripts.Units.Player
             }
 
             // Movement state
-            if (isMoving)
-            {
-                ChangeAnimationState(WALK);
-            }
-            else
-            {
-                ChangeAnimationState(IDLE);
-            }
+            animator.SetBool("isWalking", isMoving);
+                //ChangeAnimationState(WALK);
+            
         }
 
-        public void ChangeAnimationState(string newState) 
+        public void ChangeAnimationState(string newState, string layerName = "Base Layer") 
         {
             if (currentAnimationState == newState)
             {
@@ -79,7 +83,10 @@ namespace _Scripts.Units.Player
             }
 
             currentAnimationState = newState;
-            animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+            if (currentAnimationState != COOLDOWN)
+            {
+                animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
+            }
         }
 
         public void ActivateWeapon(Transform WeaponTransform,bool shouldEquip)
@@ -94,7 +101,7 @@ namespace _Scripts.Units.Player
             {
                 sockets.Attach(WeaponTransform, MeshSockets.SocketId.RightHand);
             }
-            animator.SetBool("Equip", shouldEquip);
+            animator.SetBool("isEquip", shouldEquip);
         }
 
         
