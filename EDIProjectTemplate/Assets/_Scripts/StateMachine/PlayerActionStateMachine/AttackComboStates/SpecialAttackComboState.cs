@@ -26,7 +26,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.SpecialAttack));
             
             var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-            parentState.ResetComboTimer(data.attackDelay);
+            parentState.ResetComboTimer(data.thirdAttackDelay);
         }
 
         public override void Update(PlayerController agent)

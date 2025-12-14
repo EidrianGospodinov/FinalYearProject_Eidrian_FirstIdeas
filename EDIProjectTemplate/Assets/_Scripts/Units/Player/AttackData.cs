@@ -8,6 +8,7 @@ namespace _Scripts.Units.Player
         [Header("Attacking")]
         public float attackDistance = 3f;
         public float attackDelay = 0.4f;
+        public float thirdAttackDelay = 1.3f;
         public float attackSpeed = 1f;
         public int attackDamage = 1;
         public LayerMask attackLayer;
