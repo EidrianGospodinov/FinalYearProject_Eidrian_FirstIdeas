@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402ef88860f14bdcad4a4507aeb0a292, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
-  attackDelay: 1
-  thirdAttackDelay: 1.3
   attackSpeed: 1
   attackDamage: 1
   attackLayer:
@@ -29,3 +27,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46533a7319f11224fbb8da75b1afaa53, type: 2}
   - {fileID: 11400000, guid: a9de33cd34b2e1b498f51b1e718e488d, type: 2}
   - {fileID: 11400000, guid: 514ef6257665d004c96f1575b5327ec0, type: 2}
+  - {fileID: 11400000, guid: c1efd77ac6a30e84fb86ea96d7e782e5, type: 2}
