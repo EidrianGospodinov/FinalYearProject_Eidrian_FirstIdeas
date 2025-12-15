@@ -30,9 +30,6 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 CurrentMoveDirection => playerMovement.GetWorldMoveDirection();
     public bool IsWeaponEquipped { get; private set; }
-    // Input System
-    private PlayerInput playerInput;
-    private PlayerInput.MainActions input;
     public bool HasLeftClickInput { get; set; } 
     public bool HasRightClickInput { get; set; }
     public bool HasDashInput { get; set; }
@@ -68,10 +65,8 @@ public class PlayerController : MonoBehaviour
         //playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
         CharacterController = GetComponent<CharacterController>();
-        playerInput = new PlayerInput();
-        input = playerInput.Main;
+        
 
-        AssignInputs();
     }
 
     private void Start()
@@ -95,8 +90,6 @@ public class PlayerController : MonoBehaviour
             EventBus<TestEvent>.Trigger(new TestEvent());
         }
 
-        // Pass input values to the relevant components
-        playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
 
         // Determine animation state based on component data
         bool isMoving = playerMovement.IsMoving;
@@ -170,35 +163,7 @@ public class PlayerController : MonoBehaviour
     
     // --- Input Management ---
 
-    void AssignInputs()
-    {
-        // Call the specific component's method when input is performed
-        input.Jump.performed += ctx => playerMovement.Jump();
-        input.Attack.started += ctx =>
-        {
-            if (IsWeaponEquipped)
-            {
-                HasLeftClickInput = true;
-            }
-        };
-        input.SecondaryAttack.started += ctx => 
-        {
-            if (IsWeaponEquipped)
-            {
-                HasRightClickInput = true;
-            }
-        };
-        input.Dash.started += ctx =>
-        {
-            if (IsAttacking || IsDodgeOnCooldown) 
-                //prevent dodge happening right after an attack even with the button pressed during that attack
-            {
-                return;
-            }
-
-            HasDashInput = true;
-        };
-    }
+    
     public void OnFirstHalfOfEquipEventFinish(string eventName)
     {
         if (eventName == "equipWeapon")
@@ -219,9 +184,4 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    void OnEnable() 
-    { input.Enable(); }
-
-    void OnDisable()
-    { input.Disable(); }
 }
