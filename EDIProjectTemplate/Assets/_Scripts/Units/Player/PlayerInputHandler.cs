@@ -63,6 +63,7 @@ namespace _Scripts.Units.Player
 
                 playerController.HasDashInput = true;
             };
+            input.PlayerSwitch.started += ctx => HeroSwitcher.Instance.RequestHeroSwitch();
         }
     }
 }

@@ -19,7 +19,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "07d92708-ed6d-4dca-bd45-90147447902d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -55,6 +55,15 @@
                     "name": "Dash",
                     "type": "Button",
                     "id": "cfc7ea22-53dc-4b1e-96b2-1faffef69d88",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PlayerSwitch",
+                    "type": "Button",
+                    "id": "44b7c5b0-3f3c-497d-8b30-3d9cc53905ce",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -169,6 +178,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d286f949-98c9-45fb-a540-bdd0c8b26301",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

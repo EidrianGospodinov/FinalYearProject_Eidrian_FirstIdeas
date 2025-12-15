@@ -105,7 +105,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""07d92708-ed6d-4dca-bd45-90147447902d"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -141,6 +141,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Dash"",
                     ""type"": ""Button"",
                     ""id"": ""cfc7ea22-53dc-4b1e-96b2-1faffef69d88"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerSwitch"",
+                    ""type"": ""Button"",
+                    ""id"": ""44b7c5b0-3f3c-497d-8b30-3d9cc53905ce"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -257,6 +266,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d286f949-98c9-45fb-a540-bdd0c8b26301"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerSwitch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -299,6 +319,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Main_Attack = m_Main.FindAction("Attack", throwIfNotFound: true);
         m_Main_SecondaryAttack = m_Main.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Main_Dash = m_Main.FindAction("Dash", throwIfNotFound: true);
+        m_Main_PlayerSwitch = m_Main.FindAction("PlayerSwitch", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_MouseZoom = m_CameraControls.FindAction("MouseZoom", throwIfNotFound: true);
@@ -389,6 +410,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Attack;
     private readonly InputAction m_Main_SecondaryAttack;
     private readonly InputAction m_Main_Dash;
+    private readonly InputAction m_Main_PlayerSwitch;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -424,6 +446,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/Dash".
         /// </summary>
         public InputAction @Dash => m_Wrapper.m_Main_Dash;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/PlayerSwitch".
+        /// </summary>
+        public InputAction @PlayerSwitch => m_Wrapper.m_Main_PlayerSwitch;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -468,6 +494,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @PlayerSwitch.started += instance.OnPlayerSwitch;
+            @PlayerSwitch.performed += instance.OnPlayerSwitch;
+            @PlayerSwitch.canceled += instance.OnPlayerSwitch;
         }
 
         /// <summary>
@@ -497,6 +526,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @PlayerSwitch.started -= instance.OnPlayerSwitch;
+            @PlayerSwitch.performed -= instance.OnPlayerSwitch;
+            @PlayerSwitch.canceled -= instance.OnPlayerSwitch;
         }
 
         /// <summary>
@@ -675,6 +707,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDash(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PlayerSwitch" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPlayerSwitch(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.
