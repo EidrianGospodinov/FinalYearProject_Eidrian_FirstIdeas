@@ -28,9 +28,10 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             Debug.Log("basic attack enter");
             AttackData data = agent.AttackData;
             var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.BasicAttack));
+            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));
             
-            parentState.ResetComboTimer(data.attackDelay);
+            var comboData = data.GetComboStateId(GetId());
+            parentState.ResetComboTimer(comboData.attackDelay);
         }
         
 

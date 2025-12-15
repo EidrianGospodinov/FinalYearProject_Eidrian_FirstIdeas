@@ -23,10 +23,11 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
         {
             base.Enter(agent);
             AttackData data = agent.AttackData;
-            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.SpecialAttack));
+            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));
             
             var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-            parentState.ResetComboTimer(data.thirdAttackDelay);
+            var comboData = data.GetComboStateId(GetId());
+            parentState.ResetComboTimer(comboData.attackDelay);
         }
 
         public override void Update(PlayerController agent)

@@ -27,10 +27,11 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             base.Enter(agent);
             Debug.Log("secondary attack enter");
             AttackData data = agent.AttackData;
-            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, ComboStateId.SecondaryBasicAttack));
+            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));
             
             var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-            parentState.ResetComboTimer(data.attackDelay);
+            var comboData = data.GetComboStateId(GetId());
+            parentState.ResetComboTimer(comboData.attackDelay);
         }
 
         

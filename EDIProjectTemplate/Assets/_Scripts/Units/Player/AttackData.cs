@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.StateMachine.PlayerActionStateMachine;
 using UnityEngine;
 
 namespace _Scripts.Units.Player
@@ -8,8 +9,8 @@ namespace _Scripts.Units.Player
     {
         [Header("Attacking")]
         //public float attackDistance = 3f;
-        public float attackDelay = 0.4f;
-        public float thirdAttackDelay = 1.3f;
+        /*public float attackDelay = 0.4f;
+        public float thirdAttackDelay = 1.3f;*/
         public float attackSpeed = 1f;
         public int attackDamage = 1;
         public LayerMask attackLayer;
@@ -24,17 +25,13 @@ namespace _Scripts.Units.Player
         
         public GameObject WeaponPrefab;
         public List<AttackComboData> attackComboList;
+
+        public AttackComboData GetComboStateId(ComboStateId comboStateId)
+        {
+            return attackComboList.Find(x => x.comboStateId == comboStateId);
+        }
     }
-    [CreateAssetMenu(fileName = "NewAttackTypeData", menuName = "Game/Attack Type Data")]
-    public class AttackComboData : ScriptableObject
-    {
-        public string attackName = "Basic Attack";
-        public float attackDelay = 0.4f;
-        public int attackDamage = 1;
-        public string animationName;
-        
-        public AudioClip swordSwing;
-    }
+
     [CreateAssetMenu(fileName = "NewAttackTypeData", menuName = "Game/Attack Hero Data")]
     public class HeroData : ScriptableObject
     {
