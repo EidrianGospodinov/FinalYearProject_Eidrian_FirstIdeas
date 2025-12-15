@@ -5,6 +5,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         WindDown,
         BasicAttack,
         SecondaryBasicAttack,
-        SpecialAttack
+        SpecialAttack,
+        FlipAttack
     }
 }

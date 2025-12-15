@@ -7,11 +7,20 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
     {
         protected override bool TryTransitionToNextState(PlayerController agent)
         {
-            if (agent.HasLeftClickInput && GetParentState(agent).ComboWindowTimer <= 0)
+            if (GetParentState(agent).ComboWindowTimer <= 0)
             {
-                agent.HasLeftClickInput = false; 
-                GetComboSM(agent).ChangeState(ComboStateId.SecondaryBasicAttack); 
-                return true; // Success! We transitioned.
+                if (agent.HasLeftClickInput)
+                {
+                    agent.HasLeftClickInput = false;
+                    GetComboSM(agent).ChangeState(ComboStateId.SecondaryBasicAttack);
+                    return true; // Success! We transitioned.
+                }
+                else if (agent.HasRightClickInput)
+                {
+                    agent.HasRightClickInput = false;
+                    GetComboSM(agent).ChangeState(ComboStateId.FlipAttack);
+                    return true;
+                }
             }
 
             return false;
@@ -41,10 +50,5 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             base.Exit(agent);
         }
         
-        private AttackingState GetParentState(PlayerController agent)
-        {
-            // We retrieve the AttackingState instance from the top-level machine
-            return (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
-        }
     }
 }

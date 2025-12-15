@@ -18,6 +18,8 @@ namespace _Scripts.Units.Player
         public const string ATTACK1 = "BasicAttack";
         public const string ATTACK2 = "SecondaryAttack"; 
         public const string ATTACK3 = "SpecialAttackHighSpin";
+        public const string ATTACKSPECIAL2 = "FlipAttack";
+            
         
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
         private const string BaseWeapon_LAYER_NAME = "Base Layer Sword";
@@ -53,6 +55,9 @@ namespace _Scripts.Units.Player
                     break;
                 case ComboStateId.SpecialAttack:
                     animState = ATTACK3;
+                    break;
+                case ComboStateId.FlipAttack:
+                    animState = ATTACKSPECIAL2;
                     break;
             }
 
