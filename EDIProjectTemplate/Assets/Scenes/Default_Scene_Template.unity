@@ -197,14 +197,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
-  AudioSource: {fileID: 0}
-  Camera: {fileID: 0}
+  CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
   IsAttacking: 0
-  Animator: {fileID: 0}
   CharacterController: {fileID: 0}
-  dodgeCooldownDuration: 1
-  dodgeSpeed: 7
 --- !u!82 &125528977
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1704,14 +1700,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackData: {fileID: 0}
-  AudioSource: {fileID: 0}
-  Camera: {fileID: 0}
+  CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
   IsAttacking: 0
-  Animator: {fileID: 0}
   CharacterController: {fileID: 0}
-  dodgeCooldownDuration: 1
-  dodgeSpeed: 7
 --- !u!1 &1037833777462852651
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class PlayerController : MonoBehaviour
 {
     public AttackData AttackData;
+    public HeroData CurrentHeroData;
     [HideInInspector] private AudioSource AudioSource;
     [HideInInspector]public PlayerAnimation playerAnimation;
     [HideInInspector]public bool IsAttacking;
@@ -184,4 +185,17 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    private EventBinding<OnSwitchHeroEvent> playerEventBinding;
+
+    private void OnEnable()
+    {
+        playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
+    }
+
+    private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj)
+    {
+        CurrentHeroData = obj.HeroData;
+    }
+
+    
 }
