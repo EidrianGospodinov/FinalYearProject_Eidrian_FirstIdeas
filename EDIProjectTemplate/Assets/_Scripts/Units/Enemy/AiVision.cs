@@ -1,3 +1,4 @@
+using _Scripts.StateMachine.EnemyStatemMachine;
 using TMPro;
 using UnityEngine;
 
@@ -14,10 +15,10 @@ namespace _Scripts.Units.Enemy
         [SerializeField] float sightRange = 10, detectAngle = 90;
 
 
-       // public bool IsPlayerDetected(AiAgent agent) => IsPlayerDetected(agent.agentConfig);
+        public bool IsPlayerDetected(AiAgent agent) => IsPlayerDetected(agent.agentConfig);
 
 
-        /*public bool IsPlayerDetected(AiAgentConfig config)
+        public bool IsPlayerDetected(AiAgentConfig config)
         {
             Vector3 directionToPlayer = Player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
@@ -41,7 +42,7 @@ namespace _Scripts.Units.Enemy
             }
 
             return true;
-        }*/
+        }
 
         private void Start()
         {
