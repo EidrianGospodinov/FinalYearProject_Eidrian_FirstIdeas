@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Scripts.StateMachine.EnemyStatemMachine
+namespace _Scripts.Units.Enemy
 {
     [CreateAssetMenu]
     public class AiAgentConfig : ScriptableObject

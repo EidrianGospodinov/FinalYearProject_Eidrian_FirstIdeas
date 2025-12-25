@@ -9,10 +9,6 @@ namespace _Scripts.Units.Enemy
 
         public GameObject Player;
 
-        [Header("Ai Tests")] [SerializeField] private bool testAiVision;
-        [SerializeField] TMP_Text RangeText, hiddenText, angleText;
-        private bool isInAngle, isInRange, isNotHidden;
-        [SerializeField] float sightRange = 10, detectAngle = 90;
 
 
         public bool IsPlayerDetected(AiAgent agent) => IsPlayerDetected(agent.agentConfig);
