@@ -46,7 +46,7 @@ namespace _Scripts.Units.Enemy
 
             //state machine set up- register all stated this agent will use
             stateMachine = new StateMachine<AiAgent, EnemyStateId>(this);
-            stateMachine.RegisterState(new EnemyChaseState());
+            stateMachine.RegisterState(new EnemyWonderState());
             stateMachine.RegisterState(new EnemyIdleState());
             stateMachine.Initialize(initialState);
 

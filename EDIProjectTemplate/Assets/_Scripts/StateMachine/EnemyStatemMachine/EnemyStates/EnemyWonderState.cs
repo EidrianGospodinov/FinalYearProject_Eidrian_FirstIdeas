@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
-     public class EnemyChaseState : IState<AiAgent, EnemyStateId>
+     public class EnemyWonderState : IState<AiAgent, EnemyStateId>
     {
         private float timeSinceLastDestination = 0f;
 
