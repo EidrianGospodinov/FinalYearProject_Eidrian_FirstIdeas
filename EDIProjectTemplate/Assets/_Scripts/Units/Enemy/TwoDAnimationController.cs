@@ -36,8 +36,8 @@ namespace _Scripts.Units.Enemy
             Vector3 localVelocity = transform.InverseTransformDirection(worldVelocity);
 
             
-            animator.SetFloat(VelocityZ,/*localVelocity.z, 0.1f,*/ localVelocity.z);
-            animator.SetFloat(VelocityX,/*localVelocity.x, 0.1f, */localVelocity.x);
+            animator.SetFloat(VelocityZ, localVelocity.z,0.1f, Time.deltaTime);
+            animator.SetFloat(VelocityX, localVelocity.x,0.1f, Time.deltaTime);
         }
     }
 }
