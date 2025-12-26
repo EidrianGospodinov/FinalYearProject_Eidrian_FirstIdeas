@@ -27,8 +27,9 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             // If the agent has stopped moving
             if (agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
             {
-                //agent.stateMachine.ChangeState(AiStateId.Idle);
-            }else if (timeSinceLastDestination >= agent.agentConfig.destinationRefreshTime)
+                agent.stateMachine.ChangeState(EnemyStateId.Idle);
+            }
+            else if (timeSinceLastDestination >= agent.agentConfig.destinationRefreshTime)
             {
                 SetNewRandomDestination(agent);
             }
@@ -49,7 +50,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         
             // Use agent current position to get a position close to him
             Vector3 randomPosition = offset + agent.transform.position; 
-            Debug.Log(offset);
+            //Debug.Log(offset);
 
             NavMeshHit hit;
             
