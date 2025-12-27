@@ -3,27 +3,28 @@ using UnityEngine;
 
 namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
-    public class EnemyChargeState : IState<AiAgent, EnemyStateId>
+    public class EnemyChargeState : EnemyAttackBaseState
     {
         private Vector3 ChargeDestination;
-        public EnemyStateId GetId()
+        public override EnemyStateId GetId()
         {
             return EnemyStateId.Charge;
         }
 
-        public void Enter(AiAgent agent)
+        public override void Enter(AiAgent agent)
         {
+            base.Enter(agent);
             agent.navMeshAgent.stoppingDistance = 0;
             ChargeDestination = agent.playerTransform.transform.position;
             agent.navMeshAgent.SetDestination(ChargeDestination);
         }
 
-        public void Update(AiAgent agent)
+        public override void Update(AiAgent agent)
         {
-            
+            base.Update(agent);
         }
 
-        public void Exit(AiAgent agent)
+        public override void Exit(AiAgent agent)
         {
         }
     }
