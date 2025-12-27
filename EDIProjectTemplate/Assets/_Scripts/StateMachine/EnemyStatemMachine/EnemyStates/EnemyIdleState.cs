@@ -3,31 +3,29 @@ using UnityEngine;
 
 namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
-    public class EnemyIdleState : IState<AiAgent, EnemyStateId>
+    public class EnemyIdleState : EnemyBaseState
     {
         private float idleTime;
         private float timeElapsed = 0f;
-        public EnemyStateId GetId()
+        public override EnemyStateId GetId()
         {
             return EnemyStateId.Idle;
         }
 
-        public void Enter(AiAgent agent)
+        public override void Enter(AiAgent agent)
         {
+            base.Enter(agent);
             timeElapsed = 0f;
             agent.navMeshAgent.isStopped = true;
             idleTime = Random.Range(agent.agentConfig.minIdleTime, agent.agentConfig.maxIdleTime);
         }
 
-        public void Update(AiAgent agent)
+        public override void Update(AiAgent agent)
         {
+            base.Update(agent);
             if (agent.agentConfig.stayForeverIdle)
             {
                 return;
-            }
-            if (agent.IsPlayerDetected())
-            {
-                //agent.stateMachine.ChangeState(EnemyStateId.Chase);
             }
             timeElapsed += Time.deltaTime;
             if (timeElapsed >= idleTime)
@@ -36,9 +34,9 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             }
         }
 
-        public void Exit(AiAgent agent)
+        public override void Exit(AiAgent agent)
         {
-            
+            base.Exit(agent);
         }
     }
 }

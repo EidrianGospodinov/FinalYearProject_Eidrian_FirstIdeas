@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6064794397957912875, guid: a7140a198de74d24eb5c3f892f361098, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7147116960341933532, guid: a7140a198de74d24eb5c3f892f361098, type: 3}
       propertyPath: m_Name
       value: Environment

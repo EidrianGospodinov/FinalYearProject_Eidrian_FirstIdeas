@@ -3,6 +3,7 @@ using _Scripts.StateMachine.EnemyStatemMachine;
 using _Scripts.StateMachine.EnemyStatemMachine.EnemyStates;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Units.Enemy
 {
@@ -48,6 +49,8 @@ namespace _Scripts.Units.Enemy
             stateMachine = new StateMachine<AiAgent, EnemyStateId>(this);
             stateMachine.RegisterState(new EnemyWonderState());
             stateMachine.RegisterState(new EnemyIdleState());
+            stateMachine.RegisterState(new ReadyToAttackState());
+            stateMachine.RegisterState(new EnemyChargeState());
             stateMachine.Initialize(initialState);
 
         }

@@ -11,8 +11,7 @@ namespace _Scripts.Units.Enemy
         [SerializeField] Transform target;
         private Animator animator;
         private NavMeshAgent agent;
-        private float velocityZ = 0.0f;
-        private float velocityX = 0.0f;
+        
         private void Start()
         {
             animator = GetComponentInChildren<Animator>();

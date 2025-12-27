@@ -4,20 +4,22 @@ using UnityEngine.AI;
 
 namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
-     public class EnemyWonderState : IState<AiAgent, EnemyStateId>
+     public class EnemyWonderState : EnemyBaseState
     {
         private float timeSinceLastDestination = 0f;
 
-        public void Enter(AiAgent agent)
+        public override void Enter(AiAgent agent)
         {
+            base.Enter(agent);
             timeSinceLastDestination = 0f;
             agent.navMeshAgent.isStopped = false;
             SetNewRandomDestination(agent);
         }
         
 
-        public void Update(AiAgent agent)
+        public override void Update(AiAgent agent)
         {
+            base.Update(agent);
             if (agent.IsPlayerDetected())
             {
                // agent.stateMachine.ChangeState(AiStateId.Chase);
@@ -35,8 +37,9 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             }
         }
 
-        public void Exit(AiAgent agent)
+        public override void Exit(AiAgent agent)
         {
+            base.Exit(agent);
             agent.navMeshAgent.isStopped = true;
         }
 
@@ -71,7 +74,8 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             return randomDirection * randomDistance;
         }
 
-        EnemyStateId IState<AiAgent, EnemyStateId>.GetId()
+        
+        public override EnemyStateId GetId()
         {
             return EnemyStateId.Wonder;
         }

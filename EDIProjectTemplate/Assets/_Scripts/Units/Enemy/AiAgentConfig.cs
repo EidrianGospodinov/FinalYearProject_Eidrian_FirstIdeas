@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace _Scripts.Units.Enemy
@@ -30,5 +31,7 @@ namespace _Scripts.Units.Enemy
         public float bulletDamage = 25;
         public float bulletSpeed = 5;
         [Range(0, 1)] public float critChance;
+        public List<EnemyAttackTypesData> EnemyAttackTypes;
+
     }
 }
