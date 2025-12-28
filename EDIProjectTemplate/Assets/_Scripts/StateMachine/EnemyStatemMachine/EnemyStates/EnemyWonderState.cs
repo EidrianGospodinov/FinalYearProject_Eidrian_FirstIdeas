@@ -20,10 +20,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         public override void Update(AiAgent agent)
         {
             base.Update(agent);
-            if (agent.IsPlayerDetected())
-            {
-               // agent.stateMachine.ChangeState(AiStateId.Chase);
-            }
             timeSinceLastDestination += Time.deltaTime;
         
             // If the agent has stopped moving

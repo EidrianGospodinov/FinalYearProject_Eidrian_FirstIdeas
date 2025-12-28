@@ -12,7 +12,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
         public virtual void Update(AiAgent agent)
         {
-            if (agent.IsPlayerDetected(true))
+            if (agent.IsPlayerDetected())
             {
                 agent.stateMachine.ChangeState(EnemyStateId.ReadyToAttack);
             }
