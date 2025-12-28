@@ -8,12 +8,13 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
         public virtual void Enter(AiAgent agent)
         {
+            agent.navMeshAgent.isStopped = false;
         }
 
         public virtual void Update(AiAgent agent)
         {
             
-            if (agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
+            if (!agent.navMeshAgent.pathPending && agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
             {
                 agent.stateMachine.ChangeState(EnemyStateId.ReadyToAttack);
             }

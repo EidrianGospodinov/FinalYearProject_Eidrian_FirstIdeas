@@ -27,7 +27,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             timeSinceLastDestination += Time.deltaTime;
         
             // If the agent has stopped moving
-            if (agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
+            if (!agent.navMeshAgent.pathPending && agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
             {
                 agent.stateMachine.ChangeState(EnemyStateId.Idle);
             }

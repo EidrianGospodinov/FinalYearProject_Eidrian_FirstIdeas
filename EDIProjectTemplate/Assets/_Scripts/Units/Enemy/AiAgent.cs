@@ -1,6 +1,7 @@
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.EnemyStatemMachine;
 using _Scripts.StateMachine.EnemyStatemMachine.EnemyStates;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -25,6 +26,8 @@ namespace _Scripts.Units.Enemy
 
         private static int nextAgentId = 1;
         private int instanceID;
+        
+        [SerializeField] private TextMeshProUGUI statusText;
 
         private void Awake()
         {
@@ -59,6 +62,10 @@ namespace _Scripts.Units.Enemy
         void Update()
         {
             stateMachine.Update();
+            if (statusText != null)
+            {
+                statusText.text = $"Current State: {stateMachine.CurrentStateId}";
+            }
         }
 
         public bool IsPlayerDetected()

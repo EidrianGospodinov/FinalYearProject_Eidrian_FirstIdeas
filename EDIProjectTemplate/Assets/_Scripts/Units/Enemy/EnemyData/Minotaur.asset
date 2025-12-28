@@ -15,14 +15,14 @@ MonoBehaviour:
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 3
-  angleVision: 90
-  maxSightDistance: 5
+  angleVision: 176.4
+  maxSightDistance: 20.71
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
   stayForeverIdle: 0
-  minIdleTime: 0
-  maxIdleTime: 0
+  minIdleTime: 3
+  maxIdleTime: 5
   timeToLosePlayer: 5
   attackRange: 5
   fireRate: 1

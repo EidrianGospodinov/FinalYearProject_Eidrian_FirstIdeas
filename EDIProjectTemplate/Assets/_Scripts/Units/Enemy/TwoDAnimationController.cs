@@ -23,6 +23,8 @@ namespace _Scripts.Units.Enemy
         {
             if(agent.desiredVelocity.magnitude < 0.01)
             {
+                animator.SetFloat(VelocityZ, 0,0.1f, Time.deltaTime);
+                animator.SetFloat(VelocityX, 0,0.1f, Time.deltaTime);
                 return;
             }
             //Rotate to face the player manually

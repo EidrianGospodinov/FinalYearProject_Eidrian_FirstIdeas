@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Charge
   weight: 70
-  minDistance: 0
+  minDistance: 5
   maxDistance: 50
