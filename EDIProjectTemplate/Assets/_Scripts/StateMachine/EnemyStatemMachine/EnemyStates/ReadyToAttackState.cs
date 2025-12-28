@@ -21,7 +21,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         public void Update(AiAgent agent)
         {
 
-            if (agent.IsPlayerDetected())
+            if (agent.IsPlayerDetected(true))
             {
 
                 DecideNextAttack(agent);

@@ -6,6 +6,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine
         Wonder,
         Charge,
         ReadyToAttack,
-        WindDown
+        CoolDown
     }
 }

@@ -11,10 +11,10 @@ namespace _Scripts.Units.Enemy
 
 
 
-        public bool IsPlayerDetected(AiAgent agent) => IsPlayerDetected(agent.agentConfig);
+        public bool IsPlayerDetected(AiAgent agent, bool doesAngleMatter) => IsPlayerDetected(agent.agentConfig, doesAngleMatter);
 
 
-        public bool IsPlayerDetected(AiAgentConfig config)
+        public bool IsPlayerDetected(AiAgentConfig config, bool doesAngleMatter)
         {
             Vector3 directionToPlayer = Player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
@@ -24,11 +24,6 @@ namespace _Scripts.Units.Enemy
                 return false;
             }
 
-            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
-            if (angleToPlayer > config.angleVision / 2f)
-            {
-                return false;
-            }
 
             Vector3 eyePosition = transform.position + Vector3.up * 1f;
             if (Physics.Raycast(eyePosition, directionToPlayer.normalized, distanceToPlayer, config.obstacleLayer))
@@ -37,6 +32,15 @@ namespace _Scripts.Units.Enemy
                 return false;
             }
 
+            if (doesAngleMatter)
+            {
+                return true;
+            }
+            float angleToPlayer = Vector3.Angle(transform.forward, directionToPlayer);
+            if (angleToPlayer > config.angleVision / 2f)
+            {
+                return false;
+            }
             return true;
         }
 

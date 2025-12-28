@@ -16,7 +16,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             
             if (!agent.navMeshAgent.pathPending && agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
             {
-                agent.stateMachine.ChangeState(EnemyStateId.ReadyToAttack);
+                agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
             }
         }
 

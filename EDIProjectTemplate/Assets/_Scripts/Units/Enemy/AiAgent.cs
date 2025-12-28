@@ -54,6 +54,7 @@ namespace _Scripts.Units.Enemy
             stateMachine.RegisterState(new EnemyIdleState());
             stateMachine.RegisterState(new ReadyToAttackState());
             stateMachine.RegisterState(new EnemyChargeState());
+            stateMachine.RegisterState(new AttackWindDownState());
             stateMachine.Initialize(initialState);
 
         }
@@ -68,9 +69,9 @@ namespace _Scripts.Units.Enemy
             }
         }
 
-        public bool IsPlayerDetected()
+        public bool IsPlayerDetected(bool doesAngleMatter = false)
         {
-            return aiVision.IsPlayerDetected(this);
+            return aiVision.IsPlayerDetected(this, doesAngleMatter);
         }
 
         public float DistanceToPlayer()

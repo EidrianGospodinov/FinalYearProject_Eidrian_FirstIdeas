@@ -10,7 +10,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
         public EnemyStateId GetId()
         {
-            return EnemyStateId.WindDown;
+            return EnemyStateId.CoolDown;
         }
 
         public void Enter(AiAgent agent)
