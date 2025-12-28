@@ -7,8 +7,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
     public class ReadyToAttackState : IState<AiAgent, EnemyStateId>
     {
-        private float windDownTimer;
-        public bool IsTimerDone { get; private set; }
         public EnemyStateId GetId()
         {
             return EnemyStateId.ReadyToAttack;
@@ -16,28 +14,24 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
         public void Enter(AiAgent agent)
         {
-            windDownTimer = 2f;
             agent.navMeshAgent.isStopped = true;
             /*DecideNextAttack(agent);*/
         }
 
         public void Update(AiAgent agent)
         {
-            windDownTimer -= Time.deltaTime;
-            if (windDownTimer <= 0f)
+
+            if (agent.IsPlayerDetected())
             {
-                IsTimerDone = true;
-                if (agent.IsPlayerDetected())
-                {
-                    
-                    DecideNextAttack(agent);
-                }
-                else
-                {
-                    agent.stateMachine.ChangeState(EnemyStateId.Idle);
-                }
+
+                DecideNextAttack(agent);
             }
-            
+            else
+            {
+                agent.stateMachine.ChangeState(EnemyStateId.Idle);
+            }
+
+
         }
 
         public void Exit(AiAgent agent)
@@ -60,7 +54,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             {
                 EnemyAttackTypesData chosenAttack = GetRandomAttackType(validAttacks);
                 Debug.Log($"chosen attack: {chosenAttack}");
-                //ExecuteAttack(chosenAttack.attackName);
                 //temp only charge
                 if (chosenAttack != null)
                 {

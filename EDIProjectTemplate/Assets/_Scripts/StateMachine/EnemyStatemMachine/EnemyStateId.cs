@@ -5,6 +5,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine
         Idle,
         Wonder,
         Charge,
-        ReadyToAttack
+        ReadyToAttack,
+        WindDown
     }
 }
