@@ -25,21 +25,21 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             if (agent.IsPerformingAttackVisuals) return;
             
 
-            if (!agent.navMeshAgent.pathPending && 
-                agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
-            {
-                ExecuteAttackVisuals(agent);
-            }
             
             // Only recalculate path a few times per second to save CPU
             if (Time.time >= pathUpdateDeadline)
             {
-                if (Vector3.Distance(agent.navMeshAgent.destination, agent.playerTransform.position) < 0.2f)
+                if (Vector3.Distance(agent.navMeshAgent.destination, agent.playerTransform.position) >= 0.2f)
                 {
-                    return;
+                    pathUpdateDeadline = Time.time + Random.Range(0f, 0.1f);
+                    agent.navMeshAgent.SetDestination(agent.playerTransform.position);
                 }
-                pathUpdateDeadline = Time.time + Random.Range(0f, 0.1f);
-                agent.navMeshAgent.SetDestination(agent.playerTransform.position);
+            }
+            if (!agent.navMeshAgent.pathPending && 
+                agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
+            {
+                ExecuteAttackVisuals(agent);
+                return;
             }
         }
 
