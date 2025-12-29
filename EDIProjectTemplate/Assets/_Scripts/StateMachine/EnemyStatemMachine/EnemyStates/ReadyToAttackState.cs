@@ -57,7 +57,8 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
                 //temp only charge
                 if (chosenAttack != null)
                 {
-                    agent.stateMachine.ChangeState(EnemyStateId.Charge);
+                    agent.NextAttackTypeData = chosenAttack;
+                    agent.stateMachine.ChangeState(chosenAttack.StateId);
                 }
             }
         }

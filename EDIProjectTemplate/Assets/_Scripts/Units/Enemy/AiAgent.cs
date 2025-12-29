@@ -28,6 +28,10 @@ namespace _Scripts.Units.Enemy
         private int instanceID;
         
         [SerializeField] private TextMeshProUGUI statusText;
+        public Animator animator;
+
+        public EnemyAttackTypesData NextAttackTypeData;
+        public bool IsPerformingAttackVisuals { get; set; }
 
         private void Awake()
         {
@@ -45,6 +49,7 @@ namespace _Scripts.Units.Enemy
             playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
             navMeshAgent = GetComponentInParent<NavMeshAgent>();
             aiVision = GetComponent<AiVision>();
+            animator = GetComponentInChildren<Animator>();
 
 
 
@@ -55,6 +60,7 @@ namespace _Scripts.Units.Enemy
             stateMachine.RegisterState(new ReadyToAttackState());
             stateMachine.RegisterState(new EnemyChargeState());
             stateMachine.RegisterState(new AttackWindDownState());
+            stateMachine.RegisterState(new AttackGeneric());
             stateMachine.Initialize(initialState);
 
         }

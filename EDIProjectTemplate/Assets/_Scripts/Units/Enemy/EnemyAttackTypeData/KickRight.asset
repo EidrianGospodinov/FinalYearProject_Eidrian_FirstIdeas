@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 590217440d204e1daf80e3e5813d2f56, type: 3}
-  m_Name: Charge
+  m_Name: KickRight
   m_EditorClassIdentifier: 
-  attackName: Charge
-  StateId: 2
-  AnimationName: 
-  weight: 70
-  minDistance: 5
-  maxDistance: 50
+  attackName: 
+  StateId: 5
+  AnimationName: kickRight
+  weight: 25
+  minDistance: 0
+  maxDistance: 5
+  animationDuration: 2

@@ -27,6 +27,10 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         public override void Update(AiAgent agent)
         {
             base.Update(agent);
+            if (!agent.navMeshAgent.pathPending && agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
+            {
+                agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
+            }
         }
 
         public override void Exit(AiAgent agent)

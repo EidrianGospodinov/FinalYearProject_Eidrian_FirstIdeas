@@ -12,7 +12,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: attack4_kick
+    second: kickRight
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: attack4_kick
+      name: kickRight
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0

@@ -24,7 +24,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 5
   timeToLosePlayer: 5
-  attackRange: 5
+  attackRange: 1
   fireRate: 1
   turningSpeed: 1
   bulletDamage: 25
@@ -32,3 +32,8 @@ MonoBehaviour:
   critChance: 0
   EnemyAttackTypes:
   - {fileID: 11400000, guid: 216dd3d5286bf9540bb2e9ac9c6bf222, type: 2}
+  - {fileID: 11400000, guid: a440d56a42ff84f438728310330d350f, type: 2}
+  - {fileID: 11400000, guid: b9dd36e7fda59fa45945fe89db93dbb2, type: 2}
+  - {fileID: 11400000, guid: 88509d1eab4a5c64aa5ca7f5fe96401f, type: 2}
+  - {fileID: 11400000, guid: 656b529ed2dd1fb46a31fd7d12679d8e, type: 2}
+  - {fileID: 11400000, guid: c8578c022c0ae1348a62ebae603fecc4, type: 2}
