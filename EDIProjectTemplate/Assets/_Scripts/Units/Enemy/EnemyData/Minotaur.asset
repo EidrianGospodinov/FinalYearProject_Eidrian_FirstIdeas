@@ -24,7 +24,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 5
   timeToLosePlayer: 5
-  attackRange: 1.1
+  attackRange: 1.2
   fireRate: 1
   turningSpeed: 1
   bulletDamage: 25
