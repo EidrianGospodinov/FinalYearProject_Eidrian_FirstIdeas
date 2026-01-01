@@ -18,3 +18,4 @@ MonoBehaviour:
   weight: 70
   minDistance: 5
   maxDistance: 50
+  animationDuration: 999

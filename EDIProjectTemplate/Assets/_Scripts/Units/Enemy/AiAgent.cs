@@ -32,6 +32,7 @@ namespace _Scripts.Units.Enemy
 
         public EnemyAttackTypesData NextAttackTypeData;
         public bool IsPerformingAttackVisuals { get; set; }
+        public bool AttackHasLanded {get; set;}
 
         private void Awake()
         {

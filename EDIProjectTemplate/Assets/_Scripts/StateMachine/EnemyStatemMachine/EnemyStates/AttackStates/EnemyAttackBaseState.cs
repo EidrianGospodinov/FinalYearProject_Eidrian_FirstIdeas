@@ -12,11 +12,11 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         {
             agent.navMeshAgent.isStopped = false;
             performAnimTime = 0;
+            agent.AttackHasLanded = false;
         }
 
         public virtual void Update(AiAgent agent)
         {
-
             if (agent.IsPerformingAttackVisuals)
             {
                 performAnimTime += Time.deltaTime;

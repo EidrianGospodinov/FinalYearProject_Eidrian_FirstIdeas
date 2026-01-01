@@ -27,7 +27,10 @@ namespace _Scripts.Units.Player
 
         public void TakeDamage(float amount)
         {
+            Debug.Log($"Health prev: {currentHealth}/{maxHealth}");
             currentHealth -= amount;
+            Debug.Log($"Health: {currentHealth}/{maxHealth}");
+            
             healthBar.value = currentHealth;
             OnDamage();
             if (currentHealth <= 0.0f)

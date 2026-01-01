@@ -16,6 +16,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         public override void Enter(AiAgent agent)
         {
             base.Enter(agent);
+            agent.IsPerformingAttackVisuals = true;
             agent.navMeshAgent.stoppingDistance = 0;
             previousSpeed = agent.navMeshAgent.speed;
             agent.navMeshAgent.speed = 18;
@@ -29,6 +30,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             base.Update(agent);
             if (!agent.navMeshAgent.pathPending && agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
             {
+                agent.IsPerformingAttackVisuals = false;
                 agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
             }
         }
