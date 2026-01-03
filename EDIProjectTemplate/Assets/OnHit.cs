@@ -27,6 +27,7 @@ public class OnHit : MonoBehaviour
 
     private bool _isAttacking = false;
     private AttackComboData currentComboData;
+    private AttackData attackData;
 
     private void OnEnable()
     {
@@ -62,11 +63,12 @@ public class OnHit : MonoBehaviour
                 break;
         }
 
-        if (evt.ComboStateId == ComboStateId.WindDown)
+        if (evt.ComboStateId == ComboStateId.WindDown || attackData == null) 
         {
             return;
         }
-        currentComboData =  
+        currentComboData =  attackData.GetComboStateId(evt.ComboStateId);
+        
         
     }
 
@@ -86,7 +88,20 @@ public class OnHit : MonoBehaviour
 
             GameObject GO = Instantiate(hitEffect, other.ClosestPoint(transform.position), Quaternion.identity);
             Destroy(GO, 20);
+            if (attackData != null)
+            {
+                other.gameObject.TryGetComponent<Health>(out Health health);
+                if (health != null)
+                {
+                    health.TakeDamage(attackData.attackDamage);
+                }
+            }
             _isAttacking = false;
         }
+    }
+
+    public void Initialize(AttackData attackData)
+    {
+       this.attackData = attackData;
     }
 }

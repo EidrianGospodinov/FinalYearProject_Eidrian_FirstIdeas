@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
         if (weaponTransform == null)
         {
             var weaponInstance = Instantiate(AttackData.WeaponPrefab);
+            weaponInstance.GetComponent<OnHit>().Initialize(AttackData);
             weaponTransform = weaponInstance.transform;
             EquipWeapon();
         }
