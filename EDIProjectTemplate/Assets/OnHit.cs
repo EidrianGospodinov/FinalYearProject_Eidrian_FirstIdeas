@@ -88,12 +88,12 @@ public class OnHit : MonoBehaviour
 
             GameObject GO = Instantiate(hitEffect, other.ClosestPoint(transform.position), Quaternion.identity);
             Destroy(GO, 20);
-            if (attackData != null)
+            if (currentComboData != null)
             {
                 other.gameObject.TryGetComponent<Health>(out Health health);
                 if (health != null)
                 {
-                    health.TakeDamage(attackData.attackDamage);
+                    health.TakeDamage(currentComboData.attackDamage);
                 }
             }
             _isAttacking = false;
