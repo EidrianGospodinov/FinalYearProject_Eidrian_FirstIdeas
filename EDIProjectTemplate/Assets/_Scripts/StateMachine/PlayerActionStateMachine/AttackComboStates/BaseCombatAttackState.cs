@@ -39,6 +39,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public virtual void Exit(PlayerController agent)
         {
+            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.NONE, ComboStateId.WindDown));
             Debug.Log("set is attacking to false");
             agent.IsAttacking = true;
         }

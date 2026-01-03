@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.StateMachine.PlayerActionStateMachine;
+using _Scripts.Units.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -24,6 +26,7 @@ public class OnHit : MonoBehaviour
     private EventBinding<PlayerEvent> playerEventBinding;
 
     private bool _isAttacking = false;
+    private AttackComboData currentComboData;
 
     private void OnEnable()
     {
@@ -58,6 +61,12 @@ public class OnHit : MonoBehaviour
                 _isAttacking = true;
                 break;
         }
+
+        if (evt.ComboStateId == ComboStateId.WindDown)
+        {
+            return;
+        }
+        currentComboData =  
         
     }
 

@@ -46,7 +46,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
 
         public override void Exit(PlayerController agent)
         {
-            EventBus<OnAttack>.Trigger(new OnAttack(AttackType.NONE, ComboStateId.WindDown));
+            
             base.Exit(agent);
         }
         
