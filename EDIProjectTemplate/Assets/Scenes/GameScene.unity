@@ -1430,6 +1430,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1600961573}
     m_Modifications:
+    - target: {fileID: 3934221261794072211, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
+      propertyPath: intensity
+      value: 5.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3934221261794072211, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4977683145203562325, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
       propertyPath: m_Name
       value: Sword Two-Hander Green
@@ -1472,6 +1480,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5647400537012760047, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597668333315666456, guid: 6ad1adc5460d38746881c26b74c1a854, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
