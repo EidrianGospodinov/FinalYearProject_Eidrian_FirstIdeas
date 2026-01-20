@@ -17,6 +17,7 @@ MonoBehaviour:
   attackLayer:
     serializedVersion: 2
     m_Bits: 64
+  powerUpXpRequired: 200
   dashCooldownDuration: 1
   dashSpeed: 7
   hitVfxPrefab: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}

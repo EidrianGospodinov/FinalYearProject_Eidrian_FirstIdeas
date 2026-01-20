@@ -154,6 +154,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special Power"",
+                    ""type"": ""Button"",
+                    ""id"": ""a130c153-5f8e-4e06-9153-353b143e642c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -277,6 +286,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""PlayerSwitch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""719f138b-3d1a-4c37-b5d7-9568a1227448"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special Power"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -320,6 +340,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Main_SecondaryAttack = m_Main.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Main_Dash = m_Main.FindAction("Dash", throwIfNotFound: true);
         m_Main_PlayerSwitch = m_Main.FindAction("PlayerSwitch", throwIfNotFound: true);
+        m_Main_SpecialPower = m_Main.FindAction("Special Power", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_MouseZoom = m_CameraControls.FindAction("MouseZoom", throwIfNotFound: true);
@@ -411,6 +432,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_SecondaryAttack;
     private readonly InputAction m_Main_Dash;
     private readonly InputAction m_Main_PlayerSwitch;
+    private readonly InputAction m_Main_SpecialPower;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -450,6 +472,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/PlayerSwitch".
         /// </summary>
         public InputAction @PlayerSwitch => m_Wrapper.m_Main_PlayerSwitch;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/SpecialPower".
+        /// </summary>
+        public InputAction @SpecialPower => m_Wrapper.m_Main_SpecialPower;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -497,6 +523,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PlayerSwitch.started += instance.OnPlayerSwitch;
             @PlayerSwitch.performed += instance.OnPlayerSwitch;
             @PlayerSwitch.canceled += instance.OnPlayerSwitch;
+            @SpecialPower.started += instance.OnSpecialPower;
+            @SpecialPower.performed += instance.OnSpecialPower;
+            @SpecialPower.canceled += instance.OnSpecialPower;
         }
 
         /// <summary>
@@ -529,6 +558,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @PlayerSwitch.started -= instance.OnPlayerSwitch;
             @PlayerSwitch.performed -= instance.OnPlayerSwitch;
             @PlayerSwitch.canceled -= instance.OnPlayerSwitch;
+            @SpecialPower.started -= instance.OnSpecialPower;
+            @SpecialPower.performed -= instance.OnSpecialPower;
+            @SpecialPower.canceled -= instance.OnSpecialPower;
         }
 
         /// <summary>
@@ -714,6 +746,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPlayerSwitch(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Special Power" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSpecialPower(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.

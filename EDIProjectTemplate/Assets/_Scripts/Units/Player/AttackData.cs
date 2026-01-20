@@ -14,6 +14,7 @@ namespace _Scripts.Units.Player
         public float attackSpeed = 1f;
         public int attackDamage = 1;
         public LayerMask attackLayer;
+        public float powerUpXpRequired;
 
         [Header("Dash")]
         public float dashCooldownDuration = 1f;

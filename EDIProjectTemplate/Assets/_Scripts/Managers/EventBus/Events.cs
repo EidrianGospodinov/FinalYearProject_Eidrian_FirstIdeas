@@ -16,3 +16,12 @@ public class OnSwitchHeroEvent : IEvent
         HeroData = heroData;
     }
 }
+
+public class OnEnemyHit : IEvent
+{
+    public float PowerUpXp;
+    public OnEnemyHit(float powerUpXp)
+    {
+        PowerUpXp = powerUpXp;
+    }
+}

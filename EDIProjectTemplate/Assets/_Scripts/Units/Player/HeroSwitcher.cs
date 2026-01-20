@@ -20,7 +20,6 @@ public class HeroSwitcher : MonoBehaviour
     [SerializeField] private HeroData heroB_Data;
 
     [Header("Visual Body GameObjects")]
-    // Drag the child GameObjects (the ones with the Skinned Mesh Renderer) here
     [SerializeField] private GameObject heroA_Body; 
     [SerializeField] private GameObject heroB_Body;
 
@@ -65,10 +64,7 @@ public class HeroSwitcher : MonoBehaviour
         
        
         
-        // 4. (Future) PlayerController stat update here...
-        // playerController.SetAttackData(ActiveHeroData.primaryAttackData); 
-
-        // 5. Notify subscribers
+       
         EventBus<OnSwitchHeroEvent>.Trigger(new OnSwitchHeroEvent(ActiveHeroData));
         Debug.Log($"Hero switched to: {newHero}");
     }

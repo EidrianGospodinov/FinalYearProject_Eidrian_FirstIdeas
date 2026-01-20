@@ -6,6 +6,7 @@ using _Scripts.Units.Player;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 public class OnHit : MonoBehaviour
 {
@@ -94,6 +95,7 @@ public class OnHit : MonoBehaviour
                 if (health != null)
                 {
                     health.TakeDamage(currentComboData.attackDamage);
+                    EventBus<OnEnemyHit>.Trigger(new OnEnemyHit(currentComboData.attackDamage * Random.Range(0,1.5f)));
                 }
             }
             _isAttacking = false;

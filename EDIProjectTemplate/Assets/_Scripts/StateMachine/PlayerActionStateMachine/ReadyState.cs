@@ -35,6 +35,12 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         private bool HasAttackingInput(PlayerController agent)
         {
+            if (agent.HasSpecialPowerInput)
+            {
+                agent.HasSpecialPowerInput = false;
+                Debug.LogError("Do Special attack");
+                
+            }
             if (agent.HasLeftClickInput)
             {
                 // Consume the input FIRST

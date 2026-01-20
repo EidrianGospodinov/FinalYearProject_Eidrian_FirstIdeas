@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     
     // References to the sub-components
     private PlayerMovement playerMovement;
+    public HeroCombinedScript heroCombinedScript { get; private set; }
    
     private MeshSockets sockets;
     private Transform weaponTransform;
@@ -34,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public bool HasLeftClickInput { get; set; } 
     public bool HasRightClickInput { get; set; }
     public bool HasDashInput { get; set; }
+    public bool HasSpecialPowerInput { get; set; }
 
     // Injected Dependency (PlayerState)
     [Inject] private PlayerState playerState;
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
 
         playerMovement = GetComponent<PlayerMovement>();
+        heroCombinedScript = GetComponent<HeroCombinedScript>();
         //playerCameraLook = GetComponent<PlayerCameraLook>();
         //playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
@@ -78,7 +81,7 @@ public class PlayerController : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
         sockets = GetComponent<MeshSockets>();
         
-        
+        heroCombinedScript.Init(AttackData.powerUpXpRequired);
     }
 
     void Update()
@@ -161,9 +164,13 @@ public class PlayerController : MonoBehaviour
     void LateUpdate() 
     { 
        // playerCameraLook.HandleCameraRotation();
+       if (weaponTransform == null) return;
+       var weaponManager = weaponTransform.GetComponent<WeaponManager>();
+       float normalizedXp = Mathf.Clamp01(heroCombinedScript.currentPowerUpXp / AttackData.powerUpXpRequired);
+       float intensity = normalizedXp * 7;
+       weaponManager.UpdateSwordIntensity(intensity);
     }
     
-    // --- Input Management ---
 
     
     public void OnFirstHalfOfEquipEventFinish(string eventName)

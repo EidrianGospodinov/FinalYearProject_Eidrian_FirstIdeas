@@ -68,6 +68,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Special Power",
+                    "type": "Button",
+                    "id": "a130c153-5f8e-4e06-9153-353b143e642c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -189,6 +198,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PlayerSwitch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "719f138b-3d1a-4c37-b5d7-9568a1227448",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Special Power",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
