@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 public class HeroCombinedScript : MonoBehaviour
 {
-    [SerializeField]
     //add this to some attack data
     private float powerUpXpRequired;
     public float currentPowerUpXp;

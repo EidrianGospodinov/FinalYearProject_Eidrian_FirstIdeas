@@ -7,7 +7,7 @@ namespace _Scripts.Units.Player
     {
         public float maxHealth;
         public Slider healthBar;
-        public float currentHealth { get; private set; }
+        public float currentHealth { get; set; }
 
         private void Start()
         {
@@ -16,14 +16,7 @@ namespace _Scripts.Units.Player
             healthBar.value = maxHealth;
             OnStart();
         }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.U))
-            {
-                TakeDamage(20);
-            }
-        }
+        
 
         public void TakeDamage(float amount)
         {
@@ -53,5 +46,6 @@ namespace _Scripts.Units.Player
         {
 
         }
+        
     }
 }
