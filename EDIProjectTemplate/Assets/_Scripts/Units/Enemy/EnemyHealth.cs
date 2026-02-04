@@ -1,14 +1,17 @@
 using _Scripts.Units.Player;
+using UnityEngine.UI;
 
 namespace _Scripts.Units.Enemy
 {
     public class EnemyHealth: Health
     {
         //AiAgent agent;
+        public Slider healthBar;
         protected override void OnStart()
         {
             //agent = GetComponent<AiAgent>();
-            
+            healthBar.maxValue = maxHealth;
+            healthBar.value = maxHealth;
         }
         protected override void OnDeath()
         {
@@ -22,7 +25,7 @@ namespace _Scripts.Units.Enemy
         }
         protected override void OnDamage()
         {
-
+            healthBar.value = currentHealth;
         }
     }
 }

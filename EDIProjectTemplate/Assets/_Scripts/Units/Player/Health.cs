@@ -6,14 +6,12 @@ namespace _Scripts.Units.Player
     public class Health : MonoBehaviour
     {
         public float maxHealth;
-        public Slider healthBar;
+        
         public float currentHealth { get; set; }
 
         private void Start()
         {
             currentHealth = maxHealth;
-            healthBar.maxValue = maxHealth;
-            healthBar.value = maxHealth;
             OnStart();
         }
         
@@ -24,7 +22,6 @@ namespace _Scripts.Units.Player
             currentHealth -= amount;
             Debug.Log($"Health: {currentHealth}/{maxHealth}");
             
-            healthBar.value = currentHealth;
             OnDamage();
             if (currentHealth <= 0.0f)
             {
