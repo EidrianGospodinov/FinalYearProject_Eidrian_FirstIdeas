@@ -10,6 +10,7 @@ namespace _Scripts.Units.Player
     public class PlayerHealth : Health
     {
         Volume _postProcessing;
+        Vignette vignette;
        // CameraManager _cameraManager; //for kill cam later on
        
        public Image currentHealthBar;
@@ -19,24 +20,24 @@ namespace _Scripts.Units.Player
        public float regen = 0.1f;
        private float timeleft = 0.0f;	// Left time for current interval
        public float regenUpdateInterval = 1f;
+       private EventBinding<OnSwitchHeroEvent> playerEventBinding;
+
         protected override void OnStart()
         {
+            playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
             _postProcessing = FindFirstObjectByType<Volume>();
+            _postProcessing.profile.TryGet(out vignette);
             //_cameraManager = FindFirstObjectByType<CameraManager>();
         }
+
+        private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj) => UpdateGraphics();
+
         protected override void OnDeath()
         {
            //_cameraManager.EnableKillCam();
         }
         protected override void OnDamage()
         {
-            Vignette vignette;
-        
-            if (_postProcessing.profile.TryGet(out vignette))
-            {
-                float percent = 1.0f-(currentHealth / maxHealth);
-                vignette.intensity.value = percent;
-            }
             UpdateGraphics();
         }
 
@@ -76,8 +77,18 @@ namespace _Scripts.Units.Player
 
         private void UpdateGraphics()
         {
+            UpdateVignetteEffect();
             UpdateHealthBar();
             UpdateHealthGlobe();
+        }
+
+        private void UpdateVignetteEffect()
+        {
+            if (vignette !=null)
+            {
+                float percent = 1.0f-(currentHealth / maxHealth);
+                vignette.intensity.value = percent;
+            }
         }
         private void UpdateHealthBar()
         {
