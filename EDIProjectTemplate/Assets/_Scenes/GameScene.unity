@@ -3286,9 +3286,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   specialAbilityData:
-  - {fileID: 11400000, guid: f6675933d5620e742a12001ad9815d56, type: 2}
+  - {fileID: 11400000, guid: 07236439b90ac294e8ce8cb65bae3dd4, type: 2}
   - {fileID: 11400000, guid: e99f3a9bc20f91d47afd9be806a3bff2, type: 2}
-  _Character: {fileID: 1239669883}
+  _Character: {fileID: 1345885087}
   _CurrentData: 
 --- !u!1 &1345885085
 GameObject:
@@ -3364,6 +3364,8 @@ MonoBehaviour:
     Point: {fileID: 729493167}
   - Type: 4
     Point: {fileID: 1196959527}
+  - Type: 5
+    Point: {fileID: 632571775}
 --- !u!95 &1345885089
 Animator:
   serializedVersion: 7

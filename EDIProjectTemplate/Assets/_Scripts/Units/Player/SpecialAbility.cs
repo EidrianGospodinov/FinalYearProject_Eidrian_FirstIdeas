@@ -46,7 +46,14 @@ public class SpecialAbility : MonoBehaviour
     {
         ClearAllVfx();
         index = 0;
-        StartCoroutine(Coroutine_Spawn());
+        if (specialAbilityData[0].FindAtTarget)
+        {
+            StartCoroutine(Coroutine_SpawnAtTarget());
+        }
+        else
+        {
+            StartCoroutine(Coroutine_Spawn());
+        }
     }
     private void ClearAllVfx()
     {
@@ -77,6 +84,29 @@ public class SpecialAbility : MonoBehaviour
     IEnumerator Coroutine_Spawn(bool asChild = false)
     {
         //Character.PlayAnimation("New Animation", specialAbilityData[index].clip);
+        var data = specialAbilityData[index];
+        yield return new WaitForSeconds(data.VfxSpawnDelay);
+        BaseVfx go;
+        if (asChild)
+        {
+            go = Instantiate(data.VFX, this.transform);
+        }
+        else
+        {
+            go = Instantiate(data.VFX);
+        }
+
+        float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
+        
+        Transform sourcePoint = Character.BindingPoints.GetBindingPoint(data.Source);
+        var vfxData = new VfxData(sourcePoint, Character.GetTarget(), duration, data._Radius);
+        vfxData.SetGround(Character.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+        
+        activeVfxes.Add(go);
+        go.Play(vfxData);
+    }
+    IEnumerator Coroutine_SpawnAtTarget(bool asChild = false)
+    {
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
         BaseVfx go;

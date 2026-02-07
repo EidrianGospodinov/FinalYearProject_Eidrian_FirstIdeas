@@ -12,5 +12,6 @@ namespace _Scripts.Units.Player
         public float _Duration;
         public float _Radius;
         public BaseVfx VFX;
+        public bool FindAtTarget = false;
     }
 }
