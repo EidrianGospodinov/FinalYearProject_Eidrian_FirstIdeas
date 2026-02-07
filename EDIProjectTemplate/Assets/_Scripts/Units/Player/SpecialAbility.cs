@@ -7,7 +7,11 @@ using UnityEngine;
 
 public class SpecialAbility : MonoBehaviour
 {
-    [SerializeField] private List<SpecialAbilityData> specialAbilityData;
+    /// <summary>
+    /// slot zero - special attack
+    /// slot 1 - ability beam
+    /// </summary>
+    [SerializeField] private List<SpecialVFXData> specialAbilityData;
     [SerializeField] Character _Character;
 
     public Character Character => _Character;
@@ -15,54 +19,83 @@ public class SpecialAbility : MonoBehaviour
     [HideInInspector][SerializeField] string _CurrentData;
 
     private int index = 0;
+    private List<BaseVfx> activeVfxes = new List<BaseVfx>();
+    
     
     private EventBinding<OnUltimate> OnUltimate;
+    private EventBinding<GetUltimateEvent> GetUltimateEvent;
 
     private void Start()
     {
         OnUltimate = EventBus<OnUltimate>.Register(OnUltimateAttackEvent);
+        GetUltimateEvent = EventBus<GetUltimateEvent>.Register(OnGetUltimateEvent);
+    }
+
+    private void OnGetUltimateEvent(GetUltimateEvent obj)
+    {
+        index = 1;
+        StartCoroutine(Coroutine_Spawn(true));
+    }
+
+    private void OnDestroy()
+    {
+        EventBus<OnUltimate>.Unregister(OnUltimate);
     }
 
     private void OnUltimateAttackEvent(OnUltimate obj)
     {
-        StartCoroutine(Coroutine_Spanw());
+        ClearAllVfx();
+        index = 0;
+        StartCoroutine(Coroutine_Spawn());
+    }
+    private void ClearAllVfx()
+    {
+        for (int i = activeVfxes.Count - 1; i >= 0; i--)
+        {
+            if (activeVfxes[i] != null) 
+                Destroy(activeVfxes[i].gameObject);
+        }
+    
+        activeVfxes.Clear();
     }
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            index--;
-            if (index < 0)
-            {
-                index = specialAbilityData.Count - 1;
-            }
-            _CurrentData = specialAbilityData[index].VFX.name;
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            index++;
-            if (index >= specialAbilityData.Count)
-            {
-                index = 0;
-            }
-            _CurrentData = specialAbilityData[index].VFX.name;
-        }
-
         if (Input.GetKeyDown(KeyCode.O))
         {
-            StartCoroutine(Coroutine_Spanw());
+            index = 0;
+            StartCoroutine(Coroutine_Spawn());
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            index = 1;
+            StartCoroutine(Coroutine_Spawn(true));
         }
     }
 
-    IEnumerator Coroutine_Spanw()
+    IEnumerator Coroutine_Spawn(bool asChild = false)
     {
         //Character.PlayAnimation("New Animation", specialAbilityData[index].clip);
-        yield return new WaitForSeconds(specialAbilityData[index].VfxSpawnDelay);
-        BaseVfx go = Instantiate(specialAbilityData[index].VFX);
-        Transform sourcePoint = Character.BindingPoints.GetBindingPoint(specialAbilityData[index].Source);
-        var vfxData = new VfxData(sourcePoint, Character.GetTarget(), specialAbilityData[index]._Duration, specialAbilityData[index]._Radius);
+        var data = specialAbilityData[index];
+        yield return new WaitForSeconds(data.VfxSpawnDelay);
+        BaseVfx go;
+        if (asChild)
+        {
+            go = Instantiate(data.VFX, this.transform);
+        }
+        else
+        {
+            go = Instantiate(data.VFX);
+        }
+
+        float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
+        
+        Transform sourcePoint = Character.BindingPoints.GetBindingPoint(data.Source);
+        var vfxData = new VfxData(sourcePoint, Character.GetTarget(), duration, data._Radius);
         vfxData.SetGround(Character.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+        
+        activeVfxes.Add(go);
         go.Play(vfxData);
     }
 }

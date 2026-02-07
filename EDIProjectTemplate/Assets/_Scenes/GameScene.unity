@@ -3783,6 +3783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   specialAbilityData:
   - {fileID: 11400000, guid: f6675933d5620e742a12001ad9815d56, type: 2}
+  - {fileID: 11400000, guid: 55e061d404f40d846a1c37e8a058458a, type: 2}
   _Character: {fileID: 1239669883}
   _CurrentData: 
 --- !u!4 &1841736484 stripped

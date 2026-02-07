@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace _Scripts.Units.Player
 {
-    [CreateAssetMenu(fileName = "SpeacialAbility", menuName = "Game/SpecialAbility Data")]
-    public class SpecialAbilityData: ScriptableObject
+    [CreateAssetMenu(fileName = "SpecialVFX", menuName = "Game/SpecialVFX Data")]
+    public class SpecialVFXData: ScriptableObject
     {
         public string Name;
         public float VfxSpawnDelay;

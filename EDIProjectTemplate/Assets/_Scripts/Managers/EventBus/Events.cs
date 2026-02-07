@@ -23,6 +23,11 @@ public class OnUltimate : IEvent
     
 }
 
+public class GetUltimateEvent : IEvent
+{
+    
+}
+
 public class OnEnemyHit : IEvent
 {
     public float PowerUpXp;

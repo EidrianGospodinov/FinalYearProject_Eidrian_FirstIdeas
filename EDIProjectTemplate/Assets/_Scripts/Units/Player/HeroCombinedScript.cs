@@ -11,6 +11,7 @@ public class HeroCombinedScript : MonoBehaviour
     public float currentPowerUpXp;
     public bool CanPowerUp;
     private EventBinding<OnEnemyHit> onEnemyHit;
+    private EventBinding<OnUltimate> onUltimate;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Init(float powerUpXpRequired)
@@ -20,6 +21,14 @@ public class HeroCombinedScript : MonoBehaviour
     void OnEnable()
     {
         onEnemyHit = EventBus<OnEnemyHit>.Register(OnEnemyHitEvent);
+        onUltimate = EventBus<OnUltimate>.Register(OnUltimateEvent);
+
+    }
+
+    private void OnUltimateEvent(OnUltimate obj)
+    {
+        CanPowerUp = false;
+        currentPowerUpXp = 0;
     }
 
     private void OnEnemyHitEvent(OnEnemyHit obj)
@@ -29,6 +38,7 @@ public class HeroCombinedScript : MonoBehaviour
         {
             //enable the powerUp
             CanPowerUp = true;
+            EventBus<GetUltimateEvent>.Trigger(new GetUltimateEvent());
         }
     }
 
