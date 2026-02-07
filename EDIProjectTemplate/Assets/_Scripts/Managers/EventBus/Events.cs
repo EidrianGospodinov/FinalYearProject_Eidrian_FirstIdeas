@@ -16,6 +16,12 @@ public class OnSwitchHeroEvent : IEvent
         HeroData = heroData;
     }
 }
+public class OnUltimate : IEvent
+{
+    public HeroData HeroData;
+
+    
+}
 
 public class OnEnemyHit : IEvent
 {

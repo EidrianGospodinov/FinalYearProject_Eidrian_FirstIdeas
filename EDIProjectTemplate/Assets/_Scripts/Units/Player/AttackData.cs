@@ -32,12 +32,4 @@ namespace _Scripts.Units.Player
             return attackComboList.Find(x => x.comboStateId == comboStateId);
         }
     }
-
-    [CreateAssetMenu(fileName = "NewAttackTypeData", menuName = "Game/Attack Hero Data")]
-    public class HeroData : ScriptableObject
-    {
-        public string heroName;
-        
-        public GameObject weaponPrefab;
-    }
 }

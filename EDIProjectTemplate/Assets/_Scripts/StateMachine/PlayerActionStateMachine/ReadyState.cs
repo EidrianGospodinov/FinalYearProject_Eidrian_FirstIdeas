@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.StateMachine.PlayerActionStateMachine
@@ -39,7 +40,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             {
                 agent.HasSpecialPowerInput = false;
                 Debug.LogError("Do Special attack");
-                
+                EventBus<OnUltimate>.Trigger(new OnUltimate());
             }
             if (agent.HasLeftClickInput)
             {
