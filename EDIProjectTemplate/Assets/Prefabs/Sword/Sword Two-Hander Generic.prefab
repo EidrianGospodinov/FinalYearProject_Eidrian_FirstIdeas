@@ -53,8 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 64
-  layerName: Hittable
+    m_Bits: 192
+  layerName: Enemy
   audioSource: {fileID: 2396905282642931769}
   hitSound: {fileID: 8300000, guid: 11245d3945c564b45a1bafad5ecb70e5, type: 3}
   hitEffect: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}

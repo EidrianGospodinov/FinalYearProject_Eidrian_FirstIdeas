@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace PixPlays.ElementalVFX
 {
 
@@ -19,9 +21,9 @@ namespace PixPlays.ElementalVFX
         }
 
         [SerializeField] List<TestingData> _Data;
-        [SerializeField] Character _Character;
+        [FormerlySerializedAs("_Character")] [SerializeField] IndividualCharacter individualCharacter;
 
-        public Character Character => _Character;
+        public IndividualCharacter IndividualCharacter => individualCharacter;
 
         [HideInInspector][SerializeField] string _CurrentData;
 
@@ -56,12 +58,12 @@ namespace PixPlays.ElementalVFX
 
         IEnumerator Coroutine_Spanw()
         {
-            Character.PlayAnimation("New Animation", _Data[index].clip);
+            IndividualCharacter.PlayAnimation("New Animation", _Data[index].clip);
             yield return new WaitForSeconds(_Data[index].VfxSpawnDelay);
             BaseVfx go = Instantiate(_Data[index].VFX);
-            Transform sourcePoint = Character.BindingPoints.GetBindingPoint(_Data[index].Source);
-            var vfxData = new VfxData(sourcePoint, Character.GetTarget(), _Data[index]._Duration, _Data[index]._Radius);
-            vfxData.SetGround(Character.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+            Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(_Data[index].Source);
+            var vfxData = new VfxData(sourcePoint, IndividualCharacter.GetTarget(), _Data[index]._Duration, _Data[index]._Radius);
+            vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
             go.Play(vfxData);
         }
     }

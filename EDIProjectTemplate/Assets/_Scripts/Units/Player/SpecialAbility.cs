@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using _Scripts.Units.Player;
 using PixPlays.ElementalVFX;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SpecialAbility : MonoBehaviour
 {
@@ -12,9 +13,9 @@ public class SpecialAbility : MonoBehaviour
     /// slot 1 - ability beam
     /// </summary>
     [SerializeField] private List<SpecialVFXData> specialAbilityData;
-    [SerializeField] Character _Character;
+    [FormerlySerializedAs("_Character")] [SerializeField] IndividualCharacter individualCharacter;
 
-    public Character Character => _Character;
+    public IndividualCharacter IndividualCharacter => individualCharacter;
 
     [HideInInspector][SerializeField] string _CurrentData;
 
@@ -98,9 +99,9 @@ public class SpecialAbility : MonoBehaviour
 
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
-        Transform sourcePoint = Character.BindingPoints.GetBindingPoint(data.Source);
-        var vfxData = new VfxData(sourcePoint, Character.GetTarget(), duration, data._Radius);
-        vfxData.SetGround(Character.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+        Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
+        var vfxData = new VfxData(sourcePoint, IndividualCharacter.GetTarget(), duration, data._Radius);
+        vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
         
         activeVfxes.Add(go);
         go.Play(vfxData);
@@ -121,9 +122,16 @@ public class SpecialAbility : MonoBehaviour
 
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
-        Transform sourcePoint = Character.BindingPoints.GetBindingPoint(data.Source);
-        var vfxData = new VfxData(sourcePoint, Character.GetTarget(), duration, data._Radius);
-        vfxData.SetGround(Character.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+        
+        Transform target = individualCharacter.GetClosestEnemy(data._Radius);
+        VfxData vfxData;
+        vfxData = new VfxData(target, IndividualCharacter.GetTarget(), duration, data._Radius);
+        if (target != null && individualCharacter.HasLineOfSight(target))
+        {
+            //vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+            
+        }
+        //Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
         
         activeVfxes.Add(go);
         go.Play(vfxData);
