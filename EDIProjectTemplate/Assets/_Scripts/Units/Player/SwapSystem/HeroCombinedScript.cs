@@ -51,5 +51,6 @@ public class HeroCombinedScript : MonoBehaviour
     private void OnDisable()
     {
         EventBus<OnEnemyHit>.Unregister(onEnemyHit);
+        EventBus<OnUltimate>.Unregister(onUltimate);
     }
 }
