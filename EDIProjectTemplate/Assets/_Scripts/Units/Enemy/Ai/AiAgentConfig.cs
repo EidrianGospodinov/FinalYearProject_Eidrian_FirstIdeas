@@ -6,6 +6,9 @@ namespace _Scripts.Units.Enemy
     [CreateAssetMenu]
     public class AiAgentConfig : ScriptableObject
     {
+        [Header("Stats")]
+        public float Height = 2.0f;
+        
         [Header("Wander State")]
         public float wanderRadius = 15f;
         public float minWanderRadius = 5f;

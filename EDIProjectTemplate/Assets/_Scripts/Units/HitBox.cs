@@ -7,7 +7,7 @@ namespace _Scripts.Units
 {
     public class HitBox : MonoBehaviour
     {
-        [SerializeField]Health health;
+        private Health health;
         [SerializeField] private int damage = 20;
         AiAgent aiAgent;
 

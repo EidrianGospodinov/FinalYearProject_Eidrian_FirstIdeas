@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b15cc527a8c40ef821e253ce9820d1e, type: 3}
   m_Name: Minotaur
   m_EditorClassIdentifier: 
+  Height: 5
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 3

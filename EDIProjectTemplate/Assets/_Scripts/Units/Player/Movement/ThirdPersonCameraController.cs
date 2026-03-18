@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
+    public bool lockMovement;
+    
     [SerializeField] private float zoomSpeed = 2f;
 
     [SerializeField] private float zoomLerpSpeed = 10f;
@@ -15,6 +17,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     private PlayerInput playerInput;
 
     private CinemachineCamera cineCam;
+    private Camera cam;
 
     private CinemachineOrbitalFollow orbital;
 
@@ -36,6 +39,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         orbital = cineCam.GetComponent<CinemachineOrbitalFollow>();
         
         targetZoom = currentzoom = orbital.Radius;
+        cam = Camera.main;
     }
 
     private void HandleMouseScroll(InputAction.CallbackContext obj)
@@ -47,6 +51,11 @@ public class ThirdPersonCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lockMovement)
+        {
+            /*transform.rotation = cam.transform.rotation;*/
+            return;
+        }
         if (scrollDelta.y != 0)
         {
             if (orbital != null)
