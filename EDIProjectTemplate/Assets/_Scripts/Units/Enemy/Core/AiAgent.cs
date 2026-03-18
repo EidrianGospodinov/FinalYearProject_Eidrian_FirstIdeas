@@ -21,16 +21,16 @@ namespace _Scripts.Units.Enemy
         [HideInInspector] public NavMeshAgent navMeshAgent;
         private AiVision aiVision;
 
-        [Header("Shooting Components")] public GameObject projectilePrefab;
-        public Transform bulletOffset;
+       
 
         private static int nextAgentId = 1;
         private int instanceID;
         
         [SerializeField] private TextMeshProUGUI statusText;
-        public Animator animator;
+        [HideInInspector]public Animator animator;
 
-        public EnemyAttackTypesData NextAttackTypeData;
+        [HideInInspector]public EnemyAttackTypesData NextAttackTypeData;
+        public ChangeLayerChildren ChangeLayerChildren; 
         public bool IsPerformingAttackVisuals { get; set; }
         public bool AttackHasLanded {get; set;}
 

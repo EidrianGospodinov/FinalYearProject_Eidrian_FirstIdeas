@@ -1,6 +1,12 @@
 using _Scripts.Units.Enemy;
 using UnityEngine;
 
+[System.Serializable]
+struct OnOffLayers
+{
+    public LayerMask On;
+    public LayerMask Off;
+}
 public class ActiveEnemyDetector : MonoBehaviour
 {
     [Header("Detection Settings")]
@@ -12,6 +18,8 @@ public class ActiveEnemyDetector : MonoBehaviour
     [Header("UI Indicator (Optional)")]
     [SerializeField] private Transform lockOnCanvas;
     [SerializeField] private float crossHairScale = 0.1f;
+    [SerializeField] private OnOffLayers onOffLayers;
+
 
     // Other scripts can read this to know who to attack, but they can't change it.
     public Transform CurrentActiveEnemy { get; private set; } 
@@ -58,7 +66,18 @@ public class ActiveEnemyDetector : MonoBehaviour
         }
 
         // Update our public property so other scripts know who is active
+        AiAgent agent;
+        if(CurrentActiveEnemy != null)
+        {
+            agent = CurrentActiveEnemy.GetComponent<AiAgent>();
+            agent.ChangeLayerChildren.ChangeLayerOfChildren(onOffLayers.Off);
+        }
         CurrentActiveEnemy = bestTarget;
+        if (CurrentActiveEnemy != null)
+        {
+            agent = CurrentActiveEnemy.GetComponent<AiAgent>();
+            agent.ChangeLayerChildren.ChangeLayerOfChildren(onOffLayers.On);
+        }
     }
 
     private void UpdateUI()
