@@ -10721,7 +10721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7083b5f2df04b2e87acd05221264002, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10000
   currentHealthBar: {fileID: 6875559459671829564}
   currentHealthGlobe: {fileID: 598215578315888038}
   Regenerate: 0
@@ -16031,6 +16031,7 @@ MonoBehaviour:
   CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
   IsAttacking: 0
+  EnemyDetector: {fileID: 0}
   CharacterController: {fileID: 0}
 --- !u!4 &497831377103505623
 Transform:

@@ -40,7 +40,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             {
                 agent.HasSpecialPowerInput = false;
                 Debug.LogError("Do Special attack");
-                EventBus<OnUltimate>.Trigger(new OnUltimate());
+                EventBus<OnUltimate>.Trigger(new OnUltimate(agent.CurrentHeroData, agent.EnemyDetector.CurrentActiveEnemy));
             }
             if (agent.HasLeftClickInput)
             {

@@ -1,4 +1,5 @@
 using _Scripts.Units.Player;
+using UnityEngine;
 
 public class TestEvent : IEvent { }
 
@@ -19,8 +20,14 @@ public class OnSwitchHeroEvent : IEvent
 public class OnUltimate : IEvent
 {
     public HeroData HeroData;
+    public Transform target;
 
-    
+    public OnUltimate(HeroData heroData, Transform target)
+    {
+        HeroData = heroData;
+        this.target = target;
+    }
+
 }
 
 public class GetUltimateEvent : IEvent

@@ -26,7 +26,7 @@ public class SpecialAbility : MonoBehaviour
     private EventBinding<OnUltimate> OnUltimate;
     private EventBinding<GetUltimateEvent> GetUltimateEvent;
 
-    private void Start()
+    private void OnEnable()
     {
         OnUltimate = EventBus<OnUltimate>.Register(OnUltimateAttackEvent);
         GetUltimateEvent = EventBus<GetUltimateEvent>.Register(OnGetUltimateEvent);
@@ -38,23 +38,28 @@ public class SpecialAbility : MonoBehaviour
         StartCoroutine(Coroutine_Spawn(true));
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         EventBus<OnUltimate>.Unregister(OnUltimate);
+        EventBus<GetUltimateEvent>.Unregister(GetUltimateEvent);
     }
 
-    private void OnUltimateAttackEvent(OnUltimate obj)
+    private void OnUltimateAttackEvent(OnUltimate onUltimateData)
     {
+#if UNITY_EDITOR
         ClearAllVfx();
         index = 0;
         if (specialAbilityData[0].FindAtTarget)
         {
-            StartCoroutine(Coroutine_SpawnAtTarget());
+            var enemyTarget = FindFirstObjectByType<PlayerController>().EnemyDetector.CurrentActiveEnemy;
+            
+            StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
         }
         else
         {
             StartCoroutine(Coroutine_Spawn());
         }
+#endif
     }
     private void ClearAllVfx()
     {
@@ -72,7 +77,7 @@ public class SpecialAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             index = 0;
-            StartCoroutine(Coroutine_Spawn());
+            OnUltimateAttackEvent(null);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -106,7 +111,7 @@ public class SpecialAbility : MonoBehaviour
         activeVfxes.Add(go);
         go.Play(vfxData);
     }
-    IEnumerator Coroutine_SpawnAtTarget(bool asChild = false)
+    IEnumerator Coroutine_SpawnAtTarget(Transform target, bool asChild = false)
     {
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
@@ -123,15 +128,15 @@ public class SpecialAbility : MonoBehaviour
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
         
-        Transform target = individualCharacter.GetClosestEnemy(data._Radius);
+        //Transform target = individualCharacter.GetClosestEnemy(data._Radius);
         VfxData vfxData;
         vfxData = new VfxData(target, IndividualCharacter.GetTarget(), duration, data._Radius);
         if (target != null && individualCharacter.HasLineOfSight(target))
         {
-            //vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
+            vfxData.SetGround(target/*IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground)*/);
             
         }
-        //Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
+        Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
         
         activeVfxes.Add(go);
         go.Play(vfxData);

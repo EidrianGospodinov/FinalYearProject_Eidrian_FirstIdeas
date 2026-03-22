@@ -18,3 +18,4 @@ MonoBehaviour:
   _Duration: 4.77
   _Radius: 7.61
   VFX: {fileID: 8634241905304350130, guid: 20807749f41903145859f163319db7d1, type: 3}
+  FindAtTarget: 1
