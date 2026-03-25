@@ -6,6 +6,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         BasicAttack,
         SecondaryBasicAttack,
         SpecialAttack,
-        FlipAttack
+        FlipAttack,
+        None
     }
 }

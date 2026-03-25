@@ -45,6 +45,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
                 if (agent.CurrentHeroData != null && agent.EnemyDetector.CurrentActiveEnemy != null)
                 {
                     EventBus<OnLongRange>.Trigger(new OnLongRange(agent.CurrentHeroData, agent.EnemyDetector.CurrentActiveEnemy));
+                    EventBus<OnAttack>.Trigger(new OnAttack(AttackType.LongRange, ComboStateId.None));
                 }
                 longRangeTimer = 0;
             }

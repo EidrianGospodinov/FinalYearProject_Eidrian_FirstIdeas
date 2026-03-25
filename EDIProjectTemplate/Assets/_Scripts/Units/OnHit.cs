@@ -57,6 +57,7 @@ public class OnHit : MonoBehaviour
         switch (evt.AttackType)
         {
             case AttackType.NONE:
+            case AttackType.LongRange:
                 _isAttacking = false;
                 break;
             case AttackType.Sword:

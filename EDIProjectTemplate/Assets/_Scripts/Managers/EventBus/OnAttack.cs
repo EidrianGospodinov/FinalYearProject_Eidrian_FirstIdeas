@@ -15,5 +15,6 @@ public enum AttackType
 {
      NONE = 0,
      Sword,
-     Special
+     Special,
+     LongRange
 };

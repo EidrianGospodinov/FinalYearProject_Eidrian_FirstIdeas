@@ -19,6 +19,7 @@ namespace _Scripts.Units.Player
         public const string ATTACK2 = "SecondaryAttack"; 
         public const string ATTACK3 = "SpecialAttackHighSpin";
         public const string ATTACKSPECIAL2 = "FlipAttack";
+        public const string LongRangeAttackHold = "LongRangeAttackPose";
             
         
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
@@ -44,6 +45,16 @@ namespace _Scripts.Units.Player
             string animState = "";
             switch (comboId)
             {
+                case ComboStateId.None:
+                    if (evt.AttackType == AttackType.LongRange)
+                    {
+                        animState = LongRangeAttackHold;
+                    }
+                    else if (evt.AttackType == AttackType.Special)
+                    {
+                        
+                    }
+                    break;
                 case ComboStateId.WindDown:
                     animState = COOLDOWN;
                     break;
