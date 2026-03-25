@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Oreon's LongRange
   m_EditorClassIdentifier: 
   Name: 
-  VfxSpawnDelay: 0
+  VfxSpawnDelay: 1.2
   Source: 2
   _Duration: 3
   _Radius: 4

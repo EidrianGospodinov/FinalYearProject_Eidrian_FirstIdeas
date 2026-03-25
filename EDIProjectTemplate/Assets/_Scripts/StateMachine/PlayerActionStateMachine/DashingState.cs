@@ -11,21 +11,21 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             return ActionStateId.Dashing;
         }
 
-        public void Enter(PlayerController agent)
+        public void Enter(PlayerController playerController)
         {
             Debug.Log("Entered dodging state");
             dodgeEndTime = Time.time + DODGE_DURATION;
-            agent.SetDodgeCooldown();
-            agent.PerformDashMovement(DODGE_DURATION);
+            playerController.SetDodgeCooldown();
+            playerController.PerformDashMovement(DODGE_DURATION);
             //agent.PlayAnimation("Dodge");
         }
 
-        public void Update(PlayerController agent)
+        public void Update(PlayerController playerController)
         {
-            agent.CharacterController.Move(agent.DashVelocity * Time.deltaTime);
+            playerController.CharacterController.Move(playerController.DashVelocity * Time.deltaTime);
             if (Time.time >= dodgeEndTime)
             {
-                agent.ActionStateMachine.ChangeState(ActionStateId.Ready);
+                playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);
             }
         }
 

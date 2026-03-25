@@ -31,12 +31,12 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             return ComboStateId.BasicAttack;
         }
 
-        public override void Enter(PlayerController agent)
+        public override void Enter(PlayerController playerController)
         {
-            base.Enter(agent);
+            base.Enter(playerController);
             Debug.Log("basic attack enter");
-            AttackData data = agent.AttackData;
-            var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
+            AttackData data = playerController.AttackData;
+            var parentState = (AttackingState)playerController.ActionStateMachine.GetState(ActionStateId.Attacking);
             EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));
             
             var comboData = data.GetComboStateId(GetId());

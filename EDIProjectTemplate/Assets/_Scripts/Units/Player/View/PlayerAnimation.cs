@@ -19,7 +19,7 @@ namespace _Scripts.Units.Player
         public const string ATTACK2 = "SecondaryAttack"; 
         public const string ATTACK3 = "SpecialAttackHighSpin";
         public const string ATTACKSPECIAL2 = "FlipAttack";
-        public const string LongRangeAttackHold = "LongRangeAttackPose";
+        public const string LongRangeAttackHold = "LongRangeAttackPoseStart";
             
         
         private const string WEAPON_LAYER_NAME = "Weapon Layer";

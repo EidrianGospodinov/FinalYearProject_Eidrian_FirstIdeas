@@ -11,15 +11,15 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             return ComboStateId.WindDown;
         }
 
-        public void Enter(PlayerController agent)
+        public void Enter(PlayerController playerController)
         {
-            agent.HasLeftClickInput = false;
-            agent.HasRightClickInput = false;
-            agent.IsAttacking = false;
+            playerController.HasLeftClickInput = false;
+            playerController.HasRightClickInput = false;
+            playerController.IsAttacking = false;
             windDownTimer = 0.5f;
         }
 
-        public void Update(PlayerController agent)
+        public void Update(PlayerController playerController)
         {
             windDownTimer -= Time.deltaTime;
             if (windDownTimer <= 0f)

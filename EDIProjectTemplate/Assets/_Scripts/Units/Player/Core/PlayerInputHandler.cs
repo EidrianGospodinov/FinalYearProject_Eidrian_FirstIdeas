@@ -64,6 +64,8 @@ namespace _Scripts.Units.Player
             input.SecondaryAttack.canceled += ctx =>
             {
                 playerController.HasRightClickHold = false;
+                playerController.playerAnimation.SetBoolParam("isHoldingRightMouseButton", false );
+                EventBus<OnAttack>.Trigger(new OnAttack(AttackType.NONE));
             };
             input.Dash.started += ctx =>
             {

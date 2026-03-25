@@ -22,10 +22,10 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             return ActionStateId.Attacking;
         }
 
-        public void Enter(PlayerController agent)
+        public void Enter(PlayerController playerController)
         {
             Debug.Log("Attack state enter");
-            comboStateMachine = new StateMachine<PlayerController, ComboStateId>(agent);
+            comboStateMachine = new StateMachine<PlayerController, ComboStateId>(playerController);
             
             comboStateMachine.RegisterState(new BasicAttackState());
             comboStateMachine.RegisterState(new ComboWindDownState());
@@ -34,10 +34,10 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             comboStateMachine.RegisterState(new SecondaryFlipAttackState());
             
             comboStateMachine.Initialize(ComboStateId.BasicAttack);
-            Attack(agent);
+            Attack(playerController);
         }
 
-        public void Update(PlayerController agent)
+        public void Update(PlayerController playerController)
         {
             if (ComboWindowTimer > 0)
             {
@@ -52,7 +52,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
                 var actualWindDownState = (ComboWindDownState)windDownState;
                 if (actualWindDownState.IsTimerDone)
                 {
-                    agent.ActionStateMachine.ChangeState(ActionStateId.Ready);
+                    playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);
                 }
             }
         }

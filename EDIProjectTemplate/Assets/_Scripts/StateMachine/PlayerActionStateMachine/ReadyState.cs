@@ -11,40 +11,42 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             return ActionStateId.Ready;
         }
 
-        public void Enter(PlayerController agent)
+        public void Enter(PlayerController playerController)
         {
             Debug.Log("enter ready state");
         }
 
-        public void Update(PlayerController agent)
+        public void Update(PlayerController playerController)
         {
-            if (agent.IsWeaponEquipped && HasAttackingInput(agent))
+            if (playerController.IsWeaponEquipped && HasAttackingInput(playerController))
             {
                 return;
             }
 
-            if (!agent.IsWeaponEquipped && agent.HasRightClickHold)
+            if (!playerController.IsWeaponEquipped && playerController.HasRightClickHold)
             {
-                OnLongRangeAttack(agent);
+                OnLongRangeAttack(playerController);
             }
             else
             {
-                longRangeTimer = agent.AttackData.longRangeInterval;
+                longRangeTimer = playerController.AttackData.longRangeInterval;
             }
-            if (HasDodgeInput(agent))
+            if (HasDodgeInput(playerController))
             {
                 return;
             }
         }
 
-        private void OnLongRangeAttack(PlayerController agent)
+        private void OnLongRangeAttack(PlayerController playerController)
         {
             longRangeTimer += Time.deltaTime;
-            if (longRangeTimer >= agent.AttackData.longRangeInterval)
+            if (longRangeTimer >= playerController.AttackData.longRangeInterval)
             {
-                if (agent.CurrentHeroData != null && agent.EnemyDetector.CurrentActiveEnemy != null)
+                if (playerController.CurrentHeroData != null && playerController.EnemyDetector.CurrentActiveEnemy != null)
                 {
-                    EventBus<OnLongRange>.Trigger(new OnLongRange(agent.CurrentHeroData, agent.EnemyDetector.CurrentActiveEnemy));
+                    playerController.playerAnimation.SetBoolParam("isHoldingRightMouseButton", true );
+                    
+                    EventBus<OnLongRange>.Trigger(new OnLongRange(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy));
                     EventBus<OnAttack>.Trigger(new OnAttack(AttackType.LongRange, ComboStateId.None));
                 }
                 longRangeTimer = 0;
@@ -52,42 +54,42 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         }
 
 
-        public void Exit(PlayerController agent)
+        public void Exit(PlayerController playerController)
         {
             
         }
 
-        private bool HasAttackingInput(PlayerController agent)
+        private bool HasAttackingInput(PlayerController playerController)
         {
-            if (agent.HasSpecialPowerInput)
+            if (playerController.HasSpecialPowerInput)
             {
-                agent.HasSpecialPowerInput = false;
+                playerController.HasSpecialPowerInput = false;
                 Debug.LogError("Do Special attack");
-                EventBus<OnUltimate>.Trigger(new OnUltimate(agent.CurrentHeroData, agent.EnemyDetector.CurrentActiveEnemy));
+                EventBus<OnUltimate>.Trigger(new OnUltimate(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy));
             }
-            if (agent.HasLeftClickInput)
+            if (playerController.HasLeftClickInput)
             {
-                agent.HasLeftClickInput = false; 
+                playerController.HasLeftClickInput = false; 
         
-                agent.ActionStateMachine.ChangeState(ActionStateId.Attacking);
+                playerController.ActionStateMachine.ChangeState(ActionStateId.Attacking);
                 return true;
             }
-            if (agent.HasRightClickInput)
+            if (playerController.HasRightClickInput)
             {
                 //we are performing the action inside the attack state, but we need to indicate that there is input
-                agent.HasRightClickInput = false; 
+                playerController.HasRightClickInput = false; 
         
                 return true;
             }
 
             return false;
         }
-        private bool HasDodgeInput(PlayerController agent)
+        private bool HasDodgeInput(PlayerController playerController)
         {
-            if (agent.HasDashInput)
+            if (playerController.HasDashInput)
             {
-                agent.HasDashInput = false;
-                agent.ActionStateMachine.ChangeState(ActionStateId.Dashing);
+                playerController.HasDashInput = false;
+                playerController.ActionStateMachine.ChangeState(ActionStateId.Dashing);
                 return true;
             }
 

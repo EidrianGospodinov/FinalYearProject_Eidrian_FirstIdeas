@@ -20,20 +20,20 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
             return ComboStateId.FlipAttack;
         }
 
-        public override void Enter(PlayerController agent)
+        public override void Enter(PlayerController playerController)
         {
-            base.Enter(agent);
-            AttackData data = agent.AttackData;
+            base.Enter(playerController);
+            AttackData data = playerController.AttackData;
             EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));
             
-            var parentState = (AttackingState)agent.ActionStateMachine.GetState(ActionStateId.Attacking);
+            var parentState = (AttackingState)playerController.ActionStateMachine.GetState(ActionStateId.Attacking);
             var comboData = data.GetComboStateId(GetId());
             parentState.ResetComboTimer(comboData.attackDelay);
         }
 
-        public override void Update(PlayerController agent)
+        public override void Update(PlayerController playerController)
         {
-            base.Update(agent);
+            base.Update(playerController);
         }
 
         public override void Exit(PlayerController agent)

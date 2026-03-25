@@ -16,24 +16,24 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
         protected abstract bool TryTransitionToNextState(PlayerController agent);
         public abstract ComboStateId GetId();
 
-        public virtual void Enter(PlayerController agent)
+        public virtual void Enter(PlayerController playerController)
         {
             Debug.Log("set is attacking to true");
-            agent.IsAttacking = true;
-            agent.PlayAudioSource(agent.AttackData.swordSwing);
+            playerController.IsAttacking = true;
+            playerController.PlayAudioSource(playerController.AttackData.swordSwing);
             
         }
 
-        public virtual void Update(PlayerController agent)
+        public virtual void Update(PlayerController playerController)
         {
-            if (TryTransitionToNextState(agent))
+            if (TryTransitionToNextState(playerController))
             {
                 return;
             }
             
-            if (GetParentState(agent).ComboWindowTimer <= 0)
+            if (GetParentState(playerController).ComboWindowTimer <= 0)
             {
-                GetComboSM(agent).ChangeState(ComboStateId.WindDown);
+                GetComboSM(playerController).ChangeState(ComboStateId.WindDown);
             }
         }
 
