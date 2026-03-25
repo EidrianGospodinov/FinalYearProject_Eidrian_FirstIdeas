@@ -10742,6 +10742,7 @@ MonoBehaviour:
   specialAbilityData:
   - {fileID: 11400000, guid: 07236439b90ac294e8ce8cb65bae3dd4, type: 2}
   - {fileID: 11400000, guid: e99f3a9bc20f91d47afd9be806a3bff2, type: 2}
+  - {fileID: 11400000, guid: 27daabbf463b8d54580e8afdf69c8161, type: 2}
   individualCharacter: {fileID: 1345885087}
   _CurrentData: 
 --- !u!1 &1345885085
@@ -14513,6 +14514,7 @@ MonoBehaviour:
   specialAbilityData:
   - {fileID: 11400000, guid: f6675933d5620e742a12001ad9815d56, type: 2}
   - {fileID: 11400000, guid: 55e061d404f40d846a1c37e8a058458a, type: 2}
+  - {fileID: 11400000, guid: 0a21bfeebad9fec46be995e72bb298dd, type: 2}
   individualCharacter: {fileID: 1239669883}
   _CurrentData: 
 --- !u!1 &1831935146

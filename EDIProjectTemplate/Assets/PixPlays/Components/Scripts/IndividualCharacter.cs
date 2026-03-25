@@ -30,7 +30,7 @@ namespace PixPlays.ElementalVFX
             }
         }
 
-        public Vector3 GetTarget()
+        public Vector3 GetTargetFallback()
         {
             Vector3 direction = (_Target.position - transform.position).normalized;
             Ray ray = new Ray(transform.position, direction);

@@ -35,7 +35,7 @@ public class SpecialAbility : MonoBehaviour
     private void OnGetUltimateEvent(GetUltimateEvent obj)
     {
         index = 1;
-        StartCoroutine(Coroutine_Spawn(true));
+        StartCoroutine(Coroutine_Spawn(null,true));
     }
 
     private void OnDisable()
@@ -46,20 +46,16 @@ public class SpecialAbility : MonoBehaviour
 
     private void OnUltimateAttackEvent(OnUltimate onUltimateData)
     {
-#if UNITY_EDITOR
         ClearAllVfx();
         index = 0;
         if (specialAbilityData[0].FindAtTarget)
         {
-            var enemyTarget = FindFirstObjectByType<PlayerController>().EnemyDetector.CurrentActiveEnemy;
-            
-            StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
+            StartCoroutine(Coroutine_SpawnAtTarget(onUltimateData.target));
         }
         else
         {
-            StartCoroutine(Coroutine_Spawn());
+            StartCoroutine(Coroutine_Spawn(onUltimateData.target));
         }
-#endif
     }
     private void ClearAllVfx()
     {
@@ -74,22 +70,49 @@ public class SpecialAbility : MonoBehaviour
 
     public void Update()
     {
+#if UNITY_EDITOR
+        var enemyTarget = FindFirstObjectByType<PlayerController>().EnemyDetector.CurrentActiveEnemy;
         if (Input.GetKeyDown(KeyCode.O))
         {
             index = 0;
-            OnUltimateAttackEvent(null);
+            if (specialAbilityData[index].FindAtTarget)
+            {
+                StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
+            }
+            else
+            {
+                StartCoroutine(Coroutine_Spawn(enemyTarget));
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.I))
         {
+            StopCoroutine(Coroutine_Spawn(enemyTarget));
             index = 1;
-            StartCoroutine(Coroutine_Spawn(true));
+            StartCoroutine(Coroutine_Spawn(enemyTarget,true));
         }
+
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            index = 2;
+            if (specialAbilityData[index].FindAtTarget)
+            {
+                StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
+            }
+            else
+            {
+                StartCoroutine(Coroutine_Spawn(enemyTarget));
+            }
+        }
+#endif
     }
 
-    IEnumerator Coroutine_Spawn(bool asChild = false)
+    IEnumerator Coroutine_Spawn(Transform target, bool asChild = false)
     {
-        //Character.PlayAnimation("New Animation", specialAbilityData[index].clip);
+        if (target == null)
+        {
+            target.position = IndividualCharacter.GetTargetFallback();
+        }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
         BaseVfx go;
@@ -105,7 +128,7 @@ public class SpecialAbility : MonoBehaviour
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
         Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
-        var vfxData = new VfxData(sourcePoint, IndividualCharacter.GetTarget(), duration, data._Radius);
+        var vfxData = new VfxData(sourcePoint, target, duration, data._Radius);
         vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
         
         activeVfxes.Add(go);
@@ -113,6 +136,11 @@ public class SpecialAbility : MonoBehaviour
     }
     IEnumerator Coroutine_SpawnAtTarget(Transform target, bool asChild = false)
     {
+        //todo: this function needs clean up
+        if (target == null)
+        {
+            target.position = IndividualCharacter.GetTargetFallback();
+        }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
         BaseVfx go;
@@ -130,7 +158,7 @@ public class SpecialAbility : MonoBehaviour
         
         //Transform target = individualCharacter.GetClosestEnemy(data._Radius);
         VfxData vfxData;
-        vfxData = new VfxData(target, IndividualCharacter.GetTarget(), duration, data._Radius);
+        vfxData = new VfxData(target, target, duration, data._Radius);
         if (target != null && individualCharacter.HasLineOfSight(target))
         {
             vfxData.SetGround(target/*IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground)*/);
