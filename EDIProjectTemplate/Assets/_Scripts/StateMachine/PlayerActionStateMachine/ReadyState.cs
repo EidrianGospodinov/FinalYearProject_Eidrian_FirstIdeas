@@ -23,7 +23,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
                 return;
             }
 
-            if (agent.HasRightClickHold)
+            if (!agent.IsWeaponEquipped && agent.HasRightClickHold)
             {
                 OnLongRangeAttack(agent);
             }
