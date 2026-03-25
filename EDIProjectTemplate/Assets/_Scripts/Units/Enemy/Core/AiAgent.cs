@@ -27,6 +27,7 @@ namespace _Scripts.Units.Enemy
         private int instanceID;
         
         [SerializeField] private TextMeshProUGUI statusText;
+        public Transform LongRangeTarget;
         [HideInInspector]public Animator animator;
 
         [HideInInspector]public EnemyAttackTypesData NextAttackTypeData;

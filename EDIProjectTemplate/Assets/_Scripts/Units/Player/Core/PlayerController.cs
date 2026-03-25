@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // References to the sub-components
     private PlayerMovement playerMovement;
     public HeroCombinedScript heroCombinedScript { get; private set; }
-    public ActiveEnemyDetector EnemyDetector;
+    [HideInInspector] public ActiveEnemyDetector EnemyDetector;
    
     private MeshSockets sockets;
     private Transform weaponTransform;

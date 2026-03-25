@@ -15,6 +15,9 @@ namespace _Scripts.Units.Player
         public int attackDamage = 1;
         public LayerMask attackLayer;
         public float powerUpXpRequired;
+        [Header("LongRange")]
+        public float longRangeInterval = 0.5f; 
+        
 
         [Header("Dash")]
         public float dashCooldownDuration = 1f;

@@ -37,7 +37,7 @@ public class SpecialAbility : MonoBehaviour
     private void OnGetLongRangeEvent(OnLongRange OnLongRangeData)
     {
         index = 2;
-        ApplyVisualEffect(OnLongRangeData.target);
+        ApplyVisualEffect(OnLongRangeData.EnemyTarget);
     }
 
     private void OnGetUltimateEvent(GetUltimateEvent GetUltimateEvent)
@@ -50,6 +50,7 @@ public class SpecialAbility : MonoBehaviour
     {
         EventBus<OnUltimate>.Unregister(OnUltimate);
         EventBus<GetUltimateEvent>.Unregister(GetUltimateEvent);
+        EventBus<OnLongRange>.Unregister(OnLongRange);
     }
 
     private void OnUltimateAttackEvent(OnUltimate onUltimateData)
