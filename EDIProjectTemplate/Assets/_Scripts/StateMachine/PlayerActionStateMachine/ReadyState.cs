@@ -22,6 +22,10 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
                 return;
             }
 
+            if (agent.HasRightClickHold)
+            {
+                EventBus<OnLongRange>.Trigger(new OnLongRange(agent.CurrentHeroData, agent.EnemyDetector.CurrentActiveEnemy));
+            }
             if (HasDodgeInput(agent))
             {
                 return;
@@ -44,19 +48,16 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             }
             if (agent.HasLeftClickInput)
             {
-                // Consume the input FIRST
                 agent.HasLeftClickInput = false; 
         
-                // Set context and transition
                 agent.ActionStateMachine.ChangeState(ActionStateId.Attacking);
                 return true;
             }
             if (agent.HasRightClickInput)
             {
-                // Consume the input FIRST
+                //we are performing the action inside the attack state, but we need to indicate that there is input
                 agent.HasRightClickInput = false; 
         
-                //do logic right click attack                
                 return true;
             }
 

@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     public bool IsWeaponEquipped { get; private set; }
     public bool HasLeftClickInput { get; set; } 
     public bool HasRightClickInput { get; set; }
+    public bool HasRightClickHold { get; set; }
     public bool HasDashInput { get; set; }
     public bool HasSpecialPowerInput { get; set; }
 

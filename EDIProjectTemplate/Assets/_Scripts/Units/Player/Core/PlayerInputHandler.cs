@@ -53,6 +53,18 @@ namespace _Scripts.Units.Player
                     playerController.HasRightClickInput = true;
                 }
             };
+            input.SecondaryAttack.performed += ctx =>
+            {
+                if (ctx.interaction is UnityEngine.InputSystem.Interactions.HoldInteraction)
+                {
+                    playerController.HasRightClickHold = true;
+                    playerController.HasRightClickInput = false;
+                }
+            };
+            input.SecondaryAttack.canceled += ctx =>
+            {
+                playerController.HasRightClickHold = false;
+            };
             input.Dash.started += ctx =>
             {
                 if (playerController.IsAttacking || playerController.IsDodgeOnCooldown) 

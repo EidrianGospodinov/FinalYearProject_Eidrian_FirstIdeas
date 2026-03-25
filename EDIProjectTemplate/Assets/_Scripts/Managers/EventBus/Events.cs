@@ -1,3 +1,4 @@
+using _Scripts.Units.Enemy;
 using _Scripts.Units.Player;
 using UnityEngine;
 
@@ -26,6 +27,24 @@ public class OnUltimate : IEvent
     {
         HeroData = heroData;
         this.target = target;
+    }
+
+}
+public class OnLongRange : IEvent
+{
+    public HeroData HeroData;
+    public Transform target;
+
+    public OnLongRange(HeroData heroData, Transform target)
+    {
+        HeroData = heroData;
+        this.target = target;
+        var enemyHeight = this.target.GetComponent<AiAgent>().agentConfig.Height;
+        //setting up the height of the attack effect
+        var newPos = this.target.position;
+        newPos.y = enemyHeight;
+        this.target.position = newPos;
+
     }
 
 }

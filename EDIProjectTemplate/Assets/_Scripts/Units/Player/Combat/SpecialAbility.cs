@@ -25,14 +25,22 @@ public class SpecialAbility : MonoBehaviour
     
     private EventBinding<OnUltimate> OnUltimate;
     private EventBinding<GetUltimateEvent> GetUltimateEvent;
+    private EventBinding<OnLongRange> OnLongRange;
 
     private void OnEnable()
     {
         OnUltimate = EventBus<OnUltimate>.Register(OnUltimateAttackEvent);
         GetUltimateEvent = EventBus<GetUltimateEvent>.Register(OnGetUltimateEvent);
+        OnLongRange = EventBus<OnLongRange>.Register(OnGetLongRangeEvent);
     }
 
-    private void OnGetUltimateEvent(GetUltimateEvent obj)
+    private void OnGetLongRangeEvent(OnLongRange OnLongRangeData)
+    {
+        index = 2;
+        ApplyVisualEffect(OnLongRangeData.target);
+    }
+
+    private void OnGetUltimateEvent(GetUltimateEvent GetUltimateEvent)
     {
         index = 1;
         StartCoroutine(Coroutine_Spawn(null,true));
@@ -48,14 +56,7 @@ public class SpecialAbility : MonoBehaviour
     {
         ClearAllVfx();
         index = 0;
-        if (specialAbilityData[0].FindAtTarget)
-        {
-            StartCoroutine(Coroutine_SpawnAtTarget(onUltimateData.target));
-        }
-        else
-        {
-            StartCoroutine(Coroutine_Spawn(onUltimateData.target));
-        }
+        ApplyVisualEffect(onUltimateData.target);
     }
     private void ClearAllVfx()
     {
@@ -75,14 +76,7 @@ public class SpecialAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             index = 0;
-            if (specialAbilityData[index].FindAtTarget)
-            {
-                StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
-            }
-            else
-            {
-                StartCoroutine(Coroutine_Spawn(enemyTarget));
-            }
+            ApplyVisualEffect(enemyTarget);
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -95,16 +89,21 @@ public class SpecialAbility : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.U))
         {
             index = 2;
-            if (specialAbilityData[index].FindAtTarget)
-            {
-                StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
-            }
-            else
-            {
-                StartCoroutine(Coroutine_Spawn(enemyTarget));
-            }
+            ApplyVisualEffect(enemyTarget);
         }
 #endif
+    }
+
+    private void ApplyVisualEffect(Transform enemyTarget)
+    {
+        if (specialAbilityData[index].FindAtTarget)
+        {
+            StartCoroutine(Coroutine_SpawnAtTarget(enemyTarget));
+        }
+        else
+        {
+            StartCoroutine(Coroutine_Spawn(enemyTarget));
+        }
     }
 
     IEnumerator Coroutine_Spawn(Transform target, bool asChild = false)
