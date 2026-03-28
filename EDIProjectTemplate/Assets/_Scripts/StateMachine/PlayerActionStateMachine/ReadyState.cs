@@ -25,12 +25,14 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
             if (!playerController.IsWeaponEquipped && playerController.HasRightClickHold)
             {
-                OnLongRangeAttack(playerController);
+                playerController.ActionStateMachine.ChangeState(ActionStateId.LongRangeAttack);
+                return;
+                //OnLongRangeAttack(playerController);
             }
-            else
+            /*else
             {
                 longRangeTimer = playerController.AttackData.longRangeInterval;
-            }
+            }*/
             if (HasDodgeInput(playerController))
             {
                 return;

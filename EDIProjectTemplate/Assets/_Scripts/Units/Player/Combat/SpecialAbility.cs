@@ -36,6 +36,7 @@ public class SpecialAbility : MonoBehaviour
 
     private void OnGetLongRangeEvent(OnLongRange OnLongRangeData)
     {
+        Debug.Log("Long Range Attack- apply visuals ");
         index = 2;
         ApplyVisualEffect(OnLongRangeData.EnemyTarget);
     }

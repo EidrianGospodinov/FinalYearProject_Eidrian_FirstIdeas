@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.RegisterState(new AttackingState());
         actionStateMachine.RegisterState(new ReadyState());
         actionStateMachine.RegisterState(new DashingState());
+        actionStateMachine.RegisterState(new LongRangeAttackState());
         
 
 
