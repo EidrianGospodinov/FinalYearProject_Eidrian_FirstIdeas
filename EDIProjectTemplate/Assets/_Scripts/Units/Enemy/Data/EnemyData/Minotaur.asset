@@ -30,7 +30,7 @@ MonoBehaviour:
   turningSpeed: 1
   bulletDamage: 25
   bulletSpeed: 5
-  critChance: 0
+  critChance: 0.199
   EnemyAttackTypes:
   - {fileID: 11400000, guid: 216dd3d5286bf9540bb2e9ac9c6bf222, type: 2}
   - {fileID: 11400000, guid: a440d56a42ff84f438728310330d350f, type: 2}
