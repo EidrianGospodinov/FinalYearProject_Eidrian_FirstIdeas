@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.EnemyStatemMachine;
 using _Scripts.StateMachine.EnemyStatemMachine.EnemyStates;
@@ -53,16 +54,19 @@ namespace _Scripts.Units.Enemy
             aiVision = GetComponent<AiVision>();
             animator = GetComponentInChildren<Animator>();
 
-
-
-            //state machine set up- register all stated this agent will use
             stateMachine = new StateMachine<AiAgent, EnemyStateId>(this);
+            foreach (var stateId in agentConfig.States)
+            {
+                stateMachine.RegisterState(StateFactory.Create(stateId));
+            }
+            /*
+            //state machine set up- register all stated this agent will use
             stateMachine.RegisterState(new EnemyWonderState());
             stateMachine.RegisterState(new EnemyIdleState());
             stateMachine.RegisterState(new ReadyToAttackState());
             stateMachine.RegisterState(new EnemyChargeState());
             stateMachine.RegisterState(new AttackWindDownState());
-            stateMachine.RegisterState(new AttackGeneric());
+            stateMachine.RegisterState(new AttackGeneric());*/
             stateMachine.Initialize(initialState);
 
         }
@@ -88,6 +92,25 @@ namespace _Scripts.Units.Enemy
         }
 
 
+    }
+    public static class StateFactory
+    {
+        public static IState<AiAgent, EnemyStateId> Create(EnemyStateId id)
+        {
+            switch (id)
+            {
+                case EnemyStateId.Idle: return new EnemyIdleState();
+                case EnemyStateId.Wonder: return new EnemyWonderState();
+                case EnemyStateId.Charge: return new EnemyChargeState();
+                case EnemyStateId.AttackGeneric: return new AttackGeneric();
+                case EnemyStateId.CoolDown: return new AttackWindDownState();
+                case EnemyStateId.ReadyToAttack: return new ReadyToAttackState();
+
+                default:
+                    Debug.LogError($"State {id} not implemented");
+                    return null;
+            }
+        }
     }
 }
 

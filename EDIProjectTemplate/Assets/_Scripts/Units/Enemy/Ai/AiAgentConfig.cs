@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.StateMachine.EnemyStatemMachine;
 using UnityEngine;
 
 namespace _Scripts.Units.Enemy
@@ -8,7 +9,9 @@ namespace _Scripts.Units.Enemy
     {
         [Header("Stats")]
         public float Height = 2.0f;
-        
+     
+        [Header("States")]
+        public List<EnemyStateId> States;
         [Header("Wander State")]
         public float wanderRadius = 15f;
         public float minWanderRadius = 5f;
