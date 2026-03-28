@@ -5,7 +5,6 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 {
     public class ReadyState : IState<PlayerController, ActionStateId>
     {
-        private float longRangeTimer;
         public ActionStateId GetId()
         {
             return ActionStateId.Ready;
@@ -27,31 +26,10 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             {
                 playerController.ActionStateMachine.ChangeState(ActionStateId.LongRangeAttack);
                 return;
-                //OnLongRangeAttack(playerController);
             }
-            /*else
-            {
-                longRangeTimer = playerController.AttackData.longRangeInterval;
-            }*/
             if (HasDodgeInput(playerController))
             {
                 return;
-            }
-        }
-
-        private void OnLongRangeAttack(PlayerController playerController)
-        {
-            longRangeTimer += Time.deltaTime;
-            if (longRangeTimer >= playerController.AttackData.longRangeInterval)
-            {
-                if (playerController.CurrentHeroData != null && playerController.EnemyDetector.CurrentActiveEnemy != null)
-                {
-                    playerController.playerAnimation.SetBoolParam("isHoldingRightMouseButton", true );
-                    
-                    EventBus<OnLongRange>.Trigger(new OnLongRange(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy));
-                    EventBus<OnAttack>.Trigger(new OnAttack(AttackType.LongRange, ComboStateId.None));
-                }
-                longRangeTimer = 0;
             }
         }
 
