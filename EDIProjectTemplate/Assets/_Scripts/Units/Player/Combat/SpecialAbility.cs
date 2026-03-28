@@ -43,6 +43,7 @@ public class SpecialAbility : MonoBehaviour
     private void OnGetUltimateEvent(GetUltimateEvent GetUltimateEvent)
     {
         index = 1;
+        StopCoroutine(Coroutine_Spawn(null,true));
         StartCoroutine(Coroutine_Spawn(null,true));
     }
 
@@ -82,8 +83,8 @@ public class SpecialAbility : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            StopCoroutine(Coroutine_Spawn(enemyTarget));
             index = 1;
+            StopCoroutine(Coroutine_Spawn(enemyTarget));
             StartCoroutine(Coroutine_Spawn(enemyTarget,true));
         }
 
@@ -111,7 +112,7 @@ public class SpecialAbility : MonoBehaviour
     {
         if (target == null)
         {
-            target.position = IndividualCharacter.GetTargetFallback();
+            target = IndividualCharacter.GetTargetFallback();
         }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
@@ -139,7 +140,7 @@ public class SpecialAbility : MonoBehaviour
         //todo: this function needs clean up
         if (target == null)
         {
-            target.position = IndividualCharacter.GetTargetFallback();
+            target = IndividualCharacter.GetTargetFallback();
         }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
