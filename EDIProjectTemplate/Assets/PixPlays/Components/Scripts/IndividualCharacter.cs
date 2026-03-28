@@ -30,17 +30,17 @@ namespace PixPlays.ElementalVFX
             }
         }
 
-        public Vector3 GetTargetFallback()
+        public Transform GetTargetFallback()
         {
             Vector3 direction = (_Target.position - transform.position).normalized;
             Ray ray = new Ray(transform.position, direction);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100))
             {
-                return hit.point;
+                return hit.transform;
             }
 
-            return _Target.position;
+            return _Target;
         }
 
         public Transform GetClosestEnemy(float radius)

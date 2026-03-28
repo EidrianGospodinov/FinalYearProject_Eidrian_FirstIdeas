@@ -1,4 +1,5 @@
 using _Scripts.Units.Enemy;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
@@ -6,6 +7,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
     public class AttackGeneric : EnemyAttackBaseState
     {
         private float pathUpdateDeadline;
+        private Vector3 lastPlayerPosition;
         public override EnemyStateId GetId()
         {
             return EnemyStateId.AttackGeneric;
@@ -29,10 +31,13 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             // Only recalculate path a few times per second to save CPU
             if (Time.time >= pathUpdateDeadline)
             {
-                if (Vector3.Distance(agent.navMeshAgent.destination, agent.playerTransform.position) >= 0.2f)
+                float playerMoved = Vector3.Distance(lastPlayerPosition, agent.playerTransform.position);
+                if (playerMoved >= 0.5f)
                 {
-                    pathUpdateDeadline = Time.time + Random.Range(0f, 0.1f);
                     agent.navMeshAgent.SetDestination(agent.playerTransform.position);
+                    lastPlayerPosition = agent.playerTransform.position;
+                    
+                    pathUpdateDeadline = Time.time + Random.Range(0.3f, 0.5f);
                 }
             }
             if (!agent.navMeshAgent.pathPending && 
