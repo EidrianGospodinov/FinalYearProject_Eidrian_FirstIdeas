@@ -17,7 +17,7 @@ namespace _Scripts.Units.Player
        public Image currentHealthGlobe;
        
        public bool Regenerate = true;
-       public float regen = 0.1f;
+       public float regen = 5f;
        private float timeleft = 0.0f;	// Left time for current interval
        public float regenUpdateInterval = 1f;
        private EventBinding<OnSwitchHeroEvent> playerEventBinding;
@@ -43,10 +43,10 @@ namespace _Scripts.Units.Player
 
         private void Update()
         {
-            if (Regenerate)
+            /*if (Regenerate)
             {
                 Regen();
-            }
+            }*/
         }
 
         private void OnEnable()
@@ -62,7 +62,7 @@ namespace _Scripts.Units.Player
 
         }
 
-        private void Regen()
+        public void Regen()
         {
             timeleft -= Time.deltaTime;
 
@@ -77,7 +77,10 @@ namespace _Scripts.Units.Player
 
         private void UpdateGraphics()
         {
-            UpdateVignetteEffect();
+            if (gameObject.activeSelf)
+            {
+                UpdateVignetteEffect();
+            }
             UpdateHealthBar();
             UpdateHealthGlobe();
         }

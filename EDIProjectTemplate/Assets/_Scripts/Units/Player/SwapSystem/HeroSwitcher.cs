@@ -1,5 +1,6 @@
 
 
+using System;
 using _Scripts.Units.Player;
 using UnityEngine;
 
@@ -36,6 +37,11 @@ public class HeroSwitcher : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+    }
+
+    private void Start()
+    {
         if (heroA_Body != null)
         {
             heroA_Body.SetActive(true);
@@ -44,6 +50,7 @@ public class HeroSwitcher : MonoBehaviour
             ActiveHero = HeroType.HeroA;
         }
     }
+
     public void RequestHeroSwitch()
     {
         HeroType newHero = (ActiveHero == HeroType.HeroA) ? HeroType.HeroB : HeroType.HeroA;
