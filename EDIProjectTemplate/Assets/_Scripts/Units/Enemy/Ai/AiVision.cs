@@ -7,7 +7,7 @@ namespace _Scripts.Units.Enemy
     public class AiVision : MonoBehaviour
     {
 
-        public GameObject Player;
+        [HideInInspector] public GameObject Player;
 
 
 

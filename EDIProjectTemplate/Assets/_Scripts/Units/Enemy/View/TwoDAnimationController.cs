@@ -8,7 +8,7 @@ namespace _Scripts.Units.Enemy
     {
         private static readonly int VelocityZ = Animator.StringToHash("Velocity Z");
         private static readonly int VelocityX = Animator.StringToHash("Velocity X");
-        [SerializeField] Transform target;
+        Transform target;
         private Animator animator;
         private NavMeshAgent agent;
         
@@ -17,6 +17,7 @@ namespace _Scripts.Units.Enemy
             animator = GetComponentInChildren<Animator>();
             agent = GetComponent<NavMeshAgent>();
             agent.updateRotation = false;
+            target = GameObject.FindWithTag("Player").transform;
         }
 
         private void Update()
