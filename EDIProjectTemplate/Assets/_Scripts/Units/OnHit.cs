@@ -19,9 +19,9 @@ public class OnHit : MonoBehaviour
     public AudioClip hitSound;
     public GameObject hitEffect;
 
-    [Inject]PlayerState playerState;
+    //[Inject]PlayerState playerState;
     
-    [Inject]IEventBus<IEvent> eventBus;
+    //[Inject]IEventBus<IEvent> eventBus;
 
     private EventBinding<OnAttack> OnAttack;
     private EventBinding<PlayerEvent> playerEventBinding;

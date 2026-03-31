@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
-    [SerializeField] private Transform cameraTransform;
+    private Transform cameraTransform;
     [SerializeField] private bool faceMoveDirection = false;
 
     [Header("Controller")]
@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+        cameraTransform = Camera.main.transform;
     }
 
     // Called by PlayerController in Update()

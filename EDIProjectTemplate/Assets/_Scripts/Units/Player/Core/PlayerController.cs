@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public CharacterController CharacterController;
     
     private Vector3 dashVelocity;
+    [Inject] private CurrencyManager _currencyManager;
     
     public float DodgeCooldownEndTime { get; private set; } = 0f;
     public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool HasSpecialPowerInput { get; set; }
 
     // Injected Dependency (PlayerState)
-    [Inject] private PlayerState playerState;
+    //[Inject] private PlayerState playerState;
 
     private StateMachine<PlayerController, ActionStateId> actionStateMachine;
 
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         // Set initial state
         actionStateMachine.Initialize(ActionStateId.Ready);
-        playerState = PlayerState.IDLE;
+        //playerState = PlayerState.IDLE;
         AudioSource = GetComponent<AudioSource>();
         sockets = GetComponent<MeshSockets>();
         EnemyDetector = GetComponent<ActiveEnemyDetector>();

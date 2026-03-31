@@ -1,10 +1,12 @@
 using _Scripts.Units.Player;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Scripts.Units.Enemy
 {
     public class EnemyHealth: Health
     {
+        [Inject] private CurrencyManager currencyManager;
         //AiAgent agent;
         public Slider healthBar;
         protected override void OnStart()
@@ -20,7 +22,7 @@ namespace _Scripts.Units.Enemy
 
                 //agent.stateMachine.ChangeState(AiStateId.Death);
             }
-
+            currencyManager.AddCurrency(10);
             Destroy(gameObject, 3f);
         }
         protected override void OnDamage()
