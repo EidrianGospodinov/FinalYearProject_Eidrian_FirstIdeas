@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SkillTreeButton : MonoBehaviour
 {
-    [SerializeField] private int price;
+        [SerializeField] private StatsUpgrade statsUpgrade;
         [SerializeField] public Image frameImage;
         [SerializeField] public SkillLevel skillLevel;
         [SerializeField] private SkillAmount skillAmount;
@@ -31,7 +31,7 @@ public class SkillTreeButton : MonoBehaviour
         {
             if (!CanIncrement()) return;
 
-            skillAmount.TrySpend(price);
+            skillAmount.TrySpend(statsUpgrade.cost);
             skillLevel.IncrementLevel();
             SetColors();
         }
@@ -43,8 +43,9 @@ public class SkillTreeButton : MonoBehaviour
                 return false;
             }
 
-            if (skillAmount.CanSpend(price))
+            if (skillAmount.CanSpend(statsUpgrade.cost))
             {
+                statsUpgrade.DoUpgrade();
                 return true;
             }
 

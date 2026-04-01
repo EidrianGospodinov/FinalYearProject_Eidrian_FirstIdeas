@@ -1558,6 +1558,52 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1338738178}
   m_SourcePrefab: {fileID: 100100000, guid: e011a827265c38e44baeae9310a2a9e2, type: 3}
+--- !u!1 &896250619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 896250620}
+  - component: {fileID: 896250621}
+  m_Layer: 0
+  m_Name: StatsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &896250620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896250619}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1464523665}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &896250621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896250619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f55cc2765fbf24f9c2db48d449945c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsList:
+  - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
 --- !u!1 &917978205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977989af269856447917daf3712f1bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 5
+  statsUpgrade: {fileID: 11400000, guid: d499d307bac26f34b9ac3e2c12c18d05, type: 2}
   frameImage: {fileID: 1668249012}
   skillLevel: {fileID: 1429289597}
   skillAmount: {fileID: 51560439}
@@ -2110,6 +2156,7 @@ Transform:
   m_Children:
   - {fileID: 1842577674}
   - {fileID: 474014343}
+  - {fileID: 896250620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1494854896
@@ -2792,7 +2839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977989af269856447917daf3712f1bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 5
+  statsUpgrade: {fileID: 0}
   frameImage: {fileID: 1668249012}
   skillLevel: {fileID: 356378946}
   skillAmount: {fileID: 51560439}

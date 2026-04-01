@@ -54,12 +54,13 @@ namespace _Scripts.Units.Player
         private void OnEnable()
         {
             playerStats.upgradeApplied += UpgradeApplied;
+            maxHealth = playerStats.GetStat(Stat.health);
             
             currentHealthBar.gameObject.SetActive(false);
             currentHealthGlobe.gameObject.SetActive(true);
         }
 
-        private void UpgradeApplied(StatInfo obj)
+        private void UpgradeApplied(Stats stats, StatsUpgrade upgrade)
         {
             maxHealth = playerStats.GetStat(Stat.health);
             print($"upgrade applied. New player health for {gameObject.name} = {maxHealth}");

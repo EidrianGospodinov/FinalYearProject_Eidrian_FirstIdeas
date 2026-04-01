@@ -9,7 +9,7 @@ public class Stats : ScriptableObject
     public List<StatInfo> StatsInfo = new List<StatInfo>();
     private List<StatsUpgrade> appliedUpgrades = new List<StatsUpgrade>();
 
-    public event Action<StatInfo> upgradeApplied;
+    public event Action<Stats, StatsUpgrade> upgradeApplied;
     public float GetStat(Stat stat)
     {
         foreach (var statInfo in StatsInfo)
@@ -36,6 +36,7 @@ public class Stats : ScriptableObject
         if (!appliedUpgrades.Contains(upgrade))
         {
             appliedUpgrades.Add(upgrade);
+            upgradeApplied?.Invoke(this, upgrade);
         }
     }
 
@@ -63,7 +64,11 @@ public class Stats : ScriptableObject
 
         return baseValue;
     }
-    
+
+    public void ResetAppliedUpgrades()
+    {
+        appliedUpgrades.Clear();
+    }
     
 }
 
