@@ -1775,7 +1775,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977989af269856447917daf3712f1bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsUpgrade: {fileID: 11400000, guid: d499d307bac26f34b9ac3e2c12c18d05, type: 2}
+  statsUpgrade:
+  - {fileID: 11400000, guid: d499d307bac26f34b9ac3e2c12c18d05, type: 2}
+  - {fileID: 11400000, guid: 431692533b57cd542912e28b2511aa51, type: 2}
+  - {fileID: 11400000, guid: 52644f1be15a29f4e8b93ffedd559aa4, type: 2}
   frameImage: {fileID: 1668249012}
   skillLevel: {fileID: 1429289597}
   skillAmount: {fileID: 51560439}
@@ -2839,7 +2842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977989af269856447917daf3712f1bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsUpgrade: {fileID: 0}
+  statsUpgrade: []
   frameImage: {fileID: 1668249012}
   skillLevel: {fileID: 356378946}
   skillAmount: {fileID: 51560439}
@@ -2941,7 +2944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3132665947117869325, guid: 2a61f7c15c3a3354f809e96aff5b7fbf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6099605425688277182, guid: 2a61f7c15c3a3354f809e96aff5b7fbf, type: 3}
       propertyPath: m_Name
