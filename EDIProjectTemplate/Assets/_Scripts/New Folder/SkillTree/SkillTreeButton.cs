@@ -1,10 +1,12 @@
+using System;
+using System.Collections.Generic;
 using _Scripts.New_Folder.SkillTree;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SkillTreeButton : MonoBehaviour
 {
-        [SerializeField] private StatsUpgrade statsUpgrade;
+        [SerializeField] private List<StatsUpgrade> statsUpgrade;
         [SerializeField] public Image frameImage;
         [SerializeField] public SkillLevel skillLevel;
         [SerializeField] private SkillAmount skillAmount;
@@ -17,7 +19,12 @@ public class SkillTreeButton : MonoBehaviour
         {
             Increment();
         }
-        
+
+        private void Start()
+        {
+            skillLevel.SetMaxLevel(statsUpgrade.Count);
+        }
+
         protected void SetupUI()
         {
             SetColors();
@@ -31,10 +38,13 @@ public class SkillTreeButton : MonoBehaviour
         {
             if (!CanIncrement()) return;
 
-            skillAmount.TrySpend(statsUpgrade.cost);
-            skillLevel.IncrementLevel();
-            statsUpgrade.DoUpgrade();
-            SetColors();
+            var result = skillAmount.TrySpend(statsUpgrade[skillLevel.GetCurrentLevel()].cost);
+            if (result)
+            {
+                skillLevel.IncrementLevel();
+                statsUpgrade[skillLevel.GetCurrentLevel()].DoUpgrade();
+                SetColors();
+            }
         }
         
         private bool CanIncrement()
@@ -44,7 +54,7 @@ public class SkillTreeButton : MonoBehaviour
                 return false;
             }
 
-            if (skillAmount.CanSpend(statsUpgrade.cost))
+            if (skillAmount.CanSpend(statsUpgrade[skillLevel.GetCurrentLevel()].cost))
             {
                 return true;
             }

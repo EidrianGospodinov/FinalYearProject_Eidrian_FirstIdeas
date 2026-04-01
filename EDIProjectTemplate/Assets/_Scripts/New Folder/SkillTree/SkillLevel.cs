@@ -8,13 +8,15 @@ public class SkillLevel : MonoBehaviour
         
         [SerializeField] public TMP_Text levelMaxText;
         [SerializeField] public TMP_Text currentLevelText;
-        [SerializeField] public int initialMaxLevel = -1;
         [SerializeField] public int initialCurrentLevel = -1;
         [SerializeField] public Color activeTextColor;
         [SerializeField] public Color disabledTextColor;
         
         
         private int _currentLevel;
+        /// <summary>
+        /// max level is set from the skillTree button based on the upgrades available
+        /// </summary>
         private int _maxLevel;
 
         public void Awake()
@@ -24,9 +26,7 @@ public class SkillLevel : MonoBehaviour
 
         private void InitValues()
         {
-            var maxLevel = initialMaxLevel >= 0 ? initialMaxLevel : DefaultMaxLevel;
             var currentLevel = initialCurrentLevel >= 0 ? initialCurrentLevel : DefaultCurrentLevel;
-            SetMaxLevel(maxLevel);
             SetCurrentLevel(currentLevel);
         }
 
