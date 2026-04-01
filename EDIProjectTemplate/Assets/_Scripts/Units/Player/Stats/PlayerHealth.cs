@@ -21,12 +21,14 @@ namespace _Scripts.Units.Player
        private float timeleft = 0.0f;	// Left time for current interval
        public float regenUpdateInterval = 1f;
        private EventBinding<OnSwitchHeroEvent> playerEventBinding;
+       [SerializeField] private Stats playerStats;
 
         protected override void OnStart()
         {
             playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
             _postProcessing = FindFirstObjectByType<Volume>();
             _postProcessing.profile.TryGet(out vignette);
+            maxHealth = playerStats.GetStat(Stat.health);
             //_cameraManager = FindFirstObjectByType<CameraManager>();
         }
 
@@ -51,12 +53,22 @@ namespace _Scripts.Units.Player
 
         private void OnEnable()
         {
+            playerStats.upgradeApplied += UpgradeApplied;
+            
             currentHealthBar.gameObject.SetActive(false);
             currentHealthGlobe.gameObject.SetActive(true);
         }
 
+        private void UpgradeApplied(StatInfo obj)
+        {
+            maxHealth = playerStats.GetStat(Stat.health);
+            print($"upgrade applied. New player health for {gameObject.name} = {maxHealth}");
+        }
+
         private void OnDisable()
         {
+            playerStats.upgradeApplied -= UpgradeApplied;
+            
             currentHealthBar.gameObject.SetActive(true);
             currentHealthGlobe.gameObject.SetActive(false);
 

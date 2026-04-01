@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ public class Stats : ScriptableObject
     public List<StatInfo> instanceStatsInfo = new List<StatInfo>();
     public List<StatInfo> StatsInfo = new List<StatInfo>();
     private List<StatsUpgrade> appliedUpgrades = new List<StatsUpgrade>();
+
+    public event Action<StatInfo> upgradeApplied;
     public float GetStat(Stat stat)
     {
         foreach (var statInfo in StatsInfo)
