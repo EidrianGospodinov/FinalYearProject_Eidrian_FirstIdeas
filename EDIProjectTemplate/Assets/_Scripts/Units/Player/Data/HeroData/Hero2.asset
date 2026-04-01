@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hero2
   m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Units.Player:HeroData
   heroName: 
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 5858313414463970350, guid: 230dd455eb892fe46b4f498598401bc9, type: 3}

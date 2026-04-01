@@ -51,7 +51,6 @@ public class SkillLevel : MonoBehaviour
 
         private void SetColors()
         {
-            return;
             if (IsEmptyLevels())
             {
                 currentLevelText.color = disabledTextColor;
