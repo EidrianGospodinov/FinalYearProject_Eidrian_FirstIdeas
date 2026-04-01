@@ -1,5 +1,7 @@
+using System;
 using _Scripts.New_Folder.SkillTree;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SkillTree : MonoBehaviour
 {
@@ -8,6 +10,15 @@ public class SkillTree : MonoBehaviour
     void OnEnable()
     {
         skillAmount.UpdateSkillAmountText();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        
+    }
+
+    private void OnDisable()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

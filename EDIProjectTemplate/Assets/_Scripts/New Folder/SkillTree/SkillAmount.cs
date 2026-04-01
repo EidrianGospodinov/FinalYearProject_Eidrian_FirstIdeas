@@ -17,6 +17,12 @@ namespace _Scripts.New_Folder.SkillTree
 
         public bool CanSpend(int spend) => available >= spend;
 
+        public void TrySpend(int spend)
+        {
+            CurrencyManager.TrySpend(spend);
+            UpdateSkillAmountText();
+        }
+
         public void UpdateSkillAmountText()
         {
             availableText.text = available.ToString();

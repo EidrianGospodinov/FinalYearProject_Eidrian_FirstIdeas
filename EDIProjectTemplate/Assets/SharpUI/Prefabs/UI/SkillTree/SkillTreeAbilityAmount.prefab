@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7806910978214006138}
   - component: {fileID: 7806910978214006136}
+  - component: {fileID: 5957485756923120744}
   m_Layer: 5
   m_Name: SkillTreeAbilityAmount
   m_TagString: Untagged
@@ -24,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7806910978214006141}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -47,6 +48,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7806910978214006141}
   m_CullTransparentMesh: 0
+--- !u!114 &5957485756923120744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7806910978214006141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094507b491689274faeccadb40f487e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelMaxText: {fileID: 7806910978767875518}
+  currentLevelText: {fileID: 7806910978684950845}
+  initialMaxLevel: 5
+  initialCurrentLevel: 0
+  activeTextColor: {r: 0.24042787, g: 0.5754717, b: 0.15472588, a: 0}
+  disabledTextColor: {r: 0.46226418, g: 0.4251958, b: 0.4251958, a: 0}
 --- !u!1 &7806910978684950847
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,7 +131,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
