@@ -20,4 +20,6 @@ MonoBehaviour:
   UpgradeToApply:
   - statType: 0
     statValue: 10
+  - statType: 3
+    statValue: 10
   isPercentUpgrade: 0

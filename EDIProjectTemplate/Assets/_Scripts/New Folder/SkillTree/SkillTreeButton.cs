@@ -33,6 +33,7 @@ public class SkillTreeButton : MonoBehaviour
 
             skillAmount.TrySpend(statsUpgrade.cost);
             skillLevel.IncrementLevel();
+            statsUpgrade.DoUpgrade();
             SetColors();
         }
         
@@ -45,7 +46,6 @@ public class SkillTreeButton : MonoBehaviour
 
             if (skillAmount.CanSpend(statsUpgrade.cost))
             {
-                statsUpgrade.DoUpgrade();
                 return true;
             }
 
