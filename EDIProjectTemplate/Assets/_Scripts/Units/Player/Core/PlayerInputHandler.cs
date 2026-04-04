@@ -77,7 +77,13 @@ namespace _Scripts.Units.Player
 
                 playerController.HasDashInput = true;
             };
-            input.PlayerSwitch.started += ctx => HeroSwitcher.Instance.RequestHeroSwitch();
+            input.PlayerSwitch.started += ctx =>
+            {
+                if (playerController.CanSwitchHero)
+                {
+                    HeroSwitcher.Instance.RequestHeroSwitch();
+                }
+            };
             input.SpecialPower.started += ctx =>
             {
                 if (playerController.heroCombinedScript.CanPowerUp)

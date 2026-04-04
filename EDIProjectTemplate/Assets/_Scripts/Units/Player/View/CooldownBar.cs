@@ -112,7 +112,7 @@ namespace _Scripts.Units.Player.View
             }
         }
 
-        public bool IsFinished() => isFinished;
+        public bool IsNotInUse() => !isCoolingDown || isFinished;
 
         private void InitConsumeType()
         {

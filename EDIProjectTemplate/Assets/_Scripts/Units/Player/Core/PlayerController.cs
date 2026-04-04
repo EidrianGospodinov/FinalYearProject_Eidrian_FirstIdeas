@@ -2,6 +2,7 @@ using System;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
+using _Scripts.Units.Player.View;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,6 +11,8 @@ using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private CooldownBar cooldownBar;
+    
     public AttackData AttackData;
     public HeroData CurrentHeroData;
     [HideInInspector] private AudioSource AudioSource;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public bool HasRightClickHold { get; set; }
     public bool HasDashInput { get; set; }
     public bool HasSpecialPowerInput { get; set; }
+    public bool CanSwitchHero => cooldownBar.IsNotInUse();
 
     // Injected Dependency (PlayerState)
     //[Inject] private PlayerState playerState;
