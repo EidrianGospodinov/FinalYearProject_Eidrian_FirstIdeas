@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52cc4e46b3b0ab74bab16f13b7cd94f9, type: 3}
-  m_Name: PlayerStats
+  m_Script: {fileID: 11500000, guid: ae5bd897807c80a4187500352a2ee5f3, type: 3}
+  m_Name: DevineTeather 2 sec
   m_EditorClassIdentifier: 
-  instanceStatsInfo:
-  - statType: 0
-    statValue: 100
-  StatsInfo:
+  upgradeName: 
+  description: 
+  cost: 8
+  UnitsToUpgrade:
+  - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
+  UpgradeToApply:
   - statType: 2
-    statValue: 6
+    statValue: -1
+  isPercentUpgrade: 0
