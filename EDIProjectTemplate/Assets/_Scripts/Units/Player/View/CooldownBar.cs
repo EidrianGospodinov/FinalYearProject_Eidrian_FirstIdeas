@@ -1,18 +1,21 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace SharpUI.Source.Common.UI.Elements.SkillBars
+namespace _Scripts.Units.Player.View
 {
     public class CooldownBar : MonoBehaviour
     {
-        public enum CooldownConsumeType { Fill, Drain }
+        private enum CooldownConsumeType { Fill, Drain }
 
         private const float SkillBarMargin = 2f;
         private const string DefaultBarTextFormat = "{0:0.0} sec";
         private CanvasGroup canvasGroup;
 
+        [SerializeField] private Stats playerStats;
+        
         [Header("UI References")] 
         [SerializeField] private Image skillBarImage;
         [SerializeField] private Image skillIconImage;
@@ -20,8 +23,8 @@ namespace SharpUI.Source.Common.UI.Elements.SkillBars
         [SerializeField] private TMP_Text skillRemainingCooldownText;
         
         [Header("Settings")]
-        [SerializeField] private float skillCooldown = 5f;
-        [SerializeField] private float skillCooldownRemaining;
+        private float initSkillCooldown = 5f;
+        //[SerializeField] private float initSkillCooldownRemaining;
         [SerializeField] private string skillName;
         [SerializeField] private CooldownConsumeType consumeType = CooldownConsumeType.Fill;
         [SerializeField] private bool depleteWhenCompleted;
@@ -49,6 +52,7 @@ namespace SharpUI.Source.Common.UI.Elements.SkillBars
         private void HandleOnHeroSwitchEvent(OnSwitchHeroEvent obj)
         {
             canvasGroup.alpha = 1f;
+            //cooldown = 
             RestartCooldown();
         }
 
@@ -65,17 +69,21 @@ namespace SharpUI.Source.Common.UI.Elements.SkillBars
 
         public void RestartCooldown()
         {
+            GetCooldown();
             InitDefaultValues();
             StartCooldown();
         }
 
+        void GetCooldown()
+        {
+            initSkillCooldown=playerStats.GetStat(Stat.switchHeroCooldown);
+        }
         private void InitDefaultValues()
         {
-            if (!IsValidSetup()) return;
 
             isFinished = false;
-            cooldown = skillCooldown;
-            cooldownRemaining = skillCooldownRemaining;
+            cooldown = initSkillCooldown;
+            cooldownRemaining = initSkillCooldown;
             
             if (skillNameText != null) 
                 skillNameText.text = skillName;
@@ -110,13 +118,6 @@ namespace SharpUI.Source.Common.UI.Elements.SkillBars
         {
             var scale = consumeType == CooldownConsumeType.Drain ? -1 : 1;
             skillBarImageTransform.localScale = new Vector3(scale, 1, 1);
-        }
-
-        private bool IsValidSetup()
-        {
-            if (skillCooldownRemaining > skillCooldown)
-                throw new OverflowException("Remaining cooldown should not be larger than cooldown.");
-            return true;
         }
 
         private void UpdateProgress()

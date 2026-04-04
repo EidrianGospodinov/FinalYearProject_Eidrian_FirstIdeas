@@ -25,7 +25,6 @@ public class HeroSwitcher : MonoBehaviour
     [SerializeField] private GameObject heroB_Body;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         if (Instance == null)
