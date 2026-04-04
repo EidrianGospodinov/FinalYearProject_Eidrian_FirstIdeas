@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMovement playerMovement;
     public HeroCombinedScript heroCombinedScript { get; private set; }
     [HideInInspector] public ActiveEnemyDetector EnemyDetector;
+    [HideInInspector] public HeroSwitcher HeroSwitcher;
    
     private MeshSockets sockets;
     private Transform weaponTransform;
@@ -77,8 +78,7 @@ public class PlayerController : MonoBehaviour
         //playerCombat = GetComponent<PlayerAttack>();
         playerAnimation = GetComponent<PlayerAnimation>();
         CharacterController = GetComponent<CharacterController>();
-        
-
+        HeroSwitcher = GetComponent<HeroSwitcher>();
     }
 
     private void Start()

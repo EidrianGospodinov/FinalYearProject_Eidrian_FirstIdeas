@@ -11,7 +11,6 @@ public enum HeroType
 }
 public class HeroSwitcher : MonoBehaviour
 {
-    public static HeroSwitcher Instance { get; private set; }
     
     
     public HeroType ActiveHero { get; private set; } = HeroType.HeroA;
@@ -24,20 +23,7 @@ public class HeroSwitcher : MonoBehaviour
     [SerializeField] private GameObject heroA_Body; 
     [SerializeField] private GameObject heroB_Body;
 
-
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(Instance);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-    }
+    
 
     private void Start()
     {

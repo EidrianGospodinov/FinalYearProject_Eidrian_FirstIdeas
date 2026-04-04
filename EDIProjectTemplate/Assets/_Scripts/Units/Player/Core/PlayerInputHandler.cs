@@ -81,7 +81,7 @@ namespace _Scripts.Units.Player
             {
                 if (playerController.CanSwitchHero)
                 {
-                    HeroSwitcher.Instance.RequestHeroSwitch();
+                    playerController.HeroSwitcher.RequestHeroSwitch();
                 }
             };
             input.SpecialPower.started += ctx =>
