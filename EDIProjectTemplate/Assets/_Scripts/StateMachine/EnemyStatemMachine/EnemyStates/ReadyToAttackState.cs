@@ -64,7 +64,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         }
         private EnemyAttackTypesData GetRandomAttackType(List<EnemyAttackTypesData> validAttacks)
         {
-           
             // Calculate the total weight of all possible attacks
             int totalWeight = 0;
             foreach (var attack in validAttacks)
@@ -74,7 +73,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
             int randomNumber = Random.Range(0, totalWeight);
 
-            //Iterate through again to find which "slice" the random number landed in
+            //Iterate through again to find which attack type the random number landed in
             int currentWeightSum = 0;
             foreach (var attack in validAttacks)
             {
@@ -88,4 +87,8 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             return validAttacks[0]; // Fallback
         }
     }
+    
+    
+    
+    
 }

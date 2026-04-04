@@ -13,7 +13,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
                 {
                     agent.HasLeftClickInput = false;
                     GetComboSM(agent).ChangeState(ComboStateId.SecondaryBasicAttack);
-                    return true; // Success! We transitioned.
+                    return true;
                 }
                 else if (agent.HasRightClickInput)
                 {

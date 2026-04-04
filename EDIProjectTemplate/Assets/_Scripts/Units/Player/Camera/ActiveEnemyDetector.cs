@@ -21,7 +21,6 @@ public class ActiveEnemyDetector : MonoBehaviour
     [SerializeField] private OnOffLayers onOffLayers;
 
 
-    // Other scripts can read this to know who to attack, but they can't change it.
     public Transform CurrentActiveEnemy { get; private set; } 
 
     private Transform cam;
@@ -34,10 +33,8 @@ public class ActiveEnemyDetector : MonoBehaviour
 
     void Update()
     {
-        // 1. Find the best target
         UpdateActiveEnemy();
         
-        // 2. Move the UI over their head
         UpdateUI();
     }
 
@@ -65,7 +62,7 @@ public class ActiveEnemyDetector : MonoBehaviour
             }
         }
 
-        // Update our public property so other scripts know who is active
+        // Update public property so other scripts know who is active
         AiAgent agent;
         if(CurrentActiveEnemy != null)
         {
@@ -84,7 +81,6 @@ public class ActiveEnemyDetector : MonoBehaviour
     {
         if (!lockOnCanvas) return;
 
-        // If we have a target, show the UI over them
         if (CurrentActiveEnemy != null)
         {
             lockOnCanvas.gameObject.SetActive(true);
