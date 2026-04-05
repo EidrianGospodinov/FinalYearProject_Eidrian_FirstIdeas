@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8415521660627154149}
-  m_Layer: 0
+  - component: {fileID: 1898017194091144768}
+  - component: {fileID: 4507718465298517856}
+  m_Layer: 10
   m_Name: CampFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +34,40 @@ Transform:
   - {fileID: 614058787093195656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898017194091144768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466553694052377376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fbb6e342b7fcc344a6155b807fc5e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillTree: {fileID: 0}
+--- !u!65 &4507718465298517856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466553694052377376}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0800198, y: 2.604474, z: 1.656888}
+  m_Center: {x: -0.040009912, y: 0.8022409, z: 0.015343309}
 --- !u!1001 &1085132540544076899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,8 +133,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 6532bb81b350e7a4e9b0a89620e0a0a7, type: 2}
     - target: {fileID: -3192461847160232569, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -3192461847160232569, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 198026935679068139, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 198026935679068139, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -109,8 +153,16 @@ PrefabInstance:
       value: CampFire
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2697052672765611388, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2697052672765611388, guid: ccf5dbf36ee96a94599c40436aaa33a7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -151,7 +203,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.9776574
   m_Height: 2.360212
