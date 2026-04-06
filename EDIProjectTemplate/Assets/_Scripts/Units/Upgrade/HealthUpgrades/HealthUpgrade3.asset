@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Health Upgrade
   description: 
+  icon: {fileID: 21300000, guid: a576745fe4e4329469c26370413b6329, type: 3}
   cost: 3
   UnitsToUpgrade:
   - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}

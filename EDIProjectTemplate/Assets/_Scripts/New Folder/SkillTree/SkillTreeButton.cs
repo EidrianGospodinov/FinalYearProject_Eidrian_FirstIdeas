@@ -2,18 +2,22 @@ using System;
 using System.Collections.Generic;
 using _Scripts.New_Folder.SkillTree;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillTreeButton : MonoBehaviour
+public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
         [SerializeField] private List<StatsUpgrade> statsUpgrade;
         [SerializeField] public Image frameImage;
+        [SerializeField] public Image iconImage;
         [SerializeField] public SkillLevel skillLevel;
         [SerializeField] private SkillAmount skillAmount;
         [SerializeField] public Color activeFrameColor;
         [SerializeField] public Color disabledFrameColor;
         [SerializeField] public Color activeIconColor;
         [SerializeField] public Color disabledIconColor;
+
+        [SerializeField] private GameObject tooltip;
 
         public void OnButtonPress()
         {
@@ -23,10 +27,12 @@ public class SkillTreeButton : MonoBehaviour
         private void Start()
         {
             skillLevel.SetMaxLevel(statsUpgrade.Count);
+            SetupUI();
         }
 
-        protected void SetupUI()
+         void SetupUI()
         {
+            SetIconImage();
             SetColors();
         }
 
@@ -44,6 +50,7 @@ public class SkillTreeButton : MonoBehaviour
                 statsUpgrade[skillLevel.GetCurrentLevel()].DoUpgrade();
                 skillLevel.IncrementLevel();
                 SetColors();
+                SetIconImage();
             }
         }
         
@@ -75,4 +82,21 @@ public class SkillTreeButton : MonoBehaviour
                 frameImage.color = disabledFrameColor;
             }
         }
-    }
+
+        private void SetIconImage()
+        {
+            iconImage.sprite = statsUpgrade[skillLevel.GetCurrentLevel()].icon;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if(tooltip!=null)
+                tooltip.SetActive(true);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if(tooltip!=null)
+                tooltip.SetActive(false);
+        }
+}

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: 
   description: 
+  icon: {fileID: 21300000, guid: 6d6287a9ac5070f45abd925aaaaf4090, type: 3}
   cost: 1
   UnitsToUpgrade:
   - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
