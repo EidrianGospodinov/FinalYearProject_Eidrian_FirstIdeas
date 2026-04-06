@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5bd897807c80a4187500352a2ee5f3, type: 3}
+  m_Name: ThunderAbility 3
+  m_EditorClassIdentifier: 
+  upgradeName: 'Zeus Thunderbolt '
+  description: 
+  icon: {fileID: 21300000, guid: c7983f142b364304a82bb8158574b413, type: 3}
+  cost: 4
+  UnitsToUpgrade:
+  - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
+  UpgradeToApply:
+  - statType: 4
+    statValue: 10
+  isPercentUpgrade: 1
