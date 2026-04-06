@@ -28,7 +28,7 @@ namespace _Scripts.Units.Player
             playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
             _postProcessing = FindFirstObjectByType<Volume>();
             _postProcessing.profile.TryGet(out vignette);
-            maxHealth = playerStats.GetStat(Stat.health);
+            maxHealth = playerStats.GetStat(Stat.Health);
             //_cameraManager = FindFirstObjectByType<CameraManager>();
         }
 
@@ -54,7 +54,7 @@ namespace _Scripts.Units.Player
         private void OnEnable()
         {
             playerStats.upgradeApplied += UpgradeApplied;
-            maxHealth = playerStats.GetStat(Stat.health);
+            maxHealth = playerStats.GetStat(Stat.Health);
             
             currentHealthBar.gameObject.SetActive(false);
             currentHealthGlobe.gameObject.SetActive(true);
@@ -62,7 +62,7 @@ namespace _Scripts.Units.Player
 
         private void UpgradeApplied(Stats stats, StatsUpgrade upgrade)
         {
-            maxHealth = playerStats.GetStat(Stat.health);
+            maxHealth = playerStats.GetStat(Stat.Health);
             print($"upgrade applied. New player health for {gameObject.name} = {maxHealth}");
         }
 

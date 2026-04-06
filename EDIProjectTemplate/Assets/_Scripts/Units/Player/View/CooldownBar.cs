@@ -76,7 +76,7 @@ namespace _Scripts.Units.Player.View
 
         void GetCooldown()
         {
-            initSkillCooldown=playerStats.GetStat(Stat.switchHeroCooldown);
+            initSkillCooldown=playerStats.GetStat(Stat.SwitchHeroCooldown);
         }
         private void InitDefaultValues()
         {

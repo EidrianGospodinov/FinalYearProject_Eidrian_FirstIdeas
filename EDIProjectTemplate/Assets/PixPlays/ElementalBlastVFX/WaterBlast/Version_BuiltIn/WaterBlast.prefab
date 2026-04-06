@@ -63830,6 +63830,8 @@ GameObject:
   - component: {fileID: 7615472321861927280}
   - component: {fileID: 324546805416923664}
   - component: {fileID: 926145955033049596}
+  - component: {fileID: 8243834391384310488}
+  - component: {fileID: 427715874174597433}
   m_Layer: 0
   m_Name: WaterWaveObj
   m_TagString: Untagged
@@ -63908,3 +63910,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8243834391384310488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165625145547009743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f2f9d955da0942bf99a5d2bca8455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
+  stat: 4
+--- !u!64 &427715874174597433
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165625145547009743}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7629811779324647873, guid: 78b0e7309505e2c42848821904b53772, type: 3}

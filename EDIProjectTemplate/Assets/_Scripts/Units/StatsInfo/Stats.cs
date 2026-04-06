@@ -74,8 +74,10 @@ public class Stats : ScriptableObject
 
 public enum Stat
 {
-    health, 
-    speed,
-    switchHeroCooldown,
-    dash
+    Health, 
+    Speed,
+    SwitchHeroCooldown,
+    Dash,
+    ThunderUlt,
+    TsunamiUlt
 }
