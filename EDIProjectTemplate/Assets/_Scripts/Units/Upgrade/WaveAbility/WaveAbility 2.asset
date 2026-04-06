@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: WaveAbility 2
   m_EditorClassIdentifier: 
   upgradeName: Poseidon Tsunami Wave
-  description: 
+  description: "Summon the crushing force of the deep to wash away any resistance.
+    By channeling Poseidon\u2019s fury, your Tsunami Wave hits with massive intensity,
+    leaving enemies broken in its wake. Turn the tide of battle with a surge they
+    can't survive. This upgrade increases Tsunami Wave damage by:"
   icon: {fileID: 21300000, guid: 22143b5c1316fa64c83adaa058b847cf, type: 3}
   cost: 2
   UnitsToUpgrade:

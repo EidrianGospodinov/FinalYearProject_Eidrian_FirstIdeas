@@ -114,4 +114,9 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
             if(tooltip!=null)
                 tooltip.SetActive(false);
         }
+
+        private void OnDisable()
+        {
+            tooltip.SetActive(false);
+        }
 }

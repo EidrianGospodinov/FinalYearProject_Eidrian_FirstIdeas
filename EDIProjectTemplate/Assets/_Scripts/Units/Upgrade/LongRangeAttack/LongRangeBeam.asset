@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: LongRangeBeam
   m_EditorClassIdentifier: 
   upgradeName: Mythological beam
-  description: 
+  description: 'Boost the lethality of your long-range energy strikes. More power
+    behind your Mythological Beam means fewer shots to clear the path and more time
+    to focus on your next objective. Don''t let distance be their protection. This
+    upgrade increases your beam damage by: '
   icon: {fileID: 21300000, guid: 8f8e130d3d0c9c247b78be9804308002, type: 3}
   cost: 1
   UnitsToUpgrade:
