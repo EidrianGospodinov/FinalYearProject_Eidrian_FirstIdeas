@@ -62,10 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelMaxText: {fileID: 7806910978767875518}
   currentLevelText: {fileID: 7806910978684950845}
-  initialMaxLevel: 5
   initialCurrentLevel: 0
-  activeTextColor: {r: 0.24042787, g: 0.5754717, b: 0.15472588, a: 0}
-  disabledTextColor: {r: 0.46226418, g: 0.4251958, b: 0.4251958, a: 0}
+  activeTextColor: {r: 0.24042787, g: 0.5754717, b: 0.15472588, a: 1}
+  disabledTextColor: {r: 0.46226418, g: 0.4251958, b: 0.4251958, a: 1}
 --- !u!1 &7806910978684950847
 GameObject:
   m_ObjectHideFlags: 0
