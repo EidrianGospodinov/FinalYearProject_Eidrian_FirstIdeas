@@ -22,9 +22,13 @@ public class VFXCollisionDetection : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            print("VFX hits enemy layer: "+ other.name);
-            //var damage = stats.GetStat(stat);
-            other.gameObject.GetComponent<Health>().TakeDamage(20); 
+            if (stats == null)
+            {
+                Debug.LogError("Stats class is not serialized");
+                return;
+            }
+            var damage = stats.GetStat(stat);
+            other.gameObject.GetComponent<Health>().TakeDamage(damage); 
             
         }
     }

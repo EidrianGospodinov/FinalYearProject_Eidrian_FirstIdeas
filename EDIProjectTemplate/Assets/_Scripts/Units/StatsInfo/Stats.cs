@@ -79,5 +79,6 @@ public enum Stat
     SwitchHeroCooldown,
     Dash,
     ThunderUlt,
-    TsunamiUlt
+    TsunamiUlt,
+    LongRangeBeam
 }
