@@ -1608,12 +1608,12 @@ GameObject:
   - component: {fileID: 6617764038908543626}
   - component: {fileID: 8559078939369030232}
   m_Layer: 5
-  m_Name: SlowAmount
+  m_Name: upgradeAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2620256203201412716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2242,6 +2242,7 @@ GameObject:
   - component: {fileID: 6193277129871822498}
   - component: {fileID: 7579481294439939525}
   - component: {fileID: 1907856567555155459}
+  - component: {fileID: 3322284971099276521}
   m_Layer: 5
   m_Name: SkillUpdateTooltip
   m_TagString: Untagged
@@ -2321,6 +2322,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 8
+--- !u!114 &3322284971099276521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317140864690975615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: beac8807c7d8d1944990d90789466bba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameImage: {fileID: 7920311636842969691}
+  iconImage: {fileID: 1274740926434455198}
+  abilityName: {fileID: 6032988666622463176}
+  abilityUpgradeCost: {fileID: 6749768494048990216}
+  abilityDescription: {fileID: 1053757569891702722}
 --- !u!1 &8351905447801948005
 GameObject:
   m_ObjectHideFlags: 0

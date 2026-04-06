@@ -28,12 +28,24 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             skillLevel.SetMaxLevel(statsUpgrade.Count);
             SetupUI();
+            SetUpTooltip();
         }
 
          void SetupUI()
         {
             SetIconImage();
             SetColors();
+        }
+
+        private void SetUpTooltip()
+        {
+            var skillTreeTooltip = tooltip.GetComponent<SkillTreeTooltip>();
+
+            if (skillTreeTooltip != null)
+            {
+                var statUpgrade =statsUpgrade[skillLevel.GetCurrentLevel()];
+                skillTreeTooltip.SetUp(frameImage, iconImage, statUpgrade.upgradeName, statUpgrade.cost, statUpgrade.UpgradeToApply[0].statValue, statUpgrade.description, statUpgrade.isPercentUpgrade  );
+            }
         }
 
 
@@ -49,8 +61,8 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
             {
                 statsUpgrade[skillLevel.GetCurrentLevel()].DoUpgrade();
                 skillLevel.IncrementLevel();
-                SetColors();
-                SetIconImage();
+                SetupUI();
+                SetUpTooltip();
             }
         }
         
@@ -90,8 +102,11 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if(tooltip!=null)
+            if (tooltip != null)
+            {
+                SetUpTooltip();
                 tooltip.SetActive(true);
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
