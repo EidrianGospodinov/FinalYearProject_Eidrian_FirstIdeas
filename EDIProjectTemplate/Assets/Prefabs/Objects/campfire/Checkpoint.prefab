@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84d2afff6779134d85533358c6d4b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 'camp '
   campFire: {fileID: 2702076509466344719}
   spawnerLocation: {fileID: 565486893990745739}
 --- !u!1001 &2249996813059449371
@@ -324,6 +325,10 @@ PrefabInstance:
     - target: {fileID: 6071041459777487180, guid: 70482b15f0d85914eb52f732244c5ec4, type: 3}
       propertyPath: m_Name
       value: Tent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071041459777487180, guid: 70482b15f0d85914eb52f732244c5ec4, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

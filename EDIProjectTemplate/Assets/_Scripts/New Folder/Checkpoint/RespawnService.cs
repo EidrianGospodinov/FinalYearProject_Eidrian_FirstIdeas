@@ -10,7 +10,7 @@ public class RespawnService
 
     public void Respawn(PlayerController player)
     {
-        _currentCheckpoint?.PlacePlayerInCamp(player);
+        _currentCheckpoint?.PlacePlayerInCamp();
         player.ResetState();
     }
 }

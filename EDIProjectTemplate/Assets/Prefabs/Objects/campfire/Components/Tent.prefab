@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597077084293971083}
   - component: {fileID: 341847680960372168}
+  - component: {fileID: 532742633469876266}
   m_Layer: 0
   m_Name: Tent
   m_TagString: Untagged
@@ -54,6 +55,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.26, y: 2.0552943, z: 2.08}
   m_Center: {x: 0, y: 1.0276471, z: 0}
+--- !u!114 &532742633469876266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071041459777487180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073b5393082416f45b9b88a0363c1a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapTeleporter: {fileID: 0}
 --- !u!1001 &1720684724823921354
 PrefabInstance:
   m_ObjectHideFlags: 0

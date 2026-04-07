@@ -3,9 +3,13 @@ using UnityEngine;
 
 public class CheckpointCamp : MonoBehaviour
 {
+    [SerializeField] private string name;
     [SerializeField] private CampFire campFire;
     [SerializeField] private Transform spawnerLocation;
     public bool IsCampDiscovered { get; private set; }
+    private PlayerController playerController;
+
+    public string GetName => name;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,14 +22,21 @@ public class CheckpointCamp : MonoBehaviour
         
     }
 
-    public void PlacePlayerInCamp(PlayerController playerController)
+    public void PlacePlayerInCamp(PlayerController _playerController = null)
     {
-        var controller = playerController.GetComponent<CharacterController>();
+        if (playerController == null && _playerController != null)
+        {
+            playerController = _playerController;
+        }
+        
+        var controller = this.playerController.GetComponent<CharacterController>();
         controller.enabled = false;
         playerController.gameObject.transform.position = spawnerLocation.transform.position;
         playerController.gameObject.transform.rotation = spawnerLocation.transform.rotation;
         controller.enabled = true;
+
     }
+
     public void SetActiveCheckpoint(bool isActive)
     {
         campFire.ActivateFire(isActive);
@@ -34,6 +45,10 @@ public class CheckpointCamp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (playerController == null)
+            {
+                playerController = other.gameObject.GetComponent<PlayerController>();
+            }
             IsCampDiscovered = true;
             SetActiveCheckpoint(true);
             EventBus<OnCheckpointEnter>.Trigger(new OnCheckpointEnter(this));
