@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
+using _Scripts.Units.Player.Core;
 using _Scripts.Units.Player.View;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 dashVelocity;
     [Inject] private CurrencyManager currencyManager;
     [Inject] public RespawnService RespawnService { get; private set; }
+    [Inject] private GameManager gameManager;
     
     public float DodgeCooldownEndTime { get; private set; } = 0f;
     public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
@@ -90,6 +92,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        
+        gameManager.SetGameState(GameState.InGame);
         // Set initial state
         actionStateMachine.Initialize(ActionStateId.Ready);
         //playerState = PlayerState.IDLE;

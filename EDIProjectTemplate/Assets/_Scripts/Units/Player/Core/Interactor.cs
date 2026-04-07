@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Units.Player.Core
 {
@@ -10,6 +11,8 @@ namespace _Scripts.Units.Player.Core
     }
     public class Interactor : MonoBehaviour
     {
+        [Inject] private GameManager gameManager;
+        
         [SerializeField] private LayerMask interactableLayer;
         [SerializeField] private float interactRange;
         private Transform interactorSource;
@@ -33,7 +36,11 @@ namespace _Scripts.Units.Player.Core
 
         public IInteractable GetInteractableObject()
         {
-         //   Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            if (gameManager.GetCurrentGameState != GameState.InGame)
+            {
+                return null;
+            }
+            //   Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             Ray ray = new Ray(interactorSource.position, interactorSource.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactRange, interactableLayer))
             {

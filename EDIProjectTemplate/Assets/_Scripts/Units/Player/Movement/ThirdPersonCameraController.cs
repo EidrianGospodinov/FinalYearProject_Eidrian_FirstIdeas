@@ -1,11 +1,14 @@
 using System;
+using _Scripts.Units.Player.Core;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 public class ThirdPersonCameraController : MonoBehaviour
 {
-    public bool lockMovement;
+
+    [Inject] private GameManager gameManager;
     
     [SerializeField] private float zoomSpeed = 2f;
 
@@ -51,9 +54,8 @@ public class ThirdPersonCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lockMovement)
+        if (gameManager.GetCurrentGameState != GameState.InGame)
         {
-            /*transform.rotation = cam.transform.rotation;*/
             return;
         }
         if (scrollDelta.y != 0)

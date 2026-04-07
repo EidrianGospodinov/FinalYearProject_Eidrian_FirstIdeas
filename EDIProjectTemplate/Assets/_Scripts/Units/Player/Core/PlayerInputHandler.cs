@@ -1,11 +1,13 @@
 using System;
+using _Scripts.Units.Player.Core;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Units.Player
 {
     public class PlayerInputHandler: MonoBehaviour
     {
-        
+        [Inject] private GameManager gameManager;
         private PlayerMovement playerMovement; 
         private PlayerController playerController;
         private PlayerInput playerInput;
@@ -22,6 +24,10 @@ namespace _Scripts.Units.Player
 
         private void Update()
         {
+            if (gameManager.GetCurrentGameState != GameState.InGame)
+            {
+                return;
+            }
             playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
         }
 

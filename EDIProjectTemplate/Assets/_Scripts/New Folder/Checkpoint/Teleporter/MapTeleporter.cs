@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using _Scripts.New_Folder.Checkpoint;
+using _Scripts.Units.Player.Core;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,7 @@ using Zenject;
 public class MapTeleporter : MonoBehaviour
 {
     [Inject] private TeleporterService teleporterService;
+    [Inject] private GameManager gameManager;
 
     [SerializeField] private GameObject TeleporterButtonPrefab;
 
@@ -23,16 +25,15 @@ public class MapTeleporter : MonoBehaviour
 
     private void OnEnable()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        gameManager.SetGameState(GameState.InMenu);
         SetUpButtons();
     }
 
     private void OnDisable()
     {
         RemoveButtons();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        gameManager.SetGameState(GameState.InGame);
+
     }
 
 
