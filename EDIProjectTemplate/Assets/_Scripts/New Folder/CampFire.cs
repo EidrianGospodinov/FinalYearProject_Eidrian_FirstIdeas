@@ -4,6 +4,7 @@ using UnityEngine;
 public class CampFire : MonoBehaviour, IInteractable
 {
     [SerializeField] private GameObject skillTree;
+    [SerializeField] private GameObject flames;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,5 +21,10 @@ public class CampFire : MonoBehaviour, IInteractable
     public void Interact()
     {
         skillTree.SetActive(true);
+    }
+
+    public void ActivateFire(bool activate)
+    {
+        flames.SetActive(activate);
     }
 }
