@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 8757541741778917865}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.4308273, z: -0, w: 0.90243435}
-  m_LocalPosition: {x: 2.4, y: 0, z: -0.241}
+  m_LocalPosition: {x: 2.4, y: 1, z: -0.241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   campFire: {fileID: 2702076509466344719}
+  spawnerLocation: {fileID: 565486893990745739}
 --- !u!1001 &2249996813059449371
 PrefabInstance:
   m_ObjectHideFlags: 0

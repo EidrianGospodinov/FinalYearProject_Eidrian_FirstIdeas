@@ -28,12 +28,13 @@ public class CheckpointCamp : MonoBehaviour
     }
     public void SetActiveCheckpoint(bool isActive)
     {
-        campFire.ActivateFire(true);
+        campFire.ActivateFire(isActive);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            IsCampDiscovered = true;
             SetActiveCheckpoint(true);
             EventBus<OnCheckpointEnter>.Trigger(new OnCheckpointEnter(this));
         }

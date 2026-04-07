@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.New_Folder.Checkpoint;
 using _Scripts.Units.Enemy;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -12,11 +13,11 @@ public class CampsManager : MonoBehaviour
     [Inject] private RespawnService respawnService;
     [Inject] private DiContainer diContainer;
     [Inject] private EnemyManager enemyManager;
+    [Inject] private TeleporterService teleporterService;
     
     [SerializeField] private PlayerController playerControllerPrefab;
     private PlayerController playerControllerInstance;
     private List<CheckpointCamp> checkpointCamps = new List<CheckpointCamp>();
-    private List<CheckpointCamp> discoveredCheckpointCamps = new List<CheckpointCamp>();
 
     private CheckpointCamp currentActiveCheckpointCamp;
 
@@ -45,8 +46,13 @@ public class CampsManager : MonoBehaviour
     {
         if (!respawnService.IsActiveCheckpoint(checkpointEnter.EnteredCheckpoint))
         {
+            if (currentActiveCheckpointCamp != null)
+            {
+                currentActiveCheckpointCamp.SetActiveCheckpoint(false);
+            }
             currentActiveCheckpointCamp = checkpointEnter.EnteredCheckpoint;
             respawnService.SetCheckpoint(currentActiveCheckpointCamp);
+            teleporterService.RegisterCamp(currentActiveCheckpointCamp);
         }
         enemyManager.SetEnemiesInSafeZone(true);
     }
@@ -76,9 +82,9 @@ public class CampsManager : MonoBehaviour
 
     private void PlacePlayerInCamp()
     {
-        if (discoveredCheckpointCamps.Count > 0)
+        if (teleporterService.GetDiscoveredCamps().Count > 0)
         {
-            discoveredCheckpointCamps[0].PlacePlayerInCamp(playerControllerInstance);
+            teleporterService.GetDiscoveredCamps()[0].PlacePlayerInCamp(playerControllerInstance);
         }
         else
         {
@@ -92,7 +98,7 @@ public class CampsManager : MonoBehaviour
         {
             if (checkpoint.IsCampDiscovered)
             {
-                discoveredCheckpointCamps.Add(checkpoint);
+                teleporterService.RegisterCamp(checkpoint);
             }
         }
     }
@@ -106,5 +112,6 @@ public class CampsManager : MonoBehaviour
     private void OnDestroy()
     {
         EventBus<OnCheckpointEnter>.Unregister(OnCheckpointEnter);
+        EventBus<OnCheckpointExit>.Unregister(OnCheckpointExit);
     }
 }
