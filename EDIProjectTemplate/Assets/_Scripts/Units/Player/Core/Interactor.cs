@@ -11,8 +11,8 @@ namespace _Scripts.Units.Player.Core
     public class Interactor : MonoBehaviour
     {
         [SerializeField] private LayerMask interactableLayer;
-        [SerializeField] private Transform interactorSource;
         [SerializeField] private float interactRange;
+        private Transform interactorSource;
 
         private void Start()
         {
