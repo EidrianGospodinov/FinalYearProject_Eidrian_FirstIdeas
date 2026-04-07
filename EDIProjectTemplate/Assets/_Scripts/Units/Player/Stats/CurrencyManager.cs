@@ -24,6 +24,6 @@ public class CurrencyManager : IInitializable
     public void Initialize()
     {
         Debug.Log("CurrencyManager has been initialized by zenject!");
-        CurrentCurrency = 100;
+        CurrentCurrency = 200;
     }
 }

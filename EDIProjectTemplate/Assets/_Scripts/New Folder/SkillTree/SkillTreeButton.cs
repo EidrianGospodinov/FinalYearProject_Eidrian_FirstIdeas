@@ -16,6 +16,7 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         [SerializeField] public Color maxedFrameColor;
         [SerializeField] public Color disabledFrameColor;
         [SerializeField] public Color activeIconColor;
+        [SerializeField] public Color maxedIconColor;
         [SerializeField] public Color disabledIconColor;
 
         [SerializeField] private GameObject tooltip;
@@ -95,16 +96,19 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 if (skillLevel.IsFullLevels())
                 {
                     frameImage.color = maxedFrameColor;
+                    iconImage.color = maxedIconColor;
                 }
                 else
                 {
                     frameImage.color = activeFrameColor;
+                    iconImage.color = activeIconColor;
                 }
                 
             }
             else
             {
                 frameImage.color = disabledFrameColor;
+                iconImage.color = disabledIconColor;
             }
         }
 
@@ -112,6 +116,7 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             if (skillLevel.IsFullLevels())
             {
+                iconImage.sprite = statsUpgrade[skillLevel.GetCurrentLevel() - 1].icon;
                 return;
             }
             iconImage.sprite = statsUpgrade[skillLevel.GetCurrentLevel()].icon;
