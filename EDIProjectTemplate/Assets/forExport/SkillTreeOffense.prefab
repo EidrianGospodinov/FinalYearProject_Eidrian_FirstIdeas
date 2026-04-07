@@ -11209,6 +11209,18 @@ PrefabInstance:
       propertyPath: skillAmount
       value: 
       objectReference: {fileID: 7476373030025128868}
+    - target: {fileID: 2929762378073588451, guid: cfb8047f54186c84ab5c082a3faf89fe, type: 3}
+      propertyPath: maxedFrameColor.b
+      value: 0.3948637
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929762378073588451, guid: cfb8047f54186c84ab5c082a3faf89fe, type: 3}
+      propertyPath: maxedFrameColor.g
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929762378073588451, guid: cfb8047f54186c84ab5c082a3faf89fe, type: 3}
+      propertyPath: maxedFrameColor.r
+      value: 0.3794055
+      objectReference: {fileID: 0}
     - target: {fileID: 6305302848055340176, guid: cfb8047f54186c84ab5c082a3faf89fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -13547,6 +13559,7 @@ MonoBehaviour:
   skillLevel: {fileID: 1518170799651496694}
   skillAmount: {fileID: 7476373030025128868}
   activeFrameColor: {r: 0.11098258, g: 0.8113208, b: 0.7081917, a: 1}
+  maxedFrameColor: {r: 0, g: 0, b: 0, a: 0}
   disabledFrameColor: {r: 0.11503203, g: 0.20023023, b: 0.5188679, a: 1}
   activeIconColor: {r: 0.35857958, g: 0.74401015, b: 0.9622642, a: 1}
   disabledIconColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
@@ -14209,6 +14222,7 @@ MonoBehaviour:
   skillLevel: {fileID: 6893537293606727388}
   skillAmount: {fileID: 7476373030025128868}
   activeFrameColor: {r: 0.11098258, g: 0.8113208, b: 0.7081917, a: 1}
+  maxedFrameColor: {r: 0, g: 0, b: 0, a: 0}
   disabledFrameColor: {r: 0.11503203, g: 0.20023023, b: 0.5188679, a: 1}
   activeIconColor: {r: 0.35857958, g: 0.74401015, b: 0.9622642, a: 1}
   disabledIconColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
@@ -15081,6 +15095,7 @@ MonoBehaviour:
   skillLevel: {fileID: 6462493746252338647}
   skillAmount: {fileID: 7476373030025128868}
   activeFrameColor: {r: 0.11098258, g: 0.8113208, b: 0.7081917, a: 1}
+  maxedFrameColor: {r: 0, g: 0, b: 0, a: 0}
   disabledFrameColor: {r: 0.11503203, g: 0.20023023, b: 0.5188679, a: 1}
   activeIconColor: {r: 0.35857958, g: 0.74401015, b: 0.9622642, a: 1}
   disabledIconColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
@@ -15445,6 +15460,7 @@ MonoBehaviour:
   skillLevel: {fileID: 2055571324395220282}
   skillAmount: {fileID: 7476373030025128868}
   activeFrameColor: {r: 0.11098258, g: 0.8113208, b: 0.7081917, a: 1}
+  maxedFrameColor: {r: 0, g: 0, b: 0, a: 0}
   disabledFrameColor: {r: 0.11503203, g: 0.20023023, b: 0.5188679, a: 1}
   activeIconColor: {r: 0.35857958, g: 0.74401015, b: 0.9622642, a: 1}
   disabledIconColor: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}

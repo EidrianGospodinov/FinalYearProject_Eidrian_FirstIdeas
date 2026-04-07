@@ -13,6 +13,7 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         [SerializeField] public SkillLevel skillLevel;
         [SerializeField] private SkillAmount skillAmount;
         [SerializeField] public Color activeFrameColor;
+        [SerializeField] public Color maxedFrameColor;
         [SerializeField] public Color disabledFrameColor;
         [SerializeField] public Color activeIconColor;
         [SerializeField] public Color disabledIconColor;
@@ -39,6 +40,11 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         private void SetUpTooltip()
         {
+            if (skillLevel.IsFullLevels())
+            {
+                tooltip.SetActive(false);
+                return;
+            }
             var skillTreeTooltip = tooltip.GetComponent<SkillTreeTooltip>();
 
             if (skillTreeTooltip != null)
@@ -86,7 +92,14 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
         {
             if (skillLevel.HaveLevels())
             {
-                frameImage.color = activeFrameColor;
+                if (skillLevel.IsFullLevels())
+                {
+                    frameImage.color = maxedFrameColor;
+                }
+                else
+                {
+                    frameImage.color = activeFrameColor;
+                }
                 
             }
             else
@@ -97,11 +110,19 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         private void SetIconImage()
         {
+            if (skillLevel.IsFullLevels())
+            {
+                return;
+            }
             iconImage.sprite = statsUpgrade[skillLevel.GetCurrentLevel()].icon;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (skillLevel.IsFullLevels())
+            {
+                return;
+            }
             if (tooltip != null)
             {
                 SetUpTooltip();
