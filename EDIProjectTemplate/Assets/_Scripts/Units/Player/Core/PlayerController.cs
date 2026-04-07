@@ -12,6 +12,8 @@ using Random = UnityEngine.Random;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CooldownBar cooldownBar;
+    [SerializeField] private GameObject cameraFollowOffset;
+    
     
     public AttackData AttackData;
     public HeroData CurrentHeroData;
@@ -44,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public bool HasDashInput { get; set; }
     public bool HasSpecialPowerInput { get; set; }
     public bool CanSwitchHero => cooldownBar.IsNotInUse();
+    public Transform GetCameraFollowOffset => cameraFollowOffset.transform;
 
     // Injected Dependency (PlayerState)
     //[Inject] private PlayerState playerState;

@@ -45,7 +45,7 @@ public class CampsManager : MonoBehaviour
             cineCam = cineBrain.ActiveVirtualCamera as CinemachineCamera;
             if (cineCam != null)
             {
-                cineCam.Follow = playerControllerInstance.transform;
+                cineCam.Follow = playerControllerInstance.GetCameraFollowOffset;
             }
         }
 
