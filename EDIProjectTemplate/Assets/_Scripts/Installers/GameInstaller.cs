@@ -10,6 +10,7 @@ public class GameInstaller : MonoInstaller
         Debug.LogError("Installer is actually running!");
        
         Container.BindInterfacesAndSelfTo<CurrencyManager>().AsSingle().NonLazy();
+        Container.Bind<RespawnService>().AsSingle();
 
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CooldownBar cooldownBar;
     [SerializeField] private GameObject cameraFollowOffset;
+    [SerializeField] private List<PlayerHealth> healthStates;
     
     
     public AttackData AttackData;
@@ -33,7 +35,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]public CharacterController CharacterController;
     
     private Vector3 dashVelocity;
-    [Inject] private CurrencyManager _currencyManager;
+    [Inject] private CurrencyManager currencyManager;
+    [Inject] public RespawnService RespawnService { get; private set; }
     
     public float DodgeCooldownEndTime { get; private set; } = 0f;
     public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
@@ -72,6 +75,7 @@ public class PlayerController : MonoBehaviour
         actionStateMachine.RegisterState(new ReadyState());
         actionStateMachine.RegisterState(new DashingState());
         actionStateMachine.RegisterState(new LongRangeAttackState());
+        actionStateMachine.RegisterState(new DeathState());
         
 
 
@@ -215,6 +219,14 @@ public class PlayerController : MonoBehaviour
     private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj)
     {
         CurrentHeroData = obj.HeroData;
+    }
+    public void ResetState()
+    {
+        foreach (var health in healthStates)
+        {
+            health.ResetHealth();
+        }
+        
     }
 
     

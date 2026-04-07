@@ -4,9 +4,13 @@ using System.Linq;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject;
 
 public class CampsManager : MonoBehaviour
 {
+    [Inject] private RespawnService respawnService;
+    [Inject] private DiContainer diContainer;
+    
     [SerializeField] private PlayerController playerControllerPrefab;
     private PlayerController playerControllerInstance;
     private List<CheckpointCamp> checkpointCamps = new List<CheckpointCamp>();
@@ -18,7 +22,7 @@ public class CampsManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        playerControllerInstance = Instantiate(playerControllerPrefab);
+        playerControllerInstance = diContainer.InstantiatePrefabForComponent<PlayerController>(playerControllerPrefab);
         checkpointCamps = GetComponentsInChildren<CheckpointCamp>().ToList();
         if (checkpointCamps.Count == 0)
         {
@@ -34,6 +38,7 @@ public class CampsManager : MonoBehaviour
     private void OnCheckpointEnterEvent(OnCheckpointEnter checkpointEnter)
     {
         currentActiveCheckpointCamp = checkpointEnter.EnteredCheckpoint;
+        respawnService.SetCheckpoint(currentActiveCheckpointCamp);
     }
 
     private void MakeTheCamFollowPlayer()

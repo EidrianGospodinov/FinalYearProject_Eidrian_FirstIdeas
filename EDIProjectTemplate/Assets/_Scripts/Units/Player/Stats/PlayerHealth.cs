@@ -1,4 +1,5 @@
 using System;
+using _Scripts.StateMachine.PlayerActionStateMachine;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
@@ -21,6 +22,9 @@ namespace _Scripts.Units.Player
        private float timeleft = 0.0f;	// Left time for current interval
        public float regenUpdateInterval = 1f;
        private EventBinding<OnSwitchHeroEvent> playerEventBinding;
+       private PlayerController playerController;
+       
+       
        [SerializeField] private Stats playerStats;
 
         protected override void OnStart()
@@ -29,6 +33,7 @@ namespace _Scripts.Units.Player
             _postProcessing = FindFirstObjectByType<Volume>();
             _postProcessing.profile.TryGet(out vignette);
             maxHealth = playerStats.GetStat(Stat.Health);
+            playerController = GetComponentInParent<PlayerController>();
             //_cameraManager = FindFirstObjectByType<CameraManager>();
         }
 
@@ -37,6 +42,7 @@ namespace _Scripts.Units.Player
         protected override void OnDeath()
         {
            //_cameraManager.EnableKillCam();
+           playerController.ActionStateMachine.ChangeState(ActionStateId.Death);
         }
         protected override void OnDamage()
         {
@@ -60,6 +66,11 @@ namespace _Scripts.Units.Player
             currentHealthGlobe.gameObject.SetActive(true);
         }
 
+        public void ResetHealth()
+        {
+            currentHealth = maxHealth;
+            UpdateGraphics();
+        }
         private void UpgradeApplied(Stats stats, StatsUpgrade upgrade)
         {
             maxHealth = playerStats.GetStat(Stat.Health);
@@ -79,7 +90,7 @@ namespace _Scripts.Units.Player
         {
             timeleft -= Time.deltaTime;
 
-            if (timeleft <= 0.0) // Interval ended - update health & mana and start new interval
+            if (timeleft <= 0.0)
             {
                 HealDamage(regen);
                 UpdateGraphics();

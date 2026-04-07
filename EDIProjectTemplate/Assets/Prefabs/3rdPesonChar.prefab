@@ -5095,6 +5095,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownBar: {fileID: 7181961973920984806}
   cameraFollowOffset: {fileID: 5523855988481369618}
+  healthStates:
+  - {fileID: 2755079693065712309}
+  - {fileID: 2968448753327174088}
   AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
   CurrentHeroData: {fileID: 11400000, guid: 51d0352b2c49cce46a811ba2e753965f, type: 2}
   playerAnimation: {fileID: 0}

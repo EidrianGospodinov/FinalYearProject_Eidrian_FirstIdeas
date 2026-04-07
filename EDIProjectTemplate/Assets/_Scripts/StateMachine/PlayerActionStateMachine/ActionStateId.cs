@@ -5,6 +5,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
         Attacking,
         Ready,
         Dashing,
-        LongRangeAttack
+        LongRangeAttack,
+        Death
     }
 }
