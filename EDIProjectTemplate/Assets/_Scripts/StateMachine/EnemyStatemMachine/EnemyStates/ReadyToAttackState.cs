@@ -23,7 +23,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
             if (agent.IsPlayerDetected(true))
             {
-
                 DecideNextAttack(agent);
             }
             else

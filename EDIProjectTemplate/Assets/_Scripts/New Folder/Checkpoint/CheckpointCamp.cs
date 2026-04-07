@@ -32,8 +32,19 @@ public class CheckpointCamp : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        SetActiveCheckpoint(true);
-        EventBus<OnCheckpointEnter>.Trigger(new OnCheckpointEnter(this));
+        if (other.CompareTag("Player"))
+        {
+            SetActiveCheckpoint(true);
+            EventBus<OnCheckpointEnter>.Trigger(new OnCheckpointEnter(this));
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            EventBus<OnCheckpointExit>.Trigger(new OnCheckpointExit());
+        }
     }
 }
 
@@ -45,4 +56,9 @@ public class OnCheckpointEnter : IEvent
     {
         EnteredCheckpoint = enteredCheckpoint;
     }
+}
+
+public class OnCheckpointExit : IEvent
+{
+    
 }

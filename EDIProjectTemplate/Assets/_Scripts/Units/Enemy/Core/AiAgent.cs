@@ -6,12 +6,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Zenject;
 
 namespace _Scripts.Units.Enemy
 {
     public class AiAgent : MonoBehaviour
 
     {
+        [Inject] public EnemyManager EnemyManager { get; private set; }
         [Header("This class will be used to register all the different state of every AI")] [Space]
         public EnemyStateId initialState;
 
@@ -26,6 +28,7 @@ namespace _Scripts.Units.Enemy
 
         private static int nextAgentId = 1;
         private int instanceID;
+        private bool playerInSafeZone = false;
         
         [SerializeField] private TextMeshProUGUI statusText;
         public Transform LongRangeTarget;
@@ -59,14 +62,7 @@ namespace _Scripts.Units.Enemy
             {
                 stateMachine.RegisterState(StateFactory.Create(stateId));
             }
-            /*
-            //state machine set up- register all stated this agent will use
-            stateMachine.RegisterState(new EnemyWonderState());
-            stateMachine.RegisterState(new EnemyIdleState());
-            stateMachine.RegisterState(new ReadyToAttackState());
-            stateMachine.RegisterState(new EnemyChargeState());
-            stateMachine.RegisterState(new AttackWindDownState());
-            stateMachine.RegisterState(new AttackGeneric());*/
+            
             stateMachine.Initialize(initialState);
 
         }
@@ -83,12 +79,20 @@ namespace _Scripts.Units.Enemy
 
         public bool IsPlayerDetected(bool angleDoesntMatter = false)
         {
+            if (playerInSafeZone)
+            {
+                return false;
+            }
             return aiVision.IsPlayerDetected(this, angleDoesntMatter);
         }
 
         public float DistanceToPlayer()
         {
             return (playerTransform.transform.position - transform.position).magnitude;
+        }
+        public void SetPlayerInSafeZone(bool value)
+        {
+            playerInSafeZone = value;
         }
 
 

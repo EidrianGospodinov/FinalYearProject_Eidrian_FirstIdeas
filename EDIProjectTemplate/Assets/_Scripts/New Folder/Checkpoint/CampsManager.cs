@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using _Scripts.Units.Enemy;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,6 +11,7 @@ public class CampsManager : MonoBehaviour
 {
     [Inject] private RespawnService respawnService;
     [Inject] private DiContainer diContainer;
+    [Inject] private EnemyManager enemyManager;
     
     [SerializeField] private PlayerController playerControllerPrefab;
     private PlayerController playerControllerInstance;
@@ -19,6 +21,7 @@ public class CampsManager : MonoBehaviour
     private CheckpointCamp currentActiveCheckpointCamp;
 
     private EventBinding<OnCheckpointEnter> OnCheckpointEnter;
+    private EventBinding<OnCheckpointExit> OnCheckpointExit;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,12 +36,23 @@ public class CampsManager : MonoBehaviour
         PlacePlayerInCamp();
         MakeTheCamFollowPlayer();
         OnCheckpointEnter = EventBus<OnCheckpointEnter>.Register(OnCheckpointEnterEvent);
+        OnCheckpointExit = EventBus<OnCheckpointExit>.Register(OnCheckpointExitEvent);
+
     }
+
 
     private void OnCheckpointEnterEvent(OnCheckpointEnter checkpointEnter)
     {
-        currentActiveCheckpointCamp = checkpointEnter.EnteredCheckpoint;
-        respawnService.SetCheckpoint(currentActiveCheckpointCamp);
+        if (!respawnService.IsActiveCheckpoint(checkpointEnter.EnteredCheckpoint))
+        {
+            currentActiveCheckpointCamp = checkpointEnter.EnteredCheckpoint;
+            respawnService.SetCheckpoint(currentActiveCheckpointCamp);
+        }
+        enemyManager.SetEnemiesInSafeZone(true);
+    }
+    private void OnCheckpointExitEvent(OnCheckpointExit obj)
+    {
+        enemyManager.SetEnemiesInSafeZone(false);
     }
 
     private void MakeTheCamFollowPlayer()

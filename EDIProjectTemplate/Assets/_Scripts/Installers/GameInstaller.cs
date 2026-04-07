@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using _Scripts.Units.Enemy;
 using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,7 @@ public class GameInstaller : MonoInstaller
        
         Container.BindInterfacesAndSelfTo<CurrencyManager>().AsSingle().NonLazy();
         Container.Bind<RespawnService>().AsSingle();
+        Container.Bind<EnemyManager>().AsSingle().NonLazy();
 
     }
 }
