@@ -11,10 +11,10 @@ namespace _Scripts.Units.Enemy
 
 
 
-        public bool IsPlayerDetected(AiAgent agent, bool doesAngleMatter) => IsPlayerDetected(agent.agentConfig, doesAngleMatter);
+        public bool IsPlayerDetected(AiAgent agent, bool angleDoesntMatter) => IsPlayerDetected(agent.agentConfig, angleDoesntMatter);
 
 
-        public bool IsPlayerDetected(AiAgentConfig config, bool doesAngleMatter)
+        public bool IsPlayerDetected(AiAgentConfig config, bool angleDoesntMatter)
         {
             Vector3 directionToPlayer = Player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
@@ -32,7 +32,7 @@ namespace _Scripts.Units.Enemy
                 return false;
             }
 
-            if (doesAngleMatter)
+            if (angleDoesntMatter)
             {
                 return true;
             }

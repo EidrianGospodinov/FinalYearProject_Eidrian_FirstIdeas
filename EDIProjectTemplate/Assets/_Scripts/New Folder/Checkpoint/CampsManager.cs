@@ -49,7 +49,7 @@ public class CampsManager : MonoBehaviour
             }
         }
 
-        if (cineBrain || cineCam)
+        if (!cineBrain || !cineCam)
         {
             Debug.LogError("Camera does not follow the player");
         }

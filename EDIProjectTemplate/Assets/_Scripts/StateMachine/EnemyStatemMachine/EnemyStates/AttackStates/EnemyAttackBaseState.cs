@@ -26,6 +26,13 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
                     agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
                 }
             }
+            else
+            {
+                if (!agent.IsPlayerDetected(true))
+                {
+                    agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
+                }
+            }
         }
 
         public virtual void Exit(AiAgent agent)

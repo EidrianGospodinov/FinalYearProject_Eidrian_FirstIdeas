@@ -81,9 +81,9 @@ namespace _Scripts.Units.Enemy
             }
         }
 
-        public bool IsPlayerDetected(bool doesAngleMatter = false)
+        public bool IsPlayerDetected(bool angleDoesntMatter = false)
         {
-            return aiVision.IsPlayerDetected(this, doesAngleMatter);
+            return aiVision.IsPlayerDetected(this, angleDoesntMatter);
         }
 
         public float DistanceToPlayer()
