@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AxeUpperCut
   m_EditorClassIdentifier: 
   attackName: 
-  StateId: 0
+  StateId: 5
   AnimationName: AxeUpperCut
   weight: 40
   minDistance: 0
