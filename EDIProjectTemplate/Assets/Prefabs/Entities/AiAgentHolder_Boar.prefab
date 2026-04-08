@@ -855,10 +855,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boar
       objectReference: {fileID: 0}
-    - target: {fileID: 6230592797917633513, guid: d81a9073984c23443bdde820cc05b09d, type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 88be62c153c6b6747b05413f3e7993a8, type: 3}
     - target: {fileID: 8533927054995530584, guid: d81a9073984c23443bdde820cc05b09d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

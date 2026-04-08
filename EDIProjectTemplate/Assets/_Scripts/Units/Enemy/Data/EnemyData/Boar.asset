@@ -17,7 +17,7 @@ MonoBehaviour:
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 5
-  angleVision: 176.4
+  angleVision: 149.2
   maxSightDistance: 10.7
   obstacleLayer:
     serializedVersion: 2
@@ -26,6 +26,10 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 5
   timeToLosePlayer: 9.16
-  attackRange: 2.07
+  attackRange: 0.5
   critChance: 0.374
-  EnemyAttackTypes: []
+  EnemyAttackTypes:
+  - {fileID: 11400000, guid: ef50215d6cad1794c9971959557004de, type: 2}
+  - {fileID: 11400000, guid: d05b6ba24a5dcbe46ba9539b8efcc507, type: 2}
+  - {fileID: 11400000, guid: 4a0deed88757f5245a228c48b17be85f, type: 2}
+  - {fileID: 11400000, guid: 3cea78fab046b684093b0d526a815b02, type: 2}
