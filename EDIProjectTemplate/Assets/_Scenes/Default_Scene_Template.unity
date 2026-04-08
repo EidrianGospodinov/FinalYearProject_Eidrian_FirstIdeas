@@ -196,10 +196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ed24552cf0d04684295be1f2c8308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 0}
+  cameraFollowOffset: {fileID: 0}
+  healthStates: []
   AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
   CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
   IsAttacking: 0
+  EnemyDetector: {fileID: 0}
+  HeroSwitcher: {fileID: 0}
   CharacterController: {fileID: 0}
 --- !u!82 &125528977
 AudioSource:
@@ -322,7 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6489e89d90734d14ca79880ad172ff8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
   faceMoveDirection: 0
   moveSpeed: 5
   gravity: -9.8
@@ -1699,10 +1703,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 526ed24552cf0d04684295be1f2c8308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 0}
+  cameraFollowOffset: {fileID: 0}
+  healthStates: []
   AttackData: {fileID: 0}
   CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
   IsAttacking: 0
+  EnemyDetector: {fileID: 0}
+  HeroSwitcher: {fileID: 0}
   CharacterController: {fileID: 0}
 --- !u!1 &1037833777462852651
 GameObject:
