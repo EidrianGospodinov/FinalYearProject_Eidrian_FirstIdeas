@@ -22,6 +22,8 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
                 performAnimTime += Time.deltaTime;
                 if (performAnimTime >= agent.NextAttackTypeData.animationDuration)
                 {
+                    Debug.Log("IsPerforming attack visuals false in the attack base state update before going back to cooldown");
+
                     agent.IsPerformingAttackVisuals = false;
                     agent.stateMachine.ChangeState(EnemyStateId.CoolDown);
                 }

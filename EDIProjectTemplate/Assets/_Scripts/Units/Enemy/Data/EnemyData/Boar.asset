@@ -26,7 +26,7 @@ MonoBehaviour:
   minIdleTime: 3
   maxIdleTime: 5
   timeToLosePlayer: 9.16
-  attackRange: 0.5
+  attackRange: 0.3
   critChance: 0.374
   EnemyAttackTypes:
   - {fileID: 11400000, guid: ef50215d6cad1794c9971959557004de, type: 2}

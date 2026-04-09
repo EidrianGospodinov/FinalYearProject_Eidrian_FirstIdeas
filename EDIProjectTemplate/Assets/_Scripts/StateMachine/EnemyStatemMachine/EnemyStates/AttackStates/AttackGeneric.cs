@@ -26,6 +26,17 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             base.Update(agent);
             if (agent.IsPerformingAttackVisuals) return;
             
+            float distanceToPlayer = Vector3.Distance(agent.navMeshAgent.transform.position, agent.playerTransform.position);
+            float adjustedDistance = distanceToPlayer - agent.navMeshAgent.radius;
+            float attackThreshold = agent.navMeshAgent.stoppingDistance + 0.2f;
+            
+            Debug.Log($"dist: {distanceToPlayer} | adjusted: {adjustedDistance} | threshold: {attackThreshold}");
+            if (!agent.navMeshAgent.pathPending && 
+                adjustedDistance <= agent.navMeshAgent.stoppingDistance)
+            {
+                ExecuteAttackVisuals(agent);
+                return;
+            }
 
             
             // Only recalculate path a few times per second to save CPU
@@ -40,12 +51,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
                     pathUpdateDeadline = Time.time + Random.Range(0.3f, 0.5f);
                 }
             }
-            if (!agent.navMeshAgent.pathPending && 
-                agent.navMeshAgent.remainingDistance <= agent.navMeshAgent.stoppingDistance)
-            {
-                ExecuteAttackVisuals(agent);
-                return;
-            }
         }
 
         public override void Exit(AiAgent agent)
@@ -55,7 +60,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         private void ExecuteAttackVisuals(AiAgent agent)
         {
             agent.IsPerformingAttackVisuals = true;
-    
+            Debug.Log("IsPerforming attack visuals true in the attack generic execute visual func");
             // Stop the agent immediately so the animation is grounded
             agent.navMeshAgent.isStopped = true;
             agent.navMeshAgent.velocity = Vector3.zero; 

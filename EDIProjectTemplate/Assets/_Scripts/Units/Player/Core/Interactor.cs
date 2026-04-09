@@ -49,7 +49,7 @@ namespace _Scripts.Units.Player.Core
             Ray ray = new Ray(interactorSource.position, interactorSource.forward);
             if (Physics.Raycast(ray, out RaycastHit hit, interactRange, interactableLayer))
             {
-                print("interactor ray hit: " + hit.collider.name);
+                //print("interactor ray hit: " + hit.collider.name);
                 if (hit.collider.gameObject.TryGetComponent(out IInteractable interactableObject))
                 {
                     return interactableObject;
