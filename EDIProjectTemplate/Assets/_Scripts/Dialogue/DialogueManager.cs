@@ -10,7 +10,6 @@ namespace _Scripts.Dialogue
     public abstract class DialogueManager : MonoBehaviour, IInteractable
     {
         [Inject] private GameManager gameManager; 
-        [SerializeField] PlayerController player;
         [SerializeField] protected GameObject dialogueUI;
         
         
@@ -25,7 +24,6 @@ namespace _Scripts.Dialogue
         protected virtual void Start()
         {
             dialogueUI.SetActive(false);
-            player = FindAnyObjectByType<PlayerController>();
         }
         /*public virtual void OnMouseOver()
             {

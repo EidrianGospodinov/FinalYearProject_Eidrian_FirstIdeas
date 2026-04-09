@@ -882,6 +882,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &451092813
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 618300670}
+    m_Modifications:
+    - target: {fileID: 2702076509466344719, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: skillTree
+      value: 
+      objectReference: {fileID: 597206257}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: name
+      value: Statue OF Nike
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -63.579605
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 119.38012
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.80506927
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.59318084
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -287.234
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242317150232098226, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: mapTeleporter
+      value: 
+      objectReference: {fileID: 7947899525781852294}
+    - target: {fileID: 9022620133155346171, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_Name
+      value: Checkpoint_First_StatueOfNike
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+--- !u!4 &451092814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+  m_PrefabInstance: {fileID: 451092813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &515135389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,6 +1220,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 451092814}
   - {fileID: 63102449}
   - {fileID: 1709850227}
   m_Father: {fileID: 0}
@@ -2894,31 +2969,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 38.92214
+      value: -74.104
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0031133
+      value: 7.678
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 65.98667
+      value: 160.112
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.66915196
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7431256
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2926,7 +3001,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 95.997
       objectReference: {fileID: 0}
     - target: {fileID: 7381968521890608347, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2937,12 +3012,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c2de38f811fcad42b2616369b85faf0, type: 2}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 620863730}
     - target: {fileID: 7870557046160485985, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_Name
-      value: Ch02_nonPBR
+      value: Guide1
       objectReference: {fileID: 0}
     - target: {fileID: 7870557046160485985, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_Layer

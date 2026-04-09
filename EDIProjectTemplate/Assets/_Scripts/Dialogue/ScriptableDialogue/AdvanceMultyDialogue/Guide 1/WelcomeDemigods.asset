@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
+  m_Name: WelcomeDemigods
+  m_EditorClassIdentifier: 
+  dialogueText: 
+  dialogue:
+  - isPlayer: 0
+    text: Welcome Demigods, I have been expecting you!
+  - isPlayer: 0
+    text: I expect you have many questions, so I will be quick.
+  - isPlayer: 0
+    text: You have been summon on this island with one goal.
+  - isPlayer: 1
+    text: Summoned? By who?
+  - isPlayer: 0
+    text: Easy now, easy. You will figure out the answer with due time.
+  - isPlayer: 0
+    text: For now all you need to know is
+  nextNode: {fileID: 11400000, guid: 76d48059a62aa314a8b7190c5e650ee3, type: 2}

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
+  m_Name: Linear_DemigodsWhatCanWeDo
+  m_EditorClassIdentifier: 
+  dialogueText: 
+  dialogue:
+  - isPlayer: 0
+    text: Great Question.
+  - isPlayer: 0
+    text: A lot of things, every demigod is different however.
+  - isPlayer: 0
+    text: What all of you have in common is highten senses as your brain are hardwired
+      for the battlefield, which helps your reflexes.
+  - isPlayer: 1
+    text: Cooooool
+  - isPlayer: 0
+    text: Some of you can to an extend channel your parents abilities.
+  - isPlayer: 1
+    text: How?
+  - isPlayer: 0
+    text: When the time comes you will know.
+  - isPlayer: 0
+    text: First things first, try to acquire a sword, it will be located inside a
+      Stone. You will need it to defeat the monsters that will be sure to come.
+  - isPlayer: 1
+    text: What if we don't find it on time? How can we defend ourselves?
+  - isPlayer: 0
+    text: Don't worry you are not powerless, for now hold righ mouse button when
+      they are near you.
+  nextNode: {fileID: 11400000, guid: b34ab59262877cc4eaec0bb6615b98a3, type: 2}

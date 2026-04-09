@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f6c44a2dc46c684afb9464956134e, type: 3}
+  m_Name: Choice_MoreAboutWhoAmI
+  m_EditorClassIdentifier: 
+  dialogueText: But enough for now, ask what you need.
+  choices:
+  - answerText: We are two? What do you mean?
+    nextNode: {fileID: 11400000, guid: 78bebb07ffe77db4ba690f4c32001529, type: 2}
+  - answerText: If we are Demi gods, is there anything we can do?
+    nextNode: {fileID: 11400000, guid: 4eff7d4ba348b874f85ae0801bd3e768, type: 2}
+  - answerText: You are crazy, get away from me.
+    nextNode: {fileID: 11400000, guid: 76d48059a62aa314a8b7190c5e650ee3, type: 2}
