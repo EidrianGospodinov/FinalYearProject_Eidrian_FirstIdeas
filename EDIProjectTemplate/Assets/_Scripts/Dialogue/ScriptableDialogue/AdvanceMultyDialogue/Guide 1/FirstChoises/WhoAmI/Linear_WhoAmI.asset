@@ -25,6 +25,7 @@ MonoBehaviour:
   - isPlayer: 0
     text: I assure you there are, now carefull before you go on their bad side.
   - isPlayer: 0
-    text: You are actually they, there are 2 of you in this body, something happened
-      that binded your bodies together.
+    text: You are actually they, there are 2 of you in this body.
+  - isPlayer: 0
+    text: Something happened that binded your bodies together.
   nextNode: {fileID: 11400000, guid: b34ab59262877cc4eaec0bb6615b98a3, type: 2}

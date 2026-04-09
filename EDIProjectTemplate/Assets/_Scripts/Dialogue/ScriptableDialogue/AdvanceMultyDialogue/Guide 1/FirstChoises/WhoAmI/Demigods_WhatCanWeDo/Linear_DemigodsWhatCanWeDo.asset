@@ -19,8 +19,9 @@ MonoBehaviour:
   - isPlayer: 0
     text: A lot of things, every demigod is different however.
   - isPlayer: 0
-    text: What all of you have in common is highten senses as your brain are hardwired
-      for the battlefield, which helps your reflexes.
+    text: 'What all of you have in common is highten senses as your brain '
+  - isPlayer: 0
+    text: ' is hardwired for the battlefield, which helps your reflexes.'
   - isPlayer: 1
     text: Cooooool
   - isPlayer: 0
@@ -30,8 +31,10 @@ MonoBehaviour:
   - isPlayer: 0
     text: When the time comes you will know.
   - isPlayer: 0
-    text: First things first, try to acquire a sword, it will be located inside a
-      Stone. You will need it to defeat the monsters that will be sure to come.
+    text: 'First things first, try to acquire a sword, it will be located inside
+      a Stone. '
+  - isPlayer: 0
+    text: You will need it to defeat the monsters that will be sure to come.
   - isPlayer: 1
     text: What if we don't find it on time? How can we defend ourselves?
   - isPlayer: 0

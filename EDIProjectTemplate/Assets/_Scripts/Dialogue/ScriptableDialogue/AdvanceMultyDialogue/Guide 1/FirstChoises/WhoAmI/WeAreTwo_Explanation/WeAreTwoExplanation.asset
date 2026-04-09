@@ -19,8 +19,9 @@ MonoBehaviour:
   - isPlayer: 0
     text: I have time, nowhere else to be.
   - isPlayer: 0
-    text: You don't but okay. When you were young, there was accident where you and
-      your friend almost died.
+    text: 'You don''t but okay. When you were young, there was accident. '
+  - isPlayer: 1
+    text: Where you and your friend almost died.
   - isPlayer: 0
     text: Durring that traumatic event, your bodies became one.
   - isPlayer: 1
@@ -32,12 +33,14 @@ MonoBehaviour:
   - isPlayer: 0
     text: To change between each other, simple press V
   - isPlayer: 0
-    text: You are children of different gods, and you have unique abilities and you
-      are more powerfull against different entities.
+    text: You are children of different gods, and you have unique abilities
+  - isPlayer: 1
+    text: ' and you are more powerfull against different entities.'
   - isPlayer: 0
     text: Also the only way to lick your wounds during or after a battle is when
-      you are not the facing hero, switch and you will slowly regenerate back to
-      full health
+      you are not the facing hero,
+  - isPlayer: 1
+    text: switch and you will slowly regenerate back to full health
   - isPlayer: 0
     text: I am sorry but thats all i can say, Good luck, you are going to need it.
   - isPlayer: 1
