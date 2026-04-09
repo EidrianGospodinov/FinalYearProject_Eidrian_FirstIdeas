@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f6c44a2dc46c684afb9464956134e, type: 3}
+  m_Name: Test2_HeroPath
+  m_EditorClassIdentifier: 
+  dialogueText: Bold words. Many have said the same and ended up as mere echoes in
+    the mist. Take this map; it's all I can offer.
+  choices:
+  - answerText: Thank you.
+    nextNode: {fileID: 0}
+  - answerText: I need more than a map.
+    nextNode: {fileID: 11400000, guid: 5e7cd5ccf67f2f145b54c33ca9580e79, type: 2}
+  - answerText: Keep it.
+    nextNode: {fileID: 0}

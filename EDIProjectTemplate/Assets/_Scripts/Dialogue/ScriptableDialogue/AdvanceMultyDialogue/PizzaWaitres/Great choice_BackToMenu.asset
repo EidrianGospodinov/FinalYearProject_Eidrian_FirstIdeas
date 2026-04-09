@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
+  m_Name: Great choice_BackToMenu
+  m_EditorClassIdentifier: 
+  dialogueText: 
+  dialogue:
+  - isPlayer: 0
+    text: Great Choice sir, you will lick your fingers
+  - isPlayer: 1
+    text: I hope you are right.
+  - isPlayer: 0
+    text: This pizzaria has been open for 100 years
+  - isPlayer: 0
+    text: We have served Queen Elizabeth
+  - isPlayer: 0
+    text: If you don't like the pizza, I will breackdance on the table
+  - isPlayer: 1
+    text: Are you serious???
+  - isPlayer: 0
+    text: Yes!
+  - isPlayer: 0
+    text: Anything else
+  nextNode: {fileID: 11400000, guid: 6f8e4e32d48682549b5e5ed0a59c353c, type: 2}

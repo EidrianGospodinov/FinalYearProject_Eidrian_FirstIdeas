@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af2dda2e1604614ca17a8b43cf14bd2, type: 3}
+  m_Name: BasicDialogue
+  m_EditorClassIdentifier: 
+  name: jeff
+  dialogue:
+  - Hey, how are you?
+  - I am doing fine
+  - I am from london
+  - See you later
+  playerDialogue:
+  - Alright, how about you
+  - Where are you from
+  - Goodbye..

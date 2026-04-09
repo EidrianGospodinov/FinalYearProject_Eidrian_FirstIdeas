@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
+  m_Name: LinearTest-Map
+  m_EditorClassIdentifier: 
+  dialogueText: 
+  dialogue:
+  - isPlayer: 1
+    text: "A map? You\u2019re giving me a map after all those questions?!"
+  - isPlayer: 1
+    text: I spent forty minutes explaining my childhood fear of sourdough just for
+      a piece of paper?
+  - isPlayer: 1
+    text: I was told this test would reveal my 'Inner Warrior,' not my 'Inner Tourist'!
+  - isPlayer: 0
+    text: Look, kid, the map shows where the gym is. Calm down.
+  - isPlayer: 1
+    text: I don't want a gym, Tony! I want destiny

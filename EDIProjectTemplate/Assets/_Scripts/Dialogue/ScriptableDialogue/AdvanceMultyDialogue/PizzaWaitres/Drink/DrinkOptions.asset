@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 917f6c44a2dc46c684afb9464956134e, type: 3}
+  m_Name: DrinkOptions
+  m_EditorClassIdentifier: 
+  dialogueText: What drink would you like?
+  choices:
+  - answerText: Soft drink
+    nextNode: {fileID: 11400000, guid: 241995bbbe28d9e4bb12c576507e7ec6, type: 2}
+  - answerText: Hot Drink
+    nextNode: {fileID: 11400000, guid: 927a471cfe28a8d479ed7e071411a537, type: 2}
+  - answerText: I am not thirsty, thank you!
+    nextNode: {fileID: 11400000, guid: 6f8e4e32d48682549b5e5ed0a59c353c, type: 2}

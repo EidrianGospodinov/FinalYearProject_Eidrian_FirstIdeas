@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using Zenject;
@@ -8,6 +9,10 @@ namespace _Scripts.Units.Player.Core
     public interface IInteractable
     {
         void Interact();
+    }
+    public interface IResultInteractable : IInteractable
+    {
+        Task<Transform> GetResult();
     }
     public class Interactor : MonoBehaviour
     {
