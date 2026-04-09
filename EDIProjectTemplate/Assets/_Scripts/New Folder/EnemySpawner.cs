@@ -1,22 +1,74 @@
-using System;
-using System.Collections.Generic;
 using _Scripts.Units.Enemy;
-using _Scripts.Units.Player.Core;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 using Zenject;
+using Random = UnityEngine.Random;
 
-public class EnemySpawner : MonoBehaviour, IInteractable
+public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private AiAgent AiAgent;
-    [Inject]
-    private DiContainer _container;
-
+    
+    [Inject] private DiContainer container;
     [Inject] private EnemyManager enemyManager;
+    
+    
+    [Header("Spawn Settings")]
+    [SerializeField] AiAgent enemyPrefab;
+    [SerializeField] int spawnCount = 10;
+    [SerializeField] float spawnRadius = 10f;
+    [SerializeField] float spawnInterval = 3f;
+    
+    public float navMeshSampleDistance = 2f;
 
-    public void Interact()
+    private void Start()
     {
-        var aiAgent = _container.InstantiatePrefabForComponent<AiAgent>(AiAgent, transform);
+        SpawnEnemies();
+    }
+
+    private void SpawnEnemies()
+    {
+        if (spawnInterval <= 0f)
+        {
+            SpawnBatch();
+        }
+        else
+        {
+            InvokeRepeating(nameof(SpawnOne), 0f, spawnInterval);
+        }
+    }
+
+    void SpawnBatch()
+    {
+        for (int i = 0; i < spawnCount; i++)
+        {
+            SpawnOne();
+        }
+    }
+
+    void SpawnOne()
+    {
+        Vector3 randomPoint = transform.position + Random.insideUnitSphere * spawnRadius;
+        randomPoint.y = transform.position.y;
+
+        Vector3 spawnPosition = randomPoint;
+
+
+        if (NavMesh.SamplePosition(randomPoint, out NavMeshHit hit, navMeshSampleDistance, NavMesh.AllAreas))
+        {
+            spawnPosition = hit.position;
+        }
+        else
+        {
+            return;
+        }
+
+        var aiAgent = container.InstantiatePrefabForComponent<AiAgent>(enemyPrefab, spawnPosition, quaternion.identity, transform);
         enemyManager.RegisterEnemy(aiAgent);
-        //Instantiate(AiAgent, transform.position, transform.rotation);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
 }
