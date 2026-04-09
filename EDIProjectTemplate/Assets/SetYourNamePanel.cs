@@ -1,0 +1,30 @@
+using _Scripts.Units.Player.Core;
+using UnityEngine;
+using Zenject;
+
+public class SetYourNamePanel : MonoBehaviour
+{
+    [Inject] private GameManager gameManager;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        gameManager.SetGameState(GameState.InMenu);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void SetYourName(string name)
+    {
+        GameConfig.PlayerName = name;
+    }
+
+    public void ContinueToGame()
+    {
+        gameManager.SetGameState(GameState.InGame);
+        gameObject.SetActive(false);
+    }
+}

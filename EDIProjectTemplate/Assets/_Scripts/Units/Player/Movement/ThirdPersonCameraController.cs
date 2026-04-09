@@ -37,7 +37,6 @@ public class ThirdPersonCameraController : MonoBehaviour
         playerInput.Enable();
         playerInput.CameraControls.MouseZoom.performed += HandleMouseScroll;
 
-        Cursor.lockState = CursorLockMode.Locked;
         cineCam = GetComponent<CinemachineCamera>();
         orbital = cineCam.GetComponent<CinemachineOrbitalFollow>();
         

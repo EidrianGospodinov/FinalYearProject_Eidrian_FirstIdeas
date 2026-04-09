@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         
-        gameManager.SetGameState(GameState.InGame);
+        //gameManager.SetGameState(GameState.InGame);
         // Set initial state
         actionStateMachine.Initialize(ActionStateId.Ready);
         //playerState = PlayerState.IDLE;
