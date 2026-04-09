@@ -22,12 +22,18 @@ namespace _Scripts.Units.Player.Core
                     Cursor.lockState = CursorLockMode.Confined;
                     Time.timeScale = 0;
                     break;
+                case GameState.InDialogue:
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Time.timeScale = 1;
+                    break;
             }
         }
     }
     public enum GameState
     {
         InGame,
-        InMenu
+        InMenu,
+        InDialogue
     }
 }

@@ -15,39 +15,7 @@ public class BasicDialogueManager : DialogueManager
     
     private int currentResponseTracker;
 
-    public override void OnMouseOver()
-    {
-        base.OnMouseOver();
-        
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        {
-            currentResponseTracker++;
-            if (currentResponseTracker >= Npc.playerDialogue.Length - 1)
-            {
-                currentResponseTracker = Npc.playerDialogue.Length - 1;
-            }
-        }
-        else if(Input.GetAxis("Mouse ScrollWheel") > 0f)
-        {
-            currentResponseTracker--;
-            if (currentResponseTracker < 0)
-            {
-                currentResponseTracker = 0;
-            }
-        }
-
-        if (Npc.playerDialogue.Length >= currentResponseTracker)
-        {
-            playerResponse.text = Npc.playerDialogue[currentResponseTracker];
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                npcDialogueBox.text = Npc.dialogue[currentResponseTracker + 1];
-            }
-        }
-    }
     
-    
-
     protected override void StartConversation()
     {
         base.StartConversation();

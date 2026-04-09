@@ -7,10 +7,10 @@ using Zenject;
 
 namespace _Scripts.Dialogue
 {
-    public abstract class DialogueManager : MonoBehaviour
+    public abstract class DialogueManager : MonoBehaviour, IInteractable
     {
         [Inject] private GameManager gameManager; 
-        [SerializeField] GameObject player;
+        [SerializeField] PlayerController player;
         [SerializeField] protected GameObject dialogueUI;
         
         
@@ -25,8 +25,9 @@ namespace _Scripts.Dialogue
         protected virtual void Start()
         {
             dialogueUI.SetActive(false);
+            player = FindAnyObjectByType<PlayerController>();
         }
-        public virtual void OnMouseOver()
+        /*public virtual void OnMouseOver()
             {
                 distance = Vector3.Distance(player.transform.position, this.transform.position);
                 if (distance <= 2.5f)
@@ -55,7 +56,7 @@ namespace _Scripts.Dialogue
                     }
                 }
                 
-            }
+            }*/
         
             private void OnMouseExit()
             {
@@ -77,8 +78,13 @@ namespace _Scripts.Dialogue
             {
                 isTalking = true;
                 dialogueUI.SetActive(true);
-                gameManager.SetGameState(GameState.InMenu);
+                gameManager.SetGameState(GameState.InDialogue);
 
+            }
+
+            public void Interact()
+            {
+                StartConversation();
             }
     }
 }

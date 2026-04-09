@@ -32,11 +32,7 @@ namespace _Scripts.Dialogue
         {
             EndConversation();
         }
-
-        public override void OnMouseOver()
-        {
-            base.OnMouseOver();
-        }
+        
         protected override void StartConversation()
         {
             base.StartConversation();
