@@ -1360,7 +1360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9022620133155346171, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3373,7 +3373,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5091490528900555422, guid: d79b2c48282751a409625629e4849252, type: 3}
   spawnCount: 10
   spawnRadius: 23.22
-  spawnInterval: 3
+  spawnInterval: 0
   navMeshSampleDistance: 10
 --- !u!1 &1464523664
 GameObject:
@@ -4279,7 +4279,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5091490528900555422, guid: d79b2c48282751a409625629e4849252, type: 3}
   spawnCount: 10
   spawnRadius: 23.22
-  spawnInterval: 3
+  spawnInterval: 0
   navMeshSampleDistance: 10
 --- !u!1 &1894039418
 GameObject:
