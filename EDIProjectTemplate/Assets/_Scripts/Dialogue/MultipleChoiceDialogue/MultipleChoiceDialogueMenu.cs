@@ -9,6 +9,13 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
 {
     public class MultipleChoiceDialogueMenu : MonoBehaviour
     {
+        enum DialogueType
+        {
+            None,
+            Linear,
+            MultiChoice
+            
+        }
         [SerializeField] private GameObject optionsPanel;
         [SerializeField] private ChoiseDialogue[] options = new ChoiseDialogue[3];
 
@@ -21,6 +28,9 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
         
          private EventHandler OnDialogueFinished { get; set; }
          private ICommandReceiver commandReceiver;
+         private DialogueType currentDialogueType = DialogueType.None;
+         private int taskDelayMilSecDefault = 2500;
+         private int taskDelayMilSec = 2500;
 
         private void OnEnable()
         {
@@ -36,6 +46,22 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                gameObject.SetActive(false);
+            }
+
+            if (currentDialogueType == DialogueType.Linear)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    taskDelayMilSec = 0;
+                }
+            }
+            if (currentDialogueType != DialogueType.MultiChoice)
+            {
+                return;
+            }
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 if (choices != null)
@@ -47,6 +73,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
                     }
                     else
                     {
+                        currentDialogueType = DialogueType.None;
                         SetUpDialogue(fallBackDialogue);
                         Debug.Log("Next node is empty");
                     }
@@ -92,6 +119,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
         public void InitialSetUp(DialogueNodeBase currentNode, string newName, EventHandler OnDialogueFinished,
             ICommandReceiver commandReceiver)
         {
+            currentDialogueType = DialogueType.None;
             this.OnDialogueFinished = OnDialogueFinished;
             this.npcName = newName;
             this.commandReceiver = commandReceiver;
@@ -133,10 +161,24 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             dialogueText.text = $"<style=NpcName>{displayName}:</style> {message}";
         }
 
+
+        private async void LinearDialogueAsync(LinearDialogue linearDialogue)
+        {
+            currentDialogueType = DialogueType.Linear;
+            foreach (var dialogue in linearDialogue.dialogue)
+            {
+                SetDialogueText(dialogue.text, dialogue.isPlayer);
+                taskDelayMilSec = taskDelayMilSecDefault;//it doesnt work like this 
+                await Task.Delay(taskDelayMilSec);
+            }
+            SetUpDialogue(linearDialogue.nextNode);
+        }
+
         private void SetUpAnswerOptions(DialogueNodeBase currentNode)
         {
             if (currentNode is NPC_MultipleChoiseDialogue multipleChoiceDialogue)
             {
+                currentDialogueType = DialogueType.MultiChoice;
                 optionsPanel.gameObject.SetActive(true);
                 this.choices = multipleChoiceDialogue.choices;
                 for (int i = 0; i < choices.Length; i++)
@@ -151,6 +193,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             {
                 if (simpleDialogueNode.hasExit)
                 {
+                    currentDialogueType = DialogueType.MultiChoice;
                     OnDialogueFinished?.Invoke(this, EventArgs.Empty);
                     //disable the panel after the exit node
                     Invoke(nameof(DisablePanel), 3f);
@@ -159,16 +202,6 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
                 SetUpDialogue(simpleDialogueNode.nextNode);
             }
 
-        }
-
-        private async void LinearDialogueAsync(LinearDialogue linearDialogue)
-        {
-            foreach (var dialogue in linearDialogue.dialogue)
-            {
-                SetDialogueText(dialogue.text, dialogue.isPlayer);
-                await Task.Delay(2500);
-            }
-            SetUpDialogue(linearDialogue.nextNode);
         }
 
         private IEnumerator ExecuteCommand(NPC_CommandDialogue node)
