@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Boar
   m_EditorClassIdentifier: 
   Height: 2
-  States: 0000000001000000030000000400000005000000
+  States: 000000000100000003000000040000000500000006000000
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 5
@@ -33,3 +33,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d05b6ba24a5dcbe46ba9539b8efcc507, type: 2}
   - {fileID: 11400000, guid: 4a0deed88757f5245a228c48b17be85f, type: 2}
   - {fileID: 11400000, guid: 3cea78fab046b684093b0d526a815b02, type: 2}
+  DeathStateAnimationName: DeathAnim
+  DeathAnimDuration: 3

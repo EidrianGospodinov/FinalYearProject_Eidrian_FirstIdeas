@@ -109,6 +109,7 @@ namespace _Scripts.Units.Enemy
                 case EnemyStateId.AttackGeneric: return new AttackGeneric();
                 case EnemyStateId.CoolDown: return new AttackWindDownState();
                 case EnemyStateId.ReadyToAttack: return new ReadyToAttackState();
+                case EnemyStateId.Death: return new EnemyDeathState();
 
                 default:
                     Debug.LogError($"State {id} not implemented");

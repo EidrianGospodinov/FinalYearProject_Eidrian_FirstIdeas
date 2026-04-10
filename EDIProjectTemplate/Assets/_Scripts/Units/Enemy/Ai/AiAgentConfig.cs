@@ -34,6 +34,9 @@ namespace _Scripts.Units.Enemy
         [Header("Attack State")]
         [Range(0, 1)] public float critChance;
         public List<EnemyAttackTypesData> EnemyAttackTypes;
-
+        
+        [Header("Death State")]
+        public string DeathStateAnimationName = "Death";
+        public int DeathAnimDuration = 3;
     }
 }

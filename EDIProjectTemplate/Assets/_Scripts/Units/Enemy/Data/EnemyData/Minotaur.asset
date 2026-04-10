@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Minotaur
   m_EditorClassIdentifier: 
   Height: 5
-  States: 000000000100000002000000030000000400000005000000
+  States: 00000000010000000200000003000000040000000500000006000000
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 3
@@ -35,3 +35,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 88509d1eab4a5c64aa5ca7f5fe96401f, type: 2}
   - {fileID: 11400000, guid: 656b529ed2dd1fb46a31fd7d12679d8e, type: 2}
   - {fileID: 11400000, guid: c8578c022c0ae1348a62ebae603fecc4, type: 2}
+  DeathStateAnimationName: DeathAnim
+  DeathAnimDuration: 3

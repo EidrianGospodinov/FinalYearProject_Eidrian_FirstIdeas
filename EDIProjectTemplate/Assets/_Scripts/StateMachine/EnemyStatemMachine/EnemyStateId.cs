@@ -7,6 +7,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine
         Charge,
         ReadyToAttack,
         CoolDown,
-        AttackGeneric
+        AttackGeneric,
+        Death
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cyclops
   m_EditorClassIdentifier: 
   Height: 5
-  States: 0000000001000000030000000400000005000000
+  States: 000000000100000003000000040000000500000006000000
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 5
@@ -29,3 +29,5 @@ MonoBehaviour:
   attackRange: 2.07
   critChance: 0.374
   EnemyAttackTypes: []
+  DeathStateAnimationName: Empty
+  DeathAnimDuration: 3
