@@ -14,6 +14,7 @@ public class SpecialAbility : MonoBehaviour
     /// </summary>
     [SerializeField] private List<SpecialVFXData> specialAbilityData;
     [FormerlySerializedAs("_Character")] [SerializeField] IndividualCharacter individualCharacter;
+    [SerializeField] private bool workInDebug = false;
 
     public IndividualCharacter IndividualCharacter => individualCharacter;
 
@@ -75,24 +76,28 @@ public class SpecialAbility : MonoBehaviour
     public void Update()
     {
 #if UNITY_EDITOR
-        var enemyTarget = FindFirstObjectByType<PlayerController>().EnemyDetector.CurrentActiveEnemy;
-        if (Input.GetKeyDown(KeyCode.O))
+        if (workInDebug)
         {
-            index = 0;
-            ApplyVisualEffect(enemyTarget);
-        }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            index = 1;
-            StopCoroutine(Coroutine_Spawn(enemyTarget));
-            StartCoroutine(Coroutine_Spawn(enemyTarget,true));
-        }
+            var enemyTarget = FindFirstObjectByType<PlayerController>().EnemyDetector.CurrentActiveEnemy;
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                index = 0;
+                ApplyVisualEffect(enemyTarget);
+            }
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            index = 2;
-            ApplyVisualEffect(enemyTarget);
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                index = 1;
+                StopCoroutine(Coroutine_Spawn(enemyTarget));
+                StartCoroutine(Coroutine_Spawn(enemyTarget, true));
+            }
+
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+                index = 2;
+                ApplyVisualEffect(enemyTarget);
+            }
         }
 #endif
     }
