@@ -13,6 +13,7 @@ namespace _Scripts.Units.Player.View
         private const float SkillBarMargin = 2f;
         private const string DefaultBarTextFormat = "{0:0.0} sec";
         private CanvasGroup canvasGroup;
+        private LayoutElement layoutElement;
 
         [SerializeField] private Stats playerStats;
         
@@ -26,6 +27,7 @@ namespace _Scripts.Units.Player.View
         private float initSkillCooldown = 5f;
         //[SerializeField] private float initSkillCooldownRemaining;
         [SerializeField] private string skillName;
+        [SerializeField] private Stat stat;
         [SerializeField] private CooldownConsumeType consumeType = CooldownConsumeType.Fill;
         [SerializeField] private bool depleteWhenCompleted;
 
@@ -37,12 +39,13 @@ namespace _Scripts.Units.Player.View
         private RectTransform rectTransform;
         private RectTransform skillBarImageTransform;
 
-        private EventBinding<OnSwitchHeroEvent> onHeroSwitch;
+        //private EventBinding<OnSwitchHeroEvent> onHeroSwitch;
 
         public void Start()
         {
             canvasGroup = GetComponent<CanvasGroup>();
-            onHeroSwitch = EventBus<OnSwitchHeroEvent>.Register(HandleOnHeroSwitchEvent);
+            layoutElement = GetComponent<LayoutElement>();
+            //onHeroSwitch = EventBus<OnSwitchHeroEvent>.Register(HandleOnHeroSwitchEvent);
             InitDefaultValues();
             UpdateProgress(); 
         }
@@ -69,14 +72,23 @@ namespace _Scripts.Units.Player.View
 
         public void RestartCooldown()
         {
+            EnableVisual();
+
             GetCooldown();
             InitDefaultValues();
             StartCooldown();
         }
 
+        private void EnableVisual()
+        {
+            transform.SetAsLastSibling();//ensures that this is added after the already active cooldowns
+            canvasGroup.alpha = 1f;
+            layoutElement.ignoreLayout = false;
+        }
+
         void GetCooldown()
         {
-            initSkillCooldown=playerStats.GetStat(Stat.SwitchHeroCooldown);
+            initSkillCooldown=playerStats.GetStat(stat);
         }
         private void InitDefaultValues()
         {
@@ -138,6 +150,7 @@ namespace _Scripts.Units.Player.View
         private void Deplete()
         {
             canvasGroup.alpha = 0f;
+            layoutElement.ignoreLayout = true;
         }
 
         private void SetRemainingCooldownText()

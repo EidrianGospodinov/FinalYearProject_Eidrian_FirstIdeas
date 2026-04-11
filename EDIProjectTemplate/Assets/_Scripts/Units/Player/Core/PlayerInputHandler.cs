@@ -75,7 +75,7 @@ namespace _Scripts.Units.Player
             };
             input.Dash.started += ctx =>
             {
-                if (playerController.IsAttacking || playerController.IsDodgeOnCooldown) 
+                if (playerController.IsAttacking || !playerController.CanUseDash) 
                     //prevent dodge happening right after an attack even with the button pressed during that attack
                 {
                     return;

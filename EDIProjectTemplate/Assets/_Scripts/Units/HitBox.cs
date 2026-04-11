@@ -21,7 +21,7 @@ namespace _Scripts.Units
             
             if (aiAgent == null || !aiAgent.IsPerformingAttackVisuals || aiAgent.AttackHasLanded)
             {
-                Debug.Log($"Hit on trigger enter, is performing attack visuals: {aiAgent.IsPerformingAttackVisuals} \n attack has landed: {aiAgent.AttackHasLanded}");
+                //Debug.Log($"Hit on trigger enter, is performing attack visuals: {aiAgent.IsPerformingAttackVisuals} \n attack has landed: {aiAgent.AttackHasLanded}");
                 return;
             }
             if (other.CompareTag("Player"))

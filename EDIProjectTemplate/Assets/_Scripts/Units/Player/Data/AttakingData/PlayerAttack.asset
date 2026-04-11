@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402ef88860f14bdcad4a4507aeb0a292, type: 3}
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
   attackSpeed: 1
   attackDamage: 1
   attackLayer:
     serializedVersion: 2
     m_Bits: 64
   powerUpXpRequired: 200
+  longRangeInterval: 0.5
   dashCooldownDuration: 1
   dashSpeed: 7
   hitVfxPrefab: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}

@@ -14,6 +14,7 @@ using Random = UnityEngine.Random;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CooldownBar cooldownBar;
+    [SerializeField] private CooldownBar dashBar;
     [SerializeField] private GameObject cameraFollowOffset;
     [SerializeField] private List<PlayerHealth> healthStates;
     
@@ -43,8 +44,8 @@ public class PlayerController : MonoBehaviour
     [Inject] public RespawnService RespawnService { get; private set; }
     [Inject] private GameManager gameManager;
     
-    public float DodgeCooldownEndTime { get; private set; } = 0f;
-    public bool IsDodgeOnCooldown => Time.time < DodgeCooldownEndTime;
+   // public float DashCooldownEndTime { get; private set; } = 0f;
+    //public bool IsDashOnCooldown => Time.time < DashCooldownEndTime;
 
     public Vector3 CurrentMoveDirection => playerMovement.GetWorldMoveDirection();
     public bool IsWeaponEquipped { get; private set; }
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
     
     public bool HasSpecialPowerInput { get; set; }
     public bool CanSwitchHero => cooldownBar.IsNotInUse();
+    public bool CanUseDash => dashBar.IsNotInUse();
     public Transform GetCameraFollowOffset => cameraFollowOffset.transform;
 
     // Injected Dependency (PlayerState)
@@ -152,7 +154,8 @@ public class PlayerController : MonoBehaviour
     }
     public void SetDodgeCooldown()
     {
-        DodgeCooldownEndTime = Time.time + AttackData.dashCooldownDuration;
+        dashBar.RestartCooldown();
+        //DashCooldownEndTime = Time.time + AttackData.playerStats.GetStat(Stat.Dash) ;
     }
 
     public void PlayAudioSource(AudioClip audioClip)
@@ -235,6 +238,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj)
     {
+        cooldownBar.RestartCooldown();
         CurrentHeroData = obj.HeroData;
     }
     public void ResetState()

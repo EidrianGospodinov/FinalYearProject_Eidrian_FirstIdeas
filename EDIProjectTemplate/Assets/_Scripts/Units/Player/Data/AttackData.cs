@@ -7,6 +7,8 @@ namespace _Scripts.Units.Player
     [CreateAssetMenu(fileName = "NewAttackData", menuName = "Game/Attack Data")]
     public class AttackData : ScriptableObject
     {
+        [Header("Player Stats")]
+        public Stats playerStats;
         [Header("Attacking")]
         //public float attackDistance = 3f;
         /*public float attackDelay = 0.4f;
