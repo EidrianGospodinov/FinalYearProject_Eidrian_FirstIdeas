@@ -20,6 +20,7 @@ public class ThirdPersonCameraController : MonoBehaviour
     private PlayerInput playerInput;
 
     private CinemachineCamera cineCam;
+    private CinemachineInputAxisController cineInputController;
     private Camera cam;
 
     private CinemachineOrbitalFollow orbital;
@@ -38,6 +39,7 @@ public class ThirdPersonCameraController : MonoBehaviour
         playerInput.CameraControls.MouseZoom.performed += HandleMouseScroll;
 
         cineCam = GetComponent<CinemachineCamera>();
+        cineInputController = GetComponent<CinemachineInputAxisController>();
         orbital = cineCam.GetComponent<CinemachineOrbitalFollow>();
         
         targetZoom = currentzoom = orbital.Radius;
@@ -53,17 +55,15 @@ public class ThirdPersonCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameManager.GetCurrentGameState != GameState.InGame)
+        bool shouldBeActive = gameManager.GetCurrentGameState == GameState.InGame;
+        if (cineInputController.isActiveAndEnabled != shouldBeActive)
         {
-            if (cineCam.isActiveAndEnabled)
-            {
-                cineCam.enabled = false;
-            }
-            return;
+            cineInputController.enabled = shouldBeActive;
         }
-        if (!cineCam.isActiveAndEnabled)
+
+        if (!shouldBeActive)
         {
-            cineCam.enabled = true;
+            return;
         }
         if (scrollDelta.y != 0)
         {
