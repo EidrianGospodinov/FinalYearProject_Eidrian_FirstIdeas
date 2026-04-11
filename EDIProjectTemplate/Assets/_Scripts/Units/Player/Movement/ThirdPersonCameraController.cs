@@ -55,7 +55,15 @@ public class ThirdPersonCameraController : MonoBehaviour
     {
         if (gameManager.GetCurrentGameState != GameState.InGame)
         {
+            if (cineCam.isActiveAndEnabled)
+            {
+                cineCam.enabled = false;
+            }
             return;
+        }
+        if (!cineCam.isActiveAndEnabled)
+        {
+            cineCam.enabled = true;
         }
         if (scrollDelta.y != 0)
         {

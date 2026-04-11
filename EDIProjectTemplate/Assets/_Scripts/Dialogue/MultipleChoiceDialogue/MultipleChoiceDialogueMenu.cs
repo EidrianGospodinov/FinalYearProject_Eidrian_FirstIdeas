@@ -48,7 +48,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                gameObject.SetActive(false);
+                EndDialogue();
             }
 
             if (currentDialogueType == DialogueType.Linear)
@@ -193,15 +193,20 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             {
                 if (simpleDialogueNode.hasExit)
                 {
-                    currentDialogueType = DialogueType.MultiChoice;
-                    OnDialogueFinished?.Invoke(this, EventArgs.Empty);
-                    //disable the panel after the exit node
-                    Invoke(nameof(DisablePanel), 3f);
+                    EndDialogue();
                     return;
                 }
                 SetUpDialogue(simpleDialogueNode.nextNode);
             }
 
+        }
+
+        private void EndDialogue()
+        {
+            currentDialogueType = DialogueType.None;
+            OnDialogueFinished?.Invoke(this, EventArgs.Empty);
+            //disable the panel after the exit node
+            Invoke(nameof(DisablePanel), 1.5f);
         }
 
         private IEnumerator ExecuteCommand(NPC_CommandDialogue node)
