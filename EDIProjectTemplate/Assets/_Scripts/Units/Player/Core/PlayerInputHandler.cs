@@ -8,7 +8,6 @@ namespace _Scripts.Units.Player
     public class PlayerInputHandler: MonoBehaviour
     {
         [Inject] private GameManager gameManager;
-        private PlayerMovement playerMovement; 
         private PlayerController playerController;
         private PlayerInput playerInput;
         private PlayerInput.MainActions input;
@@ -16,7 +15,6 @@ namespace _Scripts.Units.Player
         private void Awake()
         {
             playerController = GetComponent<PlayerController>();
-            playerMovement = GetComponent<PlayerMovement>();
             playerInput = new PlayerInput();
             input = playerInput.Main;
             AssignInputs();
@@ -30,7 +28,7 @@ namespace _Scripts.Units.Player
             }
 
             playerController.HasRunInput = input.Run.IsPressed();
-            playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
+            playerController.SetMovementInput(input.Movement.ReadValue<Vector2>());
         }
 
         void OnEnable()
@@ -46,7 +44,7 @@ namespace _Scripts.Units.Player
         void AssignInputs()
         {
             // Call the specific component's method when input is performed
-            input.Jump.performed += ctx => playerMovement.Jump();
+            input.Jump.performed += ctx => playerController.Jump();
             input.Attack.started += ctx =>
             {
                 if (playerController.IsWeaponEquipped)

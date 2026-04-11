@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     private MeshSockets sockets;
     private Transform weaponTransform;
     
+    private Vector2 currentMovementInput;
+
+    
     [HideInInspector]public CharacterController CharacterController;
     
     private Vector3 dashVelocity;
@@ -180,7 +183,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() 
     { 
-        playerMovement.HandlePhysics(HasRunInput);
+        playerMovement.HandlePhysics(currentMovementInput, HasRunInput);
     }
 
     void LateUpdate() 
@@ -193,7 +196,15 @@ public class PlayerController : MonoBehaviour
        weaponManager.UpdateSwordIntensity(intensity);
     }
     
+    public void SetMovementInput(Vector2 input)
+    {
+        currentMovementInput = input;
+    }
 
+    public void Jump()
+    {
+        playerMovement.Jump();
+    }
     
     public void OnFirstHalfOfEquipEventFinish(string eventName)
     {

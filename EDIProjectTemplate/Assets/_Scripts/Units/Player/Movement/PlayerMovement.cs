@@ -37,11 +37,7 @@ public class PlayerMovement : MonoBehaviour
         runSpeed = playerStats.GetStat(Stat.RunSpeed);
     }
 
-    // Called by PlayerController in Update()
-    public void SetMovementInput(Vector2 input)
-    {
-        currentMovementInput = input;
-    }
+    
     public Vector3 GetWorldMoveDirection()
     {
         // Return the normalized direction vector.
@@ -49,8 +45,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Called by PlayerController in FixedUpdate()
-    public void HandlePhysics(bool isRunning = false) 
-    { 
+    public void HandlePhysics(Vector2 input, bool isRunning = false)
+    {
+        currentMovementInput = input;
         isGrounded = controller.isGrounded;
         Vector3 forward = cameraTransform.forward;
         Vector3 right = cameraTransform.right;
