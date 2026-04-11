@@ -90,7 +90,7 @@ namespace _Scripts.Units.Player
         }
 
         // Called by PlayerController in Update()
-        public void SetAnimationIsWalking(bool isMoving, bool isAttacking)
+        public void SetAnimationIsWalking(bool isMoving, bool hasRunInput, bool isAttacking)
         {
             // if the player is attacking, don't set any animations
             if (isAttacking)
@@ -98,10 +98,16 @@ namespace _Scripts.Units.Player
                 return;
             }
 
+            float locomotionValue = 0;
+            if (isMoving)
+            {
+                locomotionValue = hasRunInput ? 2f : 1f;
+            }
             // Movement state
-            animator.SetBool("isWalking", isMoving);
-                //ChangeAnimationState(WALK);
+            float currentVal = animator.GetFloat("Locomotion");
+            float smoothedVal = Mathf.Lerp(currentVal, locomotionValue, Time.deltaTime * 10f);
             
+            animator.SetFloat("Locomotion", smoothedVal);
         }
 
         public void ChangeAnimationState(string newState, string layerName = "Base Layer") 

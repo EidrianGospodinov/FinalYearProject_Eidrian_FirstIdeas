@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         bool isMoving = playerMovement.IsMoving;
         playerAnimation.SetBoolParam("isJumping", playerMovement.IsJumping);
         
-        playerAnimation.SetAnimationIsWalking(isMoving, IsAttacking);
+        playerAnimation.SetAnimationIsWalking(isMoving, HasRunInput, IsAttacking);
     }
 
     public void FirstTimeEquipWeapon()
