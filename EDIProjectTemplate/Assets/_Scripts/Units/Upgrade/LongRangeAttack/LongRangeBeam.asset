@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: LongRangeBeam
   m_EditorClassIdentifier: 
   upgradeName: Mythological beam
-  description: 'Boost the lethality of your long-range energy strikes. More power
-    behind your Mythological Beam means fewer shots to clear the path and more time
-    to focus on your next objective. Don''t let distance be their protection. This
-    upgrade increases your beam damage by: '
+  description: 'Channel the wrath of the gods to smite the monsters from afar. By
+    focusing your divine energy, you can unleash a searing ray that seeks out your
+    foes and tears through their defenses while you stay on the move. Stop letting
+    the beasts close the gap and incinerate them before they reach you.
+
+    This
+    upgrade increases the damage of Mythological Beam by:'
   icon: {fileID: 21300000, guid: 8f8e130d3d0c9c247b78be9804308002, type: 3}
   cost: 1
   UnitsToUpgrade:

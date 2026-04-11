@@ -35,9 +35,15 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         runSpeed = playerStats.GetStat(Stat.RunSpeed);
+        playerStats.upgradeApplied += UpgradeApplied;
     }
 
-    
+    private void UpgradeApplied(Stats stats, StatsUpgrade upgrade)
+    {
+        runSpeed = playerStats.GetStat(Stat.RunSpeed);
+    }
+
+
     public Vector3 GetWorldMoveDirection()
     {
         // Return the normalized direction vector.

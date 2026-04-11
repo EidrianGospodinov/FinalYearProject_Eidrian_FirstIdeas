@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: ThunderAbility 4
   m_EditorClassIdentifier: 
   upgradeName: 'Zeus Thunderbolt '
-  description: 
+  description: 'Channel the absolute wrath of Olympus into a single, devastating
+    bolt. This strike focuses all your divine power on one target, leaving nothing
+    but ashes behind. Smite the toughest mythic enemies with pinpoint accuracy and
+    massive force. This upgrade increases Zeus Thunderbolt damage by: '
   icon: {fileID: 21300000, guid: c7983f142b364304a82bb8158574b413, type: 3}
   cost: 8
   UnitsToUpgrade:
