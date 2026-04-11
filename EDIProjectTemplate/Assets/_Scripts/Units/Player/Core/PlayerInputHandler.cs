@@ -28,6 +28,8 @@ namespace _Scripts.Units.Player
             {
                 return;
             }
+
+            playerController.HasRunInput = input.Run.IsPressed();
             playerMovement.SetMovementInput(input.Movement.ReadValue<Vector2>());
         }
 

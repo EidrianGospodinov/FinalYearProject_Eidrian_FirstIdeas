@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
     public bool HasRightClickInput { get; set; }
     public bool HasRightClickHold { get; set; }
     public bool HasDashInput { get; set; }
+    public bool HasRunInput { get; set; }
+    
     public bool HasSpecialPowerInput { get; set; }
     public bool CanSwitchHero => cooldownBar.IsNotInUse();
     public Transform GetCameraFollowOffset => cameraFollowOffset.transform;
@@ -178,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() 
     { 
-        playerMovement.HandlePhysics();
+        playerMovement.HandlePhysics(HasRunInput);
     }
 
     void LateUpdate() 

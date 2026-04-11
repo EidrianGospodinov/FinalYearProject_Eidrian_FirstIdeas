@@ -2634,6 +2634,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e99f3a9bc20f91d47afd9be806a3bff2, type: 2}
   - {fileID: 11400000, guid: 27daabbf463b8d54580e8afdf69c8161, type: 2}
   individualCharacter: {fileID: 8030133077900523380}
+  workInDebug: 0
   _CurrentData: 
 --- !u!1 &4494070054086204181
 GameObject:
@@ -5263,7 +5264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceMoveDirection: 1
-  moveSpeed: 5
+  playerStats: {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
+  walkSpeed: 5
   gravity: -9.8
   jumpHeight: 1.2
 --- !u!114 &7370332723122811847
@@ -5815,6 +5817,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 55e061d404f40d846a1c37e8a058458a, type: 2}
   - {fileID: 11400000, guid: 0a21bfeebad9fec46be995e72bb298dd, type: 2}
   individualCharacter: {fileID: 8071500171660462624}
+  workInDebug: 0
   _CurrentData: 
 --- !u!1 &8500358375050488629
 GameObject:

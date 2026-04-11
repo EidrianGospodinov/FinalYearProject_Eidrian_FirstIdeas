@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController controller;
     private Transform cameraTransform;
     [SerializeField] private bool faceMoveDirection = false;
+    [SerializeField] private Stats playerStats;
 
     [Header("Controller")]
-    public float moveSpeed = 5;
-    public float gravity = -9.8f;
-    public float jumpHeight = 1.2f;
+    [SerializeField] private float walkSpeed = 5;
+    [SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float jumpHeight = 1.2f;
 
+    private float runSpeed;
     private Vector3 _PlayerVelocity;
     private bool isGrounded;
     private Vector2 currentMovementInput;
@@ -29,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
         cameraTransform = Camera.main.transform;
     }
 
+    private void Start()
+    {
+        runSpeed = playerStats.GetStat(Stat.RunSpeed);
+    }
+
     // Called by PlayerController in Update()
     public void SetMovementInput(Vector2 input)
     {
@@ -41,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Called by PlayerController in FixedUpdate()
-    public void HandlePhysics() 
+    public void HandlePhysics(bool isRunning = false) 
     { 
         isGrounded = controller.isGrounded;
         Vector3 forward = cameraTransform.forward;
@@ -56,7 +64,8 @@ public class PlayerMovement : MonoBehaviour
         
         currentWorldMoveDirection = moveDirection;
         
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+        var playerSpeed = isRunning ? runSpeed : walkSpeed;
+        controller.Move(moveDirection * playerSpeed * Time.deltaTime);
         if (faceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
         {
             Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);

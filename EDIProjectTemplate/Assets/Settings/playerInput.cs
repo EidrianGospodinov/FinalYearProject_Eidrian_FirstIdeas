@@ -163,6 +163,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""c818a9de-647d-486a-800e-16f6edb0a082"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -297,6 +306,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Special Power"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb3e31c9-5f71-4119-9985-a7f2d9a19a5a"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -341,6 +361,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Main_Dash = m_Main.FindAction("Dash", throwIfNotFound: true);
         m_Main_PlayerSwitch = m_Main.FindAction("PlayerSwitch", throwIfNotFound: true);
         m_Main_SpecialPower = m_Main.FindAction("Special Power", throwIfNotFound: true);
+        m_Main_Run = m_Main.FindAction("Run", throwIfNotFound: true);
         // CameraControls
         m_CameraControls = asset.FindActionMap("CameraControls", throwIfNotFound: true);
         m_CameraControls_MouseZoom = m_CameraControls.FindAction("MouseZoom", throwIfNotFound: true);
@@ -433,6 +454,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_Dash;
     private readonly InputAction m_Main_PlayerSwitch;
     private readonly InputAction m_Main_SpecialPower;
+    private readonly InputAction m_Main_Run;
     /// <summary>
     /// Provides access to input actions defined in input action map "Main".
     /// </summary>
@@ -476,6 +498,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Main/SpecialPower".
         /// </summary>
         public InputAction @SpecialPower => m_Wrapper.m_Main_SpecialPower;
+        /// <summary>
+        /// Provides access to the underlying input action "Main/Run".
+        /// </summary>
+        public InputAction @Run => m_Wrapper.m_Main_Run;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -526,6 +552,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SpecialPower.started += instance.OnSpecialPower;
             @SpecialPower.performed += instance.OnSpecialPower;
             @SpecialPower.canceled += instance.OnSpecialPower;
+            @Run.started += instance.OnRun;
+            @Run.performed += instance.OnRun;
+            @Run.canceled += instance.OnRun;
         }
 
         /// <summary>
@@ -561,6 +590,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @SpecialPower.started -= instance.OnSpecialPower;
             @SpecialPower.performed -= instance.OnSpecialPower;
             @SpecialPower.canceled -= instance.OnSpecialPower;
+            @Run.started -= instance.OnRun;
+            @Run.performed -= instance.OnRun;
+            @Run.canceled -= instance.OnRun;
         }
 
         /// <summary>
@@ -753,6 +785,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSpecialPower(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Run" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRun(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControls" which allows adding and removing callbacks.
