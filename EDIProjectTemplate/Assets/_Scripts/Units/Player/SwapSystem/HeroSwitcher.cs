@@ -6,14 +6,14 @@ using UnityEngine;
 
 public enum HeroType
 {
-    HeroA, 
-    HeroB  
+    Oreon, 
+    Thalia  
 }
 public class HeroSwitcher : MonoBehaviour
 {
     
     
-    public HeroType ActiveHero { get; private set; } = HeroType.HeroA;
+    public HeroType ActiveHero { get; private set; } = HeroType.Oreon;
     public HeroData ActiveHeroData { get; private set; }
     [Header("Hero Data Assets")]
     [SerializeField] private HeroData heroA_Data;
@@ -32,13 +32,13 @@ public class HeroSwitcher : MonoBehaviour
             heroA_Body.SetActive(true);
             heroB_Body.SetActive(false);
             ActiveHeroData = heroA_Data;
-            ActiveHero = HeroType.HeroA;
+            ActiveHero = HeroType.Oreon;
         }
     }
 
     public void RequestHeroSwitch()
     {
-        HeroType newHero = (ActiveHero == HeroType.HeroA) ? HeroType.HeroB : HeroType.HeroA;
+        HeroType newHero = (ActiveHero == HeroType.Oreon) ? HeroType.Thalia : HeroType.Oreon;
         SwitchTo(newHero);
     }
 
@@ -47,9 +47,9 @@ public class HeroSwitcher : MonoBehaviour
         if (ActiveHero == newHero) return;
         
         ActiveHero = newHero;
-        ActiveHeroData = (newHero == HeroType.HeroA) ? heroA_Data : heroB_Data;
+        ActiveHeroData = (newHero == HeroType.Oreon) ? heroA_Data : heroB_Data;
         
-        bool isHeroA = (newHero == HeroType.HeroA);
+        bool isHeroA = (newHero == HeroType.Oreon);
         
         heroA_Body.SetActive(isHeroA);
         heroB_Body.SetActive(!isHeroA);

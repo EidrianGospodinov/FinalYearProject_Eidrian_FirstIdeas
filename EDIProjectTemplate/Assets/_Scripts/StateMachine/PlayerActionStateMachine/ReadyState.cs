@@ -44,8 +44,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             if (playerController.HasSpecialPowerInput)
             {
                 playerController.HasSpecialPowerInput = false;
-                Debug.LogError("Do Special attack");
+                Debug.Log("Do Special attack");
                 EventBus<OnUltimate>.Trigger(new OnUltimate(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy));
+                EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Special, ComboStateId.None, playerController.HeroSwitcher.ActiveHero));
             }
             if (playerController.HasLeftClickInput)
             {

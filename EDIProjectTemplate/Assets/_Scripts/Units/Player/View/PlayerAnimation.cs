@@ -20,6 +20,7 @@ namespace _Scripts.Units.Player
         public const string ATTACK3 = "SpecialAttackHighSpin";
         public const string ATTACKSPECIAL2 = "FlipAttack";
         public const string LongRangeAttackHold = "LongRangeAttackPoseStart";
+        public const string ThaliaThunderSpecialAbility = "SpecialAbility_Thunder";
             
         
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
@@ -52,7 +53,14 @@ namespace _Scripts.Units.Player
                     }
                     else if (evt.AttackType == AttackType.Special)
                     {
-                        
+                        if (evt.HeroType == HeroType.Oreon)
+                        {
+                            
+                        }
+                        else if(evt.HeroType == HeroType.Thalia)
+                        {
+                            animState = ThaliaThunderSpecialAbility;
+                        }
                     }
                     break;
                 case ComboStateId.WindDown:
