@@ -38,5 +38,9 @@ namespace _Scripts.Units.Enemy
         [Header("Death State")]
         public string DeathStateAnimationName = "Death";
         public int DeathAnimDuration = 3;
+
+        public DynamicTextData DynamicTextData;
+        public DynamicTextData CritData;
+
     }
 }

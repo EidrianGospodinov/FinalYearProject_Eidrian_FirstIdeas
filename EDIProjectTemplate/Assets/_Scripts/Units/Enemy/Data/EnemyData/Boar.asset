@@ -35,3 +35,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3cea78fab046b684093b0d526a815b02, type: 2}
   DeathStateAnimationName: DeathAnim
   DeathAnimDuration: 3
+  DynamicTextData: {fileID: 11400000, guid: 7b78e326a655a354883eb6f3a36070e7, type: 2}
+  CritData: {fileID: 11400000, guid: efb56a22d69f8454b981a9ebccb01d7c, type: 2}

@@ -31,3 +31,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9de33cd34b2e1b498f51b1e718e488d, type: 2}
   - {fileID: 11400000, guid: 514ef6257665d004c96f1575b5327ec0, type: 2}
   - {fileID: 11400000, guid: c1efd77ac6a30e84fb86ea96d7e782e5, type: 2}
+  critData: {fileID: 11400000, guid: efb56a22d69f8454b981a9ebccb01d7c, type: 2}

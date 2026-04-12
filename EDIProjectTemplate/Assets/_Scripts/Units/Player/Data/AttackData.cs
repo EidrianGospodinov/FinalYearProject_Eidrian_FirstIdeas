@@ -31,6 +31,7 @@ namespace _Scripts.Units.Player
         
         public GameObject WeaponPrefab;
         public List<AttackComboData> attackComboList;
+        
 
         public AttackComboData GetComboStateId(ComboStateId comboStateId)
         {

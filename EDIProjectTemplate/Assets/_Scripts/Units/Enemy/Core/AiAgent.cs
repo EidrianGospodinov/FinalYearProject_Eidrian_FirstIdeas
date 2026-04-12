@@ -24,7 +24,6 @@ namespace _Scripts.Units.Enemy
         [HideInInspector] public NavMeshAgent navMeshAgent;
         private AiVision aiVision;
 
-       
 
         private static int nextAgentId = 1;
         private int instanceID;
