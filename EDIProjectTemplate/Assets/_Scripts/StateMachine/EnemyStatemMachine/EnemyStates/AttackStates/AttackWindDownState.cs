@@ -17,6 +17,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         {
             windDownTimer = 2f;
             agent.navMeshAgent.isStopped = true;
+            agent.IsEnemyUnderAttack = false;
             /*DecideNextAttack(agent);*/
         }
 

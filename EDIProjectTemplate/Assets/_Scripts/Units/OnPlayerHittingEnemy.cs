@@ -113,31 +113,7 @@ public class OnPlayerHittingEnemy : MonoBehaviour
             _isAttacking = false;
         }
     }
-
-    /*private float HandleDamageVisuals(Collider other, AiAgent agent, float damageTaken)
-    {
-        var agentConfig = agent.agentConfig;
-        DynamicTextData data = agentConfig.DynamicTextData;
-        Vector3 surfacePoint = other.ClosestPoint(transform.position);
-        float offsetDistance = 0.5f; 
-        Vector3 dirToPlayer = (transform.position - surfacePoint).normalized;
-        Vector3 destination = surfacePoint + (dirToPlayer * offsetDistance);
-                        
-        HandleCritLogic(ref damageTaken, agentConfig, ref destination);
-
-        DynamicTextManager.CreateText(destination, damageTaken.ToString(), data);
-        return damageTaken;
-    }
-
-    private void HandleCritLogic(ref float damageTaken, AiAgentConfig agentConfig, ref Vector3 destination)
-    {
-        float roll = UnityEngine.Random.value;
-        if (agentConfig.critChance > 0 && roll <= agentConfig.critChance)
-        {
-            DynamicTextManager.CreateText(destination + Vector3.up, "CRIT!", agentConfig.CritData);
-            damageTaken *= 1.5f;
-        }
-    }*/
+    
 
     public void Initialize(AttackData attackData)
     {

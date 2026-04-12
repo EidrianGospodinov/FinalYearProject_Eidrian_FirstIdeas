@@ -27,6 +27,10 @@ namespace _Scripts.Units.Enemy
         }
         protected override void OnDamage()
         {
+            if (!agent.IsEnemyUnderAttack)
+            {
+                agent.IsEnemyUnderAttack = true;
+            }
             healthBar.value = currentHealth;
         }
     }

@@ -37,6 +37,7 @@ namespace _Scripts.Units.Enemy
         public ChangeLayerChildren ChangeLayerChildren; 
         public bool IsPerformingAttackVisuals { get; set; }
         public bool AttackHasLanded {get; set;}
+        public bool IsEnemyUnderAttack = false;
 
         private void Awake()
         {
@@ -81,6 +82,11 @@ namespace _Scripts.Units.Enemy
             if (playerInSafeZone)
             {
                 return false;
+            }
+
+            if (IsEnemyUnderAttack)
+            {
+                angleDoesntMatter = true;
             }
             return aiVision.IsPlayerDetected(this, angleDoesntMatter);
         }
