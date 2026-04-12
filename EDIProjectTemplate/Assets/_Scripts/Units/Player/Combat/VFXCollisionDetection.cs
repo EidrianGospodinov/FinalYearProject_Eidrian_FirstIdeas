@@ -1,9 +1,15 @@
 using System;
+using _Scripts;
+using _Scripts.Units.Enemy;
 using _Scripts.Units.Player;
+using _Scripts.Units.Player.Core;
 using UnityEngine;
+using Zenject;
 
 public class VFXCollisionDetection : MonoBehaviour
 {
+    [Inject] private DynamicTextServices dynamicTextServices;
+    
     [SerializeField] private Stats stats;
     [SerializeField] private Stat stat;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +34,9 @@ public class VFXCollisionDetection : MonoBehaviour
                 return;
             }
             var damage = stats.GetStat(stat);
-            other.gameObject.GetComponent<Health>().TakeDamage(damage); 
+            var agent = other.gameObject.GetComponent<AiAgent>();
+            var updatedDamage = dynamicTextServices.HandleDamageVisuals(transform, other, agent, damage);
+            other.gameObject.GetComponent<Health>().TakeDamage(updatedDamage); 
             
         }
     }

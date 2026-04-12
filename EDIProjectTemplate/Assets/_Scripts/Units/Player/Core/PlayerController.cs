@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [Inject] private CurrencyManager currencyManager;
     [Inject] public RespawnService RespawnService { get; private set; }
     [Inject] private GameManager gameManager;
+    [Inject] private GameObjectSpawner_DI gameObjectSpawnerDi;
     
    // public float DashCooldownEndTime { get; private set; } = 0f;
     //public bool IsDashOnCooldown => Time.time < DashCooldownEndTime;
@@ -133,7 +134,8 @@ public class PlayerController : MonoBehaviour
     {
         if (weaponTransform == null)
         {
-            var weaponInstance = Instantiate(AttackData.WeaponPrefab);
+            //i need to use diContainer for the prefab instantiate, but i should not do it in playerController
+            var weaponInstance= gameObjectSpawnerDi.Spawn(AttackData.WeaponPrefab);
             weaponInstance.GetComponent<OnHit>().Initialize(AttackData);
             weaponTransform = weaponInstance.transform;
             EquipWeapon();

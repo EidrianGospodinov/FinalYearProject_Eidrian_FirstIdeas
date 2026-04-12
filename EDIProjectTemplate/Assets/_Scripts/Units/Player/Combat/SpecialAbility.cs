@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using _Scripts.Units.Player;
+using _Scripts.Units.Player.Core;
 using PixPlays.ElementalVFX;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.VFX.Utility;
+using Zenject;
 
 public class SpecialAbility : MonoBehaviour
 {
@@ -15,6 +18,8 @@ public class SpecialAbility : MonoBehaviour
     [SerializeField] private List<SpecialVFXData> specialAbilityData;
     [FormerlySerializedAs("_Character")] [SerializeField] IndividualCharacter individualCharacter;
     [SerializeField] private bool workInDebug = false;
+    [Inject] private GameObjectSpawner_DI gameObjectSpawnerDi;
+
 
     public IndividualCharacter IndividualCharacter => individualCharacter;
 
@@ -122,24 +127,25 @@ public class SpecialAbility : MonoBehaviour
         }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
-        BaseVfx go;
+        GameObject go;
         if (asChild)
         {
-            go = Instantiate(data.VFX, this.transform);
+            go = gameObjectSpawnerDi.Spawn(data.VFX, this.transform);
         }
         else
         {
-            go = Instantiate(data.VFX);
+            go = gameObjectSpawnerDi.Spawn(data.VFX);
         }
 
+        BaseVfx goVFX = go.GetComponent<BaseVfx>();
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
         Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
         var vfxData = new VfxData(sourcePoint, target, duration, data._Radius);
         vfxData.SetGround(IndividualCharacter.BindingPoints.GetBindingPoint(BindingPointType.Ground));
         
-        activeVfxes.Add(go);
-        go.Play(vfxData);
+        activeVfxes.Add(goVFX);
+        goVFX.Play(vfxData);
     }
     IEnumerator Coroutine_SpawnAtTarget(Transform target, bool asChild = false)
     {
@@ -150,15 +156,17 @@ public class SpecialAbility : MonoBehaviour
         }
         var data = specialAbilityData[index];
         yield return new WaitForSeconds(data.VfxSpawnDelay);
-        BaseVfx go;
+        GameObject go;
         if (asChild)
         {
-            go = Instantiate(data.VFX, this.transform);
+            go = gameObjectSpawnerDi.Spawn(data.VFX, this.transform);
         }
         else
         {
-            go = Instantiate(data.VFX);
+            go = gameObjectSpawnerDi.Spawn(data.VFX);
         }
+
+        var goVFX = go.GetComponent<BaseVfx>();
 
         float duration = data._Duration <= 0 ? float.MaxValue : data._Duration;
         
@@ -173,7 +181,7 @@ public class SpecialAbility : MonoBehaviour
         }
         Transform sourcePoint = IndividualCharacter.BindingPoints.GetBindingPoint(data.Source);
         
-        activeVfxes.Add(go);
-        go.Play(vfxData);
+        activeVfxes.Add(goVFX);
+        goVFX.Play(vfxData);
     }
 }

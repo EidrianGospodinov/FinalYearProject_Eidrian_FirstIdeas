@@ -1,9 +1,11 @@
 using System.ComponentModel;
+using _Scripts;
 using _Scripts.New_Folder.Checkpoint;
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player.Core;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
@@ -17,6 +19,9 @@ public class GameInstaller : MonoInstaller
         Container.Bind<EnemyManager>().AsSingle().NonLazy();
         Container.Bind<TeleporterService>().AsSingle();
         Container.Bind<GameManager>().AsSingle();
+        Container.Bind<DynamicTextServices>().AsSingle().NonLazy();
+        Container.Bind<GameObjectSpawner_DI>().AsSingle();
+        
 
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts;
 using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player;
@@ -23,6 +24,7 @@ public class OnHit : MonoBehaviour
     //[Inject]PlayerState playerState;
     
     //[Inject]IEventBus<IEvent> eventBus;
+    [Inject] private DynamicTextServices dynamicTextServices;
 
     private EventBinding<OnAttack> OnAttack;
     private EventBinding<PlayerEvent> playerEventBinding;
@@ -93,47 +95,49 @@ public class OnHit : MonoBehaviour
             Destroy(GO, 20);
             if (currentComboData != null)
             {
-                float damageTaken = 0;
+                float damageTaken = currentComboData.attackDamage;
+                other.gameObject.TryGetComponent<AiAgent>(out AiAgent agent);
                 other.gameObject.TryGetComponent<Health>(out Health health);
+                if (agent == null || health == null)
+                {
+                    return;
+                }
+
+                damageTaken = dynamicTextServices.HandleDamageVisuals(transform, other, agent, damageTaken, true);
                 if (health != null)
                 {
-                    damageTaken = currentComboData.attackDamage;
                     health.TakeDamage(damageTaken);
                     EventBus<OnEnemyHit>.Trigger(new OnEnemyHit(damageTaken));
-                    other.gameObject.TryGetComponent<AiAgent>(out AiAgent agent);
-                    if (agent != null)
-                    {
-                        var agentConfig = agent.agentConfig;
-                        DynamicTextData data = agentConfig.DynamicTextData;
-                        Vector3 surfacePoint = other.ClosestPoint(transform.position);
-                        float offsetDistance = 0.5f; 
-                        Vector3 dirToPlayer = (transform.position - surfacePoint).normalized;
-                        Vector3 destination = surfacePoint + (dirToPlayer * offsetDistance);
-                        
-                        float roll = UnityEngine.Random.value;
-                        if (agentConfig.critChance > 0 && roll <= agentConfig.critChance)
-                        {
-                            destination.y += 1f;
-
-                            DynamicTextManager.CreateText(destination, "CRIT!", agentConfig.CritData);
-
-                            damageTaken *= 1.5f;
-
-                            destination.y -= 1f;
-                        }
-
-                        DynamicTextManager.CreateText(destination, damageTaken.ToString(), data);
-                        /*destination.x += (Random.value - 0.5f) / 3f;
-                        destination.y += Random.value;
-                        destination.z += (Random.value - 0.5f) / 3f;*/
-                        
-                        
-                    }
                 }
             }
             _isAttacking = false;
         }
     }
+
+    /*private float HandleDamageVisuals(Collider other, AiAgent agent, float damageTaken)
+    {
+        var agentConfig = agent.agentConfig;
+        DynamicTextData data = agentConfig.DynamicTextData;
+        Vector3 surfacePoint = other.ClosestPoint(transform.position);
+        float offsetDistance = 0.5f; 
+        Vector3 dirToPlayer = (transform.position - surfacePoint).normalized;
+        Vector3 destination = surfacePoint + (dirToPlayer * offsetDistance);
+                        
+        HandleCritLogic(ref damageTaken, agentConfig, ref destination);
+
+        DynamicTextManager.CreateText(destination, damageTaken.ToString(), data);
+        return damageTaken;
+    }
+
+    private void HandleCritLogic(ref float damageTaken, AiAgentConfig agentConfig, ref Vector3 destination)
+    {
+        float roll = UnityEngine.Random.value;
+        if (agentConfig.critChance > 0 && roll <= agentConfig.critChance)
+        {
+            DynamicTextManager.CreateText(destination + Vector3.up, "CRIT!", agentConfig.CritData);
+            damageTaken *= 1.5f;
+        }
+    }*/
 
     public void Initialize(AttackData attackData)
     {
