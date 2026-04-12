@@ -19,6 +19,7 @@ public class SpecialAbility : MonoBehaviour
     [FormerlySerializedAs("_Character")] [SerializeField] IndividualCharacter individualCharacter;
     [SerializeField] private bool workInDebug = false;
     [Inject] private GameObjectSpawner_DI gameObjectSpawnerDi;
+    [Inject] private PlayerServices playerServices;
 
 
     public IndividualCharacter IndividualCharacter => individualCharacter;
@@ -32,12 +33,27 @@ public class SpecialAbility : MonoBehaviour
     private EventBinding<OnUltimate> OnUltimate;
     private EventBinding<GetUltimateEvent> GetUltimateEvent;
     private EventBinding<OnLongRange> OnLongRange;
+    private EventBinding<OnSwitchHeroEvent> OnSwitchHeroEvent;
+
 
     private void OnEnable()
     {
         OnUltimate = EventBus<OnUltimate>.Register(OnUltimateAttackEvent);
         GetUltimateEvent = EventBus<GetUltimateEvent>.Register(OnGetUltimateEvent);
         OnLongRange = EventBus<OnLongRange>.Register(OnGetLongRangeEvent);
+        OnSwitchHeroEvent = EventBus<OnSwitchHeroEvent>.Register(SwitchHeroEvent);
+    }
+
+    private void SwitchHeroEvent(OnSwitchHeroEvent obj)
+    {
+        if (playerServices.HasUltimate)
+        {
+            OnGetUltimateEvent(null);
+        }
+        else
+        {
+            ClearAllVfx();
+        }
     }
 
     private void OnGetLongRangeEvent(OnLongRange OnLongRangeData)
@@ -60,6 +76,7 @@ public class SpecialAbility : MonoBehaviour
         EventBus<OnUltimate>.Unregister(OnUltimate);
         EventBus<GetUltimateEvent>.Unregister(GetUltimateEvent);
         EventBus<OnLongRange>.Unregister(OnLongRange);
+        EventBus<OnSwitchHeroEvent>.Unregister(OnSwitchHeroEvent);
     }
 
     private void OnUltimateAttackEvent(OnUltimate onUltimateData)

@@ -21,7 +21,8 @@ public class GameInstaller : MonoInstaller
         Container.Bind<GameManager>().AsSingle();
         Container.Bind<DynamicTextServices>().AsSingle().NonLazy();
         Container.Bind<GameObjectSpawner_DI>().AsSingle();
-        
+        Container.Bind<PlayerServices>().AsSingle();
+
 
     }
 }

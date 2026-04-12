@@ -12,7 +12,6 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Enter(PlayerController playerController)
         {
-            Debug.Log("enter ready state");
         }
 
         public void Update(PlayerController playerController)
@@ -45,7 +44,7 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             {
                 playerController.HasSpecialPowerInput = false;
                 Debug.Log("Do Special attack");
-                EventBus<OnUltimate>.Trigger(new OnUltimate(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy));
+                EventBus<OnUltimate>.Trigger(new OnUltimate(playerController.CurrentHeroData, playerController.EnemyDetector.CurrentActiveEnemy, playerController.PlayerServices));
                 EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Special, ComboStateId.None, playerController.HeroSwitcher.ActiveHero));
             }
             if (playerController.HasLeftClickInput)

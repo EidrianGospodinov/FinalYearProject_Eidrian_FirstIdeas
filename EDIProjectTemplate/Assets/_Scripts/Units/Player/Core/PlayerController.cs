@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [Inject] public RespawnService RespawnService { get; private set; }
     [Inject] private GameManager gameManager;
     [Inject] private GameObjectSpawner_DI gameObjectSpawnerDi;
+    [Inject] public PlayerServices PlayerServices { get; set; }
     
    // public float DashCooldownEndTime { get; private set; } = 0f;
     //public bool IsDashOnCooldown => Time.time < DashCooldownEndTime;

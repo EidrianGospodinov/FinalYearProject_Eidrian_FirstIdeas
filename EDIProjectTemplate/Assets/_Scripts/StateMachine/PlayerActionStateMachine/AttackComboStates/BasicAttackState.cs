@@ -34,7 +34,6 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine.AttackComboStates
         public override void Enter(PlayerController playerController)
         {
             base.Enter(playerController);
-            Debug.Log("basic attack enter");
             AttackData data = playerController.AttackData;
             var parentState = (AttackingState)playerController.ActionStateMachine.GetState(ActionStateId.Attacking);
             EventBus<OnAttack>.Trigger(new OnAttack(AttackType.Sword, GetId()));

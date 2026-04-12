@@ -24,7 +24,6 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Enter(PlayerController playerController)
         {
-            Debug.Log("Attack state enter");
             comboStateMachine = new StateMachine<PlayerController, ComboStateId>(playerController);
             
             comboStateMachine.RegisterState(new BasicAttackState());

@@ -168,7 +168,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             foreach (var dialogue in linearDialogue.dialogue)
             {
                 SetDialogueText(dialogue.text, dialogue.isPlayer);
-                taskDelayMilSec = taskDelayMilSecDefault;//it doesnt work like this 
+                taskDelayMilSec = taskDelayMilSecDefault;
                 await Task.Delay(taskDelayMilSec);
             }
             SetUpDialogue(linearDialogue.nextNode);

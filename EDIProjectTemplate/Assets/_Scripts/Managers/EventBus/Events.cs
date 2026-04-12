@@ -1,6 +1,8 @@
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player;
+using _Scripts.Units.Player.Core;
 using UnityEngine;
+using Zenject;
 
 public class TestEvent : IEvent { }
 
@@ -23,8 +25,9 @@ public class OnUltimate : IEvent
     public HeroData HeroData;
     public Transform target;
 
-    public OnUltimate(HeroData heroData, Transform target)
+    public OnUltimate(HeroData heroData, Transform target, PlayerServices playerServices)
     {
+        playerServices.HasUltimate = false;
         HeroData = heroData;
         this.target = target;
     }
@@ -45,7 +48,10 @@ public class OnLongRange : IEvent
 
 public class GetUltimateEvent : IEvent
 {
-    
+    public GetUltimateEvent(PlayerServices playerServices)
+    {
+        playerServices.HasUltimate = true;
+    }
 }
 
 public class OnEnemyHit : IEvent

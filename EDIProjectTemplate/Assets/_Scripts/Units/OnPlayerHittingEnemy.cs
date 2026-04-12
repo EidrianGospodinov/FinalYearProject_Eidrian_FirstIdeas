@@ -84,7 +84,6 @@ public class OnPlayerHittingEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(!_isAttacking) return;
-        Debug.Log("before hit");
         if (other.gameObject.layer == LayerMask.NameToLayer(layerName))
         {
             Debug.Log("OnHit");

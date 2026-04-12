@@ -52,7 +52,6 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             if (validAttacks.Count > 0)
             {
                 EnemyAttackTypesData chosenAttack = GetRandomAttackType(validAttacks);
-                Debug.Log($"chosen attack: {chosenAttack}");
                 //temp only charge
                 if (chosenAttack != null)
                 {

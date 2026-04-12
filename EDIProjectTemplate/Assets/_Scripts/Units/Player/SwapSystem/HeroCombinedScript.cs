@@ -1,11 +1,15 @@
 using System;
+using _Scripts.Units.Player.Core;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
+
 /// <summary>
 /// used for all shared data between both heroes
 /// </summary>
 public class HeroCombinedScript : MonoBehaviour
 {
+    [Inject] private PlayerServices playerServices;
     //add this to some attack data
     private float powerUpXpRequired;
     public float currentPowerUpXp;
@@ -42,7 +46,7 @@ public class HeroCombinedScript : MonoBehaviour
         {
             //enable the powerUp
             CanPowerUp = true;
-            EventBus<GetUltimateEvent>.Trigger(new GetUltimateEvent());
+            EventBus<GetUltimateEvent>.Trigger(new GetUltimateEvent(playerServices));
         }
     }
 
