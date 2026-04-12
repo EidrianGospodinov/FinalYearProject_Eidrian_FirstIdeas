@@ -136,7 +136,7 @@ public class PlayerController : MonoBehaviour
         {
             //i need to use diContainer for the prefab instantiate, but i should not do it in playerController
             var weaponInstance= gameObjectSpawnerDi.Spawn(AttackData.WeaponPrefab);
-            weaponInstance.GetComponent<OnHit>().Initialize(AttackData);
+            weaponInstance.GetComponent<OnPlayerHittingEnemy>().Initialize(AttackData);
             weaponTransform = weaponInstance.transform;
             EquipWeapon();
         }

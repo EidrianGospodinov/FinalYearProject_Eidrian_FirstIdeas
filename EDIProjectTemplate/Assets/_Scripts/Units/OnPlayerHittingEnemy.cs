@@ -10,7 +10,7 @@ using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-public class OnHit : MonoBehaviour
+public class OnPlayerHittingEnemy : MonoBehaviour
 {
     
     [SerializeField] LayerMask layerMask;
