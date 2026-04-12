@@ -31,3 +31,5 @@ MonoBehaviour:
   EnemyAttackTypes: []
   DeathStateAnimationName: Empty
   DeathAnimDuration: 3
+  DynamicTextData: {fileID: 11400000, guid: 5dd75784033eea943a08ab7facd4f690, type: 2}
+  CritData: {fileID: 11400000, guid: efb56a22d69f8454b981a9ebccb01d7c, type: 2}
