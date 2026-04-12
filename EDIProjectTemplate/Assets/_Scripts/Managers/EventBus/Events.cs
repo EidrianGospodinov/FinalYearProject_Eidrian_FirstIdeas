@@ -51,8 +51,10 @@ public class GetUltimateEvent : IEvent
 public class OnEnemyHit : IEvent
 {
     public float PowerUpXp;
-    public OnEnemyHit(float powerUpXp)
+    public Health EnemyHealth;
+    public OnEnemyHit(float powerUpXp, Health enemyHealth)
     {
         PowerUpXp = powerUpXp;
+        EnemyHealth = enemyHealth;
     }
 }

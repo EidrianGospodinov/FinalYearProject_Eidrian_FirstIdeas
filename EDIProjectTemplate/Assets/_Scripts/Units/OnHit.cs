@@ -106,8 +106,8 @@ public class OnHit : MonoBehaviour
                 damageTaken = dynamicTextServices.HandleDamageVisuals(transform, other, agent, damageTaken, true);
                 if (health != null)
                 {
+                    EventBus<OnEnemyHit>.Trigger(new OnEnemyHit(damageTaken, health));
                     health.TakeDamage(damageTaken);
-                    EventBus<OnEnemyHit>.Trigger(new OnEnemyHit(damageTaken));
                 }
             }
             _isAttacking = false;

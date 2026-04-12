@@ -33,6 +33,10 @@ public class HeroCombinedScript : MonoBehaviour
 
     private void OnEnemyHitEvent(OnEnemyHit obj)
     {
+        if (obj.EnemyHealth.IsDead())
+        {
+            return;
+        }
         currentPowerUpXp += obj.PowerUpXp;
         if (currentPowerUpXp >= powerUpXpRequired)
         {

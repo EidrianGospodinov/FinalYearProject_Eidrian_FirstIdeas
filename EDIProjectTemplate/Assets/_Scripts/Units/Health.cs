@@ -21,16 +21,19 @@ namespace _Scripts.Units.Player
             Debug.Log($"Health prev: {currentHealth}/{maxHealth}");
             currentHealth -= amount;
             Debug.Log($"Health: {currentHealth}/{maxHealth}");
-            
-            OnDamage();
-            if (currentHealth <= 0.0f)
+
+            if (!IsDead())
+            {
+                OnDamage();
+            }
+            else
             {
                 OnDeath();
             }
         }
         public bool IsDead()
         {
-            return currentHealth <= 0;
+            return currentHealth <= 0.0f;
         }
         protected virtual void OnStart()
         {
