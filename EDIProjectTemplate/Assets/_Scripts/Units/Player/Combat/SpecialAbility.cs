@@ -49,6 +49,7 @@ public class SpecialAbility : MonoBehaviour
 
     private void OnGetUltimateEvent(GetUltimateEvent GetUltimateEvent)
     {
+        ClearAllVfx();
         index = 1;
         StopCoroutine(Coroutine_Spawn(null,true));
         StartCoroutine(Coroutine_Spawn(null,true));

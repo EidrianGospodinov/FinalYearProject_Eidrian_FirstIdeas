@@ -19,11 +19,11 @@ namespace _Scripts.Units.Player
         public void TakeDamage(float amount)
         {
             Debug.Log($"Health prev: {currentHealth}/{maxHealth}");
-            currentHealth -= amount;
-            Debug.Log($"Health: {currentHealth}/{maxHealth}");
 
             if (!IsDead())
             {
+                currentHealth -= amount;
+                Debug.Log($"Health: {currentHealth}/{maxHealth}");
                 OnDamage();
             }
             else
