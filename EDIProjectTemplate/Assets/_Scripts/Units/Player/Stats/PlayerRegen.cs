@@ -10,6 +10,7 @@ namespace _Scripts.Units.Player
         private void Awake()
         {
             playerHealth = GetComponentInChildren<PlayerHealth>();
+            playerHealth.ResetHealth();
         }
         
 
