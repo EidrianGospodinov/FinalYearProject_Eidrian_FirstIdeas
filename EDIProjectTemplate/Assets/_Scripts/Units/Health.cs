@@ -26,7 +26,7 @@ namespace _Scripts.Units.Player
                 Debug.Log($"Health: {currentHealth}/{maxHealth}");
                 OnDamage();
             }
-            else
+            if(IsDead())
             {
                 OnDeath();
             }
