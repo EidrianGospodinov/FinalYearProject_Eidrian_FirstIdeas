@@ -19,24 +19,25 @@ public class CheckForTerrain : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 5f))
         {
-            var terrainSpawner = hit.collider.GetComponent<EnemySpawner>();
+            var newTerrainSpawner = hit.collider.GetComponent<EnemySpawner>();
 
-            if (terrainSpawner == null)
+            if (newTerrainSpawner == null)
             {
                 return;
             }
-            if (terrainSpawner == currentEnemySpawner)
+            if (newTerrainSpawner == currentEnemySpawner)
             {
                 return; 
             }
             if (previousEnemySpawner != null)
             {
+                previousEnemySpawner.DestroyAllEnemies();
                 //possible delete the enemies from the previous spawner
             }
             previousEnemySpawner = this.currentEnemySpawner;
-            currentEnemySpawner = terrainSpawner;
+            currentEnemySpawner = newTerrainSpawner;
 
-            terrainSpawner.SpawnEnemies();
+            newTerrainSpawner.SpawnEnemies();
 
         }
     }

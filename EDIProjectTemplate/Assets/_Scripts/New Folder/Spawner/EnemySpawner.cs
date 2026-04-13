@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     private AiAgent enemyPrefab;
     [SerializeField] int spawnCount = 10;
     [SerializeField] private int minSpawnCountBeforeWave = 3;
-    [SerializeField] float spawnInterval = 3f;
+    [SerializeField] float spawnInterval = 0;
 
     private Vector3 terrainCentre;
     private Terrain terrain;
@@ -55,6 +55,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void DestroyAllEnemies()
+    {
+        enemyManager.DestroyAllEnemiesFromArea(this);
+    }
+
     void SpawnBatch()
     {
         var enemiesToSpawn = spawnCount - currentSpawnCount;
@@ -84,9 +89,13 @@ public class EnemySpawner : MonoBehaviour
         currentSpawnCount++;
 
     }
-    public void NotifyDeath()
+    public void NotifyDeath(bool destroy)
     {
         currentSpawnCount--;
+        if (destroy)
+        {
+            return;
+        }
         if (currentSpawnCount <= minSpawnCountBeforeWave)
         {
             Debug.Log($"On deat in {this.name}. Spawning new wave");
