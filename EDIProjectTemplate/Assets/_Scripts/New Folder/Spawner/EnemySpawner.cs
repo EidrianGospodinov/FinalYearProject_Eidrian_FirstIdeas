@@ -15,6 +15,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Area area;
     [SerializeField] private AiAgent enemyPrefab;
     [SerializeField] int spawnCount = 10;
+    [SerializeField] private int minSpawnCountBeforeWave = 3;
     [SerializeField] float spawnInterval = 3f;
     
     
@@ -34,14 +35,14 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            currentSpawnCount = 0;
             InvokeRepeating(nameof(SpawnOneByOne), 0f, spawnInterval);
         }
     }
 
     void SpawnBatch()
     {
-        for (int i = 0; i < spawnCount; i++)
+        var enemiesToSpawn = spawnCount - currentSpawnCount;
+        for (int i = 0; i < enemiesToSpawn; i++)
         {
             SpawnOne();
         }
@@ -68,5 +69,13 @@ public class EnemySpawner : MonoBehaviour
         currentSpawnCount++;
 
     }
-    public void NotifyDeath() => currentSpawnCount--;
+    public void NotifyDeath()
+    {
+        currentSpawnCount--;
+        if (currentSpawnCount <= minSpawnCountBeforeWave)
+        {
+            Debug.Log($"On deat in {this.name}. Spawning new wave");
+            SpawnEnemies();
+        }
+    }
 }

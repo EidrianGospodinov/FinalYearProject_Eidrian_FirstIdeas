@@ -3266,6 +3266,7 @@ MonoBehaviour:
   area: {fileID: 0}
   enemyPrefab: {fileID: 5091490528900555422, guid: d79b2c48282751a409625629e4849252, type: 3}
   spawnCount: 10
+  minSpawnCountBeforeWave: 3
   spawnInterval: 0
 --- !u!114 &1462577335
 MonoBehaviour:
@@ -4177,7 +4178,8 @@ MonoBehaviour:
   area: {fileID: 0}
   enemyPrefab: {fileID: 5091490528900555422, guid: d79b2c48282751a409625629e4849252, type: 3}
   spawnCount: 10
-  spawnInterval: 0
+  minSpawnCountBeforeWave: 3
+  spawnInterval: 1.2
 --- !u!114 &1884996315
 MonoBehaviour:
   m_ObjectHideFlags: 0

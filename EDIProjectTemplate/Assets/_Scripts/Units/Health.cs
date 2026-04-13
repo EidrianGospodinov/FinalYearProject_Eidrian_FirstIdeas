@@ -8,6 +8,7 @@ namespace _Scripts.Units.Player
         public float maxHealth;
         
         public float currentHealth { get; set; }
+        private bool isDead;
 
         private void Start()
         {
@@ -18,6 +19,10 @@ namespace _Scripts.Units.Player
 
         public void TakeDamage(float amount)
         {
+            if (isDead)
+            {
+                return;
+            }
             Debug.Log($"Health prev: {currentHealth}/{maxHealth}");
 
             if (!IsDead())
@@ -28,6 +33,7 @@ namespace _Scripts.Units.Player
             }
             if(IsDead())
             {
+                isDead = true;
                 OnDeath();
             }
         }

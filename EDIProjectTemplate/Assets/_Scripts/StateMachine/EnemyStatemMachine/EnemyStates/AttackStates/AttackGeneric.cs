@@ -30,7 +30,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             float adjustedDistance = distanceToPlayer - agent.navMeshAgent.radius;
             float attackThreshold = agent.navMeshAgent.stoppingDistance + 0.2f;
             
-            Debug.Log($"dist: {distanceToPlayer} | adjusted: {adjustedDistance} | threshold: {attackThreshold}");
+            //Debug.Log($"dist: {distanceToPlayer} | adjusted: {adjustedDistance} | threshold: {attackThreshold}");
             if (!agent.navMeshAgent.pathPending && 
                 adjustedDistance <= agent.navMeshAgent.stoppingDistance)
             {
