@@ -18,13 +18,13 @@ public class EnemySpawner : MonoBehaviour
     private AiAgent enemyPrefab;
     [SerializeField] int spawnCount = 10;
     [SerializeField] private int minSpawnCountBeforeWave = 3;
-    [SerializeField] float spawnInterval = 0;
+    [SerializeField] float spawnInterval = 1.4f;
 
     private Vector3 terrainCentre;
     private Terrain terrain;
     private int currentSpawnCount = 0;
 
-    private void Start()
+    private void Awake()
     {
         area = GetComponent<Area>();
         //SpawnEnemies();
@@ -39,6 +39,9 @@ public class EnemySpawner : MonoBehaviour
             // Calculate the center based on terrain dimensions
             Vector3 size = terrain.terrainData.size;
             terrainCentre = transform.position + new Vector3(size.x / 2f, 0, size.z / 2f);
+            
+            //a^2 + b^2 = c^2
+            area.Radius = Mathf.Sqrt((float)(Math.Pow(size.x / 2f, 2) + Math.Pow(size.z / 2f, 2)));
         }
         
     }

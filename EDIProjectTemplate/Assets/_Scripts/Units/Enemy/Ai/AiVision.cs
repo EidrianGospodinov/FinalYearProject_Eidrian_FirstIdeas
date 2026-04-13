@@ -16,6 +16,10 @@ namespace _Scripts.Units.Enemy
 
         public bool IsPlayerDetected(AiAgentConfig config, bool angleDoesntMatter)
         {
+            if (Player == null)
+            {
+                return false;
+            }
             Vector3 directionToPlayer = Player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
 

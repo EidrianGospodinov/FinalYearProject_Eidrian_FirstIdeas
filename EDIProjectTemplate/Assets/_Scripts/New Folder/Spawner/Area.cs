@@ -16,21 +16,30 @@ namespace _Scripts.New_Folder.Spawner
 
         public Vector3 GetRandomPoint(Vector3 terrainCentre)
         {
-            areaCentre = terrainCentre;
-            Vector3 randomDirection = Random.insideUnitSphere * Radius;
-            randomDirection.y = 0f;
+            int maxAttempts = 10;
 
-            Vector3 randomPoint = areaCentre + randomDirection;
-
-            NavMeshHit hit;
-            Vector3 finalPosition = areaCentre;
-
-            if (NavMesh. SamplePosition(randomPoint, out hit, 2f, 1))
+            for (int i = 0; i < maxAttempts; i++)
             {
-                finalPosition = hit.position;
-            }
+                areaCentre = terrainCentre;
+                /*Vector3 randomDirection = Random.insideUnitSphere * Radius;
+                randomDirection.y = 0f;
 
-            return finalPosition;
+                Vector3 randomPoint = areaCentre + randomDirection;*/
+                Vector2 randomPoint2D = Random.insideUnitCircle * Radius;
+
+                Vector3 randomPoint = new Vector3(
+                    terrainCentre.x + randomPoint2D.x,
+                    terrainCentre.y,
+                    terrainCentre.z + randomPoint2D.y
+                );
+                if (NavMesh.SamplePosition(randomPoint, out var hit, 2f, NavMesh.AllAreas))
+                {
+                    return hit.position;
+                }
+
+            }
+            return terrainCentre + (Random.insideUnitSphere * 2f);
+            
         }
     }
 }
