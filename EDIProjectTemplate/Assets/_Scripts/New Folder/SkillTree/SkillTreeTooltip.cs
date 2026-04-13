@@ -9,6 +9,7 @@ public class SkillTreeTooltip : MonoBehaviour
     [SerializeField] private TextMeshProUGUI abilityName;
     [SerializeField] private TextMeshProUGUI abilityUpgradeCost;
     [SerializeField] private TextMeshProUGUI abilityDescription;
+    [SerializeField] private TextMeshProUGUI currentAmount;
 
     private string abilityUpgradeIncreaseText;
     
@@ -24,7 +25,8 @@ public class SkillTreeTooltip : MonoBehaviour
         
     }
 
-    public void SetUp(Image frame, Image icon, string name, int cost, float increaseText, string desc, bool isPercentage)
+    public void SetUp(Image frame, Image icon, string name, int cost, float increaseText, string desc,
+        bool isPercentage, float statData)
     {
         frameImage = frame;
         iconImage = icon;
@@ -38,6 +40,8 @@ public class SkillTreeTooltip : MonoBehaviour
         }
 
         abilityDescription.text += " <color=yellow>" + abilityUpgradeIncreaseText + "</color>";
+        currentAmount.text = $"{statData.ToString()} <color=yellow> + {abilityUpgradeIncreaseText} </color>";
+
 
     }
 }

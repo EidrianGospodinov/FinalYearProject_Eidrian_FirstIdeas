@@ -50,8 +50,14 @@ public class SkillTreeButton : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
             if (skillTreeTooltip != null)
             {
-                var statUpgrade =statsUpgrade[skillLevel.GetCurrentLevel()];
-                skillTreeTooltip.SetUp(frameImage, iconImage, statUpgrade.upgradeName, statUpgrade.cost, statUpgrade.UpgradeToApply[0].statValue, statUpgrade.description, statUpgrade.isPercentUpgrade  );
+                var currentLevel = skillLevel.GetCurrentLevel();
+                var statUpgrade =statsUpgrade[currentLevel];
+                var statInfo = statUpgrade.UpgradeToApply[0];
+                
+                //from the stat upgrade for the player get the active stat
+                var statData =statUpgrade.UnitsToUpgrade[0].GetStat(statInfo.statType);
+
+                skillTreeTooltip.SetUp(frameImage, iconImage, statUpgrade.upgradeName, statUpgrade.cost, statInfo.statValue, statUpgrade.description, statUpgrade.isPercentUpgrade, statData);
             }
         }
 
