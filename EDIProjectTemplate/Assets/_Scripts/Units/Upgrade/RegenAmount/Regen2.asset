@@ -13,13 +13,11 @@ MonoBehaviour:
   m_Name: Regen2
   m_EditorClassIdentifier: 
   upgradeName: Regen Upgrade
-  description: 'Divine resonance flows through your bond, mending whichever form
-    rests in the shadows. As one hero draws the enemy''s ire, the other draws power
+  description: "Divine resonance flows through your bond, mending whichever form
+    rests in the shadows. As one hero draws the enemy's ire, the other draws power
     from the aether to seal their wounds and restore their strength. Stop worrying
-    about a broken hero and swap back to a legend reborn.
-
-    This upgrade increases
-    the Health Regeneration of your inactive hero by:'
+    about a broken hero and swap back to a legend reborn.\nThis upgrade increases
+    the Health Regeneration \nof your inactive hero by:"
   icon: {fileID: 21300000, guid: e1c15b2068876d74ea7758deb8d8cde3, type: 3}
   cost: 3
   UnitsToUpgrade:

@@ -40,6 +40,10 @@ namespace PixPlays.ElementalVFX
 
         public VfxData(Transform source,Transform target,float duration,float radius)
         {
+            if (target == null)
+            {
+                return;
+            }
             _radius = radius;
             _sourceTransform = source;
             _targetTransform = target;
