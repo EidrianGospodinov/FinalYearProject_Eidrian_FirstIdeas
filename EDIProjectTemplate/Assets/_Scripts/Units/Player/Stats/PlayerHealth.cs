@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Scripts.Units.Player
@@ -17,24 +18,19 @@ namespace _Scripts.Units.Player
        public Image currentHealthBar;
        public Image currentHealthGlobe;
        
-       public bool Regenerate = true;
-       public float regen = 5f;
+       public bool canRegenerate = true;
        private float timeleft = 0.0f;	// Left time for current interval
-       public float regenUpdateInterval = 1f;
+       private float regenUpdateInterval = 1f;
        private EventBinding<OnSwitchHeroEvent> playerEventBinding;
        private PlayerController playerController;
        
        
-       [SerializeField] private Stats playerStats;
-
         protected override void OnStart()
         {
             playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
             _postProcessing = FindFirstObjectByType<Volume>();
             _postProcessing.profile.TryGet(out vignette);
-            maxHealth = playerStats.GetStat(Stat.Health);
             playerController = GetComponentInParent<PlayerController>();
-            //_cameraManager = FindFirstObjectByType<CameraManager>();
         }
 
         private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj) => UpdateGraphics();
@@ -48,19 +44,10 @@ namespace _Scripts.Units.Player
         {
             UpdateGraphics();
         }
-
-        private void Update()
-        {
-            /*if (Regenerate)
-            {
-                Regen();
-            }*/
-        }
+        
 
         private void OnEnable()
         {
-            playerStats.upgradeApplied += UpgradeApplied;
-            maxHealth = playerStats.GetStat(Stat.Health);
             
             currentHealthBar.gameObject.SetActive(false);
             currentHealthGlobe.gameObject.SetActive(true);
@@ -71,22 +58,16 @@ namespace _Scripts.Units.Player
             currentHealth = maxHealth;
             UpdateGraphics();
         }
-        private void UpgradeApplied(Stats stats, StatsUpgrade upgrade)
-        {
-            maxHealth = playerStats.GetStat(Stat.Health);
-            print($"upgrade applied. New player health for {gameObject.name} = {maxHealth}");
-        }
+       
 
         private void OnDisable()
         {
-            playerStats.upgradeApplied -= UpgradeApplied;
-            
             currentHealthBar.gameObject.SetActive(true);
             currentHealthGlobe.gameObject.SetActive(false);
 
         }
 
-        public void Regen()
+        public void Regen(float regen)
         {
             timeleft -= Time.deltaTime;
 
@@ -99,7 +80,7 @@ namespace _Scripts.Units.Player
             }
         }
 
-        private void UpdateGraphics()
+        public void UpdateGraphics()
         {
             if (gameObject.activeSelf)
             {

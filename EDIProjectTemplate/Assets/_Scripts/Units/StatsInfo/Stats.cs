@@ -80,5 +80,6 @@ public enum Stat
     Dash,
     ThunderUlt,
     TsunamiUlt,
-    LongRangeBeam
+    LongRangeBeam,
+    Regeneration
 }
