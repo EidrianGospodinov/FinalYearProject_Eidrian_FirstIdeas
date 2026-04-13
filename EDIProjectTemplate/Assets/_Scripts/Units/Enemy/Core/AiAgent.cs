@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using _Scripts.New_Folder.Spawner;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.EnemyStatemMachine;
 using _Scripts.StateMachine.EnemyStatemMachine.EnemyStates;
@@ -38,6 +39,7 @@ namespace _Scripts.Units.Enemy
         public bool IsPerformingAttackVisuals { get; set; }
         public bool AttackHasLanded {get; set;}
         public bool IsEnemyUnderAttack = false;
+        
 
         private void Awake()
         {
@@ -100,6 +102,12 @@ namespace _Scripts.Units.Enemy
             playerInSafeZone = value;
         }
 
+        public EnemySpawner EnemySpawner; 
+        public void AssignSpawner(EnemySpawner enemySpawner)
+        {
+            EnemySpawner = enemySpawner;
+        }
+        
 
     }
     public static class StateFactory

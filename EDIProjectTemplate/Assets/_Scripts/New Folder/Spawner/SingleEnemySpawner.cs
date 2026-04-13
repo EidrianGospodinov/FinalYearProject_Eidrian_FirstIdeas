@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Scripts.New_Folder.Spawner;
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player.Core;
 using UnityEngine;
@@ -8,6 +9,7 @@ using Zenject;
 public class SingleEnemySpawner : MonoBehaviour, IInteractable
 {
     [SerializeField] private AiAgent AiAgent;
+    private Area area;
     [Inject]
     private DiContainer container;
 

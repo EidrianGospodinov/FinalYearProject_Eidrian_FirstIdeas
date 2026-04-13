@@ -14,6 +14,8 @@ namespace _Scripts.Units.Enemy
 
         public void UnregisterEnemy(AiAgent aiAgent)
         {
+            //decreases the number of enemies from that spawner
+            aiAgent.EnemySpawner?.NotifyDeath();
             _enemies.Remove(aiAgent);
         }
 

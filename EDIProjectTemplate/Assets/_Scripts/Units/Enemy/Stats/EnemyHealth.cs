@@ -8,6 +8,7 @@ namespace _Scripts.Units.Enemy
     public class EnemyHealth: Health
     {
         [Inject] private CurrencyManager currencyManager;
+        [Inject] private EnemyManager enemyManager;
         AiAgent agent;
         public Slider healthBar;
         protected override void OnStart()
@@ -22,6 +23,7 @@ namespace _Scripts.Units.Enemy
             Destroy(gameObject, agent.agentConfig.DeathAnimDuration);
             if (agent != null)
             {
+                enemyManager.UnregisterEnemy(agent);
                 agent.stateMachine.ChangeState(EnemyStateId.Death);
             }
         }
