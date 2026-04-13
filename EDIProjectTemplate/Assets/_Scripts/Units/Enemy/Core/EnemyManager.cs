@@ -11,6 +11,7 @@ namespace _Scripts.Units.Enemy
             if (!_enemies.Contains(aiAgent))
                 _enemies.Add(aiAgent);
         }
+        
 
         public void UnregisterEnemy(AiAgent aiAgent)
         {

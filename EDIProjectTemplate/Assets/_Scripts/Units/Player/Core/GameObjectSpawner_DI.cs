@@ -17,6 +17,11 @@ namespace _Scripts.Units.Player.Core
         {
             return _container.InstantiatePrefab(baseVfx.gameObject, parent);
         }
+        public T AddComponent<T>(GameObject gameObject) where T : Component
+        {
+            return _container.InstantiateComponent<T>(gameObject);
+        }
+        
         
     }
 }
