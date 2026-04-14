@@ -246,6 +246,7 @@ public class PlayerController : MonoBehaviour
     }
     public void ResetState()
     {
+        ActionStateMachine.ChangeState(ActionStateId.Ready);
         foreach (var health in healthStates)
         {
             health.ResetHealth();

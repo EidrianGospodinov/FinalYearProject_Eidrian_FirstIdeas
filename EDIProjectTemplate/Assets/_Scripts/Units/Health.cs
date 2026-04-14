@@ -8,7 +8,7 @@ namespace _Scripts.Units.Player
         public float maxHealth;
         
         public float currentHealth { get; set; }
-        private bool isDead;
+        protected bool isDead;
 
         private void Start()
         {

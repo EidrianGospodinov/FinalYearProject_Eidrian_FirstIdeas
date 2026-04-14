@@ -10,6 +10,7 @@ namespace _Scripts.Units.Player.Core
         public GameState GetCurrentGameState => currentGameState;
         public void SetGameState(GameState gameState)
         {
+            Debug.Log($"set sate: {gameState}");
             currentGameState = gameState;
             switch (gameState)
             {

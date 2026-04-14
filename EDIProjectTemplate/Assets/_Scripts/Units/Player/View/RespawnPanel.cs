@@ -14,6 +14,7 @@ public class RespawnPanel : MonoBehaviour, IDeathMenu
         gameManager.SetGameState(GameState.InGame);
         cameraService.EnableDeathCam(false);
         respawnService.Respawn(player);
+        
         gameObject.SetActive(false);
     }
 

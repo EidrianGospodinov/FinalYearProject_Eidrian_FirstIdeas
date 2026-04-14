@@ -21,12 +21,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
             _hasTriggered = false;
             
             playerController.SetDeathState();
+            playerController.playerAnimation.PlayDeathAnim(playerController.IsWeaponEquipped);
 
-            
-            playerController.RespawnService.ShowMenu(playerController);
-            /*playerController.RespawnService.Respawn(playerController);
 
-            playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);*/
         }
 
         public void Update(PlayerController playerController)

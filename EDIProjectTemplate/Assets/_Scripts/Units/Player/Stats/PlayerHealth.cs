@@ -58,6 +58,7 @@ namespace _Scripts.Units.Player
 
         public void ResetHealth()
         {
+            isDead = false;
             currentHealth = maxHealth;
             UpdateGraphics();
         }

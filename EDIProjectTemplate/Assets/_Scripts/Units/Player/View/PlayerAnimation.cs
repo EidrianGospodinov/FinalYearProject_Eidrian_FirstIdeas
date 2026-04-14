@@ -12,15 +12,21 @@ namespace _Scripts.Units.Player
         private MeshSockets sockets;
 
         // Animation Constants
-        public const string IDLE = "Idle";
-        public const string WALK = "Walk";
-        public const string COOLDOWN = "Cooldown";
-        public const string ATTACK1 = "BasicAttack";
-        public const string ATTACK2 = "SecondaryAttack"; 
-        public const string ATTACK3 = "SpecialAttackHighSpin";
-        public const string ATTACKSPECIAL2 = "FlipAttack";
-        public const string LongRangeAttackHold = "LongRangeAttackPoseStart";
-        public const string ThaliaThunderSpecialAbility = "SpecialAbility_Thunder";
+        private const string IDLE = "Idle";
+        private const string WALK = "Walk";
+        private const string COOLDOWN = "Cooldown";
+        private const string ATTACK1 = "BasicAttack";
+        private const string ATTACK2 = "SecondaryAttack"; 
+        private const string ATTACK3 = "SpecialAttackHighSpin";
+        private const string ATTACKSPECIAL2 = "FlipAttack";
+        private const string LongRangeAttackHold = "LongRangeAttackPoseStart";
+        private const string ThaliaThunderSpecialAbility = "SpecialAbility_Thunder";
+
+        private static readonly string[] Death_Sword = new[] { "Death_back", "Death_front" };
+        private static readonly string[] Death_NoSword = new[] { "Death_back", "Death_front" };
+       
+        
+        
             
         
         private const string WEAPON_LAYER_NAME = "Weapon Layer";
@@ -93,8 +99,6 @@ namespace _Scripts.Units.Player
 
         public void Update()
         {
-            if(Input.GetKeyDown(KeyCode.P))
-                ChangeAnimationState("SpecialAttackHighSpin", WEAPON_LAYER_NAME);
         }
 
         // Called by PlayerController in Update()
@@ -157,6 +161,24 @@ namespace _Scripts.Units.Player
             animator.SetBool("isEquip", shouldEquip);
         }
 
-        
+
+        public void PlayDeathAnim(bool IsWeaponEquipped)
+        {
+            var randomNum = Random.Range(0, 2);
+            string animName = "";
+            if (IsWeaponEquipped)
+            {
+                animName = Death_Sword[randomNum];
+            }
+            else
+            {
+                animName = Death_NoSword[randomNum];
+            }
+
+            if (animName != "")
+            {
+                animator.CrossFadeInFixedTime(animName, 0.2f);
+            }
+        }
     }
 }
