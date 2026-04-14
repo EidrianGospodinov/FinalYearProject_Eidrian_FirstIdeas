@@ -12,9 +12,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Enter(PlayerController playerController)
         {
-            playerController.RespawnService.Respawn(playerController);
+            /*playerController.RespawnService.Respawn(playerController);
             
-            playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);
+            playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);*/
         }
 
         public void Update(PlayerController playerController)

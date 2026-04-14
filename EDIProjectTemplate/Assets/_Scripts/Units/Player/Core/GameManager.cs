@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
@@ -27,6 +28,11 @@ namespace _Scripts.Units.Player.Core
                     Cursor.lockState = CursorLockMode.Locked;
                     Time.timeScale = 1;
                     break;
+                case GameState.Death:
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    Time.timeScale = 0.3f;
+                    break;
             }
         }
     }
@@ -34,6 +40,7 @@ namespace _Scripts.Units.Player.Core
     {
         InGame,
         InMenu,
-        InDialogue
+        InDialogue,
+        Death
     }
 }

@@ -22,6 +22,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<DynamicTextServices>().AsSingle().NonLazy();
         Container.Bind<GameObjectSpawner_DI>().AsSingle();
         Container.Bind<PlayerServices>().AsSingle();
+        Container.Bind<ICameraService>()
+            .To<CameraManager>()
+            .FromComponentsInHierarchy()
+            .AsSingle();
 
 
     }

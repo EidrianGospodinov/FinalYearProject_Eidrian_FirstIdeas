@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using _Scripts.New_Folder.Checkpoint;
 using _Scripts.Units.Enemy;
+using _Scripts.Units.Player.Core;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,10 +11,27 @@ using Zenject;
 
 public class CampsManager : MonoBehaviour
 {
-    [Inject] private RespawnService respawnService;
-    [Inject] private DiContainer diContainer;
-    [Inject] private EnemyManager enemyManager;
-    [Inject] private TeleporterService teleporterService;
+    private RespawnService respawnService;
+    private DiContainer diContainer;
+    private EnemyManager enemyManager;
+    private TeleporterService teleporterService;
+    private ICameraService cameraService;
+
+    [Inject]
+    public void Construct(
+        DiContainer diContainer,
+        RespawnService respawnService,
+        EnemyManager enemyManager,
+        TeleporterService teleporterService,
+        ICameraService cameraService)
+    {
+        this.respawnService = respawnService;
+        this.diContainer = diContainer;
+        this.enemyManager = enemyManager;
+        this.teleporterService = teleporterService;
+        this.cameraService = cameraService;
+
+    }
     
     [SerializeField] private PlayerController playerControllerPrefab;
     private PlayerController playerControllerInstance;
@@ -63,7 +81,8 @@ public class CampsManager : MonoBehaviour
 
     private void MakeTheCamFollowPlayer()
     {
-        var cineBrain = Camera.main.GetComponent<CinemachineBrain>();
+        cameraService.SetTarget(playerControllerInstance.GetCameraFollowOffset);
+        /*var cineBrain = Camera.main.GetComponent<CinemachineBrain>();
         CinemachineCamera cineCam = null;
         if (cineBrain != null)
         {
@@ -77,7 +96,7 @@ public class CampsManager : MonoBehaviour
         if (!cineBrain || !cineCam)
         {
             Debug.LogError("Camera does not follow the player");
-        }
+        }*/
     }
 
     private void PlacePlayerInCamp()

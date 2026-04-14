@@ -1,16 +1,19 @@
 using System;
 using _Scripts.StateMachine.PlayerActionStateMachine;
+using _Scripts.Units.Player.Core;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Scripts.Units.Player
 {
     public class PlayerHealth : Health
     {
+        [Inject] private ICameraService cameraService;
         Volume _postProcessing;
         Vignette vignette;
        // CameraManager _cameraManager; //for kill cam later on
@@ -37,7 +40,7 @@ namespace _Scripts.Units.Player
 
         protected override void OnDeath()
         {
-           //_cameraManager.EnableKillCam();
+           cameraService.EnableDeathCam();
            playerController.ActionStateMachine.ChangeState(ActionStateId.Death);
         }
         protected override void OnDamage()
