@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownBar: {fileID: 0}
+  dashBar: {fileID: 0}
   cameraFollowOffset: {fileID: 0}
   healthStates: []
   AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
@@ -328,7 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faceMoveDirection: 0
-  moveSpeed: 5
+  playerStats: {fileID: 0}
+  walkSpeed: 5
   gravity: -9.8
   jumpHeight: 1.2
 --- !u!114 &125528980
@@ -1704,6 +1706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownBar: {fileID: 0}
+  dashBar: {fileID: 0}
   cameraFollowOffset: {fileID: 0}
   healthStates: []
   AttackData: {fileID: 0}
