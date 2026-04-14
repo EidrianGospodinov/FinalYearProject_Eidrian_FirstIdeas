@@ -12,8 +12,9 @@ namespace _Scripts.StateMachine.PlayerActionStateMachine
 
         public void Enter(PlayerController playerController)
         {
+            playerController.SetDeathState();
             /*playerController.RespawnService.Respawn(playerController);
-            
+
             playerController.ActionStateMachine.ChangeState(ActionStateId.Ready);*/
         }
 

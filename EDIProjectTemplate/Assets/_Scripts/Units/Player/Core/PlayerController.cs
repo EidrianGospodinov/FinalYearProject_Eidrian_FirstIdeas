@@ -253,5 +253,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    
+
+    public void SetDeathState()
+    {
+        gameManager.SetGameState(GameState.Death);
+    }
 }

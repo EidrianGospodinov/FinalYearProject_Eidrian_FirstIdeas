@@ -1,4 +1,5 @@
 using _Scripts.StateMachine.EnemyStatemMachine;
+using _Scripts.Units.Player.Core;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,13 @@ namespace _Scripts.Units.Enemy
 
 
 
-        public bool IsPlayerDetected(AiAgent agent, bool angleDoesntMatter) => IsPlayerDetected(agent.agentConfig, angleDoesntMatter);
+        public bool IsPlayerDetected(AiAgent agent, bool angleDoesntMatter) {
+            if (agent.GameManager.GetCurrentGameState != GameState.InGame)
+            {
+                return false;
+            }
+            return IsPlayerDetected(agent.agentConfig, angleDoesntMatter);
+        }
 
 
         public bool IsPlayerDetected(AiAgentConfig config, bool angleDoesntMatter)

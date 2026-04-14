@@ -3,6 +3,7 @@ using _Scripts.New_Folder.Spawner;
 using _Scripts.StateMachine;
 using _Scripts.StateMachine.EnemyStatemMachine;
 using _Scripts.StateMachine.EnemyStatemMachine.EnemyStates;
+using _Scripts.Units.Player.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +16,7 @@ namespace _Scripts.Units.Enemy
 
     {
         [Inject] public EnemyManager EnemyManager { get; private set; }
+        [Inject] public GameManager GameManager;
         [Header("This class will be used to register all the different state of every AI")] [Space]
         public EnemyStateId initialState;
 
