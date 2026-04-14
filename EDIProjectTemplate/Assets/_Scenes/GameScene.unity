@@ -488,6 +488,10 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1576332348245381537, guid: a7140a198de74d24eb5c3f892f361098, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1928043692165718600, guid: a7140a198de74d24eb5c3f892f361098, type: 3}
       propertyPath: m_Layer
       value: 6
