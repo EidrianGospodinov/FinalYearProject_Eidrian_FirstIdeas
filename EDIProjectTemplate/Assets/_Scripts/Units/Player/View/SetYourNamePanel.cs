@@ -12,12 +12,7 @@ public class SetYourNamePanel : MonoBehaviour
         GetComponent<CanvasGroup>().alpha = 1;
         gameManager.SetGameState(GameState.InMenu);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public void SetYourName(string name)
     {

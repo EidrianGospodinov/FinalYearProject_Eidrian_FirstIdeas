@@ -26,7 +26,10 @@ public class GameInstaller : MonoInstaller
             .To<CameraManager>()
             .FromComponentsInHierarchy()
             .AsSingle();
-
+        Container.Bind<IDeathMenu>()
+            .To<RespawnPanel>()
+            .FromComponentInHierarchy()
+            .AsSingle();
 
     }
 }

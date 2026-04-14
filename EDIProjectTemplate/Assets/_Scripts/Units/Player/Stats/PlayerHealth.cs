@@ -40,7 +40,7 @@ namespace _Scripts.Units.Player
 
         protected override void OnDeath()
         {
-           cameraService.EnableDeathCam();
+           cameraService.EnableDeathCam(true);
            playerController.ActionStateMachine.ChangeState(ActionStateId.Death);
         }
         protected override void OnDamage()

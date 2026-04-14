@@ -10,10 +10,9 @@ namespace _Scripts.Units.Player.Core
         [SerializeField] private CinemachineCamera freeLookCam;
         [SerializeField] private CinemachineCamera deathCam;
 
-        public void EnableDeathCam()
+        public void EnableDeathCam(bool enable)
         {
-            freeLookCam.Priority = 0;
-            deathCam.Priority = 10;
+            deathCam.Priority = enable ? 20 : 0;
         }
 
         public void SetTarget(Transform target)
@@ -26,6 +25,6 @@ namespace _Scripts.Units.Player.Core
     {
         Camera MainCamera { get; }
         void SetTarget(Transform target);
-        void EnableDeathCam();
+        void EnableDeathCam(bool enable);
     }
 }

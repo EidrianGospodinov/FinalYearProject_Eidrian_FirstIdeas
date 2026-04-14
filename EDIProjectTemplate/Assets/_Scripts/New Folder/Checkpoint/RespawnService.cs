@@ -1,16 +1,25 @@
 public class RespawnService
 {
-    private CheckpointCamp _currentCheckpoint;
+    private CheckpointCamp currentCheckpoint;
+    private readonly IDeathMenu deathMenu;
+    
+    public RespawnService(IDeathMenu deathMenu)
+    {
+        this.deathMenu = deathMenu;
+    }
 
-    public bool IsActiveCheckpoint(CheckpointCamp checkpointCamp) => checkpointCamp == _currentCheckpoint;
+    public void ShowMenu(PlayerController playerController) => deathMenu.Show(playerController);
+    public void HideMenu() => deathMenu.Hide();
+    
+    public bool IsActiveCheckpoint(CheckpointCamp checkpointCamp) => checkpointCamp == currentCheckpoint;
     public void SetCheckpoint(CheckpointCamp checkpoint)
     {
-        _currentCheckpoint = checkpoint;
+        currentCheckpoint = checkpoint;
     }
 
     public void Respawn(PlayerController player)
     {
-        _currentCheckpoint?.PlacePlayerInCamp();
+        currentCheckpoint?.PlacePlayerInCamp();
         player.ResetState();
     }
 }
