@@ -8,6 +8,8 @@ public class SetYourNamePanel : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //adding this so i don't see it in the inspector
+        GetComponent<CanvasGroup>().alpha = 1;
         gameManager.SetGameState(GameState.InMenu);
     }
 
