@@ -1,20 +1,28 @@
-using System.Collections.Generic;
-using System.Linq;
 using _Scripts.Units.Enemy;
 
 namespace _Scripts.Units.Player.Core
 {
     public abstract class Objective
     {
+        public string ObjectiveName { get; protected set; }
         public bool IsComplete { get; protected set; }
+        
+        protected int currentCount = 0;
+        public int targetCount = 0;
         public event System.Action OnCompleted;
+        public event System.Action<int, int> OnChanged;
 
         protected void Complete()
         {
             if(IsComplete) return;
             IsComplete = true;
             OnCompleted?.Invoke();
+            OnChanged?.Invoke(currentCount, targetCount);
             
+        }
+        protected void NotifyChanged()
+        {
+            OnChanged?.Invoke(currentCount, targetCount);
         }
         public abstract void Initialize();
         public abstract void Dispose();
@@ -22,17 +30,18 @@ namespace _Scripts.Units.Player.Core
     public class KillEnemyObjective : Objective
     {
         private EventBinding<OnEnemyRemoved> enemyRemoved;
-        private int currentCount = 0;
-        private int targetCount = 0;
+        
 
-        public KillEnemyObjective(int targetCount)
+        public KillEnemyObjective(string objectiveName, int targetCount)
         {
             this.targetCount = targetCount;
+            ObjectiveName = objectiveName;
         }
         
         public override void Initialize()
         {
             enemyRemoved = EventBus<OnEnemyRemoved>.Register(OnEnemyRemoved);
+            NotifyChanged();
         }
 
         public override void Dispose()
@@ -43,76 +52,10 @@ namespace _Scripts.Units.Player.Core
         private void OnEnemyRemoved(OnEnemyRemoved e)
         {
             currentCount++;
-
+            NotifyChanged();
             if (currentCount >= targetCount)
                 Complete();
         }
-    }
-
-    public class Quest
-    {
-        private List<Objective> objectives;
-        
-        public event System.Action OnQuestCompleted;
-        public bool IsComplete => objectives.All(x => x.IsComplete);
-
-        public Quest(List<Objective> objectives)
-        {
-            this.objectives = objectives;
-        }
-        
-        public void Start()
-        {
-            foreach (var obj in objectives)
-            {
-                obj.Initialize();
-                obj.OnCompleted += CheckQuest;
-            }
-        }
-
-        private void CheckQuest()
-        {
-            if (IsComplete)
-            {
-                Stop();
-                OnQuestCompleted?.Invoke();
-            }        }
-
-        public void Stop()
-        {
-            foreach (var obj in objectives)
-            {
-                obj.OnCompleted -= CheckQuest;
-                obj.Dispose();
-            }
-        }        
-    }
-
-    public class QuestManager
-    {
-        private Quest currentQuest;
-        public void SetQuest(Quest newQuest)
-        {
-            if (currentQuest != null)
-            {
-                currentQuest.OnQuestCompleted -= HandleQuestCompleted;
-                currentQuest?.Stop();
-            }
-
-            currentQuest = newQuest;
-            if (currentQuest != null)
-            {
-                currentQuest.OnQuestCompleted += HandleQuestCompleted;
-                currentQuest.Start();
-            }
-            
-        }
-        
-        private void HandleQuestCompleted()
-        {
-            EventBus<OnQuestCompleted>.Trigger(new OnQuestCompleted());
-        }
-        
     }
 
     public class OnQuestCompleted : IEvent

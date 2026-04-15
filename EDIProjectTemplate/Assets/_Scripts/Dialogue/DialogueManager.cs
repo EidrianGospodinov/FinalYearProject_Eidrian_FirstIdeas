@@ -68,7 +68,11 @@ namespace _Scripts.Dialogue
                 isTalking = false;
                 gameManager.SetGameState(GameState.InGame);
                 Invoke(nameof(DisablePanel), 3f);
-                List<Objective> objectives = new List<Objective> { new KillEnemyObjective(10) };
+                List<Objective> objectives = new List<Objective>
+                {
+                    new KillEnemyObjective("Kill enemies: ",10),
+                    new KillEnemyObjective("Kill enemies: ",1)
+                };
                 questManager.SetQuest(new Quest(objectives));
             }
             void DisablePanel()
