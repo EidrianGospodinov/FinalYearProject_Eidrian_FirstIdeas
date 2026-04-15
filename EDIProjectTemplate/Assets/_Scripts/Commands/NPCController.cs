@@ -21,9 +21,6 @@ public class NPCController : MonoBehaviour, ICommandReceiver
     private ICommand currentCommand;
     
     [Header("Positions")]
-    [SerializeField] Transform stoveTransform;
-
-    [SerializeField] Transform counterTransform;
     [SerializeField] Transform ItemPlaceHolder;
     private Item currentDesiredItem;
     private Transform desiredItemTransform;
@@ -109,9 +106,9 @@ public class NPCController : MonoBehaviour, ICommandReceiver
         switch (commandID)
         {
             case "Cook_Pizza":
-                AddTask(new MoveToCommand(stoveTransform));
+                /*AddTask(new MoveToCommand(stoveTransform));
                 AddTask(new InteractCommand(stoveTransform));
-                AddTask(new MoveToCommand(counterTransform));
+                AddTask(new MoveToCommand(counterTransform));*/
                 
                 
                 AddTask(new GiveCommand(playerTransform, this));

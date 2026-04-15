@@ -15,6 +15,7 @@ namespace _Scripts.Dialogue
         [SerializeField] DialogueNodeBase NpcDialogue;
 
         [SerializeField] private NPC npc;
+        [SerializeField] private GameObject beam;
         private MultipleChoiceDialogueMenu multipleChoiceDialogueMenu;
         
         public event EventHandler OnDialogueFinished;
@@ -30,6 +31,7 @@ namespace _Scripts.Dialogue
 
         private void OnDialogueFinishedEvent(object sender, EventArgs e)
         {
+            beam.SetActive(false);
             EndConversation();
         }
         
