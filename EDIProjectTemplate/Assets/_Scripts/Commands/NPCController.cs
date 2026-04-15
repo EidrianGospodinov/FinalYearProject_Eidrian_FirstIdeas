@@ -117,14 +117,14 @@ public class NPCController : MonoBehaviour, ICommandReceiver
     }
     private void LateUpdate()
     {
-        if (currentTargetTransform == null)
+        /*if (currentTargetTransform == null)
         {
             currentTargetTransform = Camera.main.transform;
         }
         Vector3 targetDir = currentTargetTransform.position - transform.position;
         targetDir.y = 0; 
 
-        transform.rotation = Quaternion.LookRotation(targetDir);
+        transform.rotation = Quaternion.LookRotation(targetDir);*/
         
     }
 }
