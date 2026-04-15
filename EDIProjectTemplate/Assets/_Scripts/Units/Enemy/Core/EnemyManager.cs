@@ -21,6 +21,10 @@ namespace _Scripts.Units.Enemy
             //decreases the number of enemies from that spawner
             aiAgent.EnemySpawner?.NotifyDeath(destroy);
             enemies.Remove(aiAgent);
+            if (!destroy)
+            {
+                EventBus<OnEnemyRemoved>.Trigger(new OnEnemyRemoved(aiAgent));
+            }
         }
 
         public void DestroyAllEnemiesFromArea(EnemySpawner enemySpawner)
@@ -48,5 +52,13 @@ namespace _Scripts.Units.Enemy
         }
 
         public IEnumerable<AiAgent> GetAllEnemies() => enemies;
+    }
+
+    public class OnEnemyRemoved : IEvent
+    {
+        public OnEnemyRemoved(AiAgent aiAgent)
+        {
+            
+        }
     }
 }

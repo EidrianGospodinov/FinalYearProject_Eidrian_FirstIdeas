@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using _Scripts.Units.Player.Core;
 using TMPro;
 using UnityEngine;
@@ -9,7 +10,8 @@ namespace _Scripts.Dialogue
 {
     public abstract class DialogueManager : MonoBehaviour, IInteractable
     {
-        [Inject] private GameManager gameManager; 
+        [Inject] private GameManager gameManager;
+        [Inject] private QuestManager questManager;
         [SerializeField] protected GameObject dialogueUI;
         
         
@@ -66,6 +68,8 @@ namespace _Scripts.Dialogue
                 isTalking = false;
                 gameManager.SetGameState(GameState.InGame);
                 Invoke(nameof(DisablePanel), 3f);
+                List<Objective> objectives = new List<Objective> { new KillEnemyObjective(10) };
+                questManager.SetQuest(new Quest(objectives));
             }
             void DisablePanel()
             {
@@ -77,6 +81,7 @@ namespace _Scripts.Dialogue
                 isTalking = true;
                 dialogueUI.SetActive(true);
                 gameManager.SetGameState(GameState.InDialogue);
+                
 
             }
 

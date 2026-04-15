@@ -30,6 +30,9 @@ public class GameInstaller : MonoInstaller
             .To<RespawnPanel>()
             .FromComponentInHierarchy()
             .AsSingle();
+        Container.Bind<QuestManager>()
+            .AsSingle()
+            .NonLazy();
 
     }
 }
