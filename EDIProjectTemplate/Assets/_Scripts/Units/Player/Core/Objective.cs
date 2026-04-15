@@ -27,7 +27,13 @@ namespace _Scripts.Units.Player.Core
             OnChanged?.Invoke(currentCount, targetCount);
         }
         public abstract void Initialize();
-        public abstract void Dispose();
+
+        public virtual void Dispose()
+        {
+            OnCompleted = null;
+            OnChanged = null;
+        }
+        
     }
 
     public class FindObjectObjective : Objective
@@ -49,6 +55,7 @@ namespace _Scripts.Units.Player.Core
 
         public override void Dispose()
         {
+            base.Dispose();
             EventBus<OnItemFound>.Unregister(itemFound);
         }
     }
@@ -71,6 +78,7 @@ namespace _Scripts.Units.Player.Core
 
         public override void Dispose()
         {
+            base.Dispose();
             EventBus<OnEnemyRemoved>.Unregister(enemyRemoved);
         }
 

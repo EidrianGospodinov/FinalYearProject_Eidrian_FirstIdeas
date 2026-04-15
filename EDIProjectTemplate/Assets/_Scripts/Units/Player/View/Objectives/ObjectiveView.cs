@@ -20,6 +20,12 @@ namespace _Scripts.Units.Player.View
 
         }
 
+        public void UnBind()
+        {
+            objective.OnChanged -= Refresh;
+            objective.OnCompleted -= MarkComplete;
+        }
+
         private void Refresh(int currentCount, int targetCount)
         {
             if (targetCount > 0)

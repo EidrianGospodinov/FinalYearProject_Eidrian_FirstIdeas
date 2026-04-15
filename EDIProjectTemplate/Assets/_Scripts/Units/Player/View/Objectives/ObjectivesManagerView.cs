@@ -43,6 +43,7 @@ namespace _Scripts.Units.Player.View
             }
             for (int i = objectViewInstances.Count - 1; i >= 0; i--)
             {
+                objectViewInstances[i].UnBind();
                 Destroy(objectViewInstances[i].gameObject);
             }
             objectViewInstances.Clear();
