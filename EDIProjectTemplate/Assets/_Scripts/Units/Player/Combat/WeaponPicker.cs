@@ -1,16 +1,25 @@
 using UnityEngine;
 
-public class WeaponPicker : MonoBehaviour
+namespace _Scripts.Units.Player.Combat
 {
-    [SerializeField] private GameObject beam;
-    private void OnTriggerEnter(Collider other)
+    public class WeaponPicker : MonoBehaviour
     {
-        if(other.CompareTag("Player"))
+        [SerializeField] private GameObject beam;
+        private void OnTriggerEnter(Collider other)
         {
-            var playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.FirstTimeEquipWeapon();
-            beam.SetActive(false);
+            if(other.CompareTag("Player"))
+            {
+                var playerController = other.gameObject.GetComponent<PlayerController>();
+                playerController.FirstTimeEquipWeapon();
+                beam.SetActive(false);
+                EventBus<OnItemFound>.Trigger(new OnItemFound());
+            }
         }
     }
-    
+
+    public class OnItemFound : IEvent
+    {
+        
+    }
 }
+

@@ -22,14 +22,23 @@ namespace _Scripts.Units.Player.View
 
         private void Refresh(int currentCount, int targetCount)
         {
-            nameText.text = $"{objective.ObjectiveName}: {currentCount}/{targetCount} ";
+            if (targetCount > 0)
+            {
+                nameText.text = $"{objective.ObjectiveName}: {currentCount}/{targetCount} ";
+            }
+            else
+            {
+                nameText.text = objective.ObjectiveName;
+            }
         }
 
         
 
         private void MarkComplete()
         {
-            nameText.text = $"<s>{nameText.text}</s>";
+            //with <s/> it doesnt seem to work anymore
+            //nameText.text = $"<s>{nameText.text}</s>";
+            nameText.fontStyle = FontStyles.Strikethrough;
         }
     }
 }

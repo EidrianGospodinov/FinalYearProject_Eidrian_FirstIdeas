@@ -70,8 +70,8 @@ namespace _Scripts.Dialogue
                 Invoke(nameof(DisablePanel), 3f);
                 List<Objective> objectives = new List<Objective>
                 {
-                    new KillEnemyObjective("Kill enemies: ",10),
-                    new KillEnemyObjective("Kill enemies: ",1)
+                    new KillEnemyObjective("Kill enemies: ",1),
+                    new FindObjectObjective("Find sword")
                 };
                 questManager.SetQuest(new Quest(objectives));
             }

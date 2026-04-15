@@ -1,4 +1,6 @@
 using _Scripts.Units.Enemy;
+using _Scripts.Units.Player.Combat;
+using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
 {
@@ -26,6 +28,29 @@ namespace _Scripts.Units.Player.Core
         }
         public abstract void Initialize();
         public abstract void Dispose();
+    }
+
+    public class FindObjectObjective : Objective
+    {
+        private EventBinding<OnItemFound> itemFound;
+        public override void Initialize()
+        {
+            itemFound = EventBus<OnItemFound>.Register(OnItemFoundEvent);
+        }
+
+        public FindObjectObjective(string objectiveName)
+        {
+            ObjectiveName = objectiveName;
+        }
+        private void OnItemFoundEvent(OnItemFound obj)
+        {
+            Complete();
+        }
+
+        public override void Dispose()
+        {
+            EventBus<OnItemFound>.Unregister(itemFound);
+        }
     }
     public class KillEnemyObjective : Objective
     {

@@ -35,7 +35,8 @@ namespace _Scripts.Units.Player.Core
             {
                 Stop();
                 OnQuestCompleted?.Invoke();
-            }        }
+            }
+        }
 
         public void Stop()
         {
