@@ -5,6 +5,7 @@ using _Scripts.Units.Player.Core;
 using TMPro;
 using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -21,11 +22,12 @@ namespace _Scripts.Dialogue
         [SerializeField] private TextMeshProUGUI interactText;
         [SerializeField] private RawImage interactImage;
         
+        [FormerlySerializedAs("goal")]
         [Header("Optional- if the camp has a dialgue")]
-        [SerializeField] private SingleEnemySpawner goal;
+        [SerializeField] private SingleEnemySpawner enemySpawner;
 
         [SerializeField] QuestScriptable quest;
-        private bool hasGoal = false;
+        private bool hasEnemySpawner = false;
         
         private float distance;
         private bool isTalking = false;
@@ -35,7 +37,7 @@ namespace _Scripts.Dialogue
         protected virtual void Start()
         {
             dialogueUI.SetActive(false);
-            hasGoal = goal != null;
+            hasEnemySpawner = enemySpawner != null;
         }
         
             private void OnMouseExit()
@@ -67,10 +69,10 @@ namespace _Scripts.Dialogue
                 dialogueUI.SetActive(true);
                 gameManager.SetGameState(GameState.InDialogue);
 
-                if (firstTimeTalking && hasGoal)
+                if (firstTimeTalking && hasEnemySpawner)
                 {
                    EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.Guide));
-                   goal.gameObject.SetActive(true);
+                   enemySpawner.gameObject.SetActive(true);
                 }
 
                 firstTimeTalking = false;

@@ -30,7 +30,7 @@ namespace _Scripts.Units.Player.Core
         public virtual void Initialize()
         {
             currentCount = 0;
-            targetCount = 0;
+            IsComplete = false;
         }
 
         public virtual void Dispose()

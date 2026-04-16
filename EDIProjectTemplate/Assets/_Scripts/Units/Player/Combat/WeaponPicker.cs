@@ -29,7 +29,8 @@ namespace _Scripts.Units.Player.Combat
     public enum SearchItemType
     {
         Sword, 
-        Guide
+        Guide,
+        EnemySpawner
     }
 }
 
