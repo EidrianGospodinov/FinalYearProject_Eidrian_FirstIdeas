@@ -1718,6 +1718,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1804773557}
     - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: quest
+      value: 
+      objectReference: {fileID: 11400000, guid: 4debd0d1412d9f9418dd905481e730ac, type: 2}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: objectives.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4652,6 +4656,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1888260396}
     - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: quest
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b0bdd2ae1978074db6e0e3c8bcda54f, type: 2}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: objectives.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5218,6 +5226,10 @@ PrefabInstance:
       propertyPath: beam
       value: 
       objectReference: {fileID: 1820304019}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: quest
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b0bdd2ae1978074db6e0e3c8bcda54f, type: 2}
     - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: dialogueUI
       value: 

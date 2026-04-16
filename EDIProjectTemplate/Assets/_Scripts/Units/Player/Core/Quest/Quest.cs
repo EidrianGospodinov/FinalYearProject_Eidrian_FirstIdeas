@@ -7,8 +7,9 @@ namespace _Scripts.Units.Player.Core
     public class Quest 
     {
         public List<Objective> objectives;
+        public string UniqueId;
         
-        public event System.Action OnQuestCompleted;
+        public event System.Action <string>OnQuestCompleted;
         public bool IsComplete => objectives.All(x => x.IsComplete);
 
         public Quest(List<Objective> objectives)
@@ -20,6 +21,7 @@ namespace _Scripts.Units.Player.Core
         {
             foreach (var obj in objectives)
             {
+                UniqueId += obj.GetInstanceID();
                 obj.Initialize();
                 obj.OnCompleted += CheckQuest;
             }
@@ -34,7 +36,7 @@ namespace _Scripts.Units.Player.Core
         {
             if (IsComplete)
             {
-                OnQuestCompleted?.Invoke();
+                OnQuestCompleted?.Invoke(UniqueId);
                 Stop();
             }
         }

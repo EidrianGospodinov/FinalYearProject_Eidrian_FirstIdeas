@@ -37,5 +37,10 @@ namespace _Scripts.Units.Player.Core
 
     public class OnQuestCompleted : IEvent
     {
+        public string UniqueId;
+        public OnQuestCompleted(string uniqueId)
+        {
+            UniqueId = uniqueId;
+        }
     }
 }

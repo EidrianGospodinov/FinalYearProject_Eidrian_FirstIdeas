@@ -45,6 +45,7 @@ namespace _Scripts.Units.Player.View
             //with <s/> it doesnt seem to work anymore
             //nameText.text = $"<s>{nameText.text}</s>";
             nameText.fontStyle = FontStyles.Strikethrough;
+            Debug.Log("MarkComplete");
         }
     }
 }

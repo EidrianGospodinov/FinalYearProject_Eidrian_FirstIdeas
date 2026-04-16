@@ -23,9 +23,9 @@ namespace _Scripts.Units.Player.Core
         }
         
         
-        private void HandleQuestCompleted()
+        private void HandleQuestCompleted(string uniqueId)
         {
-            EventBus<OnQuestCompleted>.Trigger(new OnQuestCompleted());
+            EventBus<OnQuestCompleted>.Trigger(new OnQuestCompleted(uniqueId));
         }
         
     }

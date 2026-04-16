@@ -24,7 +24,7 @@ namespace _Scripts.Dialogue
         [Header("Optional- if the camp has a dialgue")]
         [SerializeField] private SingleEnemySpawner goal;
 
-        [SerializeField] List<Objective> objectives;
+        [SerializeField] QuestScriptable quest;
         private bool hasGoal = false;
         
         private float distance;
@@ -54,7 +54,7 @@ namespace _Scripts.Dialogue
                     new FindObjectObjective("Find sword", SearchItemType.Sword)
                 };
                 questManager.SetQuest(new Quest(objectives));*/
-                questManager.SetQuest(new Quest(objectives));
+                questManager.SetQuest(new Quest(quest.objectives));
             }
             void DisablePanel()
             {
@@ -69,7 +69,7 @@ namespace _Scripts.Dialogue
 
                 if (firstTimeTalking && hasGoal)
                 {
-                   EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.Sword));
+                   EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.Guide));
                    goal.gameObject.SetActive(true);
                 }
 
