@@ -16,8 +16,8 @@ namespace _Scripts.Units.Player.Core
             if (currentQuest != null)
             {
                 currentQuest.OnQuestCompleted += HandleQuestCompleted;
-                currentQuest.Start();
                 OnQuestPopulate?.Invoke();
+                currentQuest.Start();
             }
             
         }

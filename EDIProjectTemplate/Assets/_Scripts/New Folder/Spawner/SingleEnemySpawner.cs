@@ -9,6 +9,7 @@ using Zenject;
 public class SingleEnemySpawner : MonoBehaviour, IInteractable
 {
     [SerializeField] private AiAgent AiAgent;
+    [SerializeField] private GameObject beam;
     private Area area;
     [Inject]
     private DiContainer container;
@@ -19,6 +20,7 @@ public class SingleEnemySpawner : MonoBehaviour, IInteractable
     {
         var aiAgent = container.InstantiatePrefabForComponent<AiAgent>(AiAgent, transform);
         enemyManager.RegisterEnemy(aiAgent);
+        beam.SetActive(false);
         //Instantiate(AiAgent, transform.position, transform.rotation);
     }
 }

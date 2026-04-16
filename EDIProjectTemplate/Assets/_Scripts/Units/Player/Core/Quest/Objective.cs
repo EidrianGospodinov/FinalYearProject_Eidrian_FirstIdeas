@@ -1,5 +1,6 @@
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player.Combat;
+using UnityEditor.Search;
 using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
@@ -18,8 +19,8 @@ namespace _Scripts.Units.Player.Core
         {
             if(IsComplete) return;
             IsComplete = true;
-            OnCompleted?.Invoke();
             OnChanged?.Invoke(currentCount, targetCount);
+            OnCompleted?.Invoke();
             
         }
         protected void NotifyChanged()
@@ -30,8 +31,8 @@ namespace _Scripts.Units.Player.Core
 
         public virtual void Dispose()
         {
-            OnCompleted = null;
-            OnChanged = null;
+            /*OnCompleted = null;
+            OnChanged = null;*/
         }
         
     }
@@ -39,18 +40,30 @@ namespace _Scripts.Units.Player.Core
     public class FindObjectObjective : Objective
     {
         private EventBinding<OnItemFound> itemFound;
+        private SearchItemType lookingForItem;
         public override void Initialize()
         {
             itemFound = EventBus<OnItemFound>.Register(OnItemFoundEvent);
         }
 
-        public FindObjectObjective(string objectiveName)
+        public FindObjectObjective(string objectiveName, SearchItemType item)
         {
+            lookingForItem = item;
             ObjectiveName = objectiveName;
         }
         private void OnItemFoundEvent(OnItemFound obj)
         {
-            Complete();
+            
+            if (lookingForItem == obj.SearchItemTypeFound)
+            {
+                NotifyChanged();
+                Complete();
+            }
+            else
+            {
+                Debug.Log($"Wrong item found, received item {obj.SearchItemTypeFound} \n" +
+                          $"Looking for {lookingForItem}");
+            }
         }
 
         public override void Dispose()

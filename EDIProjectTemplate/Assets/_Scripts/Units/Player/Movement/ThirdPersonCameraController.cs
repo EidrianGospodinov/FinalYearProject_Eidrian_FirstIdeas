@@ -49,7 +49,6 @@ public class ThirdPersonCameraController : MonoBehaviour
     private void HandleMouseScroll(InputAction.CallbackContext obj)
     {
         scrollDelta = obj.ReadValue<Vector2>();
-        Debug.Log($"Mouse is scrollign. value {scrollDelta}");
     }
 
     // Update is called once per frame

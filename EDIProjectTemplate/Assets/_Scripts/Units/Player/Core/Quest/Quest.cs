@@ -33,8 +33,8 @@ namespace _Scripts.Units.Player.Core
         {
             if (IsComplete)
             {
-                Stop();
                 OnQuestCompleted?.Invoke();
+                Stop();
             }
         }
 

@@ -12,14 +12,24 @@ namespace _Scripts.Units.Player.Combat
                 var playerController = other.gameObject.GetComponent<PlayerController>();
                 playerController.FirstTimeEquipWeapon();
                 beam.SetActive(false);
-                EventBus<OnItemFound>.Trigger(new OnItemFound());
+                EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.Sword));
             }
         }
     }
 
     public class OnItemFound : IEvent
     {
-        
+        public SearchItemType SearchItemTypeFound { get; private set; }
+        public OnItemFound(SearchItemType searchItemType)
+        {
+            SearchItemTypeFound = searchItemType;
+        }
+    }
+
+    public enum SearchItemType
+    {
+        Sword, 
+        Guide
     }
 }
 

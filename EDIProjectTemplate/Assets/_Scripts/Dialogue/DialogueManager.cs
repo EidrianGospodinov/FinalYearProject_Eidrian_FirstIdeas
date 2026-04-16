@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using _Scripts.Units.Player.Combat;
 using _Scripts.Units.Player.Core;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -19,44 +21,21 @@ namespace _Scripts.Dialogue
         [SerializeField] private TextMeshProUGUI interactText;
         [SerializeField] private RawImage interactImage;
         
+        [Header("Optional- if the camp has a dialgue")]
+        [SerializeField] private SingleEnemySpawner goal;
+
+        private bool hasGoal = false;
+        
         private float distance;
         private bool isTalking = false;
+        private bool firstTimeTalking = true;
         public bool IsTalking => isTalking;
         
         protected virtual void Start()
         {
             dialogueUI.SetActive(false);
+            hasGoal = goal != null;
         }
-        /*public virtual void OnMouseOver()
-            {
-                distance = Vector3.Distance(player.transform.position, this.transform.position);
-                if (distance <= 2.5f)
-                {
-                    if (!isTalking)
-                    {
-                        interactText.gameObject.SetActive(true);
-                        interactImage.gameObject.SetActive(false);
-        
-                        if (Input.GetKeyDown(KeyCode.E))
-                        {
-                            interactText.gameObject.SetActive(false);
-                            StartConversation();
-                        }
-                    }
-                    else if (Input.GetKeyDown(KeyCode.E))
-                    {
-                        EndConversation();
-                    }
-                }
-                else 
-                {
-                    if (isTalking)
-                    {
-                        EndConversation();
-                    }
-                }
-                
-            }*/
         
             private void OnMouseExit()
             {
@@ -71,7 +50,7 @@ namespace _Scripts.Dialogue
                 List<Objective> objectives = new List<Objective>
                 {
                     new KillEnemyObjective("Kill enemies: ",1),
-                    new FindObjectObjective("Find sword")
+                    new FindObjectObjective("Find sword", SearchItemType.Sword)
                 };
                 questManager.SetQuest(new Quest(objectives));
             }
@@ -85,8 +64,14 @@ namespace _Scripts.Dialogue
                 isTalking = true;
                 dialogueUI.SetActive(true);
                 gameManager.SetGameState(GameState.InDialogue);
-                
 
+                if (firstTimeTalking && hasGoal)
+                {
+                   EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.Sword));
+                   goal.gameObject.SetActive(true);
+                }
+
+                firstTimeTalking = false;
             }
 
             public void Interact()
