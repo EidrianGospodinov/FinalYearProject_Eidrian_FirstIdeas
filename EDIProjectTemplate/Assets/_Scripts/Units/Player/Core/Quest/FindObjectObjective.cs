@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
 {
+    [System.Serializable]
    [CreateAssetMenu(menuName = "Objective/Find Objective")]
     public class FindObjectObjective : Objective
     {
@@ -11,6 +12,7 @@ namespace _Scripts.Units.Player.Core
         public SearchItemType lookingForItem;
         public override void Initialize()
         {
+            base.Initialize();
             itemFound = EventBus<OnItemFound>.Register(OnItemFoundEvent);
         }
 

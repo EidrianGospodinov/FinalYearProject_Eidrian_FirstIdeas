@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FindGuide
   m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Units.Player.Core:QuestScriptable
   objectives:
-  - {fileID: 11400000, guid: 9dba54d65c7b1364686faf1266393f39, type: 2}
+  - {fileID: 11400000, guid: 52120f17cf131df4e89c08de1c3aab3f, type: 2}

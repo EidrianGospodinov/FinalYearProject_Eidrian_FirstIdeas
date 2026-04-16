@@ -17,6 +17,7 @@ namespace _Scripts.Units.Player.Core
         
         public override void Initialize()
         {
+            base.Initialize();
             enemyRemoved = EventBus<OnEnemyRemoved>.Register(OnEnemyRemoved);
             NotifyChanged();
         }

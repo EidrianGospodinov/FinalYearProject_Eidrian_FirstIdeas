@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Quest1_SeekingSword
   m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Units.Player.Core:QuestScriptable
   objectives:
-  - {fileID: 11400000, guid: 3c433030a170b9144930e1f7cea75e59, type: 2}
-  - {fileID: 11400000, guid: 687dc2694a738c9469395fb4e85b45ae, type: 2}
+  - {fileID: 11400000, guid: e2d7d4a50bf97ca4484ed8822728c848, type: 2}
+  - {fileID: 11400000, guid: 0dc7e6097e2eb7242b2085ee5b3fdb37, type: 2}

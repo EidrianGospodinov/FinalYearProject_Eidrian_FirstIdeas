@@ -4,12 +4,13 @@ using _Scripts.Dialogue;
 using _Scripts.Units.Player.Combat;
 using _Scripts.Units.Player.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 public class CheckpointCamp : MonoBehaviour
 {
     [Inject] private QuestManager questManager;
-    [SerializeField] private string name;
+    [SerializeField] private string checkpointName;
     [SerializeField] private CampFire campFire;
     [SerializeField] private Transform spawnerLocation;
     [SerializeField] private GameObject safeZoneOn;
@@ -24,7 +25,7 @@ public class CheckpointCamp : MonoBehaviour
     private PlayerController playerController;
     
 
-    public string GetName => name;
+    public string GetCheckpointName => checkpointName;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +38,11 @@ public class CheckpointCamp : MonoBehaviour
         
     }
 
+    public void MakeCampAccessible()
+    {
+        safeZoneOff.SetActive(false);
+        safeZoneOn.SetActive(true);
+    }
     public void PlacePlayerInCamp(PlayerController _playerController = null)
     {
         if (playerController == null && _playerController != null)

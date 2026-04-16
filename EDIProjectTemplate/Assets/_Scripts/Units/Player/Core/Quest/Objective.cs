@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
 {
+    [System.Serializable]
     public abstract class Objective : ScriptableObject
     {
         public string ObjectiveName;
@@ -25,7 +26,12 @@ namespace _Scripts.Units.Player.Core
         {
             OnChanged?.Invoke(currentCount, targetCount);
         }
-        public abstract void Initialize();
+
+        public virtual void Initialize()
+        {
+            currentCount = 0;
+            targetCount = 0;
+        }
 
         public virtual void Dispose()
         {

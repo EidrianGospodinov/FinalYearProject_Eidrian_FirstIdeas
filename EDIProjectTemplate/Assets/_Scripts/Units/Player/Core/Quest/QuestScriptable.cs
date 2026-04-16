@@ -7,7 +7,7 @@ namespace _Scripts.Units.Player.Core
     [CreateAssetMenu(menuName = "Objective/quest ")]
     public class QuestScriptable : ScriptableObject
     {
-        public List<Objective> objectives;
+        [SerializeReference] public List<Objective> objectives;
 
         public string GetUniqueId()
         {

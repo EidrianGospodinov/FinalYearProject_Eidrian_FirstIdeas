@@ -123,9 +123,9 @@ public class CampsManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public CheckpointCamp GetCampByName(string campName)
     {
-        
+        return checkpointCamps.Find(x => x.GetCheckpointName == campName);
     }
 
     private void OnDestroy()

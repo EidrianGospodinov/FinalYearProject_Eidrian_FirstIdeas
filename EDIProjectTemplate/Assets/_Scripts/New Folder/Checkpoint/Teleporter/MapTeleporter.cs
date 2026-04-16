@@ -47,7 +47,7 @@ public class MapTeleporter : MonoBehaviour
             buttons.Add(buttonGO);
             if (buttonText != null)
             {
-                buttonText.text = checkpointCamp.GetName;
+                buttonText.text = checkpointCamp.GetCheckpointName;
             }
 
             var buttonComponent = buttonGO.GetComponent<UnityEngine.UI.Button>();
