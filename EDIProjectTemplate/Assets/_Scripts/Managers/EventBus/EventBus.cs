@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 /// <summary>
 /// Marker interface for all event types.  Any class or struct implementing this
@@ -42,7 +43,7 @@ public static class EventBus<T> where T : IEvent
     /// <param name="event">The event object to trigger.</param>
     public static void Trigger(T @event)
     {
-        foreach (var binding in bindings)
+        foreach (var binding in bindings.ToArray())
         {
             binding.OnEvent.Invoke(@event);
             binding.onEventNoArgs.Invoke();
