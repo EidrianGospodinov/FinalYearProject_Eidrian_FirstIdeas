@@ -3,7 +3,7 @@ namespace _Scripts.Units.Player.Core
     public class QuestManager
     {
         private Quest currentQuest;
-        public event System.Action OnQuestPopulate;
+        public event System.Action <Quest>OnQuestPopulate;
         public void SetQuest(Quest newQuest)
         {
             if (currentQuest != null)
@@ -16,16 +16,12 @@ namespace _Scripts.Units.Player.Core
             if (currentQuest != null)
             {
                 currentQuest.OnQuestCompleted += HandleQuestCompleted;
-                OnQuestPopulate?.Invoke();
+                OnQuestPopulate?.Invoke(currentQuest);
                 currentQuest.Start();
             }
             
         }
-
-        public Quest GetCurrentQuest()
-        {
-            return currentQuest;
-        }
+        
         
         private void HandleQuestCompleted()
         {

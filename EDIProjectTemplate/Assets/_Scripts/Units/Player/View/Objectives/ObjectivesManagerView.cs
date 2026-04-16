@@ -20,10 +20,10 @@ namespace _Scripts.Units.Player.View
             questManager.OnQuestPopulate += OnQuestPopulated;
         }
 
-        private void OnQuestPopulated()
+        private void OnQuestPopulated(Quest quest)
         {
             DeleteObjectives();
-            var currentQuest = questManager.GetCurrentQuest();
+            var currentQuest = quest;
             var objectivesList = currentQuest.GetObjectivesList();
             
 
