@@ -4623,6 +4623,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 618300670}
     m_Modifications:
+    - target: {fileID: 492737916809581068, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800080225562103944, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2702076509466344719, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: skillTree
       value: 

@@ -12,7 +12,8 @@ public class CheckpointCamp : MonoBehaviour
     [SerializeField] private string name;
     [SerializeField] private CampFire campFire;
     [SerializeField] private Transform spawnerLocation;
-    
+    [SerializeField] private GameObject safeZoneOn;
+    [SerializeField] private GameObject safeZoneOff;
     [Header("Optional- if the camp has a dialgue")]
     [SerializeField] private MultipleChoiceDialogueManager guide;
 
