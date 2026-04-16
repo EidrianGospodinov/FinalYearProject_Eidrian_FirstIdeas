@@ -101,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
         }
         if (currentSpawnCount <= minSpawnCountBeforeWave)
         {
-            Debug.Log($"On deat in {this.name}. Spawning new wave");
+            Debug.Log($"On death in {this.name}. Spawning new wave");
             SpawnEnemies();
         }
     }

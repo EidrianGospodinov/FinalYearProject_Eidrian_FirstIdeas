@@ -16,6 +16,7 @@ public class CheckpointCamp : MonoBehaviour
     [SerializeField] private GameObject safeZoneOff;
     [Header("Optional- if the camp has a dialgue")]
     [SerializeField] private MultipleChoiceDialogueManager guide;
+    [SerializeField] private List<Objective> objectives;
 
     private bool hasGuide = false;
     public bool IsCampDiscovered { get; private set; }
@@ -60,17 +61,19 @@ public class CheckpointCamp : MonoBehaviour
         {
             if (IsCampDiscovered == false && hasGuide)
             {
-                List<Objective> objectives = new List<Objective>
+                /*List<Objective> objectives = new List<Objective>
                 {
                     new FindObjectObjective($"Find the Guide: {guide.name} and speak with him", SearchItemType.Guide)//temp name of gameobject
-                };
+                };*/
                 questManager.SetQuest(new Quest(objectives));
                 guide.gameObject.SetActive(true);
             }
+
             if (playerController == null)
             {
                 playerController = other.gameObject.GetComponent<PlayerController>();
             }
+
             IsCampDiscovered = true;
             SetActiveCheckpoint(true);
             EventBus<OnCheckpointEnter>.Trigger(new OnCheckpointEnter(this));

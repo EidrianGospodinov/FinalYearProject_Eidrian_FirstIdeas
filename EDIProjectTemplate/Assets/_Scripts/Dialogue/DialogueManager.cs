@@ -24,6 +24,7 @@ namespace _Scripts.Dialogue
         [Header("Optional- if the camp has a dialgue")]
         [SerializeField] private SingleEnemySpawner goal;
 
+        [SerializeField] List<Objective> objectives;
         private bool hasGoal = false;
         
         private float distance;
@@ -47,11 +48,12 @@ namespace _Scripts.Dialogue
                 isTalking = false;
                 gameManager.SetGameState(GameState.InGame);
                 Invoke(nameof(DisablePanel), 3f);
-                List<Objective> objectives = new List<Objective>
+                /*List<Objective> objectives = new List<Objective>
                 {
                     new KillEnemyObjective("Kill enemies: ",1),
                     new FindObjectObjective("Find sword", SearchItemType.Sword)
                 };
+                questManager.SetQuest(new Quest(objectives));*/
                 questManager.SetQuest(new Quest(objectives));
             }
             void DisablePanel()

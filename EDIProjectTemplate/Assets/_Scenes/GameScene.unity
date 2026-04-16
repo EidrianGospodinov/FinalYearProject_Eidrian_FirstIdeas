@@ -1717,6 +1717,14 @@ PrefabInstance:
       propertyPath: guide
       value: 
       objectReference: {fileID: 1804773557}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: objectives.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: 'objectives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dba54d65c7b1364686faf1266393f39, type: 2}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -63.579605
@@ -4643,6 +4651,14 @@ PrefabInstance:
       propertyPath: guide
       value: 
       objectReference: {fileID: 1888260396}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: objectives.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: 'objectives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dba54d65c7b1364686faf1266393f39, type: 2}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5210,6 +5226,18 @@ PrefabInstance:
       propertyPath: NpcDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 9455fd414a1999f4188f530dab553f54, type: 2}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: objectives.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: 'objectives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 687dc2694a738c9469395fb4e85b45ae, type: 2}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: 'objectives.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c433030a170b9144930e1f7cea75e59, type: 2}
     - target: {fileID: 7870557046160485985, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_Name
       value: Guide1
@@ -5613,6 +5641,14 @@ PrefabInstance:
       propertyPath: NpcDialogue
       value: 
       objectReference: {fileID: 11400000, guid: 9455fd414a1999f4188f530dab553f54, type: 2}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: objectives.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
+      propertyPath: 'objectives.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 687dc2694a738c9469395fb4e85b45ae, type: 2}
     - target: {fileID: 7870557046160485985, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: m_Name
       value: Guide1 (1)

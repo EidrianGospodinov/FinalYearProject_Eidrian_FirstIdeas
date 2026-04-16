@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace _Scripts.Units.Player.Core
 {
-    public class Quest
+    public class Quest 
     {
-        private List<Objective> objectives;
+        public List<Objective> objectives;
         
         public event System.Action OnQuestCompleted;
         public bool IsComplete => objectives.All(x => x.IsComplete);
