@@ -12,6 +12,8 @@ public class SingleEnemySpawner : MonoBehaviour, IInteractable
     [SerializeField] private AiAgent AiAgent;
     [SerializeField] private Transform enemySpawnTransform;
     [SerializeField] private GameObject beam;
+    [SerializeField] private bool canOnlySpawnOnce;
+    private bool hasSpawnOnce = false;
     private Area area;
     [Inject]
     private DiContainer container;
@@ -28,10 +30,16 @@ public class SingleEnemySpawner : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        hasSpawnOnce = true;
         EventBus<OnItemFound>.Trigger(new OnItemFound(SearchItemType.EnemySpawner));
         var aiAgent = container.InstantiatePrefabForComponent<AiAgent>(AiAgent, enemySpawnTransform);
         enemyManager.RegisterEnemy(aiAgent);
         beam.SetActive(false);
+        if (canOnlySpawnOnce)
+        {
+            gameObject.layer = 0;
+        }
+
         //Instantiate(AiAgent, transform.position, transform.rotation);
     }
 }

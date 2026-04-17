@@ -2138,13 +2138,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540145464}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7978787, z: -0, w: 0.6028181}
-  m_LocalPosition: {x: 11.98, y: 0, z: 0.26}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.98, y: 0.74, z: 0.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6353719891791890948}
-  m_LocalEulerAnglesHint: {x: 0, y: -105.856, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548729818
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,6 +4567,7 @@ MonoBehaviour:
   AiAgent: {fileID: 8769125952209473199, guid: eb9fd6530c16b1b45872879fa513e29d, type: 3}
   enemySpawnTransform: {fileID: 0}
   beam: {fileID: 697883249}
+  canOnlySpawnOnce: 0
 --- !u!4 &1338738181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e011a827265c38e44baeae9310a2a9e2, type: 3}
@@ -5830,6 +5831,7 @@ MonoBehaviour:
   AiAgent: {fileID: 5091490528900555422, guid: 1c6b6109fc561f1459b3dbc65cd1572d, type: 3}
   enemySpawnTransform: {fileID: 0}
   beam: {fileID: 1332534351}
+  canOnlySpawnOnce: 0
 --- !u!4 &1869059731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e011a827265c38e44baeae9310a2a9e2, type: 3}
@@ -6900,6 +6902,7 @@ MonoBehaviour:
   AiAgent: {fileID: 5091490528900555422, guid: d79b2c48282751a409625629e4849252, type: 3}
   enemySpawnTransform: {fileID: 0}
   beam: {fileID: 912011550}
+  canOnlySpawnOnce: 0
 --- !u!1 &2101748341
 GameObject:
   m_ObjectHideFlags: 0
@@ -7628,8 +7631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AiAgent: {fileID: 5091490528900555422, guid: 1c6b6109fc561f1459b3dbc65cd1572d, type: 3}
-  enemySpawnTransform: {fileID: 0}
+  enemySpawnTransform: {fileID: 540145465}
   beam: {fileID: 1332534351}
+  canOnlySpawnOnce: 1
 --- !u!4 &7127602371499151913
 Transform:
   m_ObjectHideFlags: 0
