@@ -12,6 +12,7 @@ namespace _Scripts.Units.Player.Core
         [SerializeField] private CampsManager campsManager;
         [SerializeField] private QuestScriptable goToCamp;
         [SerializeField] private QuestScriptable firstMainQuest;
+        [SerializeField] private QuestScriptable minotaurQuest;
 
         private void Start()
         {
@@ -25,13 +26,22 @@ namespace _Scripts.Units.Player.Core
             if (onQuest.UniqueId == firstMainQuest.GetUniqueId())
             {
                 Debug.Log("First main quest completed");
-                var camp = campsManager.GetCampByName("By the bridge camp");
-                if (camp != null)
-                {
-                    camp.MakeCampAccessible();
-                    questManager.SetQuest(new Quest(goToCamp.objectives));
-                }
+                UnlockAndSetUpNextCamp("By the bridge camp");
             }
-        }   
+            else if (onQuest.UniqueId == minotaurQuest.GetUniqueId())
+            {
+                UnlockAndSetUpNextCamp("The ruins");   
+            }
+        }
+
+        private void UnlockAndSetUpNextCamp(string nameOfCamp)
+        {
+            var camp = campsManager.GetCampByName(nameOfCamp);
+            if (camp != null)
+            {
+                camp.MakeCampAccessible();
+                questManager.SetQuest(new Quest(goToCamp.objectives));
+            }
+        }
     }
 }

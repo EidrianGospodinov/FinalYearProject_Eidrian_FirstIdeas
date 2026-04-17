@@ -1,4 +1,5 @@
 using System;
+using System;
 using System.Collections.Generic;
 using _Scripts.Dialogue;
 using _Scripts.Units.Player.Combat;
@@ -72,8 +73,11 @@ public class CheckpointCamp : MonoBehaviour
                 {
                     new FindObjectObjective($"Find the Guide: {guide.name} and speak with him", SearchItemType.Guide)//temp name of gameobject
                 };*/
-                questManager.SetQuest(new Quest(quest.objectives));
-                guide.gameObject.SetActive(true);
+                if (quest != null)
+                {
+                    questManager.SetQuest(new Quest(quest.objectives));
+                    guide.gameObject.SetActive(true);
+                }
             }
 
             if (playerController == null)

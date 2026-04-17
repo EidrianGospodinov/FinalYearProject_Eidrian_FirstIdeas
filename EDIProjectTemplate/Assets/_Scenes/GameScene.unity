@@ -5016,7 +5016,7 @@ PrefabInstance:
       objectReference: {fileID: 7947899525781852294}
     - target: {fileID: 9022620133155346171, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_Name
-      value: Checkpoint
+      value: Checkpoint_ByTheRiver
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5352,6 +5352,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 618300670}
     m_Modifications:
+    - target: {fileID: 492737916809581068, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1800080225562103944, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2702076509466344719, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: skillTree
       value: 
@@ -5360,21 +5368,25 @@ PrefabInstance:
       propertyPath: name
       value: camp 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5844260125686132246, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
+      propertyPath: checkpointName
+      value: The ruins
+      objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6031723
+      value: 61.39
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06688714
+      value: 2.014
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.681343
+      value: -66.41
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9773728
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalRotation.x
@@ -5386,7 +5398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.211524
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5398,7 +5410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7365062537537652344, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -24.423
       objectReference: {fileID: 0}
     - target: {fileID: 8242317150232098226, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: mapTeleporter
@@ -5406,11 +5418,11 @@ PrefabInstance:
       objectReference: {fileID: 7947899525781852294}
     - target: {fileID: 9022620133155346171, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_Name
-      value: Checkpoint
+      value: Checkpoint_The ruins
       objectReference: {fileID: 0}
     - target: {fileID: 9022620133155346171, guid: 60335c610f3ba3045b6b36363014d7b5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6636,6 +6648,7 @@ MonoBehaviour:
   campsManager: {fileID: 618300671}
   goToCamp: {fileID: 11400000, guid: 84a76713afa3df544aa018cb5041395b, type: 2}
   firstMainQuest: {fileID: 11400000, guid: 2b0bdd2ae1978074db6e0e3c8bcda54f, type: 2}
+  minotaurQuest: {fileID: 0}
 --- !u!1001 &2040782352
 PrefabInstance:
   m_ObjectHideFlags: 0
