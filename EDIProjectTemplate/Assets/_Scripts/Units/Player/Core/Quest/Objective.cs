@@ -37,6 +37,8 @@ namespace _Scripts.Units.Player.Core
         {
             /*OnCompleted = null;
             OnChanged = null;*/
+            currentCount = 0;
+            IsComplete = false;
         }
         
     }
