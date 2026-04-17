@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b15cc527a8c40ef821e253ce9820d1e, type: 3}
   m_Name: Minotaur
   m_EditorClassIdentifier: 
+  EnemyType: 1
   Height: 5
   States: 00000000010000000200000003000000040000000500000006000000
   wanderRadius: 15

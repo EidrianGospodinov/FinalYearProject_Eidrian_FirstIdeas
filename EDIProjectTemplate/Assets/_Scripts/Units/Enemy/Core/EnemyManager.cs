@@ -56,9 +56,10 @@ namespace _Scripts.Units.Enemy
 
     public class OnEnemyRemoved : IEvent
     {
+        public AiAgent AiAgent { get; private set; }
         public OnEnemyRemoved(AiAgent aiAgent)
         {
-            
+            AiAgent = aiAgent;
         }
     }
 }

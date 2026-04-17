@@ -7,6 +7,7 @@ namespace _Scripts.Units.Enemy
     [CreateAssetMenu]
     public class AiAgentConfig : ScriptableObject
     {
+        public EnemyType EnemyType; 
         [Header("Stats")]
         public float Height = 2.0f;
      
@@ -42,5 +43,13 @@ namespace _Scripts.Units.Enemy
         public DynamicTextData DynamicTextData;
         public DynamicTextData CritData;
 
+    }
+
+    public enum EnemyType
+    {
+        Any,
+        Minotaur,
+        Boar,
+        Cyclops
     }
 }

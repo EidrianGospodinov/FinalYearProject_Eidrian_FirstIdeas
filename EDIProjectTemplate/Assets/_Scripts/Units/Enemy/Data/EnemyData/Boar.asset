@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b15cc527a8c40ef821e253ce9820d1e, type: 3}
   m_Name: Boar
   m_EditorClassIdentifier: 
+  EnemyType: 2
   Height: 2
   States: 000000000100000003000000040000000500000006000000
   wanderRadius: 15

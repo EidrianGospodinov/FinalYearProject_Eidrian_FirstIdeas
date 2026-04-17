@@ -7,6 +7,7 @@ namespace _Scripts.Units.Player.Core
     public class KillEnemyObjective : Objective
     {
         private EventBinding<OnEnemyRemoved> enemyRemoved;
+        public EnemyType EnemyType;
         
 
         /*public KillEnemyObjective(string objectiveName, int targetCount)
@@ -30,10 +31,15 @@ namespace _Scripts.Units.Player.Core
 
         private void OnEnemyRemoved(OnEnemyRemoved e)
         {
-            currentCount++;
-            NotifyChanged();
-            if (currentCount >= targetCount)
-                Complete();
+            if (EnemyType == EnemyType.Any || e.AiAgent.agentConfig.EnemyType == EnemyType)
+            {
+                currentCount++;
+                NotifyChanged();
+                if (currentCount >= targetCount)
+                {
+                    Complete();
+                }
+            }
         }
     }
     
