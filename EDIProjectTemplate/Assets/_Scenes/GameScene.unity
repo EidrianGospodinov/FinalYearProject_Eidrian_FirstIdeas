@@ -6648,7 +6648,7 @@ MonoBehaviour:
   campsManager: {fileID: 618300671}
   goToCamp: {fileID: 11400000, guid: 84a76713afa3df544aa018cb5041395b, type: 2}
   firstMainQuest: {fileID: 11400000, guid: 2b0bdd2ae1978074db6e0e3c8bcda54f, type: 2}
-  minotaurQuest: {fileID: 0}
+  minotaurQuest: {fileID: 11400000, guid: 7538c365d9428eb44a116d6fd6c508ab, type: 2}
 --- !u!1001 &2040782352
 PrefabInstance:
   m_ObjectHideFlags: 0
