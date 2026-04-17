@@ -10,6 +10,7 @@ namespace _Scripts.Units.Player.Core
         private EventBinding<OnQuestCompleted> onQuestCompleted;
 
         [SerializeField] private CampsManager campsManager;
+        [SerializeField] private QuestScriptable goToCamp;
         [SerializeField] private QuestScriptable firstMainQuest;
 
         private void Start()
@@ -28,6 +29,7 @@ namespace _Scripts.Units.Player.Core
                 if (camp != null)
                 {
                     camp.MakeCampAccessible();
+                    questManager.SetQuest(new Quest(goToCamp.objectives));
                 }
             }
         }   

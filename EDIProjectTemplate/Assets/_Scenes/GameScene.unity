@@ -6634,6 +6634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   campsManager: {fileID: 618300671}
+  goToCamp: {fileID: 11400000, guid: 84a76713afa3df544aa018cb5041395b, type: 2}
   firstMainQuest: {fileID: 11400000, guid: 2b0bdd2ae1978074db6e0e3c8bcda54f, type: 2}
 --- !u!1001 &2040782352
 PrefabInstance:

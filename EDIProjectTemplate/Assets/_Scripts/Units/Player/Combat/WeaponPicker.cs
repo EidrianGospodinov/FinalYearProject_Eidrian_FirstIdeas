@@ -30,7 +30,8 @@ namespace _Scripts.Units.Player.Combat
     {
         Sword, 
         Guide,
-        EnemySpawner
+        EnemySpawner,
+        Camp
     }
 }
 
