@@ -15,6 +15,6 @@ MonoBehaviour:
   attackName: Flip Attack
   comboStateId: 4
   attackDelay: 1.7
-  attackDamage: 35
+  attackDamage: 30
   animationName: FlipAttack
   swordSwing: {fileID: 8300000, guid: 7923190c5e80b4d4d9396acc5d0b48cf, type: 3}

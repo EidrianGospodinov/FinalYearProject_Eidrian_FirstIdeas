@@ -15,6 +15,6 @@ MonoBehaviour:
   attackName: Secondary Attack
   comboStateId: 2
   attackDelay: 1
-  attackDamage: 25
+  attackDamage: 13
   animationName: SecondaryAttack
   swordSwing: {fileID: 0}

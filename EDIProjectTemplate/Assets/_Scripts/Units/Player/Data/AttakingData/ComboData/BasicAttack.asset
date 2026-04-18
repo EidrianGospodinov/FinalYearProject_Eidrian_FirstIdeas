@@ -15,6 +15,6 @@ MonoBehaviour:
   attackName: Basic Attack
   comboStateId: 1
   attackDelay: 1
-  attackDamage: 20
+  attackDamage: 10
   animationName: BasicAttack
   swordSwing: {fileID: 0}

@@ -15,6 +15,6 @@ MonoBehaviour:
   attackName: Special Attack
   comboStateId: 3
   attackDelay: 1.4
-  attackDamage: 50
+  attackDamage: 25
   animationName: SpecialAttackHighSpin
   swordSwing: {fileID: 0}
