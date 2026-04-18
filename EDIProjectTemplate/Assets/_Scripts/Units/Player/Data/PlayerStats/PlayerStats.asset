@@ -30,3 +30,5 @@ MonoBehaviour:
     statValue: 2
   - statType: 7
     statValue: 1
+  - statType: 8
+    statValue: 300

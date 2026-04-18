@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Units.Player;
 using _Scripts.Units.Player.Core;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -17,10 +18,24 @@ public class HeroCombinedScript : MonoBehaviour
     private EventBinding<OnEnemyHit> onEnemyHit;
     private EventBinding<OnUltimate> onUltimate;
 
+    private WeaponManager weaponManager;
+    private Stats playerStats;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Init(float powerUpXpRequired)
+    public void Init(Stats playerStats)
     {
-        this.powerUpXpRequired = powerUpXpRequired;
+        this.playerStats = playerStats;
+        powerUpXpRequired = playerStats.GetStat(Stat.PowerUpXpRequired);
+    }
+
+    public void InitSwordFound(WeaponManager weaponManager)
+    {
+        this.weaponManager = weaponManager;
+    }
+
+    public void UpdatePowerUpXpRequired()
+    {
+        powerUpXpRequired = playerStats.GetStat(Stat.PowerUpXpRequired);
     }
     void OnEnable()
     {
@@ -37,6 +52,8 @@ public class HeroCombinedScript : MonoBehaviour
 
     private void OnEnemyHitEvent(OnEnemyHit obj)
     {
+        UpdateSwordIntensity();
+        
         if (obj.EnemyHealth.IsDead())
         {
             return;
@@ -47,6 +64,16 @@ public class HeroCombinedScript : MonoBehaviour
             //enable the powerUp
             CanPowerUp = true;
             EventBus<GetUltimateEvent>.Trigger(new GetUltimateEvent(playerServices));
+        }
+    }
+
+    public void UpdateSwordIntensity()
+    {
+        if (weaponManager != null)
+        {
+            float normalizedXp = Mathf.Clamp01(currentPowerUpXp / powerUpXpRequired);
+            float intensity = normalizedXp * 7;
+            weaponManager.UpdateSwordIntensity(intensity);
         }
     }
 

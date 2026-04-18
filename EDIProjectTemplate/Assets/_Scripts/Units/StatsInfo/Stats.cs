@@ -81,5 +81,6 @@ public enum Stat
     ThunderUlt,
     TsunamiUlt,
     LongRangeBeam,
-    Regeneration
+    Regeneration,
+    PowerUpXpRequired
 }

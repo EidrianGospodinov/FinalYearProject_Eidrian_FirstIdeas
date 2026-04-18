@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CooldownBar dashBar;
     [SerializeField] private GameObject cameraFollowOffset;
     [SerializeField] private List<PlayerHealth> healthStates;
+    [SerializeField] private Stats playerStats;
     
     
     public AttackData AttackData;
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public HeroSwitcher HeroSwitcher;
    
     private MeshSockets sockets;
-    private Transform weaponTransform;
+    private WeaponManager weaponManager;
     
     private Vector2 currentMovementInput;
 
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        
+        playerStats.upgradeApplied += StatsUpgradeApplied;
         //gameManager.SetGameState(GameState.InGame);
         // Set initial state
         actionStateMachine.Initialize(ActionStateId.Ready);
@@ -110,7 +111,13 @@ public class PlayerController : MonoBehaviour
         sockets = GetComponent<MeshSockets>();
         EnemyDetector = GetComponent<ActiveEnemyDetector>();
         
-        heroCombinedScript.Init(AttackData.powerUpXpRequired);
+        heroCombinedScript.Init(playerStats);
+    }
+
+    private void StatsUpgradeApplied(Stats arg1, StatsUpgrade arg2)
+    {
+        //todo: use the params from the event instead of getting the value each time a upgrade happens 
+        heroCombinedScript.UpdatePowerUpXpRequired();
     }
 
     void Update()
@@ -133,21 +140,22 @@ public class PlayerController : MonoBehaviour
 
     public void FirstTimeEquipWeapon()
     {
-        if (weaponTransform == null)
+        if (weaponManager == null)
         {
             //i need to use diContainer for the prefab instantiate, but i should not do it in playerController
             var weaponInstance= gameObjectSpawnerDi.Spawn(AttackData.WeaponPrefab);
             weaponInstance.GetComponent<OnPlayerHittingEnemy>().Initialize(AttackData);
-            weaponTransform = weaponInstance.transform;
+            weaponManager = weaponInstance.GetComponent<WeaponManager>();
+            heroCombinedScript.InitSwordFound(weaponManager);
             EquipWeapon();
         }
     }
     public void EquipWeapon()
     {
-        if (weaponTransform != null)
+        if (weaponManager != null)
         {
             IsWeaponEquipped = !IsWeaponEquipped;
-            playerAnimation.ActivateWeapon(weaponTransform, IsWeaponEquipped!);
+            playerAnimation.ActivateWeapon(weaponManager.transform, IsWeaponEquipped!);
         }
     }
 
@@ -195,11 +203,13 @@ public class PlayerController : MonoBehaviour
     void LateUpdate() 
     { 
        // playerCameraLook.HandleCameraRotation();
-       if (weaponTransform == null) return;
-       var weaponManager = weaponTransform.GetComponent<WeaponManager>();
+       
+       //todo: keeping this here until i have time to fix it
+       heroCombinedScript.UpdateSwordIntensity();
+       /*if (weaponManager == null) return;
        float normalizedXp = Mathf.Clamp01(heroCombinedScript.currentPowerUpXp / AttackData.powerUpXpRequired);
        float intensity = normalizedXp * 7;
-       weaponManager.UpdateSwordIntensity(intensity);
+       weaponManager.UpdateSwordIntensity(intensity);*/
     }
     
     public void SetMovementInput(Vector2 input)
@@ -216,19 +226,19 @@ public class PlayerController : MonoBehaviour
     {
         if (eventName == "equipWeapon")
         {
-            if (weaponTransform == null)
+            if (weaponManager == null)
             {
                 return;
             }
 
-            weaponTransform.transform.localPosition = Vector3.zero;
+            weaponManager.transform.localPosition = Vector3.zero;
             if (IsWeaponEquipped)
             {
-                sockets.Attach(weaponTransform.transform, MeshSockets.SocketId.RightHand);
+                sockets.Attach(weaponManager.transform, MeshSockets.SocketId.RightHand);
             }
             else
             {
-                sockets.Attach(weaponTransform.transform, MeshSockets.SocketId.Spine);
+                sockets.Attach(weaponManager.transform, MeshSockets.SocketId.Spine);
             }
         }
     }
@@ -243,6 +253,7 @@ public class PlayerController : MonoBehaviour
     {
         cooldownBar.RestartCooldown();
         CurrentHeroData = obj.HeroData;
+        heroCombinedScript.UpdateSwordIntensity();
     }
     public void ResetState()
     {
