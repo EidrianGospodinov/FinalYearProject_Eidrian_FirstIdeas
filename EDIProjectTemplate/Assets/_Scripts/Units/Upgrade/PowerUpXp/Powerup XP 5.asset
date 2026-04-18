@@ -13,15 +13,18 @@ MonoBehaviour:
   m_Name: Powerup XP 5
   m_EditorClassIdentifier: 
   upgradeName: 'Powerup XP '
-  description: "Master the Divine Tether to swap between your heroes faster. A tighter
-    bond lets you chain elemental combos together and react instantly when a monster
-    pins you down. Stop waiting for a timer and get back into the action. \nThis
-    upgrade reduces the switch cooldown by: "
+  description: 'Sharpen your spiritual focus to reach your true potential faster.
+    A deeper attunement to battle allows you to manifest your divine gifts with less
+    effort, letting you call upon the heavens sooner than ever before. Stop grinding
+    for power and start unleashing it.
+
+    This upgrade reduces the XP required
+    to unlock special abilities by:'
   icon: {fileID: 21300000, guid: 2c6c4e99792aea641bcb8ae0c32e2809, type: 3}
   cost: 16
   UnitsToUpgrade:
   - {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
   UpgradeToApply:
   - statType: 8
-    statValue: 50
+    statValue: -50
   isPercentUpgrade: 0
