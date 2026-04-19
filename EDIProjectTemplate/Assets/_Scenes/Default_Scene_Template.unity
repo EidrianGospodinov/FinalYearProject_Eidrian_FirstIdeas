@@ -200,6 +200,7 @@ MonoBehaviour:
   dashBar: {fileID: 0}
   cameraFollowOffset: {fileID: 0}
   healthStates: []
+  playerStats: {fileID: 0}
   AttackData: {fileID: 11400000, guid: caedbed37adc6734ea67e3756d27d2c4, type: 2}
   CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
@@ -1064,6 +1065,10 @@ MonoBehaviour:
   audioSource: {fileID: 1138581233}
   hitSound: {fileID: 8300000, guid: 11245d3945c564b45a1bafad5ecb70e5, type: 3}
   hitEffect: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
+  damageData:
+    damage: 0
+    effectType: 0
+    buildupAmount: 0
 --- !u!54 &1138581230
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1709,6 +1714,7 @@ MonoBehaviour:
   dashBar: {fileID: 0}
   cameraFollowOffset: {fileID: 0}
   healthStates: []
+  playerStats: {fileID: 0}
   AttackData: {fileID: 0}
   CurrentHeroData: {fileID: 0}
   playerAnimation: {fileID: 0}
