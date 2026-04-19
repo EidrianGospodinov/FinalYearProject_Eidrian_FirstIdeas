@@ -31,17 +31,19 @@ namespace _Scripts.Units.Enemy
         private static int nextAgentId = 1;
         private int instanceID;
         private bool playerInSafeZone = false;
+        private float constSpeed;
         
         [SerializeField] private TextMeshProUGUI statusText;
         public Transform LongRangeTarget;
         [HideInInspector]public Animator animator;
 
-        [HideInInspector]public EnemyAttackTypesData NextAttackTypeData;
+        [HideInInspector] public EnemyAttackTypesData NextAttackTypeData;
+        [HideInInspector] public EnemySpawner EnemySpawner;
+        [HideInInspector] public bool IsEnemyUnderAttack = false;
+        
         public ChangeLayerChildren ChangeLayerChildren; 
         public bool IsPerformingAttackVisuals { get; set; }
         public bool AttackHasLanded {get; set;}
-        public bool IsEnemyUnderAttack = false;
-        
 
         private void Awake()
         {
@@ -60,6 +62,7 @@ namespace _Scripts.Units.Enemy
             navMeshAgent = GetComponentInParent<NavMeshAgent>();
             aiVision = GetComponent<AiVision>();
             animator = GetComponentInChildren<Animator>();
+            constSpeed = navMeshAgent.speed;
 
             stateMachine = new StateMachine<AiAgent, EnemyStateId>(this);
             foreach (var stateId in agentConfig.States)
@@ -104,10 +107,14 @@ namespace _Scripts.Units.Enemy
             playerInSafeZone = value;
         }
 
-        public EnemySpawner EnemySpawner; 
         public void AssignSpawner(EnemySpawner enemySpawner)
         {
             EnemySpawner = enemySpawner;
+        }
+
+        public void SetUpMovementMultiplier(float movementMultiplier)
+        {
+            navMeshAgent.speed = constSpeed * movementMultiplier;
         }
         
 

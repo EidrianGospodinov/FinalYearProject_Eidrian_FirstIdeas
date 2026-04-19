@@ -44,7 +44,7 @@ namespace _Scripts.Units.Enemy.StatusEffect
             {
                 statusEffectSo.AddBuildup(amount, gameObject);
                 
-                UpdateStatusEffect?.Invoke(statusEffectSo,statusEffectSo.GetCurrentThresholdNormalized(), statusEffectSo.GetCurrentDurationThresholdNormalized());
+                UpdateStatusEffect?.Invoke(statusEffectSo, statusEffectSo.GetCurrentThresholdNormalized(), statusEffectSo.GetCurrentDurationThresholdNormalized());
             }
             else
             {
@@ -87,6 +87,7 @@ namespace _Scripts.Units.Enemy.StatusEffect
                 enabledEffects[effectType].RemoveEffect(gameObject);
                 
                 DeactivateStatusEffect?.Invoke(enabledEffects[effectType]);
+                enabledEffects.Remove(effectType);
             }
         }
 

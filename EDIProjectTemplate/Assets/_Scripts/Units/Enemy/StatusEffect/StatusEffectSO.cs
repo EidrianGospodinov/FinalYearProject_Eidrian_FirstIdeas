@@ -29,6 +29,7 @@ namespace _Scripts.Units.Enemy
         protected GameObject vfxPlaying;
 
         protected Health health;
+        protected AiAgent aiAgent;
         
 
         public virtual void AddBuildup(float buildupAmount, GameObject target)
@@ -59,6 +60,7 @@ namespace _Scripts.Units.Enemy
         private void SetTargetData(GameObject target)
         {
             health = target.GetComponent<Health>();
+            aiAgent = target.GetComponent<AiAgent>();
         }
 
         public void UpdateCall(GameObject target, float tickAmount)

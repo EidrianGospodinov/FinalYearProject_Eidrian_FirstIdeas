@@ -1,7 +1,7 @@
 using _Scripts.Units.Player;
 using UnityEngine;
 
-namespace _Scripts.Units.Enemy
+namespace _Scripts.Units.Enemy.StatusEffect
 {
     [CreateAssetMenu(menuName = "Status Effects/Burn")]
     public class BurnStatusEffectSO : StatusEffectSO
