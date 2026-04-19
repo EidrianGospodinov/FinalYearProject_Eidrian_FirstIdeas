@@ -7,15 +7,24 @@ namespace _Scripts.Units.Enemy.StatusEffect
     public class BurnStatusEffectSO : StatusEffectSO
     {
         public float damagePerTick = 5f;
-
-        public override void UpdateEffect(GameObject target)
+        private Health health;
+        protected override void UpdateEffect(GameObject target)
         {
-            base.UpdateEffect(target);
+            if (health == null)
+            {
+                Debug.Log("Set up failed, Health component not found");
+                return;
+            }
             if (isEffectActive)
             {
                 health.TakeDamage(new DamageData(damagePerTick, EffectType, 0));    
             }
             
+        }
+
+        protected override void SetTargetData(GameObject target)
+        {
+            target.TryGetComponent<Health>(out health);
         }
     }
 }

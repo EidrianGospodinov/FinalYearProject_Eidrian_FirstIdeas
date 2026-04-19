@@ -60,8 +60,8 @@ MonoBehaviour:
   hitEffect: {fileID: 4093671075012598197, guid: 7deb0a8a746e512428b3542bda6cab76, type: 3}
   damageData:
     damage: 0
-    effectType: 1
-    buildAmount: 5
+    effectType: 0
+    buildupAmount: 0
 --- !u!114 &3934221261794072211
 MonoBehaviour:
   m_ObjectHideFlags: 0

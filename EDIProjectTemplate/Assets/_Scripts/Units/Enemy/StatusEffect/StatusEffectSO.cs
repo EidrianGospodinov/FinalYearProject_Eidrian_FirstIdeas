@@ -28,8 +28,7 @@ namespace _Scripts.Units.Enemy
         protected bool isBuildupOnlyShow;
         protected GameObject vfxPlaying;
 
-        protected Health health;
-        protected AiAgent aiAgent;
+        
         
 
         public virtual void AddBuildup(float buildupAmount, GameObject target)
@@ -57,11 +56,7 @@ namespace _Scripts.Units.Enemy
             }
         }
 
-        private void SetTargetData(GameObject target)
-        {
-            health = target.GetComponent<Health>();
-            aiAgent = target.GetComponent<AiAgent>();
-        }
+        protected abstract void SetTargetData(GameObject target);
 
         public void UpdateCall(GameObject target, float tickAmount)
         {
@@ -91,10 +86,7 @@ namespace _Scripts.Units.Enemy
             }
         }
 
-        public virtual void UpdateEffect(GameObject target)
-        {
-            
-        }
+        protected abstract void UpdateEffect(GameObject target);
 
         public virtual void RemoveEffect(GameObject gameObject)
         {

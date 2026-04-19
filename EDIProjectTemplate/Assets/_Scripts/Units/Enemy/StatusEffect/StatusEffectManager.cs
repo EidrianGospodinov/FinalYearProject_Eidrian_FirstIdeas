@@ -24,9 +24,6 @@ namespace _Scripts.Units.Enemy.StatusEffect
         public UnityAction<StatusEffectSO> DeactivateStatusEffect;
         public UnityAction<StatusEffectSO, float,float> UpdateStatusEffect;
         
-        private void Start()
-        {
-        }
 
         public void OnStatusTriggerBuildup(StatusEffectType effectType, float amount)
         {
@@ -99,10 +96,6 @@ namespace _Scripts.Units.Enemy.StatusEffect
                 UpdateEffect(gameObject);
                 lastInterval = currentInterval;
             }
-            /*foreach (var effect in activeEffects.Values)
-            {
-                effect.UpdateEffect(gameObject);
-            }*/
         }
     }
 }
