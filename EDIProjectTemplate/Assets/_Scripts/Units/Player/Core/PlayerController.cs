@@ -5,6 +5,7 @@ using _Scripts.StateMachine.PlayerActionStateMachine;
 using _Scripts.Units.Player;
 using _Scripts.Units.Player.Core;
 using _Scripts.Units.Player.View;
+using _Scripts.Units.Sound.Footstep;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -110,7 +111,6 @@ public class PlayerController : MonoBehaviour
         AudioSource = GetComponent<AudioSource>();
         sockets = GetComponent<MeshSockets>();
         EnemyDetector = GetComponent<ActiveEnemyDetector>();
-        
         heroCombinedScript.Init(playerStats);
     }
 
@@ -269,5 +269,10 @@ public class PlayerController : MonoBehaviour
     public void SetDeathState()
     {
         gameManager.SetGameState(GameState.Death);
+    }
+
+    public void SwapCollection(FootstepCollection collection)
+    {
+        playerMovement.SwapCollection(collection);
     }
 }

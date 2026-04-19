@@ -5575,6 +5575,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e6f5152beb6ad468ce6ce4fd35e048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainFootstepCollection:
+  - {fileID: 11400000, guid: 2b138fdf48474854ba734cd1eb197be9, type: 2}
+  - {fileID: 11400000, guid: 7b8a171ad8f34e84e9f1d2a4cd8fcf76, type: 2}
+  - {fileID: 11400000, guid: 234453f53dd22db40a33f4acfdf4714f, type: 2}
 --- !u!1 &8063841131278913698
 GameObject:
   m_ObjectHideFlags: 0
