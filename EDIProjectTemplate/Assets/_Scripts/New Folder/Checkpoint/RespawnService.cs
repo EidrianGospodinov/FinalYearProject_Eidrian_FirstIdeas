@@ -9,7 +9,6 @@ public class RespawnService
     {
         this.deathMenu = deathMenu;
     }
-
     public void ShowMenu(PlayerController playerController) => deathMenu.Show(playerController);
     public void HideMenu() => deathMenu.Hide();
     

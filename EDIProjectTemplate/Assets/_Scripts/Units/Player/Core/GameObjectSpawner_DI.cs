@@ -7,7 +7,6 @@ namespace _Scripts.Units.Player.Core
     public class GameObjectSpawner_DI
     {
         [Inject] private DiContainer _container;
-
         //I can make the spawn generic but not really needed with only 2 cases
         public GameObject Spawn(GameObject prefab, Transform parent = null)
         {
