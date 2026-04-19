@@ -12,6 +12,8 @@ public class VFXCollisionDetection : MonoBehaviour
     
     [SerializeField] private Stats stats;
     [SerializeField] private Stat stat;
+
+    [SerializeField] private DamageData damageData;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,7 +38,13 @@ public class VFXCollisionDetection : MonoBehaviour
             var damage = stats.GetStat(stat);
             var agent = other.gameObject.GetComponent<AiAgent>();
             var updatedDamage = dynamicTextServices.HandleDamageVisuals(transform, other, agent, damage);
-            other.gameObject.GetComponent<Health>().TakeDamage(new DamageData(updatedDamage, StatusEffectType.Fire, 1)); 
+            
+            if (damageData.effectType == StatusEffectType.None)
+            {
+                return;
+            }
+            damageData.damage = updatedDamage;
+            other.gameObject.GetComponent<Health>().TakeDamage(damageData); 
             
         }
     }

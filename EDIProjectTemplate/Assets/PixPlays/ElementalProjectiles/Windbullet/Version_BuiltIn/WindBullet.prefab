@@ -208,6 +208,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 7b63df204727f28489ebb56d71fefc9a, type: 2}
   stat: 6
+  damageData:
+    damage: 0
+    effectType: 1
+    buildupAmount: 2
 --- !u!1001 &6661051240871749869
 PrefabInstance:
   m_ObjectHideFlags: 0

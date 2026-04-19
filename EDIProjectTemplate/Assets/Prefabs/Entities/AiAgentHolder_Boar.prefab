@@ -183,9 +183,9 @@ MonoBehaviour:
   LongRangeTarget: {fileID: 2315384861957429182}
   animator: {fileID: 0}
   NextAttackTypeData: {fileID: 0}
-  ChangeLayerChildren: {fileID: 9079361644242246245}
-  IsEnemyUnderAttack: 0
   EnemySpawner: {fileID: 0}
+  IsEnemyUnderAttack: 0
+  ChangeLayerChildren: {fileID: 9079361644242246245}
 --- !u!114 &7980657933114263329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,10 +297,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   statusEffectToApplyDict:
     m_IsSerializable: 1
-    m_SerializedLength: 1
-    m_SerializedKeys: 01000000
+    m_SerializedLength: 2
+    m_SerializedKeys: 0100000002000000
     m_SerializedValues:
     - {fileID: 11400000, guid: 88c7cbf9dbc04fd4e938c4a03adde131, type: 2}
+    - {fileID: 11400000, guid: 96aa8d89aad56754898b632308763d02, type: 2}
   interval: 0.1
 --- !u!1 &881931773699471407
 GameObject:
@@ -942,9 +943,10 @@ MonoBehaviour:
   statusEffectIconTemplate: {fileID: 2025540772620658213, guid: 0c6d238b7ed571442b37b3c772866ceb, type: 3}
   statusEffectSpriteDict:
     m_IsSerializable: 1
-    m_SerializedLength: 1
-    m_SerializedKeys: 01000000
+    m_SerializedLength: 2
+    m_SerializedKeys: 0100000002000000
     m_SerializedValues:
+    - {fileID: 21300000, guid: 7bd58bf4a74310941aed0fbc5ce0ec89, type: 3}
     - {fileID: 21300000, guid: 7bd58bf4a74310941aed0fbc5ce0ec89, type: 3}
 --- !u!1 &8000094077011632099
 GameObject:
