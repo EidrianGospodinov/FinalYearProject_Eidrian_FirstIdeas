@@ -36,7 +36,7 @@ public class VFXCollisionDetection : MonoBehaviour
             var damage = stats.GetStat(stat);
             var agent = other.gameObject.GetComponent<AiAgent>();
             var updatedDamage = dynamicTextServices.HandleDamageVisuals(transform, other, agent, damage);
-            other.gameObject.GetComponent<Health>().TakeDamage(updatedDamage); 
+            other.gameObject.GetComponent<Health>().TakeDamage(new DamageData(updatedDamage, StatusEffectType.Fire, 1)); 
             
         }
     }

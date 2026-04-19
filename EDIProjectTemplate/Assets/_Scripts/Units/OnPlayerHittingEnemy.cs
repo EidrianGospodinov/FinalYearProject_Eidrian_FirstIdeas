@@ -32,6 +32,7 @@ public class OnPlayerHittingEnemy : MonoBehaviour
     private bool _isAttacking = false;
     private AttackComboData currentComboData;
     private AttackData attackData;
+    [SerializeField] private DamageData damageData;
 
     private void OnEnable()
     {
@@ -106,7 +107,8 @@ public class OnPlayerHittingEnemy : MonoBehaviour
                 if (health != null)
                 {
                     EventBus<OnEnemyHit>.Trigger(new OnEnemyHit(damageTaken, health));
-                    health.TakeDamage(damageTaken);
+                    damageData.damage = damageTaken;
+                    health.TakeDamage(damageData);
                 }
             }
             _isAttacking = false;

@@ -1,5 +1,8 @@
+using System;
 using _Scripts.StateMachine.EnemyStatemMachine;
+using _Scripts.Units.Enemy.StatusEffect;
 using _Scripts.Units.Player;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 

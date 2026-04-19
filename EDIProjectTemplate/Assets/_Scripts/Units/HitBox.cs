@@ -28,7 +28,7 @@ namespace _Scripts.Units
             {
                 Debug.Log($"HitBox: {name} hit player");
                 aiAgent.AttackHasLanded = true;
-                other.gameObject.GetComponentInChildren<Health>().TakeDamage(damage); 
+                other.gameObject.GetComponentInChildren<Health>().TakeDamage(new DamageData(damage, StatusEffectType.None, 0)); 
             }
         }
     }
