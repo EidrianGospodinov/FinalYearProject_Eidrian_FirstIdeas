@@ -34,7 +34,7 @@ public class CheckForTerrain : MonoBehaviour
             return;
         }
 
-        if (newTerrainSpawner == currentEnemySpawner)
+        if (newTerrainSpawner == currentEnemySpawner || newTerrainSpawner == previousEnemySpawner)
         {
             return;
         }

@@ -15,7 +15,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 
         public void Enter(AiAgent agent)
         {
-            windDownTimer = 2f;
+            windDownTimer = 1f;
             agent.navMeshAgent.isStopped = true;
             agent.IsEnemyUnderAttack = false;
             /*DecideNextAttack(agent);*/

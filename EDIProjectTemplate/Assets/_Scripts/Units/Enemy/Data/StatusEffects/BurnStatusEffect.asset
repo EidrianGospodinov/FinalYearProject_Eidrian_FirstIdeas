@@ -16,8 +16,8 @@ MonoBehaviour:
   activationThreshold: 3
   thresholdReductionMultiplier: 1
   thresholdReductionEverySecond: 1
-  activeDuration: 5
+  activeDuration: 6
   visualEffectPrefab: {fileID: 663529950372142735, guid: 2bca422f237238244a789fb4eb8b2823, type: 3}
   tickInterval: 0.5
   isEffectActive: 0
-  damagePerTick: 20
+  damagePerTick: 2
