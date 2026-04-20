@@ -219,6 +219,10 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
+        if (gameManager.GetCurrentGameState != GameState.InGame)
+        {
+            return;
+        }
         playerMovement.Jump();
     }
     

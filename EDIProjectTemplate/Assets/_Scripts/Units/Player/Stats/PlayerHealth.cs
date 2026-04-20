@@ -24,13 +24,13 @@ namespace _Scripts.Units.Player
        public bool canRegenerate = true;
        private float timeleft = 0.0f;	// Left time for current interval
        private float regenUpdateInterval = 1f;
-       private EventBinding<OnSwitchHeroEvent> playerEventBinding;
+       private EventBinding<OnSwitchHeroEvent> OnHeroSwitch;
        private PlayerController playerController;
        
        
         protected override void OnStart()
         {
-            playerEventBinding = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
+            OnHeroSwitch = EventBus<OnSwitchHeroEvent>.Register(HandleHeroSwitchEvent);
             _postProcessing = FindFirstObjectByType<Volume>();
             _postProcessing.profile.TryGet(out vignette);
             playerController = GetComponentInParent<PlayerController>();
@@ -50,6 +50,7 @@ namespace _Scripts.Units.Player
         {
            cameraService.EnableDeathCam(true);
            playerController.ActionStateMachine.ChangeState(ActionStateId.Death);
+           EventBus<OnSwitchHeroEvent>.Unregister(OnHeroSwitch);
         }
         protected override void OnDamage()
         {
@@ -107,18 +108,18 @@ namespace _Scripts.Units.Player
         {
             if (vignette !=null)
             {
-               
-                var startVignette = Mathf.Min(maxHealth, maxHealth / 2f + 20f);
+                float  startVignette = maxHealth * 2 / 3;
                 if (startVignette <= currentHealth)
                 {
                     vignette.intensity.value = 0;
                     return;
                 }
-                float percent = 1.0f-(currentHealth / (float)startVignette);
+
+                float percent = 1.0f - (currentHealth / startVignette);
                 if (percent > 0.5f)
                 {
                     shouldBlink = true;
-                    float blink = Mathf.Sin(Time.time * 2f) * 0.2f;
+                    float blink = Mathf.Sin(Time.time * 6f) * 0.2f;
                     percent *= 1f + blink;
                 }
                 else
