@@ -36,6 +36,14 @@ namespace _Scripts.Units.Player
             playerController = GetComponentInParent<PlayerController>();
         }
 
+        private void Update()
+        {
+            if (shouldBlink)
+            {
+                UpdateVignetteEffect();
+            }
+        }
+
         private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj) => UpdateGraphics();
 
         protected override void OnDeath()
@@ -94,12 +102,31 @@ namespace _Scripts.Units.Player
             UpdateHealthGlobe();
         }
 
+        private bool shouldBlink;
         private void UpdateVignetteEffect()
         {
             if (vignette !=null)
             {
-                float percent = 1.0f-(currentHealth / maxHealth);
-                vignette.intensity.value = percent;
+               
+                var startVignette = Mathf.Min(maxHealth, maxHealth / 2f + 20f);
+                if (startVignette <= currentHealth)
+                {
+                    vignette.intensity.value = 0;
+                    return;
+                }
+                float percent = 1.0f-(currentHealth / (float)startVignette);
+                if (percent > 0.5f)
+                {
+                    shouldBlink = true;
+                    float blink = Mathf.Sin(Time.time * 2f) * 0.2f;
+                    percent *= 1f + blink;
+                }
+                else
+                {
+                    shouldBlink = false;
+                }
+                Debug.Log($"percent: {percent}\n current health: {currentHealth} ");
+                vignette.intensity.value = Mathf.Clamp(percent, 0, 0.9f);
             }
         }
         private void UpdateHealthBar()
