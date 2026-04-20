@@ -7,21 +7,18 @@ namespace _Scripts.Units.Enemy
 {
     public class AiVision : MonoBehaviour
     {
-
         [HideInInspector] public GameObject Player;
 
-
-
-        public bool IsPlayerDetected(AiAgent agent, bool angleDoesntMatter) {
+        public bool IsPlayerDetected(AiAgent agent, bool angleDoesntMatter, float distMultiplier) {
             if (agent.GameManager.GetCurrentGameState != GameState.InGame)
             {
                 return false;
             }
-            return IsPlayerDetected(agent.agentConfig, angleDoesntMatter);
+            return IsPlayerDetected(agent.agentConfig, angleDoesntMatter,  distMultiplier);
         }
 
 
-        public bool IsPlayerDetected(AiAgentConfig config, bool angleDoesntMatter)
+        private bool IsPlayerDetected(AiAgentConfig config, bool angleDoesntMatter, float distMultiplier)
         {
             if (Player == null)
             {
@@ -30,7 +27,7 @@ namespace _Scripts.Units.Enemy
             Vector3 directionToPlayer = Player.transform.position - transform.position;
             float distanceToPlayer = directionToPlayer.magnitude;
 
-            if (distanceToPlayer > config.maxSightDistance)
+            if (distanceToPlayer > (config.maxSightDistance * distMultiplier))
             {
                 return false;
             }

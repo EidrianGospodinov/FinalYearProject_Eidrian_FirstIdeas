@@ -86,6 +86,7 @@ namespace _Scripts.Units.Enemy
 
         public bool IsPlayerDetected(bool angleDoesntMatter = false)
         {
+            float distMultiplier = 1.0f;
             if (playerInSafeZone)
             {
                 return false;
@@ -94,8 +95,9 @@ namespace _Scripts.Units.Enemy
             if (IsEnemyUnderAttack)
             {
                 angleDoesntMatter = true;
+                distMultiplier = 1.5f;
             }
-            return aiVision.IsPlayerDetected(this, angleDoesntMatter);
+            return aiVision.IsPlayerDetected(this, angleDoesntMatter, distMultiplier);
         }
 
         public float DistanceToPlayer()

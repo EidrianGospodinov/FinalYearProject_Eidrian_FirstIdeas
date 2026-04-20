@@ -26,7 +26,7 @@ MonoBehaviour:
   stayForeverIdle: 0
   minIdleTime: 3
   maxIdleTime: 5
-  timeToLosePlayer: 5
+  timeToLosePlayer: 10.66
   attackRange: 1.2
   critChance: 0.199
   EnemyAttackTypes:
