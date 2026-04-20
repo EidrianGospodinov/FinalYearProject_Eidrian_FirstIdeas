@@ -92,8 +92,9 @@ namespace _Scripts.Units.Enemy
                 return false;
             }
 
-            if (IsEnemyUnderAttack)
+            if (IsEnemyUnderAttack || angleDoesntMatter)
             {
+                //if the enemy is alert or just attacked he will be able to identify the tread
                 angleDoesntMatter = true;
                 distMultiplier = 1.5f;
             }

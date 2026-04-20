@@ -1,3 +1,4 @@
+using System;
 using _Scripts.Units.Player.Core;
 using UnityEngine;
 using Zenject;
@@ -12,7 +13,15 @@ public class SetYourNamePanel : MonoBehaviour
         GetComponent<CanvasGroup>().alpha = 1;
         gameManager.SetGameState(GameState.InMenu);
     }
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ContinueToGame();
+        }
+    }
+
 
     public void SetYourName(string name)
     {
