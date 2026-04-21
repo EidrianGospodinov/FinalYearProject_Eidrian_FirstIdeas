@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BurnStatusEffect
   m_EditorClassIdentifier: 
   EffectType: 1
-  activationThreshold: 3
+  activationThreshold: 4
   thresholdReductionMultiplier: 1
   thresholdReductionEverySecond: 1
   activeDuration: 6

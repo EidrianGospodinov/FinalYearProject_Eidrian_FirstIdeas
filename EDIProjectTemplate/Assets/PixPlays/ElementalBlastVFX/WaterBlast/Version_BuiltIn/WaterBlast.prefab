@@ -63927,7 +63927,7 @@ MonoBehaviour:
   damageData:
     damage: 0
     effectType: 2
-    buildupAmount: 3
+    buildupAmount: 5
 --- !u!64 &427715874174597433
 MeshCollider:
   m_ObjectHideFlags: 0

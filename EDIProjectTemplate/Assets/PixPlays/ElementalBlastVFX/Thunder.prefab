@@ -64039,7 +64039,7 @@ MonoBehaviour:
   damageData:
     damage: 0
     effectType: 1
-    buildupAmount: 3
+    buildupAmount: 5
 --- !u!4 &4019813107726573449 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8964859838461161948, guid: 6839a8d6998e86d4282063ffdacb0c15, type: 3}
