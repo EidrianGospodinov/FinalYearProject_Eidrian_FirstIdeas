@@ -61,6 +61,15 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
                 EndDialogue();
             }
 
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                DecreaseDialogueLineDuration();
+            }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                IncreaseDialogueLineDuration();
+            }
+
             if (currentDialogueType == DialogueType.Linear)
             {
                 if (Input.GetKeyDown(KeyCode.Space))
