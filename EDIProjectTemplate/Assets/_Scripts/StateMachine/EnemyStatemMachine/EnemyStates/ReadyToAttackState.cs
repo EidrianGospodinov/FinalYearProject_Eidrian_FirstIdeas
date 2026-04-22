@@ -7,6 +7,7 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
 {
     public class ReadyToAttackState : IState<AiAgent, EnemyStateId>
     {
+        private EnemyAttackTypesData lastAttack;
         public EnemyStateId GetId()
         {
             return EnemyStateId.ReadyToAttack;
@@ -62,11 +63,22 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
         }
         private EnemyAttackTypesData GetRandomAttackType(List<EnemyAttackTypesData> validAttacks)
         {
+            int GetWeight(EnemyAttackTypesData attack)
+            {
+                int weight = attack.weight;
+
+                if (attack == lastAttack)
+                {
+                    weight = Mathf.RoundToInt(weight * attack.RepeatPenalty);
+                }
+
+                return Mathf.Max(1, weight);
+            }
             // Calculate the total weight of all possible attacks
             int totalWeight = 0;
             foreach (var attack in validAttacks)
             {
-                totalWeight += attack.weight;
+                totalWeight += GetWeight(attack);
             }
 
             int randomNumber = Random.Range(0, totalWeight);
@@ -75,9 +87,10 @@ namespace _Scripts.StateMachine.EnemyStatemMachine.EnemyStates
             int currentWeightSum = 0;
             foreach (var attack in validAttacks)
             {
-                currentWeightSum += attack.weight;
+                currentWeightSum += GetWeight(attack);
                 if (randomNumber < currentWeightSum)
                 {
+                    lastAttack = attack;
                     return attack;
                 }
             }

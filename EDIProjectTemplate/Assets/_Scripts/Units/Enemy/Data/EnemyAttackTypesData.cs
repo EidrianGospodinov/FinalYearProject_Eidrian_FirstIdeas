@@ -9,7 +9,8 @@ namespace _Scripts.Units.Enemy
         public string attackName;
         public EnemyStateId StateId;
         public string AnimationName;
-        public int weight;            
+        public int weight;    
+        public float RepeatPenalty = 0.2f;
         public float minDistance;     
         public float maxDistance;
         public float animationDuration;
