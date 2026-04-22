@@ -22,6 +22,8 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
         [SerializeField] private TextMeshProUGUI dialogueText;
         [SerializeField] private DialogueNodeBase fallBackDialogue;
 
+        [SerializeField] private TextMeshProUGUI speedText;
+
         private string npcName = " ";
         private Choice[] choices;
         private int currentResponseTracker;
@@ -29,8 +31,10 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
          private EventHandler OnDialogueFinished { get; set; }
          private ICommandReceiver commandReceiver;
          private DialogueType currentDialogueType = DialogueType.None;
-         private int taskDelayMilSecDefault = 2500;
+         
          private int taskDelayMilSec = 2500;
+         private bool skipDialouge = false;
+         private string speedTemplate;
 
         private void OnEnable()
         {
@@ -44,6 +48,12 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             choices = null;
         }
 
+        private void Start()
+        {
+            speedTemplate = speedText.text;
+            UpdateSpeedText();
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
@@ -55,7 +65,7 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    taskDelayMilSec = 0;
+                    skipDialouge = true;
                 }
             }
             if (currentDialogueType != DialogueType.MultiChoice)
@@ -167,13 +177,38 @@ namespace _Scripts.Dialogue.MultipleChoiceDialogue
             currentDialogueType = DialogueType.Linear;
             foreach (var dialogue in linearDialogue.dialogue)
             {
-                SetDialogueText(dialogue.text, dialogue.isPlayer);
-                taskDelayMilSec = taskDelayMilSecDefault;
-                await Task.Delay(taskDelayMilSec);
+                if (!skipDialouge)
+                {
+                    SetDialogueText(dialogue.text, dialogue.isPlayer);
+                    await Task.Delay(taskDelayMilSec);
+                }
             }
+            skipDialouge = false;
             SetUpDialogue(linearDialogue.nextNode);
         }
 
+        public void IncreaseDialogueLineDuration()
+        {
+            if (taskDelayMilSec < 7000)
+            {
+                taskDelayMilSec += 1000; //one sec
+                UpdateSpeedText();
+            }
+        }
+        public void DecreaseDialogueLineDuration()
+        {
+            if (taskDelayMilSec > 1000)
+            {
+                taskDelayMilSec -= 1000;
+                UpdateSpeedText();
+            }
+        }
+
+        private void UpdateSpeedText()
+        {
+            string speed = $"{taskDelayMilSec / 1000f:0.0}s";
+            speedText.text = speedTemplate.Replace("{Speed}", speed);
+        }
         private void SetUpAnswerOptions(DialogueNodeBase currentNode)
         {
             if (currentNode is NPC_MultipleChoiseDialogue multipleChoiceDialogue)

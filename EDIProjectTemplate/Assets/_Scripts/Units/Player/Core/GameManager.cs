@@ -25,8 +25,8 @@ namespace _Scripts.Units.Player.Core
                     Time.timeScale = 0;
                     break;
                 case GameState.InDialogue:
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.Confined;
                     Time.timeScale = 1;
                     break;
                 case GameState.Death:
