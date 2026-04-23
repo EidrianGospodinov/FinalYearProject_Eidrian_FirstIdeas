@@ -10,24 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
-  m_Name: Great choice_BackToMenu
+  m_Name: Linear_WhatDoIDo
   m_EditorClassIdentifier: 
   dialogueText: 
   dialogue:
   - isPlayer: 0
-    text: Great Choice sir, you will lick your fingers
+    text: "It's quite simple,\t"
+  - isPlayer: 0
+    text: Have a look at the top right corner.
   - isPlayer: 1
-    text: I hope you are right.
+    text: 'What are those. '
   - isPlayer: 0
-    text: This pizzaria has been open for 100 years
+    text: That is your quest, you have to complete each
   - isPlayer: 0
-    text: We have served Queen Elizabeth
+    text: objective, before you can unlock the next quest.
   - isPlayer: 0
-    text: If you don't like the pizza, I will breackdance on the table
-  - isPlayer: 1
-    text: Are you serious???
+    text: With Each quest, you will learn more,
   - isPlayer: 0
-    text: Yes!
-  - isPlayer: 0
-    text: Anything else
-  nextNode: {fileID: 11400000, guid: 6f8e4e32d48682549b5e5ed0a59c353c, type: 2}
+    text: about the world and about yourself
+  nextNode: {fileID: 11400000, guid: 76d48059a62aa314a8b7190c5e650ee3, type: 2}

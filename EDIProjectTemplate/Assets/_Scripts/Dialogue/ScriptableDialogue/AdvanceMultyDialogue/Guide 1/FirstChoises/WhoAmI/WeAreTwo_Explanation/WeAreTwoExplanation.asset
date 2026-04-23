@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - isPlayer: 0
     text: Its a really long story.
-  - isPlayer: 0
+  - isPlayer: 1
     text: I have time, nowhere else to be.
   - isPlayer: 0
     text: 'You don''t but okay. When you were young, there was accident. '

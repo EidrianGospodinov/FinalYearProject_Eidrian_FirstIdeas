@@ -17,6 +17,6 @@ MonoBehaviour:
   - answerText: Who am I?
     nextNode: {fileID: 11400000, guid: f3c7ad3366ececd46a984116d4ed3342, type: 2}
   - answerText: What do I have to do?
-    nextNode: {fileID: 0}
+    nextNode: {fileID: 11400000, guid: bd738b8d1d933cf43bc7b2135375c901, type: 2}
   - answerText: I don't need your help!
     nextNode: {fileID: 0}
