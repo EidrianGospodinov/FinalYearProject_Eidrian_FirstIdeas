@@ -21,6 +21,6 @@ public class RespawnService
     public void Respawn(PlayerController player)
     {
         currentCheckpoint?.PlacePlayerInCamp();
-        player.ResetState();
+        player?.ResetState();
     }
 }

@@ -34,6 +34,10 @@ namespace _Scripts.Units.Player.Core
                     Cursor.lockState = CursorLockMode.Confined;
                     Time.timeScale = 0.3f;
                     break;
+                case GameState.Pause:
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.Confined;
+                    break;
             }
         }
     }
@@ -42,6 +46,7 @@ namespace _Scripts.Units.Player.Core
         InGame,
         InMenu,
         InDialogue,
-        Death
+        Death,
+        Pause
     }
 }
