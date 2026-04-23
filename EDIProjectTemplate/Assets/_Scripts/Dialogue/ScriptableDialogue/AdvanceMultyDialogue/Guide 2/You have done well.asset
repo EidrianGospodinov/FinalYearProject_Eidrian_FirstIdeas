@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 539f376c48a44fc894c044893a93b560, type: 3}
+  m_Name: You have done well
+  m_EditorClassIdentifier: 
+  dialogueText: 
+  dialogue:
+  - isPlayer: 0
+    text: Welcome back hero, you have done well.
+  - isPlayer: 0
+    text: Now with a sword you have unlocked so many new possibilitie.
+  - isPlayer: 0
+    text: Now with a sword you have unlocked so many new possibilitie.
+  - isPlayer: 0
+    text: But you will have to learn to use it, become one with it.
+  - isPlayer: 0
+    text: 'Remember you can always go back to normal state with Q, '
+  - isPlayer: 0
+    text: In order to be able to use your long range abilities
+  - isPlayer: 1
+    text: Now that i have completed your quest what is next?
+  - isPlayer: 1
+    text: Now you will learn to use it and become better.
+  nextNode: {fileID: 0}
