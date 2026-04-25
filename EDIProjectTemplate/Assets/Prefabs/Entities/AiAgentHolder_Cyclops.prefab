@@ -746,6 +746,8 @@ MonoBehaviour:
   LongRangeTarget: {fileID: 3422100749096341785}
   animator: {fileID: 0}
   NextAttackTypeData: {fileID: 0}
+  EnemySpawner: {fileID: 0}
+  IsEnemyUnderAttack: 0
   ChangeLayerChildren: {fileID: 3298036906758808838}
 --- !u!114 &5207496386047748324
 MonoBehaviour:
@@ -995,7 +997,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6862839145893450234, guid: 2cc42617550e6f847be21e1a524c183f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862839145893450234, guid: 2cc42617550e6f847be21e1a524c183f, type: 3}
+      propertyPath: useCyclopsSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6970107528667616115, guid: 2cc42617550e6f847be21e1a524c183f, type: 3}
       propertyPath: m_AABB.m_Center.x
@@ -1072,7 +1078,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8284732980788950268}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ca56df97e6996448569d57229f979b, type: 3}
   m_Name: 
