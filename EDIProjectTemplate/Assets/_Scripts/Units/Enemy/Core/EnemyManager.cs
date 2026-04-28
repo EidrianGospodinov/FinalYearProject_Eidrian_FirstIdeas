@@ -52,6 +52,7 @@ namespace _Scripts.Units.Enemy
         }
 
         public IEnumerable<AiAgent> GetAllEnemies() => enemies;
+        public bool FinalQuestCompleted = false;
     }
 
     public class OnEnemyRemoved : IEvent

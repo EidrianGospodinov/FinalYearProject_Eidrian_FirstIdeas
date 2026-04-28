@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 817143344597752825}
   - component: {fileID: 867285745623201831}
   - component: {fileID: 5143926577070126261}
+  - component: {fileID: 6611713619726274684}
   m_Layer: 7
   m_Name: AiAgentHolder_Cyclops
   m_TagString: Untagged
@@ -820,6 +821,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 10
+--- !u!114 &6611713619726274684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113964264003026803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1d216cfb114c5fb6632599946346f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusEffectToApplyDict:
+    m_IsSerializable: 1
+    m_SerializedLength: 2
+    m_SerializedKeys: 0100000002000000
+    m_SerializedValues:
+    - {fileID: 11400000, guid: 88c7cbf9dbc04fd4e938c4a03adde131, type: 2}
+    - {fileID: 11400000, guid: 96aa8d89aad56754898b632308763d02, type: 2}
+  interval: 0.1
 --- !u!1001 &1281267321704038502
 PrefabInstance:
   m_ObjectHideFlags: 0

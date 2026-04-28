@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using _Scripts.Units.Enemy;
 using _Scripts.Units.Player.Core;
 using Unity.VisualScripting;
@@ -7,7 +8,9 @@ using Zenject;
 public class AutomatedTerrainGenerator : MonoBehaviour
 {
     [Inject] private GameObjectSpawner_DI gameObjectSpawnerDi;
-    [SerializeField] private AiAgent enemyPrefab;
+    
+    [Header("First prefab should always be the Boar")]
+    [SerializeField] private List<AiAgent> enemyPrefab;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

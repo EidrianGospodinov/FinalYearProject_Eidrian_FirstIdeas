@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using _Scripts.New_Folder.Spawner;
 using _Scripts.Units.Enemy;
 using Unity.Mathematics;
@@ -15,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Spawn Settings")] 
     private Area area;
-    private AiAgent enemyPrefab;
+    private List<AiAgent> enemyPrefabs;
     [SerializeField] int spawnCount = 10;
     [SerializeField] private int minSpawnCountBeforeWave = 3;
     [SerializeField] float spawnInterval = 1.4f;
@@ -30,11 +31,11 @@ public class EnemySpawner : MonoBehaviour
         //SpawnEnemies();
     }
 
-    public void SetUpSpawner(Terrain terrain, AiAgent aiAgent)
+    public void SetUpSpawner(Terrain terrain, List<AiAgent> aiAgent)
     {
         if (terrain != null && aiAgent != null)
         {
-            enemyPrefab = aiAgent;
+            enemyPrefabs = aiAgent;
             this.terrain = terrain;
             // Calculate the center based on terrain dimensions
             Vector3 size = terrain.terrainData.size;
@@ -85,12 +86,39 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnOne()
     {
+        if (enemyPrefabs == null)
+        {
+            Debug.LogError("No enemy prefabs to spawn");
+            return;
+        }
+        int prefabIndex = GetEnemyPrefabIndex();
         var randomPoint = area.GetRandomPoint(terrainCentre);
-        var aiAgent = container.InstantiatePrefabForComponent<AiAgent>(enemyPrefab, randomPoint, quaternion.identity, transform);
+        var aiAgent = container.InstantiatePrefabForComponent<AiAgent>(enemyPrefabs[prefabIndex],
+            randomPoint, quaternion.identity, transform);
         enemyManager.RegisterEnemy(aiAgent);
         aiAgent.AssignSpawner(this);
         currentSpawnCount++;
 
+    }
+    int GetEnemyPrefabIndex()
+    {
+        if (!enemyManager.FinalQuestCompleted)
+        {
+            return 0;
+        }
+
+        if (enemyPrefabs.Count <= 1)
+        {
+            return 0;
+        }
+        float roll = UnityEngine.Random.value;
+        //80% of the time it should spawn the boar
+        if (roll < 0.8f)
+        {
+            return 0;
+        }
+        // get a random enemy of the rest 
+        return UnityEngine.Random.Range(1, enemyPrefabs.Count);
     }
     public void NotifyDeath(bool destroy)
     {

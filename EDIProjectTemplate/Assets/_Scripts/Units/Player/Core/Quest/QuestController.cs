@@ -1,4 +1,5 @@
 using System;
+using _Scripts.Units.Enemy;
 using UnityEngine;
 using Zenject;
 
@@ -7,12 +8,14 @@ namespace _Scripts.Units.Player.Core
     public class QuestController : MonoBehaviour
     {
         [Inject] private QuestManager questManager;
+        [Inject] private EnemyManager enemyManager;
         private EventBinding<OnQuestCompleted> onQuestCompleted;
 
         [SerializeField] private CampsManager campsManager;
         [SerializeField] private QuestScriptable goToCamp;
         [SerializeField] private QuestScriptable firstMainQuest;
         [SerializeField] private QuestScriptable minotaurQuest;
+        [SerializeField] private QuestScriptable finalQuest;
 
         private void Start()
         {
@@ -31,6 +34,11 @@ namespace _Scripts.Units.Player.Core
             else if (onQuest.UniqueId == minotaurQuest.GetUniqueId())
             {
                 UnlockAndSetUpNextCamp("The ruins");   
+            }
+            else if (onQuest.UniqueId == finalQuest.GetUniqueId())
+            {
+                enemyManager.FinalQuestCompleted = true;//todo: make this fire an event called all quest completed instead of injecting the enemy manager where its not needed
+                UnlockAndSetUpNextCamp("The cathedral");   
             }
         }
 
