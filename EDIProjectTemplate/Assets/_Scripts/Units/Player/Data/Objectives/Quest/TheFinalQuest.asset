@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7a8c7ee187b4cd8b240af3c45a64df0, type: 3}
-  m_Name: The minotaur
+  m_Name: TheFinalQuest
   m_EditorClassIdentifier: Assembly-CSharp:_Scripts.Units.Player.Core:QuestScriptable
   objectives:
   - {fileID: 11400000, guid: 367bc82b4e2d7984ebe79dd8b91edfa8, type: 2}
-  - {fileID: 11400000, guid: 90c8620654c5d3d4f80cfbb46f8bc986, type: 2}
-  - {fileID: 11400000, guid: 9054d2c10ba797143ab820852c3f07b9, type: 2}
+  - {fileID: 11400000, guid: d96d6036706d1e04ab23f3a950462de9, type: 2}
+  - {fileID: 11400000, guid: 9dc8879a10b5a8e4b913ca0b3b3c3957, type: 2}
