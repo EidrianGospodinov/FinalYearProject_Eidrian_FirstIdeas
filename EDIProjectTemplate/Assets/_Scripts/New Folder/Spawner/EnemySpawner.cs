@@ -106,7 +106,6 @@ public class EnemySpawner : MonoBehaviour
         {
             return 0;
         }
-
         if (enemyPrefabs.Count <= 1)
         {
             return 0;
@@ -117,7 +116,7 @@ public class EnemySpawner : MonoBehaviour
         {
             return 0;
         }
-        // get a random enemy of the rest 
+        // get a random enemy from the rest 
         return UnityEngine.Random.Range(1, enemyPrefabs.Count);
     }
     public void NotifyDeath(bool destroy)

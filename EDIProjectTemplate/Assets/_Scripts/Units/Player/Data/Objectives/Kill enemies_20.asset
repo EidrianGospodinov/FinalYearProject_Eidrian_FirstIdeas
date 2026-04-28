@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Kill enemies_20
   m_EditorClassIdentifier: 
   ObjectiveName: Kill Enemies
-  targetCount: 5
+  targetCount: 20
+  EnemyType: 0

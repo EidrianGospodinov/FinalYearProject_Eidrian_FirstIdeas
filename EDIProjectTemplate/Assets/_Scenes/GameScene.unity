@@ -218,7 +218,7 @@ PrefabInstance:
     - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: quest
       value: 
-      objectReference: {fileID: 11400000, guid: 7538c365d9428eb44a116d6fd6c508ab, type: 2}
+      objectReference: {fileID: 11400000, guid: 7738775e4a51d41458470ac0f897249c, type: 2}
     - target: {fileID: 7760670698628361215, guid: 5797e7b5be7bb1341b20b4741334f4aa, type: 3}
       propertyPath: dialogueUI
       value: 

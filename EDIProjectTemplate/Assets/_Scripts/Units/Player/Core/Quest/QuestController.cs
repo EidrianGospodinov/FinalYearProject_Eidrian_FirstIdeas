@@ -50,6 +50,10 @@ namespace _Scripts.Units.Player.Core
                 camp.MakeCampAccessible();
                 questManager.SetQuest(new Quest(goToCamp.objectives));
             }
+            else
+            {
+                Debug.LogError($"camp with name: {nameOfCamp} is missing");
+            }
         }
     }
 }
