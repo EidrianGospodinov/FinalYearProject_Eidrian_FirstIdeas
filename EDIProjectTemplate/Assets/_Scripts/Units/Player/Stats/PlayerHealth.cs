@@ -26,7 +26,8 @@ namespace _Scripts.Units.Player
        private float regenUpdateInterval = 1f;
        private EventBinding<OnSwitchHeroEvent> OnHeroSwitch;
        private PlayerController playerController;
-       
+       private bool criticalDamageShouldBlink;
+       private bool isOnCriticalHealthEventFired = false;
        
         protected override void OnStart()
         {
@@ -38,8 +39,13 @@ namespace _Scripts.Units.Player
 
         private void Update()
         {
-            if (shouldBlink)
+            if (criticalDamageShouldBlink)
             {
+                if (!isOnCriticalHealthEventFired)
+                {
+                    isOnCriticalHealthEventFired = true;
+                    EventBus<OnPlayerCriticalHealth>.Trigger(new OnPlayerCriticalHealth());
+                }
                 UpdateVignetteEffect();
             }
         }
@@ -103,7 +109,6 @@ namespace _Scripts.Units.Player
             UpdateHealthGlobe();
         }
 
-        private bool shouldBlink;
         private void UpdateVignetteEffect()
         {
             if (vignette !=null)
@@ -112,19 +117,20 @@ namespace _Scripts.Units.Player
                 if (startVignette <= currentHealth)
                 {
                     vignette.intensity.value = 0;
+                    criticalDamageShouldBlink = false;//fail safe if it blinks after regeneration
                     return;
                 }
 
                 float percent = 1.0f - (currentHealth / startVignette);
                 if (percent > 0.5f)
                 {
-                    shouldBlink = true;
+                    criticalDamageShouldBlink = true;
                     float blink = Mathf.Sin(Time.time * 6f) * 0.2f;
                     percent *= 1f + blink;
                 }
                 else
                 {
-                    shouldBlink = false;
+                    criticalDamageShouldBlink = false;
                 }
                 Debug.Log($"percent: {percent}\n current health: {currentHealth} ");
                 vignette.intensity.value = Mathf.Clamp(percent, 0, 0.9f);

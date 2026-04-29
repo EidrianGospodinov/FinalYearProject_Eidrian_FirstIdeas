@@ -64,3 +64,8 @@ public class OnEnemyHit : IEvent
         EnemyHealth = enemyHealth;
     }
 }
+
+public class OnPlayerCriticalHealth : IEvent
+{
+    
+}
