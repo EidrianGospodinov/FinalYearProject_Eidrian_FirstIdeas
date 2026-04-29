@@ -741,7 +741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialState: 1
-  agentConfig: {fileID: 11400000, guid: c03b228dfaed6484bbceb9b8aa58425c, type: 2}
+  agentConfig: {fileID: 11400000, guid: f98c8fbc85580254fa46328b9eef68d8, type: 2}
   playerTransform: {fileID: 0}
   navMeshAgent: {fileID: 0}
   statusText: {fileID: 8543885436028274050}
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49ba68b08694d89974a74e2b5ffcf89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 250
   healthBar: {fileID: 1864488426176350869}
 --- !u!195 &817143344597752825
 NavMeshAgent:

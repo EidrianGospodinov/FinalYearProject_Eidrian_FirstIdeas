@@ -50,7 +50,11 @@ namespace _Scripts.Units.Player
             }
         }
 
-        private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj) => UpdateGraphics();
+        private void HandleHeroSwitchEvent(OnSwitchHeroEvent obj)
+        {
+            isOnCriticalHealthEventFired = false;
+            UpdateGraphics();
+        }
 
         protected override void OnDeath()
         {

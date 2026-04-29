@@ -26,11 +26,13 @@ MonoBehaviour:
   stayForeverIdle: 0
   minIdleTime: 3
   maxIdleTime: 5
-  timeToLosePlayer: 9.16
+  timeToLosePlayer: 20.17
   attackRange: 2.07
-  critChance: 0.374
-  EnemyAttackTypes: []
-  DeathStateAnimationName: Empty
+  critChance: 0.444
+  EnemyAttackTypes:
+  - {fileID: 11400000, guid: 630177ba9f112c14785a93cd0e446516, type: 2}
+  - {fileID: 11400000, guid: 216dd3d5286bf9540bb2e9ac9c6bf222, type: 2}
+  DeathStateAnimationName: death
   DeathAnimDuration: 3
   DynamicTextData: {fileID: 11400000, guid: 5dd75784033eea943a08ab7facd4f690, type: 2}
   CritData: {fileID: 11400000, guid: efb56a22d69f8454b981a9ebccb01d7c, type: 2}
