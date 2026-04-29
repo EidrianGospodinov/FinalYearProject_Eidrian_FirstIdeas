@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 3
   Height: 5
-  States: 000000000100000003000000040000000500000006000000
+  States: 00000000010000000300000004000000050000000600000002000000
   wanderRadius: 15
   minWanderRadius: 5
   destinationRefreshTime: 5

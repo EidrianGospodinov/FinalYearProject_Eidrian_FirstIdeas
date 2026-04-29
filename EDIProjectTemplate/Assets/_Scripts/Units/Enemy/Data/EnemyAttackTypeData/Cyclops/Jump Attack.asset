@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: 
   StateId: 5
-  AnimationName: jump attack
+  AnimationName: jumpAttack
   weight: 60
   RepeatPenalty: 0.2
   minDistance: 0
