@@ -21,7 +21,7 @@ namespace _Scripts.Units.Player.Core
         {
             foreach (var obj in objectives)
             {
-                UniqueId += obj.GetInstanceID();
+                UniqueId += obj.GetEntityId();
                 obj.Initialize();
                 obj.OnCompleted += CheckQuest;
             }

@@ -14,7 +14,7 @@ namespace _Scripts.Units.Player.Core
             string uniqueId ="";
             foreach (var obj in objectives)
             {
-                uniqueId += obj.GetInstanceID();
+                uniqueId += obj.GetEntityId();
             }
 
             if (uniqueId == "")
